@@ -68,7 +68,7 @@ export default function HeroIntro() {
           splitBy="words"
           rotationInterval={2400}
           staggerDuration={0.03}
-          className="absolute bottom-18 left-1/2 z-[60] -translate-x-1/2 bg-transparent px-4 text-center sm:bottom-20 md:bottom-22 lg:bottom-24 xl:bottom-30"
+          className="absolute bottom-18 left-1/2 z-[60] -translate-x-1/2 bg-transparent px-4 text-center sm:bottom-20 md:bottom-22 lg:bottom-18 xl:bottom-22 2xl:bottom-24"
           style={{ color: "var(--color-secondary)" }}
           mainClassName="justify-center whitespace-nowrap bg-transparent text-center font-change-serif-bold text-[11px] uppercase tracking-[0.12em] text-[color:var(--color-secondary)] sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
           contentClassName="flex-nowrap justify-center whitespace-nowrap"

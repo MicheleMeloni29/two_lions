@@ -7,19 +7,19 @@ export default function ScrollIndicator({
   href,
   className = "",
 }: ScrollIndicatorProps) {
-  const baseClassName = `absolute bottom-8 left-1/2 z-[60] -translate-x-1/2 text-primary md:bottom-10 ${className}`.trim();
+  const baseClassName = `absolute bottom-8 left-1/2 z-[60] -translate-x-1/2 text-primary sm:bottom-10 lg:bottom-12 xl:bottom-14 ${className}`.trim();
   const indicator = (
     <span
-      className="scroll-indicator-float flex flex-col items-center gap-2"
+      className="scroll-indicator-float flex flex-col items-center gap-2 sm:gap-2.5 lg:gap-3"
       aria-hidden="true"
     >
       <span className="flex items-center justify-center">
         <svg
           viewBox="0 0 20 12"
-          className="h-6 w-24"
+          className="h-5 w-18 sm:h-6 sm:w-24 lg:h-7 lg:w-28 xl:h-8 xl:w-32"
           fill="none"
           stroke="var(--color-secondary)"
-          strokeWidth="2.1"
+          strokeWidth="1.9"
           strokeLinecap="round"
           strokeLinejoin="round"
         >

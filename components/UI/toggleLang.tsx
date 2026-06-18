@@ -10,7 +10,7 @@ export default function ToggleLang() {
   return (
     <div className="fixed top-3 right-3 z-[60] flex items-center gap-1 md:top-6 md:right-6">
       <span
-        className="text-xs font-medium uppercase tracking-[0.25em] transition-colors md:text-sm"
+        className="text-xs font-bold uppercase tracking-[0.25em] transition-colors md:text-sm"
         style={{
           color: isEnglish
             ? "var(--color-light-blue)"

@@ -15,6 +15,12 @@ const rotatingTexts = [
   "SPORT",
 ];
 
+const secondaryRevealTransition = {
+  duration: 0.7,
+  delay: 3.5,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
+
 export default function HeroIntro() {
   return (
     <motion.div
@@ -51,19 +57,33 @@ export default function HeroIntro() {
           Two Lions
         </motion.h1>
       </div>
-      <RotatingText
-        texts={rotatingTexts}
-        splitBy="words"
-        rotationInterval={2400}
-        staggerDuration={0.03}
-        className="absolute bottom-16 left-1/2 z-[60] -translate-x-1/2 bg-transparent text-center md:bottom-28"
-        style={{ color: "var(--color-secondary)" }}
-        mainClassName="justify-center whitespace-nowrap bg-transparent text-center font-change-serif-bold text-[11px] uppercase tracking-[0.16em] text-[color:var(--color-secondary)] sm:text-xs md:text-sm"
-        contentClassName="flex-nowrap justify-center whitespace-nowrap"
-        splitLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
-        elementLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={secondaryRevealTransition}
+      >
+        <RotatingText
+          texts={rotatingTexts}
+          splitBy="words"
+          rotationInterval={2400}
+          staggerDuration={0.03}
+          className="absolute bottom-18 left-1/2 z-[60] -translate-x-1/2 bg-transparent px-4 text-center sm:bottom-20 md:bottom-22 lg:bottom-24 xl:bottom-30"
+          style={{ color: "var(--color-secondary)" }}
+          mainClassName="justify-center whitespace-nowrap bg-transparent text-center font-change-serif-bold text-[11px] uppercase tracking-[0.12em] text-[color:var(--color-secondary)] sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
+          contentClassName="flex-nowrap justify-center whitespace-nowrap"
+          splitLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
+          elementLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
       />
-      <ScrollIndicator />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={secondaryRevealTransition}
+      >
+        <ScrollIndicator />
+      </motion.div>
     </motion.div>
   );
 }

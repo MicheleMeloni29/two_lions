@@ -7,7 +7,7 @@ export default function ScrollIndicator({
   href,
   className = "",
 }: ScrollIndicatorProps) {
-  const baseClassName = `absolute bottom-8 left-1/2 z-[60] -translate-x-1/2 text-primary sm:bottom-10 lg:bottom-8 xl:bottom-10 2xl:bottom-12 ${className}`.trim();
+  const baseClassName = `absolute bottom-8 left-1/2 z-[60] -translate-x-1/2 text-primary sm:bottom-10 lg:bottom-8 xl:bottom-6 2xl:bottom-8 ${className}`.trim();
   const indicator = (
     <span
       className="scroll-indicator-float flex flex-col items-center gap-2 sm:gap-2.5 lg:gap-3"

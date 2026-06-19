@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "title": "Two Lions",
+    "description": ""
+  },
+  "ui": {
+    "languageToggle": {
+      "italianLabel": "IT",
+      "englishLabel": "EN",
+      "switchAriaLabel": "Switch language: {lang}"
+    },
+    "scrollIndicator": {
+      "ariaLabel": "Scroll to the next section"
+    }
+  },
+  "hero": {
+    "logoAlt": "Two Lions",
+    "title": "Two Lions",
+    "rotatingTexts": [
+      "IDENTITY ADVERSITING",
+      "FOOD AND BEVERAGE",
+      "LUXURY SARDABOOKING",
+      "PARFUM",
+      "SMART SCHELTER AND ENERGY",
+      "SPORT"
+    ]
+  }
+}

@@ -1,14 +1,20 @@
-// Button to toggle the language between Italian and English.
 "use client";
 
-import { useState } from "react";
+type ToggleLangProps = {
+  lang: "it" | "en";
+  onToggle: () => void;
+  className?: string;
+};
 
-export default function ToggleLang() {
-  const [lang, setLang] = useState<"it" | "en">("it");
+export default function ToggleLang({
+  lang,
+  onToggle,
+  className = "",
+}: ToggleLangProps) {
   const isEnglish = lang === "en";
 
   return (
-    <div className="fixed top-3 right-3 z-[60] flex items-center gap-1 md:top-6 md:right-6">
+    <div className={`flex items-center gap-1 ${className}`.trim()}>
       <span
         className="text-xs font-bold uppercase tracking-[0.25em] transition-colors md:text-sm"
         style={{
@@ -22,13 +28,15 @@ export default function ToggleLang() {
 
       <button
         type="button"
-        onClick={() => setLang((prev) => (prev === "it" ? "en" : "it"))}
-        className="relative h-7 w-13 rounded-full  transition-colors duration-300 ease-out md:h-8 md:w-15"
+        onClick={onToggle}
+        className="relative h-7 w-13 rounded-full transition-colors duration-300 ease-out md:h-8 md:w-15"
         style={{
           backgroundColor: "var(--color-secondary)",
           borderColor: "var(--color-primary)",
         }}
-        aria-label={`Cambia lingua: ${lang.toUpperCase()}`}
+        aria-label={
+          lang === "it" ? "Cambia lingua: EN" : "Switch language: IT"
+        }
         aria-pressed={isEnglish}
       >
         <span

@@ -1,0 +1,29 @@
+{
+  "introText": {
+    "eyebrow": "Two Lions",
+    "title": "Two Lions International Corporation",
+    "subtitle": "Holding company incorporated in Delaware.",
+    "listTitle": "Core activities",
+    "listItems": [
+      "Strategic investments and business development.",
+      "Development of renewable energy and infrastructure projects.",
+      "Development of sports-related initiatives and events.",
+      "Development of media, publishing and digital communication projects.",
+      "Ownership and management of intellectual property, trademarks and brands."
+    ],
+    "divisionsTitle": "Business divisions under development",
+    "divisions": [
+      "Two Lions Energy & Infrastructure",
+      "Identity Advertising & Smart Infrastructure Program",
+      "Two Lions Sport",
+      "Two Lions Media & TV"
+    ],
+    "geographicFocusTitle": "Geographic focus",
+    "geographicFocus": [
+      "Italy",
+      "European Union",
+      "International business opportunities"
+    ],
+    "body": "The company is engaged in strategic planning, business development, brand and intellectual property management, and investment in entrepreneurial initiatives."
+  }
+}

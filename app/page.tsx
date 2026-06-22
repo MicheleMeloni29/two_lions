@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
 import IntroText from "@/components/IntroText";
+import TwoLionsSections from "@/components/TwoLionsSections";
 
 export default function Home() {
   const [lang, setLang] = useState<"it" | "en">("it");
@@ -32,6 +33,7 @@ export default function Home() {
         onToggleLang={() => setLang((current) => (current === "it" ? "en" : "it"))}
       />
       <IntroText lang={lang} />
+      <TwoLionsSections lang={lang} />
     </main>
   );
 }

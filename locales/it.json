@@ -1,15 +1,41 @@
 {
+  "meta": {
+    "title": "Two Lions",
+    "description": ""
+  },
+  "ui": {
+    "languageToggle": {
+      "italianLabel": "IT",
+      "englishLabel": "EN",
+      "switchAriaLabel": "Cambia lingua: {lang}"
+    },
+    "scrollIndicator": {
+      "ariaLabel": "Scorri alla sezione successiva"
+    }
+  },
+  "hero": {
+    "logoAlt": "Two Lions",
+    "title": "Two Lions",
+    "rotatingTexts": [
+      "IDENTITY ADVERSITING",
+      "FOOD AND BEVERAGE",
+      "LUXURY SARDABOOKING",
+      "PARFUM",
+      "SMART SCHELTER AND ENERGY",
+      "SPORT"
+    ]
+  },
   "introText": {
     "eyebrow": "Two Lions",
     "title": "Two Lions International Corporation",
-    "subtitle": "Holding company incorporated in Delaware.",
-    "listTitle": "Aree di sviluppo",
+    "subtitle": "Società holding registrata in Delaware.",
+    "listTitle": "Aree principali",
     "listItems": [
       "Investimenti strategici e sviluppo commerciale.",
       "Sviluppo di progetti nel settore delle energie rinnovabili e delle infrastrutture.",
       "Sviluppo di iniziative ed eventi legati allo sport.",
       "Sviluppo di progetti media, editoriali e di comunicazione digitale.",
-      "Titolarita e gestione di proprieta intellettuale, marchi e brand."
+      "Titolarità e gestione di proprietà intellettuale, marchi e brand."
     ],
     "divisionsTitle": "Divisioni in sviluppo",
     "divisions": [
@@ -22,8 +48,38 @@
     "geographicFocus": [
       "Italia",
       "Unione Europea",
-      "Opportunita di business internazionali"
+      "Opportunità di business internazionali"
     ],
-    "body": "La societa svolge attivita di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprieta intellettuale e investimento in iniziative imprenditoriali."
+    "body": "La società svolge attività di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprietà intellettuale e investimento in iniziative imprenditoriali."
+  },
+  "sections": {
+    "title": "Divisioni",
+    "clickForMore": "Scopri di più",
+    "items": [
+      {
+        "slug": "publicity-advertising",
+        "label": "Publicity Advertising",
+        "description": "Progetti strategici di comunicazione e pubblicità.",
+        "image": "PublicityAdversiting.jpeg"
+      },
+      {
+        "slug": "food-and-beverage",
+        "label": "Food and Beverage",
+        "description": "Iniziative e progetti nel settore food and beverage.",
+        "image": "Fodd&Beverage.png"
+      },
+      {
+        "slug": "luxury-sardabooking",
+        "label": "Luxury Sardabooking",
+        "description": "Servizi di booking esclusivo in Sardegna ed esperienze di lusso.",
+        "image": "LuxurySardabooking.png"
+      },
+      {
+        "slug": "parfum",
+        "label": "Parfum",
+        "description": "Fragranze e collezioni di profumi di lusso.",
+        "image": "Parfum.png"
+      }
+    ]
   }
 }

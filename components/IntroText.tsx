@@ -34,7 +34,7 @@ export default function IntroText({ lang }: IntroTextProps) {
       id="intro-text"
       className="relative overflow-hidden bg-white px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 to-transparent md:h-40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)] to-secondaty/50 md:h-40" />
       <div className="pointer-events-none absolute -right-12 top-14 h-36 w-36 rounded-full bg-[color:var(--color-secondary)]/30 blur-3xl md:-right-20 md:top-20 md:h-52 md:w-52" />
 
       <div className="relative mx-auto flex max-w-md flex-col gap-8 md:max-w-3xl md:gap-10 xl:max-w-7xl xl:gap-14">

@@ -51,7 +51,7 @@ export default function HeroIntro({
             aria-label="Two Lions"
           >
             <Image
-              src="/twoLions_logo.png"
+              src="/SectionsBackgrounds/twoLions_logo.png"
               alt="Two Lions"
               width={58}
               height={58}
@@ -96,7 +96,7 @@ export default function HeroIntro({
           >
             {/* Holding Icon */}
             <Image
-              src="/twoLions_logo.png"
+              src="/SectionsBackgrounds/twoLions_logo.png"
               alt="Two Lions"
               width={240}
               height={240}

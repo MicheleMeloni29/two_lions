@@ -58,27 +58,33 @@
     "items": [
       {
         "slug": "publicity-advertising",
-        "label": "Publicity Advertising",
-        "description": "Progetti strategici di comunicazione e pubblicità.",
+        "label": "Publicità Identitaria",
         "image": "PublicityAdversiting.jpeg"
       },
       {
         "slug": "food-and-beverage",
         "label": "Food and Beverage",
-        "description": "Iniziative e progetti nel settore food and beverage.",
         "image": "Fodd&Beverage.png"
       },
       {
         "slug": "luxury-sardabooking",
         "label": "Luxury Sardabooking",
-        "description": "Servizi di booking esclusivo in Sardegna ed esperienze di lusso.",
         "image": "LuxurySardabooking.png"
       },
       {
         "slug": "parfum",
         "label": "Parfum",
-        "description": "Fragranze e collezioni di profumi di lusso.",
         "image": "Parfum.png"
+      },
+      {
+        "slug": "smart-shelter-and-energy",
+        "label": "Smart Shelter & Energy",
+        "image": "Smart_Shelter&Energy.png"
+      },
+      {
+        "slug": "sport",
+        "label": "Sport",
+        "image": ""
       }
     ]
   }

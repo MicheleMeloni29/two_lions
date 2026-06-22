@@ -58,27 +58,33 @@
     "items": [
       {
         "slug": "publicity-advertising",
-        "label": "Publicity Advertising",
-        "description": "Strategic communication and advertising programs.",
+        "label": "Identity Advertising",
         "image": "PublicityAdversiting.jpeg"
       },
       {
         "slug": "food-and-beverage",
         "label": "Food and Beverage",
-        "description": "Food and beverage initiatives and projects.",
         "image": "Fodd&Beverage.png"
       },
       {
         "slug": "luxury-sardabooking",
         "label": "Luxury Sardabooking",
-        "description": "Luxury travel and Sardinia exclusive booking services.",
         "image": "LuxurySardabooking.png"
       },
       {
         "slug": "parfum",
         "label": "Parfum",
-        "description": "Fragrance and luxury scent collections.",
         "image": "Parfum.png"
+      },
+      {
+        "slug": "smart-shelter-and-energy",
+        "label": "Smart Shelter & Energy",
+        "image": "Smart_Shelter&Energy.png"
+      },
+      {
+        "slug": "sport",
+        "label": "Sport",
+        "image": ""
       }
     ]
   }

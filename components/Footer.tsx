@@ -17,7 +17,7 @@ const italyAddress = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-primary">
+      <footer className="bg-linear-to-b from-[color:var(--color-secondary)] to-secondaty/50 text-primary">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-5 md:px-8 lg:px-14">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-3">
           <div className="md:flex md:flex-col md:justify-center md:text-left">
@@ -30,7 +30,7 @@ export default function Footer() {
 
           <div className="flex justify-center">
             <Image
-              src="/twoLions_logo.png"
+              src="/SectionsBackgrounds/twoLions_logo.png"
               alt="Two Lions"
               width={160}
               height={160}

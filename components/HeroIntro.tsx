@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import RotatingText from "./UI/RotatingText";
@@ -32,6 +33,32 @@ export default function HeroIntro({
   onToggleLang,
   isCompactHeader,
 }: HeroIntroProps) {
+  const [progress, setProgress] = useState(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+    };
+
+    const onScroll = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        updateProgress();
+        rafRef.current = null;
+      });
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
     <section className="relative bg-white">
       <motion.header
@@ -44,7 +71,12 @@ export default function HeroIntro({
         }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="flex w-full items-center justify-between border border-[color:var(--color-secondary)]/70 bg-white/92 px-4 py-3 shadow-[0_18px_60px_-36px_rgba(0,35,91,0.35)] backdrop-blur-md md:px-6">
+        <div className="relative flex w-full items-center justify-between border border-[color:var(--color-secondary)]/70 bg-white/92 px-4 py-3 shadow-[0_18px_60px_-36px_rgba(0,35,91,0.35)] backdrop-blur-md md:px-6">
+          <div
+            className="absolute bottom-0 left-0 h-[4px] bg-primary"
+            style={{ width: `${progress * 100}%` }}
+            aria-hidden="true"
+          />
           <a
             href="#top"
             className="flex items-center text-primary transition-opacity hover:opacity-85"

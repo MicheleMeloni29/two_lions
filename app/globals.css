@@ -4,8 +4,8 @@
   --background: #ffffff;
   --foreground: #000000;
   --color-white: #ffffff;
-  --color-primary: #00235b;
-  --color-secondary: #cfe0f1;
+  --color-primary: #201a5b;
+  --color-secondary: #908dad;
   --color-light-blue: var(--color-secondary);
 }
 
@@ -91,4 +91,22 @@ html {
 
 .scroll-indicator-float {
   animation: scroll-indicator-float 2.4s ease-in-out infinite;
+}
+
+/* Themed scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 0;
+}
+
+* {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
 }

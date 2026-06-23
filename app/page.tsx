@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
 import IntroText from "@/components/IntroText";
+import InvestmentSection from "@/components/InvestmentSection";
 import TwoLionsSections from "@/components/TwoLionsSections";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
       />
       <IntroText lang={lang} />
       <TwoLionsSections lang={lang} />
+      <InvestmentSection lang={lang} />
     </main>
   );
 }

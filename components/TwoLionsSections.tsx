@@ -101,9 +101,8 @@ export default function TwoLionsSections({ lang }: SectionsProps) {
                 <motion.span
                   className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 drop-shadow-[0_8px_24px_rgba(0,35,91,0.24)] sm:text-xs"
                   animate={{
-                    opacity: [0.68, 1, 0.68],
-                    y: [0, -4, 0],
-                    scale: [1, 1.03, 1],
+                    opacity: [0.72, 1, 0.72],
+                    scale: [1, 1.08, 1],
                   }}
                   transition={{
                     duration: 2.4,
@@ -112,7 +111,7 @@ export default function TwoLionsSections({ lang }: SectionsProps) {
                   }}
                   whileHover={{
                     opacity: 1,
-                    scale: 1.04,
+                    scale: 1.08,
                   }}
                 >
                   <span>{current.clickForMore}</span>

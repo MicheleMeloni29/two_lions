@@ -87,5 +87,34 @@
         "image": ""
       }
     ]
+  },
+  "investmentSection": {
+    "eyebrow": "Investors / Energy / Infrastructure",
+    "title": "Strategic Partnerships & Investment Opportunities",
+    "lead": "Two Lions International Corporation is actively exploring strategic partnerships and potential investment opportunities with U.S. and international investors, with particular attention to the Energy & Infrastructure sector.",
+    "paragraphs": [
+      "The company is developing proprietary concepts focused on infrastructure enhancement, renewable energy integration and identity-based advertising solutions known as Identity Advertising. These concepts are designed to combine public utility infrastructure with long-term brand visibility and territorial enhancement.",
+      "The corporation intends to hold, develop and commercialize the related intellectual property rights, trademarks, business models and licensing opportunities, creating a structure for long-term industrial and commercial development."
+    ],
+    "highlightsTitle": "Focus",
+    "highlights": [
+      "U.S. and international strategic investors.",
+      "Energy, infrastructure and renewable integration.",
+      "Long-term commercial development and licensing."
+    ],
+    "pillars": [
+      {
+        "title": "Strategic Partnerships",
+        "body": "The section presents the company as open to structured partnerships, capital relationships and industrial dialogue with selected investors."
+      },
+      {
+        "title": "Proprietary Concepts",
+        "body": "Current development includes concepts that connect infrastructure utility, renewable systems and Identity Advertising in a single long-horizon framework."
+      },
+      {
+        "title": "IP & Licensing",
+        "body": "The business model includes ownership, protection and commercialization of trademarks, intellectual property, operating formats and licensing opportunities."
+      }
+    ]
   }
 }

@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
-  --color-white: #ffffff;
+  --color-white: #fefefe;
   --color-primary: #201a5b;
   --color-secondary: #908dad;
   --color-light-blue: var(--color-secondary);

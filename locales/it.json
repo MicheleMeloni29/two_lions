@@ -28,14 +28,14 @@
   "introText": {
     "eyebrow": "Two Lions",
     "title": "Two Lions International Corporation",
-    "subtitle": "Società holding registrata in Delaware.",
+    "subtitle": "Societa holding registrata in Delaware.",
     "listTitle": "Aree principali",
     "listItems": [
       "Investimenti strategici e sviluppo commerciale.",
       "Sviluppo di progetti nel settore delle energie rinnovabili e delle infrastrutture.",
       "Sviluppo di iniziative ed eventi legati allo sport.",
       "Sviluppo di progetti media, editoriali e di comunicazione digitale.",
-      "Titolarità e gestione di proprietà intellettuale, marchi e brand."
+      "Titolarita e gestione di proprieta intellettuale, marchi e brand."
     ],
     "divisionsTitle": "Divisioni in sviluppo",
     "divisions": [
@@ -48,17 +48,17 @@
     "geographicFocus": [
       "Italia",
       "Unione Europea",
-      "Opportunità di business internazionali"
+      "Opportunita di business internazionali"
     ],
-    "body": "La società svolge attività di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprietà intellettuale e investimento in iniziative imprenditoriali."
+    "body": "La societa svolge attivita di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprieta intellettuale e investimento in iniziative imprenditoriali."
   },
   "sections": {
     "title": "Divisioni",
-    "clickForMore": "Scopri di più",
+    "clickForMore": "Scopri di piu",
     "items": [
       {
         "slug": "publicity-advertising",
-        "label": "Publicità Identitaria",
+        "label": "Publicita Identitaria",
         "image": "PublicityAdversiting.jpeg"
       },
       {
@@ -85,6 +85,35 @@
         "slug": "sport",
         "label": "Sport",
         "image": ""
+      }
+    ]
+  },
+  "investmentSection": {
+    "eyebrow": "Investors / Energy / Infrastructure",
+    "title": "Partnership Strategiche e Opportunita di Investimento",
+    "lead": "Two Lions International Corporation sta esplorando attivamente partnership strategiche e potenziali opportunita di investimento con investitori statunitensi e internazionali, con particolare attenzione al settore Energy & Infrastructure.",
+    "paragraphs": [
+      "La societa sta sviluppando concept proprietari legati al potenziamento delle infrastrutture, all integrazione delle energie rinnovabili e a soluzioni pubblicitarie basate sull identita, definite Identity Advertising. Questi concept uniscono infrastrutture di pubblica utilita, visibilita del brand nel lungo periodo e valorizzazione del territorio.",
+      "La corporation intende detenere, sviluppare e commercializzare i relativi diritti di proprieta intellettuale, marchi, modelli di business e opportunita di licensing, costruendo una base per uno sviluppo industriale e commerciale di lungo termine."
+    ],
+    "highlightsTitle": "Focus",
+    "highlights": [
+      "Investitori strategici statunitensi e internazionali.",
+      "Energia, infrastrutture e integrazione rinnovabile.",
+      "Sviluppo commerciale e licensing di lungo periodo."
+    ],
+    "pillars": [
+      {
+        "title": "Partnership Strategiche",
+        "body": "La sezione presenta la societa come aperta a partnership strutturate, relazioni di capitale e dialogo industriale con investitori selezionati."
+      },
+      {
+        "title": "Concept Proprietari",
+        "body": "Lo sviluppo attuale include concept che collegano utilita infrastrutturale, sistemi rinnovabili e Identity Advertising in un unico impianto di lungo orizzonte."
+      },
+      {
+        "title": "IP & Licensing",
+        "body": "Il modello di business include titolarita, tutela e commercializzazione di marchi, proprieta intellettuale, format operativi e opportunita di licensing."
       }
     ]
   }

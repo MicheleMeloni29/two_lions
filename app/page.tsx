@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
 import IntroText from "@/components/IntroText";
 import InvestmentSection from "@/components/InvestmentSection";
-import TwoLionsSections from "@/components/TwoLionsSections";
+import TwoLionsDivisions from "@/components/TwoLionsDivisions";
+import OfficesSection from "@/components/OfficesSection";
 
 export default function Home() {
   const [lang, setLang] = useState<"it" | "en">("it");
@@ -34,8 +35,9 @@ export default function Home() {
         onToggleLang={() => setLang((current) => (current === "it" ? "en" : "it"))}
       />
       <IntroText lang={lang} />
-      <TwoLionsSections lang={lang} />
+      <TwoLionsDivisions lang={lang} />
       <InvestmentSection lang={lang} />
+      <OfficesSection />
     </main>
   );
 }

@@ -146,7 +146,7 @@ export default function HeroIntro({
         >
           <div className="absolute bottom-14 left-1/2 z-[60] -translate-x-1/2 px-4 text-center sm:bottom-20 md:bottom-18 lg:bottom-16 xl:bottom-14 2xl:bottom-14">
             <ShinyText
-              text="scroll for more"
+              text="scroll"
               speed={3}
               spread={135}
               delay={0.4}

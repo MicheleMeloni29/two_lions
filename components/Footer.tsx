@@ -1,50 +1,55 @@
-import Image from "next/image";
-
-const usaAddress = [
-  "Two Lions International Corporation",
-  "16192 Coastal Highway",
-  "Lewes, DE 19958 USA",
-  "File Number 10426498",
-  "(EIN) 37-2212324",
-];
-
-const italyAddress = [
-  "Two Lions Intl. Corp. Italy",
-  "Via Goffredo Mameli 96",
-  "Interno 14 Floor 7",
-  "Cagliari 09123",
-];
-
 export default function Footer() {
   return (
-      <footer className="bg-linear-to-b from-[color:var(--color-secondary)] to-secondaty/50 text-primary">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-5 md:px-8 lg:px-14">
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-3">
-          <div className="md:flex md:flex-col md:justify-center md:text-left">
-            <div className="flex flex-col gap-1 text-center text-sm leading-6 md:text-base md:leading-7 md:max-w-[260px]">
-              {usaAddress.map((line) => (
-                <span key={line} className="text-primary/90">{line}</span>
-              ))}
-            </div>
+    <footer className="bg-[color:var(--color-primary)] text-[color:var(--color-white)]">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-5 md:px-8 md:py-12 xl:px-14 xl:py-14">
+        <div className="grid gap-10 md:gap-12 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:items-start">
+          <div className="max-w-md">
+            <h2 className="font-change-serif-bold text-[1.8rem] leading-[1.02] text-[color:var(--color-white)] sm:text-[2rem] md:text-[2.2rem] xl:text-[2.35rem]">
+            Two Lions International
+            </h2>
+            <p className="mt-4 max-w-sm text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:mt-5 md:text-[15px] md:leading-7">
+              Strategically positioning capital and intellectual property across
+              energy, infrastructure, and luxury lifestyle sectors globally.
+            </p>
           </div>
 
-          <div className="flex justify-center">
-            <Image
-              src="/SectionsBackgrounds/twoLions_logo.png"
-              alt="Two Lions"
-              width={160}
-              height={160}
-              className="h-16 w-auto object-contain md:h-20 lg:h-24"
-            />
-          </div>
+          <div className="grid gap-8 border-t border-[color:var(--color-white)]/12 pt-8 sm:grid-cols-2 md:pt-10 xl:justify-self-end xl:border-t-0 xl:pt-1">
+            <div className="min-w-0">
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                Offices
+              </p>
+              <div className="mt-4 space-y-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:mt-5 md:text-[15px]">
+                <a
+                  href="#office-delaware"
+                  className="block transition-opacity hover:opacity-80"
+                >
+                  Delaware Office
+                </a>
+                <a
+                  href="#office-cagliari"
+                  className="block transition-opacity hover:opacity-80"
+                >
+                  Cagliari Office
+                </a>
+              </div>
+            </div>
 
-          <div className="md:flex md:flex-col md:justify-center md:text-left">
-            <div className="flex flex-col gap-1 text-center text-sm leading-6 md:text-base md:leading-7 md:max-w-[260px]">
-              {italyAddress.map((line) => (
-                <span key={line} className="text-primary/90">{line}</span>
-              ))}
+            <div className="min-w-0">
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                Corporate
+              </p>
+              <div className="mt-4 space-y-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:mt-5 md:text-[15px]">
+                <span className="block">Privacy Policy</span>
+                <span className="block">Investor Relations</span>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 border-t border-[color:var(--color-white)]/12 pt-6 md:mt-10 md:pt-7">
+          <p className="text-[12px] leading-6 text-[color:var(--color-secondary)] md:text-[13px]">
+            Copyright 2024 Two Lions International Corporation. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

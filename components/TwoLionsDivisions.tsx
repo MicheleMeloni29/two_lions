@@ -29,7 +29,7 @@ const fadeUp = {
   }),
 };
 
-export default function TwoLionsSections({ lang }: SectionsProps) {
+export default function TwoLionsDivisions({ lang }: SectionsProps) {
   const current = content[lang];
   const items = (current.items ?? []) as SectionItem[];
 

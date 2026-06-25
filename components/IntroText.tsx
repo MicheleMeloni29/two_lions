@@ -20,7 +20,7 @@ export default function IntroText({ lang }: IntroTextProps) {
       id="intro-text"
       className="relative overflow-hidden bg-white px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/25 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent md:h-40" />
 
       <div className="relative mx-auto flex max-w-md flex-col gap-8 md:max-w-3xl md:gap-10 xl:max-w-7xl xl:gap-12">
         <div className="space-y-5 md:space-y-6">
@@ -38,9 +38,9 @@ export default function IntroText({ lang }: IntroTextProps) {
         </div>
 
         <div className="grid gap-5 xl:grid-cols-2 xl:items-stretch xl:gap-5">
-          <div className="flex flex-col border border-[color:var(--color-secondary)]/45 bg-white p-5 md:p-7 xl:h-full xl:p-8">
+          <div className="flex flex-col  bg-white p-5 md:p-7 xl:h-full xl:p-8">
             <div className="mb-5 flex items-center justify-between gap-4 md:mb-6">
-              <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+              <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px] font-extrabold">
                 {content.listTitle}
               </h3>
             </div>
@@ -54,9 +54,9 @@ export default function IntroText({ lang }: IntroTextProps) {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-1">
-            <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7">
+            <div className="bg-primary px-5 py-6 text-white md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
-                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+                <h3 className="text-[9px] uppercase tracking-[0.22em] text-white sm:text-[10px] md:text-[11px]">
                   {content.divisionsTitle}
                 </h3>
               </div>
@@ -69,7 +69,7 @@ export default function IntroText({ lang }: IntroTextProps) {
               </ul>
             </div>
 
-            <div className="border border-[color:var(--color-secondary)] bg-secondary px-5 py-6 md:px-6 md:py-7">
+            <div className="bg-secondary px-5 py-6 md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
                   {content.geographicFocusTitle}
@@ -77,7 +77,7 @@ export default function IntroText({ lang }: IntroTextProps) {
               </div>
               <ul className="space-y-3 text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
                 {content.geographicFocus.map((area) => (
-                  <li key={area} className="border-b border-[color:var(--color-white)]/28 pb-3 last:border-b-0 last:pb-0">
+                  <li key={area} className="border-b border-[color:var(--color-white)]/18 pb-3 last:border-b-0 last:pb-0">
                     {area}
                   </li>
                 ))}

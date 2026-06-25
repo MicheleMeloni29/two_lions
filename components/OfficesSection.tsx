@@ -57,7 +57,7 @@ function OfficeCard({ id, eyebrow, title, lines, emphasis, icon }: OfficeCardPro
   return (
     <article
       id={id}
-      className="border-2 border-[color:var(--color-secondary)]/45 bg-white px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12"
+      className=" bg-white px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12"
     >
       <div className="mx-auto flex max-w-[20rem] flex-col items-center">
         <div className="flex justify-center">{icon}</div>
@@ -86,7 +86,7 @@ export default function OfficesSection() {
   return (
     <section
       id="offices"
-      className="bg-linear-to-b from-white via-white to-[color:var(--color-secondary)]/35 px-4 py-12 sm:px-5 sm:py-14 md:px-8 md:py-16 xl:px-14 xl:py-20"
+      className="bg-linear-to-b from-white via-secondary/20 to-[color:var(--color-secondary)]/50 px-4 py-12 sm:px-5 sm:py-14 md:px-8 md:py-16 xl:px-14 xl:py-20"
     >
       <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
         <OfficeCard

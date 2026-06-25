@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-white: #fefefe;
-  --color-primary: #201a5b;
-  --color-secondary: #8f8cad;
+  --color-white: #f8f8f8;
+  --color-primary: #251e57;
+  --color-secondary: #1f275c;
   --color-light-blue: var(--color-secondary);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

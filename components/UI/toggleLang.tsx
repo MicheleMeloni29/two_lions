@@ -29,9 +29,9 @@ export default function ToggleLang({
       <button
         type="button"
         onClick={onToggle}
-        className="relative h-7 w-13 rounded-full transition-colors duration-300 ease-out md:h-8 md:w-15"
+        className=" border-2 relative h-7 w-13 rounded-full transition-colors duration-300 ease-out md:h-8 md:w-15"
         style={{
-          backgroundColor: "var(--color-secondary)",
+          backgroundColor: "var(--color-white)",
           borderColor: "var(--color-primary)",
         }}
         aria-label={

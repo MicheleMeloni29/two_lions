@@ -16,19 +16,6 @@ const content = {
   en: enMessages.sections,
 } as const;
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 42 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      delay,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  }),
-};
-
 export default function TwoLionsDivisions({ lang }: SectionsProps) {
   const current = content[lang];
   const items = (current.items ?? []) as SectionItem[];
@@ -39,18 +26,13 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
       className="bg-[color:var(--color-primary)] px-4 py-10 sm:px-5 md:px-8 md:py-14 lg:p-6"
     >
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
-        {items.map((item, index) => {
+        {items.map((item) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
 
           return (
-            <motion.div
+            <div
               key={item.slug}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp}
-              custom={0.08 * index}
-              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat transition hover:scale-[1.01] active:scale-[0.99] sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${
+              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${
                 hasBackgroundImage
                   ? "bg-cover"
                   : "bg-[color:var(--color-secondary)]"
@@ -64,7 +46,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
               }
             >
               {hasBackgroundImage ? (
-                <div className="absolute inset-0 bg-[color:var(--color-primary)]/55 transition group-hover:bg-[color:var(--color-primary)]/40" />
+                <div className="absolute inset-0 bg-[color:var(--color-primary)]/55" />
               ) : (
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent_62%)]" />
               )}
@@ -109,15 +91,11 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  whileHover={{
-                    opacity: 1,
-                    scale: 1.08,
-                  }}
                 >
-                  <span>{current.clickForMore}</span>
+                  <span>explore division</span>
                 </motion.span>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>

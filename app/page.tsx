@@ -8,7 +8,7 @@ import TwoLionsDivisions from "@/components/TwoLionsDivisions";
 import OfficesSection from "@/components/OfficesSection";
 
 export default function Home() {
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const [lang, setLang] = useState<"it" | "en">("en");
   const [isCompactHeader, setIsCompactHeader] = useState(false);
 
   useEffect(() => {

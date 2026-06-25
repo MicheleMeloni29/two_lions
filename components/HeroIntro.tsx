@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import ShinyText from "./UI/ShinyText";
 import ScrollIndicator from "./UI/ScrollIndicator";
 import ToggleLang from "./UI/toggleLang";
 
@@ -144,25 +143,7 @@ export default function HeroIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={secondaryRevealTransition}
         >
-          <div className="absolute bottom-14 left-1/2 z-[60] -translate-x-1/2 px-4 text-center sm:bottom-20 md:bottom-18 lg:bottom-16 xl:bottom-14 2xl:bottom-14">
-            <ShinyText
-              text="scroll"
-              speed={3}
-              spread={135}
-              delay={0.4}
-              className="font-change-serif-bold text-[8px] uppercase tracking-[0.18em] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm"
-              color="var(--color-secondary)"
-              shineColor="var(--color-white)"
-            />
-          </div>
-        </motion.div>
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={secondaryRevealTransition}
-        >
-          <ScrollIndicator href="#intro-text" />
+          <ScrollIndicator href="#intro-text" label="scroll" />
         </motion.div>
       </motion.div>
     </section>

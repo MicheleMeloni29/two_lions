@@ -34,8 +34,8 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
       id="investment-opportunities"
       className="relative overflow-hidden bg-white px-4 py-18 text-primary sm:px-5 md:px-8 md:py-24 xl:px-14"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[color:var(--color-secondary)] to-secondaty/50 to-transparent md:h-36" />
-      <div className="pointer-events-none absolute right-0 top-24 h-40 w-40 rounded-full bg-[color:var(--color-secondary)]/14 blur-3xl md:h-56 md:w-56" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[color:var(--color-secondary)]/30 via-[color:var(--color-secondary)]/10 to-transparent md:h-36" />
+      <div className="pointer-events-none absolute inset-x-4 top-22 h-px bg-[linear-gradient(90deg,rgba(32,26,91,0),rgba(32,26,91,0.16),rgba(32,26,91,0))] md:inset-x-8 xl:inset-x-14" />
 
       <div className="relative mx-auto max-w-7xl">
         <motion.div
@@ -51,7 +51,7 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           <h2 className="font-change-serif-bold max-w-[14ch] text-3xl leading-[0.96] uppercase tracking-[0.04em] sm:text-[2.2rem] md:max-w-[16ch] md:text-5xl xl:text-6xl">
             {current.title}
           </h2>
-          <p className="mt-6 max-w-3xl text-sm leading-7 text-primary/78 sm:text-[15px] md:text-lg md:leading-8">
+          <p className="mt-6 max-w-3xl border-l border-[color:var(--color-secondary)]/45 pl-4 text-sm leading-7 text-primary/78 sm:text-[15px] md:pl-6 md:text-lg md:leading-8">
             {current.lead}
           </p>
         </motion.div>
@@ -63,11 +63,21 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeUp}
             custom={0.08}
-            className="rounded-[1.75rem] border border-[color:var(--color-secondary)]/45 bg-white p-6 shadow-[0_24px_80px_-56px_rgba(32,26,91,0.34)] md:rounded-[2rem] md:p-8"
+            className="border border-[color:var(--color-primary)]/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(143,140,173,0.07))] p-6 shadow-[0_28px_72px_-58px_rgba(32,26,91,0.3)] md:p-8"
           >
+            <div className="mb-6 flex items-end justify-between gap-4 border-b border-[color:var(--color-primary)]/10 pb-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-secondary)] md:text-xs">
+                {current.eyebrow}
+              </p>
+              <span className="text-[10px] uppercase tracking-[0.26em] text-primary/30 md:text-[11px]">
+                01
+              </span>
+            </div>
             <div className="space-y-5 text-sm leading-7 text-primary/80 md:text-base md:leading-8">
               {current.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph} className="border-b border-[color:var(--color-primary)]/8 pb-5 last:border-b-0 last:pb-0">
+                  {paragraph}
+                </p>
               ))}
             </div>
           </motion.div>
@@ -78,11 +88,16 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeUp}
             custom={0.16}
-            className="rounded-[1.75rem] bg-[color:var(--color-primary)] px-6 py-7 text-white shadow-[0_28px_80px_-54px_rgba(32,26,91,0.52)] md:rounded-[2rem] md:px-7 md:py-8"
+            className="border border-[color:var(--color-primary)]/25 bg-[color:var(--color-primary)] px-6 py-7 text-white shadow-[0_30px_76px_-58px_rgba(32,26,91,0.62)] md:px-7 md:py-8"
           >
-            <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] md:text-xs">
-              {current.highlightsTitle}
-            </p>
+            <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] md:text-xs">
+                {current.highlightsTitle}
+              </p>
+              <span className="text-[10px] uppercase tracking-[0.26em] text-white/28 md:text-[11px]">
+                02
+              </span>
+            </div>
             <ul className="space-y-4">
               {current.highlights.map((item) => (
                 <li
@@ -107,12 +122,17 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
               viewport={{ once: true, amount: 0.25 }}
               variants={fadeUp}
               custom={0.12 + index * 0.08}
-              className="rounded-[1.6rem] border border-[color:var(--color-secondary)]/45 bg-[color:var(--color-secondary)]/10 p-5 md:p-6"
+              className="border border-[color:var(--color-secondary)]/45 bg-[linear-gradient(180deg,rgba(143,140,173,0.18),rgba(255,255,255,0.94))] p-5 shadow-[0_24px_64px_-60px_rgba(32,26,91,0.22)] md:p-6"
             >
-              <h3 className="font-change-serif-bold text-xl uppercase tracking-[0.08em] text-primary md:text-2xl">
-                {pillar.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-primary/76 md:text-[15px] md:leading-7">
+              <div className="mb-4 flex items-start justify-between gap-4 border-b border-[color:var(--color-primary)]/10 pb-4">
+                <h3 className="font-change-serif-bold text-xl uppercase tracking-[0.08em] text-primary md:text-2xl">
+                  {pillar.title}
+                </h3>
+                <span className="pt-1 text-[10px] uppercase tracking-[0.26em] text-primary/28 md:text-[11px]">
+                  0{index + 3}
+                </span>
+              </div>
+              <p className="text-sm leading-6 text-primary/76 md:text-[15px] md:leading-7">
                 {pillar.body}
               </p>
             </motion.div>

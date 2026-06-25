@@ -38,7 +38,7 @@ export default function TwoLionsSections({ lang }: SectionsProps) {
       id="sections"
       className="bg-[color:var(--color-primary)] px-4 py-10 sm:px-5 md:px-8 md:py-14 lg:p-6"
     >
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
         {items.map((item, index) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
 
@@ -50,7 +50,7 @@ export default function TwoLionsSections({ lang }: SectionsProps) {
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
               custom={0.08 * index}
-              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden rounded-[1.6rem] bg-center bg-no-repeat transition hover:scale-[1.01] active:scale-[0.99] sm:min-h-[60vh] md:min-h-[65vh] lg:h-[calc(100vh-3rem)] ${
+              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat transition hover:scale-[1.01] active:scale-[0.99] sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${
                 hasBackgroundImage
                   ? "bg-cover"
                   : "bg-[color:var(--color-secondary)]"
@@ -91,9 +91,9 @@ export default function TwoLionsSections({ lang }: SectionsProps) {
                 </div>
               ) : null}
 
-              <div className="relative flex flex-col items-center gap-4 px-6 text-center">
+              <div className="relative flex flex-col items-center gap-4 px-5 text-center lg:px-5">
                 <h3
-                  className="font-change-serif-bold text-3xl uppercase tracking-[0.12em] text-white drop-shadow-[0_10px_30px_rgba(0,35,91,0.28)] sm:text-4xl md:text-5xl"
+                  className="font-change-serif-bold text-3xl leading-[0.95] uppercase tracking-[0.1em] text-white drop-shadow-[0_10px_30px_rgba(0,35,91,0.28)] sm:text-4xl md:text-[clamp(2rem,4vw,3.2rem)] lg:text-[clamp(1.9rem,2.2vw,2.8rem)]"
                 >
                   {item.label}
                 </h3>

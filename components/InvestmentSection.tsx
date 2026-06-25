@@ -45,7 +45,7 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           className="max-w-6xl xl:max-w-[82%]"
         >
           <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-            {current.eyebrow}
+            {current.eyebrow1}
           </p>
           <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
             {current.title}
@@ -55,24 +55,21 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.4fr)] xl:items-stretch xl:gap-5">
+        <div className="mt-12 grid gap-5 xl:grid-cols-3 xl:items-stretch xl:gap-5">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeUp}
             custom={0.08}
-            className="border border-[color:var(--color-secondary)]/45 bg-white p-5 md:p-7 xl:p-8"
+            className="border border-[color:var(--color-secondary)]/45 bg-secondary p-5 md:p-7 xl:col-span-2 xl:p-8"
           >
             <div className="mb-6 flex items-center justify-between gap-4">
-              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                {current.eyebrow}
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                {current.eyebrow2}
               </p>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                01
-              </span>
             </div>
-            <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+            <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
               {current.paragraphs.map((paragraph) => (
                 <p key={paragraph}>
                   {paragraph}
@@ -87,15 +84,12 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeUp}
             custom={0.16}
-            className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7"
+            className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 xl:col-span-1"
           >
             <div className="mb-5 flex items-center justify-between gap-4">
               <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
                 {current.highlightsTitle}
               </p>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                02
-              </span>
             </div>
             <ul className="space-y-4">
               {current.highlights.map((item) => (
@@ -112,7 +106,7 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </motion.aside>
         </div>
 
-        <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {current.pillars.map((pillar, index) => (
             <motion.div
               key={pillar.title}
@@ -127,9 +121,6 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
                 <h3 className="font-change-serif-bold text-[13px] uppercase tracking-[0.06em] text-primary sm:text-sm md:text-[15px]">
                   {pillar.title}
                 </h3>
-                <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                  0{index + 3}
-                </span>
               </div>
               <p className="text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
                 {pillar.body}

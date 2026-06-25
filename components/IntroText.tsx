@@ -32,69 +32,57 @@ export default function IntroText({ lang }: IntroTextProps) {
             {content.title}
           </h2>
 
-          <p className="max-w-3xl border-l border-[color:var(--color-primary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
-            {content.subtitle}
-          </p>
-
-          <p className="max-w-4xl text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+          <p className="max-w-4xl border-l border-[color:var(--color-primary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
             {content.body}
           </p>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,0.95fr)_minmax(0,0.8fr)] xl:items-start xl:gap-5">
-          <div className="border border-[color:var(--color-secondary)]/45 bg-white p-5 md:p-7 xl:p-8">
-            <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="grid gap-5 xl:grid-cols-2 xl:items-stretch xl:gap-5">
+          <div className="flex flex-col border border-[color:var(--color-secondary)]/45 bg-white p-5 md:p-7 xl:h-full xl:p-8">
+            <div className="mb-5 flex items-center justify-between gap-4 md:mb-6">
               <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
                 {content.listTitle}
               </h3>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                01
-              </span>
             </div>
-            <ul className="space-y-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+            <ul className="flex flex-1 flex-col justify-evenly gap-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:gap-4 md:text-[15px] md:leading-7">
               {content.listItems.map((item) => (
-                <li key={item} className="flex gap-3 border-b border-[color:var(--color-secondary)]/28 pb-4 last:border-b-0 last:pb-0">
-                  <span className="mt-3 h-px w-5 shrink-0 bg-[color:var(--color-secondary)]" />
+                <li key={item} className="flex items-start gap-3 border-b border-[color:var(--color-secondary)]/28 py-3 last:border-b-0 last:pb-0">
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7">
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                {content.divisionsTitle}
-              </h3>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                02
-              </span>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-1">
+            <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+                  {content.divisionsTitle}
+                </h3>
+              </div>
+              <ul className="space-y-3 text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
+                {content.divisions.map((division) => (
+                  <li key={division} className="border-b border-[color:var(--color-white)]/18 pb-3 last:border-b-0 last:pb-0">
+                    {division}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3 text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
-              {content.divisions.map((division) => (
-                <li key={division} className="border-b border-[color:var(--color-white)]/18 pb-3 last:border-b-0 last:pb-0">
-                  {division}
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          <div className="border border-[color:var(--color-secondary)]/45 bg-white px-5 py-6 md:px-6 md:py-7">
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                {content.geographicFocusTitle}
-              </h3>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-secondary)]/80 sm:text-[10px]">
-                03
-              </span>
+            <div className="border border-[color:var(--color-secondary)] bg-secondary px-5 py-6 md:px-6 md:py-7">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                  {content.geographicFocusTitle}
+                </h3>
+              </div>
+              <ul className="space-y-3 text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
+                {content.geographicFocus.map((area) => (
+                  <li key={area} className="border-b border-[color:var(--color-white)]/28 pb-3 last:border-b-0 last:pb-0">
+                    {area}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
-              {content.geographicFocus.map((area) => (
-                <li key={area} className="border-b border-[color:var(--color-secondary)]/28 pb-3 last:border-b-0 last:pb-0">
-                  {area}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

@@ -46,9 +46,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-[color:var(--color-white)]/12 pt-6 md:mt-10 md:pt-7">
+        <div className="mt-4 pt-4 md:mt-4 md:pt-4">
           <p className="text-[12px] leading-6 text-[color:var(--color-secondary)] md:text-[13px]">
-            Copyright 2024 Two Lions International Corporation. All rights reserved.
+            Copyright 2026 Two Lions International Corporation. All rights reserved.
           </p>
         </div>
       </div>

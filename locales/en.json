@@ -26,9 +26,8 @@
     ]
   },
   "introText": {
-    "eyebrow": "Two Lions",
+    "eyebrow": "Holding company incorporated in Delaware",
     "title": "Two Lions International Corporation",
-    "subtitle": "Holding company incorporated in Delaware.",
     "listTitle": "Core activities",
     "listItems": [
       "Strategic investments and business development.",
@@ -89,9 +88,10 @@
     ]
   },
   "investmentSection": {
-    "eyebrow": "Investors / Energy / Infrastructure",
+    "eyebrow1": "Two Lions",
     "title": "Strategic Partnerships & Investment Opportunities",
     "lead": "Two Lions International Corporation is actively exploring strategic partnerships and potential investment opportunities with U.S. and international investors, with particular attention to the Energy & Infrastructure sector.",
+    "eyebrow2": "Investors / Energy / Infrastructure",
     "paragraphs": [
       "The company is developing proprietary concepts focused on infrastructure enhancement, renewable energy integration and identity-based advertising solutions known as Identity Advertising. These concepts are designed to combine public utility infrastructure with long-term brand visibility and territorial enhancement.",
       "The corporation intends to hold, develop and commercialize the related intellectual property rights, trademarks, business models and licensing opportunities, creating a structure for long-term industrial and commercial development."

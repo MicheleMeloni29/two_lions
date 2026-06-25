@@ -57,23 +57,27 @@ function OfficeCard({ id, eyebrow, title, lines, emphasis, icon }: OfficeCardPro
   return (
     <article
       id={id}
-      className="border border-[color:var(--color-secondary)]/45 bg-white px-6 py-10 text-center md:px-8 md:py-12"
+      className="border-2 border-[color:var(--color-secondary)]/45 bg-white px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12"
     >
-      <div className="flex justify-center">{icon}</div>
-      <h3 className="mt-5 font-change-serif-bold text-[1.6rem] leading-tight text-primary md:text-[1.85rem]">
-        {title}
-      </h3>
-      <p className="mt-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-        {eyebrow}
-      </p>
-      <div className="mt-6 space-y-1 text-[13px] leading-6 text-[color:var(--color-secondary)] md:text-[15px] md:leading-7">
-        {lines.map((line) => (
-          <p key={line}>{line}</p>
-        ))}
+      <div className="mx-auto flex max-w-[20rem] flex-col items-center">
+        <div className="flex justify-center">{icon}</div>
+        <h3 className="mt-4 font-change-serif-bold text-[1.35rem] leading-tight text-primary sm:text-[1.5rem] md:mt-5 md:text-[1.65rem] xl:text-[1.85rem]">
+          {title}
+        </h3>
+        <p className="mt-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+          {eyebrow}
+        </p>
+        <div className="mt-5 space-y-1 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:mt-6 md:text-[15px] md:leading-7">
+          {lines.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+        {emphasis ? (
+          <p className="mt-5 font-semibold text-primary md:mt-6 md:text-[15px]">
+            {emphasis}
+          </p>
+        ) : null}
       </div>
-      {emphasis ? (
-        <p className="mt-6 font-semibold text-primary md:text-[15px]">{emphasis}</p>
-      ) : null}
     </article>
   );
 }
@@ -82,9 +86,9 @@ export default function OfficesSection() {
   return (
     <section
       id="offices"
-      className="bg-linear-to-b from-white via-white to-[color:var(--color-secondary)]/35 px-4 py-12 sm:px-5 md:px-8 md:py-16 xl:px-14 xl:py-20"
+      className="bg-linear-to-b from-white via-white to-[color:var(--color-secondary)]/35 px-4 py-12 sm:px-5 sm:py-14 md:px-8 md:py-16 xl:px-14 xl:py-20"
     >
-      <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
         <OfficeCard
           id="office-delaware"
           icon={<HeadquartersIcon />}

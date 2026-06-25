@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import RotatingText from "./UI/RotatingText";
+import ShinyText from "./UI/ShinyText";
 import ScrollIndicator from "./UI/ScrollIndicator";
 import ToggleLang from "./UI/toggleLang";
 
@@ -12,15 +12,6 @@ type HeroIntroProps = {
   onToggleLang: () => void;
   isCompactHeader: boolean;
 };
-
-const rotatingTexts = [
-  "IDENTITY ADVERSITING",
-  "FOOD AND BEVERAGE",
-  "LUXURY SARDABOOKING",
-  "PARFUM",
-  "SMART SCHELTER AND ENERGY",
-  "SPORT",
-];
 
 const secondaryRevealTransition = {
   duration: 0.7,
@@ -153,18 +144,17 @@ export default function HeroIntro({
           animate={{ opacity: 1, y: 0 }}
           transition={secondaryRevealTransition}
         >
-          <RotatingText
-            texts={rotatingTexts}
-            splitBy="words"
-            rotationInterval={2400}
-            staggerDuration={0.03}
-            className="absolute bottom-18 left-1/2 z-[60] -translate-x-1/2 bg-transparent px-4 text-center sm:bottom-20 md:bottom-22 lg:bottom-18 xl:bottom-14 2xl:bottom-16"
-            style={{ color: "var(--color-secondary)" }}
-            mainClassName="justify-center whitespace-nowrap bg-transparent text-center font-change-serif-bold text-[11px] uppercase tracking-[0.12em] text-[color:var(--color-secondary)] sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
-            contentClassName="flex-nowrap justify-center whitespace-nowrap"
-            splitLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
-            elementLevelClassName="bg-transparent text-[color:var(--color-secondary)]"
-          />
+          <div className="absolute bottom-14 left-1/2 z-[60] -translate-x-1/2 px-4 text-center sm:bottom-20 md:bottom-18 lg:bottom-16 xl:bottom-14 2xl:bottom-14">
+            <ShinyText
+              text="scroll for more"
+              speed={3}
+              spread={135}
+              delay={0.4}
+              className="font-change-serif-bold text-[8px] uppercase tracking-[0.18em] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm"
+              color="var(--color-secondary)"
+              shineColor="var(--color-white)"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute inset-0"

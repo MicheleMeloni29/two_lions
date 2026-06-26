@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./UI/ScrollIndicator";
 import ToggleLang from "./UI/toggleLang";
+import CompactHeader from "./UI/CompactHeader";
 
 type HeroIntroProps = {
   lang: "it" | "en";
@@ -23,72 +23,19 @@ export default function HeroIntro({
   onToggleLang,
   isCompactHeader,
 }: HeroIntroProps) {
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
-    };
-
-    const onScroll = () => {
-      if (rafRef.current) return;
-      rafRef.current = requestAnimationFrame(() => {
-        updateProgress();
-        rafRef.current = null;
-      });
-    };
-
-    updateProgress();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
-
   return (
     <section className="relative bg-white">
-      <motion.header
-        className="fixed inset-x-0 top-0 z-[70] px-0 pt-0"
-        initial={false}
-        animate={{
-          opacity: isCompactHeader ? 1 : 0,
-          y: isCompactHeader ? 0 : -18,
-          pointerEvents: isCompactHeader ? "auto" : "none",
-        }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="relative flex w-full items-center justify-between border border-[color:var(--color-secondary)]/70 bg-white/92 px-4 py-3 shadow-[0_18px_60px_-36px_rgba(0,35,91,0.35)] backdrop-blur-md md:px-6">
-          <div
-            className="absolute bottom-0 left-0 h-[4px] bg-primary"
-            style={{ width: `${progress * 100}%` }}
-            aria-hidden="true"
-          />
-          <a
-            href="#top"
-            className="flex items-center text-primary transition-opacity hover:opacity-85"
-            aria-label="Two Lions"
-          >
-            <Image
-              src="/SectionsBackgrounds/twoLions_logo.png"
-              alt="Two Lions"
-              width={58}
-              height={58}
-              priority
-              className="h-10 w-auto object-contain md:h-12"
-            />
-          </a>
-
+      <CompactHeader
+        isVisible={isCompactHeader}
+        logoHref="/#top"
+        rightContent={
           <ToggleLang
             lang={lang}
             onToggle={onToggleLang}
             className="shrink-0"
           />
-        </div>
-      </motion.header>
+        }
+      />
 
       <motion.div
         className="fixed top-3 right-3 z-[60] md:top-6 md:right-6"
@@ -118,7 +65,7 @@ export default function HeroIntro({
           >
             {/* Holding Icon */}
             <Image
-              src="/SectionsBackgrounds/twoLions_logo.png"
+              src="/twoLions_logo.png"
               alt="Two Lions"
               width={240}
               height={240}

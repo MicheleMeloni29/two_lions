@@ -116,5 +116,118 @@
         "body": "The business model includes ownership, protection and commercialization of trademarks, intellectual property, operating formats and licensing opportunities."
       }
     ]
+  },
+  "identityAdvertisingPage": {
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Identity Advertising",
+    "mission": "Transform public and private spaces into permanent identity assets for companies, public bodies and institutions.",
+    "operatingAreas": "Operating Areas",
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Permanent identity infrastructure for brands, public bodies and institutions.",
+      "Integration of public utility, brand presence and territorial enhancement.",
+      "A modular approach across urban, mobility, sport, corporate, premium and media."
+    ],
+    "visualSpace": "Visual Space",
+    "heroImagePlaceholder": "Space reserved for a hero image or a project rendering.",
+    "programEyebrow": "Identity Advertising Program",
+    "programTitle": "Public Utility, Brand Presence, Territorial Value",
+    "programLead": "The program brings together projects that turn urban spaces, mobility nodes, sports venues and corporate sites into permanent assets of identity, usability and communication.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Identity Advertising structures permanent solutions where physical infrastructure, naming, sponsorship and media content work as one system.",
+      "The approach supports projects for municipalities, regions, private companies, mobility operators and major public or commercial platforms."
+    ],
+    "frameworkImagePlaceholder": "Space for concept visuals, mockups or environmental renders.",
+    "focus": "Focus",
+    "focusItems": [
+      "Branded urban and mobility infrastructure.",
+      "Territorial, sports and corporate activations.",
+      "Premium modules for airports, ports, stations and major events.",
+      "Media layer for storytelling, video and sponsor reporting."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Identity Urban",
+        "items": [
+          "Identity bus shelters",
+          "Climate-controlled smart stops",
+          "Identity benches",
+          "Sponsored green areas",
+          "Roundabouts and city gateways",
+          "Informational totems"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Identity Mobility",
+        "items": [
+          "Photovoltaic shelters",
+          "EV charging stations",
+          "Sustainable mobility hubs",
+          "Branded bike sharing",
+          "Identity parking areas"
+        ],
+        "note": "Natural integration with the energy and infrastructure division being developed with Ajo Energia and Sagelio."
+      },
+      {
+        "id": "03",
+        "title": "Identity Sport",
+        "items": [
+          "Named sports fields",
+          "Identity grandstands",
+          "Padel Arena Sponsor",
+          "Hockey Arena Sponsor",
+          "Two Lions Cup events"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "Identity Territory",
+        "items": [
+          "\"Adopt a square\"",
+          "\"Adopt a beach\"",
+          "\"Adopt a park\"",
+          "Projects for municipalities and regions",
+          "Territorial marketing"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Identity Corporate",
+        "items": [
+          "Corporate headquarters",
+          "Monumental receptions",
+          "Relax areas and parking",
+          "Corporate signage",
+          "Corporate campuses"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Identity Premium",
+        "items": [
+          "Airports",
+          "Tourist ports",
+          "Railway stations",
+          "Shopping centers",
+          "Major events"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Identity Media",
+        "items": [
+          "Video productions",
+          "Corporate storytelling",
+          "Two Lions TV",
+          "Social media",
+          "Sponsor reporting"
+        ]
+      }
+    ],
+    "sectionImagePlaceholder": "Space for an image dedicated to"
   }
 }

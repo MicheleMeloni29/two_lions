@@ -57,7 +57,7 @@ function OfficeCard({ id, eyebrow, title, lines, emphasis, icon }: OfficeCardPro
   return (
     <article
       id={id}
-      className=" bg-white px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12"
+      className=" bg-trasparent px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12 2xl:px-5 2xl:py-14"
     >
       <div className="mx-auto flex max-w-[20rem] flex-col items-center">
         <div className="flex justify-center">{icon}</div>

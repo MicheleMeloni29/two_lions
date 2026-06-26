@@ -116,5 +116,118 @@
         "body": "Il modello di business include titolarita, tutela e commercializzazione di marchi, proprieta intellettuale, format operativi e opportunita di licensing."
       }
     ]
+  },
+  "identityAdvertisingPage": {
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Identity Advertising",
+    "mission": "Trasformare spazi pubblici e privati in elementi identificativi permanenti per aziende, enti e istituzioni.",
+    "operatingAreas": "Aree operative",
+    "positioning": "Posizionamento",
+    "positioningItems": [
+      "Infrastrutture identitarie permanenti per brand, enti e istituzioni.",
+      "Integrazione tra utilita pubblica, presenza del marchio e valorizzazione territoriale.",
+      "Approccio modulare tra urban, mobility, sport, corporate, premium e media."
+    ],
+    "visualSpace": "Spazio visual",
+    "heroImagePlaceholder": "Spazio dedicato a un'immagine hero o a un render del progetto.",
+    "programEyebrow": "Identity Advertising Program",
+    "programTitle": "Utilita Pubblica, Presenza del Brand, Valore Territoriale",
+    "programLead": "Il programma raccoglie progetti che trasformano spazi urbani, nodi di mobilita, strutture sportive e sedi corporate in asset permanenti di identita, fruizione e comunicazione.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Identity Advertising struttura soluzioni permanenti in cui infrastruttura fisica, naming, sponsorship e contenuti media lavorano come un unico sistema.",
+      "L'approccio consente di sviluppare progetti per Comuni, Regioni, aziende private, operatori della mobilita e grandi piattaforme pubbliche o commerciali."
+    ],
+    "frameworkImagePlaceholder": "Spazio per immagini di concept, mockup o ambientazioni.",
+    "focus": "Focus",
+    "focusItems": [
+      "Infrastrutture urbane e di mobilita brandizzate.",
+      "Attivazioni territoriali, sportive e corporate.",
+      "Moduli premium per aeroporti, porti, stazioni e grandi eventi.",
+      "Layer media per storytelling, video e sponsor reporting."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Identity Urban",
+        "items": [
+          "Pensiline autobus identitarie",
+          "Fermate smart climatizzate",
+          "Panchine identitarie",
+          "Aree verdi sponsorizzate",
+          "Rotatorie e ingressi urbani",
+          "Totem informativi"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Identity Mobility",
+        "items": [
+          "Pensiline fotovoltaiche",
+          "Colonnine di ricarica EV",
+          "Hub di mobilita sostenibile",
+          "Bike sharing brandizzato",
+          "Parcheggi identitari"
+        ],
+        "note": "Integrazione naturale con la divisione energia e infrastrutture sviluppata con Ajo Energia e Sagelio."
+      },
+      {
+        "id": "03",
+        "title": "Identity Sport",
+        "items": [
+          "Campi sportivi nominativi",
+          "Tribune identitarie",
+          "Padel Arena Sponsor",
+          "Hockey Arena Sponsor",
+          "Eventi Two Lions Cup"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "Identity Territory",
+        "items": [
+          "\"Adotta una piazza\"",
+          "\"Adotta una spiaggia\"",
+          "\"Adotta un parco\"",
+          "Progetti per Comuni e Regioni",
+          "Marketing territoriale"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Identity Corporate",
+        "items": [
+          "Sedi aziendali",
+          "Reception monumentali",
+          "Aree relax e parcheggi",
+          "Segnaletica corporate",
+          "Campus aziendali"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Identity Premium",
+        "items": [
+          "Aeroporti",
+          "Porti turistici",
+          "Stazioni ferroviarie",
+          "Centri commerciali",
+          "Grandi eventi"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Identity Media",
+        "items": [
+          "Produzioni video",
+          "Storytelling aziendale",
+          "Two Lions TV",
+          "Social media",
+          "Reportistica per sponsor"
+        ]
+      }
+    ],
+    "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   }
 }

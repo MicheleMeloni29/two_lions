@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -28,6 +29,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
         {items.map((item) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
+          const isIdentityAdvertising = item.slug === "publicity-advertising";
 
           return (
             <div
@@ -60,8 +62,8 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                       aspectRatio: "1 / 1",
                       backgroundColor: "var(--color-primary)",
                       WebkitMaskImage:
-                        "url('/SectionsBackgrounds/twoLions_logo.png')",
-                      maskImage: "url('/SectionsBackgrounds/twoLions_logo.png')",
+                        "url('/twoLions_logo.png')",
+                      maskImage: "url('/twoLions_logo.png')",
                       WebkitMaskPosition: "center",
                       maskPosition: "center",
                       WebkitMaskRepeat: "no-repeat",
@@ -80,20 +82,41 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                   {item.label}
                 </h3>
 
-                <motion.span
-                  className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 drop-shadow-[0_8px_24px_rgba(0,35,91,0.24)] sm:text-xs"
-                  animate={{
-                    opacity: [0.72, 1, 0.72],
-                    scale: [1, 1.08, 1],
-                  }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <span>explore division</span>
-                </motion.span>
+                {isIdentityAdvertising ? (
+                  <motion.div
+                    animate={{
+                      opacity: [0.72, 1, 0.72],
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Link
+                      href="/identity-advertising"
+                      className="inline-flex items-center rounded-full border border-white/55 bg-white/12 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white transition hover:bg-white hover:text-[color:var(--color-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
+                    >
+                      Explore Division
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.span
+                    className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 drop-shadow-[0_8px_24px_rgba(0,35,91,0.24)] sm:text-xs"
+                    animate={{
+                      opacity: [0.72, 1, 0.72],
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <span>explore division</span>
+                  </motion.span>
+                )}
               </div>
             </div>
           );

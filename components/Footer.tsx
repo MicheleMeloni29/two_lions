@@ -13,10 +13,10 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="border-t border-[color:var(--color-white)]/12 pt-8 xl:justify-self-end xl:border-t-0 xl:pt-1">
+          <div className="pt-8 xl:justify-self-end xl:border-t-0 xl:pt-1">
             <div className="grid gap-8 sm:grid-cols-2">
               <div className="min-w-0">
-                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                   Offices
                 </p>
                 <div className="mt-4 space-y-3 text-[13px] leading-6 text-white sm:text-[14px] md:mt-5 md:text-[15px]">
@@ -36,7 +36,7 @@ export default function Footer() {
               </div>
 
               <div className="min-w-0">
-                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                   Corporate
                 </p>
                 <div className="mt-4 space-y-3 text-[13px] leading-6 text-white sm:text-[14px] md:mt-5 md:text-[15px]">

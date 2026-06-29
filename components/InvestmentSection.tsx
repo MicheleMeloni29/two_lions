@@ -85,73 +85,73 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-8 items-start">
-          {/* Main content area */}
-          <div>
-            <div className="grid gap-5 xl:grid-cols-3 xl:items-stretch xl:gap-5">
-              <motion.div
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.25 }}
-                variants={fadeUp}
-                custom={0.08}
-                className="bg-white p-5 md:p-7 xl:col-span-2 xl:p-8"
-              >
-                <div className="mb-6 flex items-center justify-between gap-4">
-                  <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] sm:text-[10px] md:text-[11px]">
-                    {current.eyebrow2}
-                  </p>
-                </div>
-                <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7">
-                  {current.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.aside
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.25 }}
-                variants={fadeUp}
-                custom={0.16}
-                className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 xl:col-span-1"
-              >
-                <div className="mb-5 flex items-center justify-between gap-4">
-                  <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                    {current.highlightsTitle}
-                  </p>
-                </div>
-                <ul className="space-y-4">
-                  {current.highlights.map((item) => (
-                    <li
-                      key={item}
-                      className="border-b border-[color:var(--color-white)]/18 pb-4 last:border-b-0 last:pb-0"
-                    >
-                      <span className="text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.aside>
+        <div className="mt-12 space-y-8 md:space-y-6 lg:space-y-8">
+          {/* First row: Full width white card */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeUp}
+            custom={0.08}
+            className="bg-white p-5 md:p-7 lg:p-8"
+          >
+            <div className="mb-6 flex items-center justify-between gap-4">
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] sm:text-[10px] md:text-[11px]">
+                {current.eyebrow2}
+              </p>
             </div>
-          </div>
+            <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7">
+              {current.paragraphs.map((paragraph) => (
+                <p key={paragraph}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </motion.div>
 
-          {/* Carousel area */}
-          <div className="flex justify-center md:justify-end">
-            <div className="w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[750px] relative flex justify-center items-center">
-              <Carousel
-                items={carouselItems}
-                baseWidth={baseWidth}
-                autoplay
-                autoplayDelay={3000}
-                pauseOnHover={false}
-                loop
-                round={false}
-              />
+          {/* Second row: Highlights + Carousel */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-8">
+            {/* Highlights card */}
+            <motion.aside
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={fadeUp}
+              custom={0.16}
+              className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 lg:px-8"
+            >
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+                  {current.highlightsTitle}
+                </p>
+              </div>
+              <ul className="space-y-4">
+                {current.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="border-b border-[color:var(--color-white)]/18 pb-4 last:border-b-0 last:pb-0"
+                  >
+                    <span className="text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.aside>
+
+            {/* Carousel area */}
+            <div className="flex justify-center">
+              <div className="w-full relative flex justify-center items-center">
+                <Carousel
+                  items={carouselItems}
+                  baseWidth={baseWidth}
+                  autoplay
+                  autoplayDelay={3000}
+                  pauseOnHover={false}
+                  loop
+                  round={false}
+                />
+              </div>
             </div>
           </div>
         </div>

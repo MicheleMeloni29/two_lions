@@ -5,7 +5,7 @@ function HeadquartersIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-7 w-7 text-primary"
+      className="h-7 w-7 text-[color:var(--color-thirdary)]"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -31,7 +31,7 @@ function LocationPinIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-7 w-7 text-primary"
+      className="h-7 w-7 text-[color:var(--color-thirdary)]"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"

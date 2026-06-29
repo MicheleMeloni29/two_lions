@@ -83,6 +83,15 @@ export default function HeroIntro({
           >
             Two Lions
           </motion.h1>
+          {/* Holding name */}
+          <motion.h1
+            className="pt-2 font-change-serif-bold text-xl uppercase tracking-[0.1em] text-secondary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+            initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
+            animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
+            transition={{ duration: 1, ease: "easeIn", delay: 2 }}
+          >
+            International Corporation
+          </motion.h1>
         </div>
         <motion.div
           className="absolute inset-0"

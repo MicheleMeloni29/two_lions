@@ -26,7 +26,10 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
       id="sections"
       className="bg-[color:var(--color-primary)] px-4 py-10 sm:px-5 md:px-8 md:py-14 lg:p-6"
     >
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+      <h2 className="font-change-serif-bold max-w-[14ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[18ch] md:text-[3.4rem] xl:max-w-[20ch] xl:text-[4rem] text-[color:var(--color-white)]">
+        Business Divisions
+      </h2>
+      <div className="pt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
         {items.map((item) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
           const isIdentityAdvertising = item.slug === "publicity-advertising";
@@ -34,16 +37,15 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
           return (
             <div
               key={item.slug}
-              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${
-                hasBackgroundImage
-                  ? "bg-cover"
-                  : "bg-[color:var(--color-secondary)]"
-              }`}
+              className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${hasBackgroundImage
+                ? "bg-cover"
+                : "bg-[color:var(--color-secondary)]"
+                }`}
               style={
                 hasBackgroundImage
                   ? {
-                      backgroundImage: `url(/SectionsBackgrounds/${item.image})`,
-                    }
+                    backgroundImage: `url(/SectionsBackgrounds/${item.image})`,
+                  }
                   : undefined
               }
             >
@@ -75,47 +77,24 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                 </div>
               ) : null}
 
-              <div className="relative flex flex-col items-center gap-4 px-5 text-center lg:px-5">
+              <div className="absolute bottom-0 left-0 flex flex-col items-start gap-4 px-5 pb-5 text-left lg:px-5">
                 <h3
-                  className="font-change-serif-bold text-3xl leading-[0.95] uppercase tracking-[0.1em] text-white drop-shadow-[0_10px_30px_rgba(0,35,91,0.28)] sm:text-4xl md:text-[clamp(2rem,4vw,3.2rem)] lg:text-[clamp(1.9rem,2.2vw,2.8rem)]"
+                  className="font-change-serif-bold text-2xl leading-[0.95] uppercase tracking-[0.1em] text-white drop-shadow-[0_10px_30px_rgba(0,35,91,0.28)] sm:text-4xl md:text-[clamp(2rem,4vw,3.2rem)] lg:text-[clamp(1.9rem,2.2vw,2.8rem)]"
                 >
                   {item.label}
                 </h3>
 
                 {isIdentityAdvertising ? (
-                  <motion.div
-                    animate={{
-                      opacity: [0.72, 1, 0.72],
-                      scale: [1, 1.08, 1],
-                    }}
-                    transition={{
-                      duration: 2.4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
+                  <Link
+                    href="/identity-advertising"
+                    className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-white hover:text-[color:var(--color-primary)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
                   >
-                    <Link
-                      href="/identity-advertising"
-                      className="inline-flex items-center rounded-full border border-white/55 bg-white/12 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white transition hover:bg-white hover:text-[color:var(--color-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
-                    >
-                      Explore Division
-                    </Link>
-                  </motion.div>
+                    Explore Division
+                  </Link>
                 ) : (
-                  <motion.span
-                    className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 drop-shadow-[0_8px_24px_rgba(0,35,91,0.24)] sm:text-xs"
-                    animate={{
-                      opacity: [0.72, 1, 0.72],
-                      scale: [1, 1.08, 1],
-                    }}
-                    transition={{
-                      duration: 2.4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <span>explore division</span>
-                  </motion.span>
+                  <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-white hover:text-[color:var(--color-primary)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
+                    explore division
+                  </span>
                 )}
               </div>
             </div>

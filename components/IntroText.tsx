@@ -24,7 +24,7 @@ export default function IntroText({ lang }: IntroTextProps) {
 
       <div className="relative mx-auto flex max-w-md flex-col gap-8 md:max-w-3xl md:gap-10 xl:max-w-7xl xl:gap-12">
         <div className="space-y-5 md:space-y-6">
-          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
             {content.eyebrow}
           </p>
 
@@ -56,7 +56,7 @@ export default function IntroText({ lang }: IntroTextProps) {
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-1">
             <div className="bg-primary px-5 py-6 text-white md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
-                <h3 className="text-[9px] uppercase tracking-[0.22em] text-white sm:text-[10px] md:text-[11px]">
+                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                   {content.divisionsTitle}
                 </h3>
               </div>
@@ -71,7 +71,7 @@ export default function IntroText({ lang }: IntroTextProps) {
 
             <div className="bg-secondary px-5 py-6 md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
-                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-white)] sm:text-[10px] md:text-[11px]">
+                <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                   {content.geographicFocusTitle}
                 </h3>
               </div>

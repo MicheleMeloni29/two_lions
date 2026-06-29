@@ -1,8 +1,10 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
+import Carousel from "./UI/Carousel";
 
 type InvestmentSectionProps = {
   lang: "it" | "en";
@@ -28,6 +30,34 @@ const fadeUp = {
 
 export default function InvestmentSection({ lang }: InvestmentSectionProps) {
   const current = content[lang];
+  const [baseWidth, setBaseWidth] = React.useState(280);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setBaseWidth(280); // mobile
+      } else if (width < 768) {
+        setBaseWidth(340); // sm
+      } else if (width < 1024) {
+        setBaseWidth(380); // md
+      } else {
+        setBaseWidth(420); // lg+
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Convert pillars to CarouselItem format
+  const carouselItems = current.pillars.map((pillar, index) => ({
+    id: index,
+    title: pillar.title,
+    description: pillar.body,
+    icon: <div className="w-0 h-0" />,
+  }));
 
   return (
     <section
@@ -55,78 +85,75 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-5 xl:grid-cols-3 xl:items-stretch xl:gap-5">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={fadeUp}
-            custom={0.08}
-            className="bg-white p-5 md:p-7 xl:col-span-2 xl:p-8"
-          >
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] sm:text-[10px] md:text-[11px]">
-                {current.eyebrow2}
-              </p>
-            </div>
-            <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7">
-              {current.paragraphs.map((paragraph) => (
-                <p key={paragraph}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </motion.div>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-8 items-start">
+          {/* Main content area */}
+          <div>
+            <div className="grid gap-5 xl:grid-cols-3 xl:items-stretch xl:gap-5">
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.25 }}
+                variants={fadeUp}
+                custom={0.08}
+                className="bg-white p-5 md:p-7 xl:col-span-2 xl:p-8"
+              >
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] sm:text-[10px] md:text-[11px]">
+                    {current.eyebrow2}
+                  </p>
+                </div>
+                <div className="space-y-5 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7">
+                  {current.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </motion.div>
 
-          <motion.aside
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={fadeUp}
-            custom={0.16}
-            className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 xl:col-span-1"
-          >
-            <div className="mb-5 flex items-center justify-between gap-4">
-              <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                {current.highlightsTitle}
-              </p>
+              <motion.aside
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.25 }}
+                variants={fadeUp}
+                custom={0.16}
+                className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 xl:col-span-1"
+              >
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+                    {current.highlightsTitle}
+                  </p>
+                </div>
+                <ul className="space-y-4">
+                  {current.highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="border-b border-[color:var(--color-white)]/18 pb-4 last:border-b-0 last:pb-0"
+                    >
+                      <span className="text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.aside>
             </div>
-            <ul className="space-y-4">
-              {current.highlights.map((item) => (
-                <li
-                  key={item}
-                  className="border-b border-[color:var(--color-white)]/18 pb-4 last:border-b-0 last:pb-0"
-                >
-                  <span className="text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.aside>
-        </div>
+          </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {current.pillars.map((pillar, index) => (
-            <motion.div
-              key={pillar.title}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              variants={fadeUp}
-              custom={0.12 + index * 0.08}
-              className="bg-secondary p-5 md:p-6"
-            >
-              <div className="mb-5 flex items-center justify-between gap-4">
-                <h3 className="font-change-serif-bold text-[13px] uppercase tracking-[0.06em] text-white sm:text-sm md:text-[15px]">
-                  {pillar.title}
-                </h3>
-              </div>
-              <p className="text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7">
-                {pillar.body}
-              </p>
-            </motion.div>
-          ))}
+          {/* Carousel area */}
+          <div className="flex justify-center md:justify-end">
+            <div className="w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[750px] relative flex justify-center items-center">
+              <Carousel
+                items={carouselItems}
+                baseWidth={baseWidth}
+                autoplay
+                autoplayDelay={3000}
+                pauseOnHover={false}
+                loop
+                round={false}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

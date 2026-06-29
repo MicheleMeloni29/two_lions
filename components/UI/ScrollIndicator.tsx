@@ -23,22 +23,9 @@ export default function ScrollIndicator({
         spread={135}
         delay={0.4}
         className="font-change-serif-bold text-[8px] uppercase tracking-[0.18em] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm"
-        color="var(--color-secondary)"
+        color="var(--color-thirdary)"
         shineColor="var(--color-white)"
       />
-      <span className="flex items-center justify-center">
-        <svg
-          viewBox="0 0 20 12"
-          className="h-5 w-18 sm:h-6 sm:w-24 lg:h-7 lg:w-28 xl:h-8 xl:w-32"
-          fill="none"
-          stroke="var(--color-secondary)"
-          strokeWidth="1.9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 3.5 10 9l7-5.5" />
-        </svg>
-      </span>
     </span>
   );
 

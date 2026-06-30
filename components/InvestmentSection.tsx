@@ -10,10 +10,20 @@ type InvestmentSectionProps = {
   lang: "it" | "en";
 };
 
+type CarouselLayout = {
+  baseWidth: number;
+  baseHeight: number;
+};
+
 const content = {
   it: itMessages.investmentSection,
   en: enMessages.investmentSection,
 } as const;
+
+const DEFAULT_CAROUSEL_LAYOUT: CarouselLayout = {
+  baseWidth: 288,
+  baseHeight: 280,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -30,25 +40,46 @@ const fadeUp = {
 
 export default function InvestmentSection({ lang }: InvestmentSectionProps) {
   const current = content[lang];
-  const [baseWidth, setBaseWidth] = React.useState(280);
+  const highlightsRef = React.useRef<HTMLElement | null>(null);
+  const [carouselLayout, setCarouselLayout] =
+    React.useState<CarouselLayout>(DEFAULT_CAROUSEL_LAYOUT);
 
   React.useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setBaseWidth(280); // mobile
-      } else if (width < 768) {
-        setBaseWidth(340); // sm
-      } else if (width < 1024) {
-        setBaseWidth(380); // md
-      } else {
-        setBaseWidth(420); // lg+
-      }
+    const highlightsElement = highlightsRef.current;
+
+    if (!highlightsElement) {
+      return;
+    }
+
+    let frameId = 0;
+
+    const updateLayout = () => {
+      const nextLayout = {
+        baseWidth: Math.round(highlightsElement.getBoundingClientRect().width),
+        baseHeight: Math.round(highlightsElement.getBoundingClientRect().height),
+      };
+
+      setCarouselLayout((currentLayout) =>
+        currentLayout.baseWidth === nextLayout.baseWidth &&
+        currentLayout.baseHeight === nextLayout.baseHeight
+          ? currentLayout
+          : nextLayout
+      );
     };
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    frameId = window.requestAnimationFrame(updateLayout);
+
+    const resizeObserver = new ResizeObserver(() => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(updateLayout);
+    });
+
+    resizeObserver.observe(highlightsElement);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   // Convert pillars to CarouselItem format
@@ -74,13 +105,13 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           variants={fadeUp}
           className="max-w-6xl xl:max-w-[82%]"
         >
-          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
             {current.eyebrow1}
           </p>
           <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
             {current.title}
           </h2>
-          <p className="mt-7 max-w-3xl border-l border-[color:var(--color-primary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+          <p className="mt-7 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
             {current.lead}
           </p>
         </motion.div>
@@ -110,15 +141,16 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </motion.div>
 
           {/* Second row: Highlights + Carousel */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-stretch md:gap-6 lg:gap-8">
             {/* Highlights card */}
             <motion.aside
+              ref={highlightsRef}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.25 }}
               variants={fadeUp}
               custom={0.16}
-              className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 lg:px-8"
+              className="h-full border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 lg:px-8"
             >
               <div className="mb-5 flex items-center justify-between gap-4">
                 <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
@@ -140,11 +172,12 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             </motion.aside>
 
             {/* Carousel area */}
-            <div className="flex justify-center">
-              <div className="w-full relative flex justify-center items-center">
+            <div className="w-full self-stretch">
+              <div className="mx-auto flex h-full w-full items-stretch">
                 <Carousel
                   items={carouselItems}
-                  baseWidth={baseWidth}
+                  baseWidth={carouselLayout.baseWidth}
+                  baseHeight={carouselLayout.baseHeight}
                   autoplay
                   autoplayDelay={3000}
                   pauseOnHover={false}

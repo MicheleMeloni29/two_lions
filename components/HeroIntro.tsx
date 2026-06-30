@@ -14,7 +14,7 @@ type HeroIntroProps = {
 
 const secondaryRevealTransition = {
   duration: 0.7,
-  delay: 3.5,
+  delay: 2.7,
   ease: [0.22, 1, 0.36, 1] as const,
 };
 
@@ -56,7 +56,7 @@ export default function HeroIntro({
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
-      {/* Holding Icon animation */}
+        {/* Holding Icon animation */}
         <div className="flex flex-col items-center px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 7.5 }}
@@ -85,10 +85,10 @@ export default function HeroIntro({
           </motion.h1>
           {/* Holding name */}
           <motion.h1
-            className="pt-2 font-change-serif-bold text-xl uppercase tracking-[0.1em] text-secondary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
-            initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
+            className="pt-2 text-xl tracking-[0.1em] text-secondary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-6xl"
+            initial={{ clipPath: "inset(0% 0% 100% 0%)", opacity: 0 }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
-            transition={{ duration: 1, ease: "easeIn", delay: 2 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.2 }}
           >
             International Corporation
           </motion.h1>

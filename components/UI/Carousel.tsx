@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
+import { motion, PanInfo, useMotionValue } from 'motion/react';
 import React, { JSX } from 'react';
 
 // replace icons with your own if needed
@@ -14,6 +14,7 @@ export interface CarouselItem {
 export interface CarouselProps {
     items?: CarouselItem[];
     baseWidth?: number;
+    baseHeight?: number;
     autoplay?: boolean;
     autoplayDelay?: number;
     pauseOnHover?: boolean;
@@ -61,22 +62,14 @@ const SPRING_OPTIONS = { type: 'spring' as const, stiffness: 300, damping: 30 };
 
 interface CarouselItemProps {
     item: CarouselItem;
-    index: number;
     itemWidth: number;
     round: boolean;
-    trackItemOffset: number;
-    x: any;
-    transition: any;
 }
 
-function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, transition }: CarouselItemProps) {
-    const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
-    const outputRange = [90, 0, -90];
-    const rotateY = useTransform(x, range, outputRange, { clamp: false });
-
+function CarouselItem({ item, itemWidth, round }: CarouselItemProps) {
     return (
         <motion.div
-            key={`${item?.id ?? index}-${index}`}
+            key={item.id}
             className={`relative shrink-0 flex flex-col items-center justify-center text-center ${round
                 ? 'bg-[#120F17]'
                 : 'bg-secondary'
@@ -84,14 +77,17 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
             style={{
                 width: itemWidth,
                 height: round ? itemWidth : '100%',
-                rotateY: rotateY,
+                minHeight: '100%',
                 ...(round && { borderRadius: '50%' })
             }}
-            transition={transition}
         >
-            <div className="p-5 w-full">
-                <div className="mb-6 font-black text-lg text-[color:var(--color-thirdary)]">{item.title}</div>
-                <p className="text-sm text-white line-clamp-4 sm:line-clamp-5 md:line-clamp-6">{item.description}</p>
+            <div className="flex h-full w-full flex-col items-center justify-center px-4 py-4 text-center sm:px-5 sm:py-5 md:px-6 md:py-6">
+                <div className="mb-3 text-[1.06rem] leading-[1.12] font-black text-[color:var(--color-thirdary)] sm:mb-4 sm:text-[1.12rem] md:text-[1.2rem]">
+                    {item.title}
+                </div>
+                <p className="w-full text-[13.5px] leading-[1.42] text-white line-clamp-7 sm:text-[14.5px] sm:line-clamp-7 md:text-[15px] md:line-clamp-8">
+                    {item.description}
+                </p>
             </div>
         </motion.div>
     );
@@ -100,23 +96,29 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
 export default function Carousel({
     items = DEFAULT_ITEMS,
     baseWidth = 300,
+    baseHeight = 280,
     autoplay = false,
     autoplayDelay = 3000,
     pauseOnHover = false,
     loop = false,
     round = false
 }: CarouselProps): JSX.Element {
-    const containerPadding = 16;
+    const containerPadding = round ? (baseWidth < 340 ? 8 : 16) : 0;
+    const trackGap = round ? GAP : 0;
     const itemWidth = baseWidth - containerPadding * 2;
-    const trackItemOffset = itemWidth + GAP;
+    const trackItemOffset = itemWidth + trackGap;
+    const cardHeight = baseHeight;
     const itemsForRender = useMemo(() => {
         if (!loop) return items;
         if (items.length === 0) return [];
         return [items[items.length - 1], ...items, items[0]];
     }, [items, loop]);
 
-    const [position, setPosition] = useState<number>(loop ? 1 : 0);
-    const x = useMotionValue(0);
+    const initialPosition = loop ? 1 : 0;
+    const [position, setPosition] = useState<number>(initialPosition);
+    const maxPosition = Math.max(itemsForRender.length - 1, 0);
+    const currentPosition = loop ? position : Math.min(position, maxPosition);
+    const x = useMotionValue(-initialPosition * trackItemOffset);
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const [isJumping, setIsJumping] = useState<boolean>(false);
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -148,16 +150,8 @@ export default function Carousel({
     }, [autoplay, autoplayDelay, isHovered, pauseOnHover, itemsForRender.length]);
 
     useEffect(() => {
-        const startingPosition = loop ? 1 : 0;
-        setPosition(startingPosition);
-        x.set(-startingPosition * trackItemOffset);
-    }, [items.length, loop, trackItemOffset, x]);
-
-    useEffect(() => {
-        if (!loop && position > itemsForRender.length - 1) {
-            setPosition(Math.max(0, itemsForRender.length - 1));
-        }
-    }, [itemsForRender.length, loop, position]);
+        x.set(-(currentPosition * trackItemOffset));
+    }, [currentPosition, trackItemOffset, x]);
 
     const effectiveTransition = isJumping ? { duration: 0 } : SPRING_OPTIONS;
 
@@ -221,37 +215,34 @@ export default function Carousel({
         ? {}
         : {
             dragConstraints: {
-                left: -trackItemOffset * Math.max(itemsForRender.length - 1, 0),
+                left: -trackItemOffset * maxPosition,
                 right: 0
             }
         };
 
-    const activeIndex =
-        items.length === 0 ? 0 : loop ? (position - 1 + items.length) % items.length : Math.min(position, items.length - 1);
-
     return (
         <div
             ref={containerRef}
-            className={`relative overflow-hidden p-4 ${round ? 'rounded-full' : 'rounded-[24px]'
-                }`}
+            className={`relative mx-auto flex items-center justify-center overflow-hidden ${round ? 'p-3 sm:p-5' : ''}`}
             style={{
-                width: `${baseWidth}px`,
+                width: '100%',
+                maxWidth: `${baseWidth}px`,
+                height: `${cardHeight}px`,
                 ...(round && { height: `${baseWidth}px` })
             }}
         >
             <motion.div
-                className="flex"
+                className="flex h-full items-center"
                 drag={isAnimating ? false : 'x'}
                 {...dragProps}
                 style={{
                     width: itemWidth,
-                    gap: `${GAP}px`,
-                    perspective: 1000,
-                    perspectiveOrigin: `${position * trackItemOffset + itemWidth / 2}px 50%`,
+                    height: '100%',
+                    gap: `${trackGap}px`,
                     x
                 }}
                 onDragEnd={handleDragEnd}
-                animate={{ x: -(position * trackItemOffset) }}
+                animate={{ x: -(currentPosition * trackItemOffset) }}
                 transition={effectiveTransition}
                 onAnimationStart={handleAnimationStart}
                 onAnimationComplete={handleAnimationComplete}
@@ -260,12 +251,8 @@ export default function Carousel({
                     <CarouselItem
                         key={`${item?.id ?? index}-${index}`}
                         item={item}
-                        index={index}
                         itemWidth={itemWidth}
                         round={round}
-                        trackItemOffset={trackItemOffset}
-                        x={x}
-                        transition={effectiveTransition}
                     />
                 ))}
             </motion.div>

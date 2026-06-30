@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -14,6 +15,8 @@ const introContent = {
 
 export default function IntroText({ lang }: IntroTextProps) {
   const content = introContent[lang];
+  const activityItems = [...content.listItems, ...content.listItems];
+  const activityRightFade = "clamp(18px, 4vw, 40px)";
 
   return (
     <section
@@ -32,7 +35,7 @@ export default function IntroText({ lang }: IntroTextProps) {
             {content.title}
           </h2>
 
-          <p className="max-w-4xl border-l border-[color:var(--color-primary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+          <p className="max-w-4xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
             {content.body}
           </p>
         </div>
@@ -44,13 +47,39 @@ export default function IntroText({ lang }: IntroTextProps) {
                 {content.listTitle}
               </h3>
             </div>
-            <ul className="flex flex-1 flex-col justify-evenly gap-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:gap-4 md:text-[15px] md:leading-7">
-              {content.listItems.map((item) => (
-                <li key={item} className="flex items-start gap-3 border-b border-[color:var(--color-secondary)]/28 py-3 last:border-b-0 last:pb-0">
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div
+              className="relative -ml-9 flex flex-1 items-stretch overflow-hidden md:-ml-[60px] xl:-ml-[88px]"
+              style={{ paddingRight: activityRightFade }}
+            >
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 z-10"
+                style={{
+                  width: activityRightFade,
+                  background:
+                    "linear-gradient(to left, white 0%, rgba(255,255,255,0) 100%)",
+                }}
+              />
+              <motion.div
+                className="flex w-max gap-4"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  duration: 26,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                {activityItems.map((item, index) => (
+                  <article
+                    key={`${item}-${index}`}
+                    className="flex min-h-[8.75rem] w-[11.25rem] shrink-0 items-center border border-[color:var(--color-secondary)]/18 bg-[color:var(--color-secondary)]/[0.06] px-3 py-3 text-center sm:min-h-[9.5rem] sm:w-[12.25rem] sm:px-4 sm:py-4 md:min-h-[10rem] md:w-[13.5rem] md:px-5"
+                  >
+                    <p className="w-full text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+                      {item}
+                    </p>
+                  </article>
+                ))}
+              </motion.div>
+            </div>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-1">

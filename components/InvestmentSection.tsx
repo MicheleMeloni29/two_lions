@@ -4,26 +4,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
-import Carousel from "./UI/Carousel";
+import ContinuousLoopCarousel from "./UI/ContinuousLoopCarousel";
 
 type InvestmentSectionProps = {
   lang: "it" | "en";
 };
-
-type CarouselLayout = {
-  baseWidth: number;
-  baseHeight: number;
-};
-
 const content = {
   it: itMessages.investmentSection,
   en: enMessages.investmentSection,
 } as const;
-
-const DEFAULT_CAROUSEL_LAYOUT: CarouselLayout = {
-  baseWidth: 288,
-  baseHeight: 280,
-};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -40,54 +29,10 @@ const fadeUp = {
 
 export default function InvestmentSection({ lang }: InvestmentSectionProps) {
   const current = content[lang];
-  const highlightsRef = React.useRef<HTMLElement | null>(null);
-  const [carouselLayout, setCarouselLayout] =
-    React.useState<CarouselLayout>(DEFAULT_CAROUSEL_LAYOUT);
-
-  React.useEffect(() => {
-    const highlightsElement = highlightsRef.current;
-
-    if (!highlightsElement) {
-      return;
-    }
-
-    let frameId = 0;
-
-    const updateLayout = () => {
-      const nextLayout = {
-        baseWidth: Math.round(highlightsElement.getBoundingClientRect().width),
-        baseHeight: Math.round(highlightsElement.getBoundingClientRect().height),
-      };
-
-      setCarouselLayout((currentLayout) =>
-        currentLayout.baseWidth === nextLayout.baseWidth &&
-        currentLayout.baseHeight === nextLayout.baseHeight
-          ? currentLayout
-          : nextLayout
-      );
-    };
-
-    frameId = window.requestAnimationFrame(updateLayout);
-
-    const resizeObserver = new ResizeObserver(() => {
-      window.cancelAnimationFrame(frameId);
-      frameId = window.requestAnimationFrame(updateLayout);
-    });
-
-    resizeObserver.observe(highlightsElement);
-
-    return () => {
-      window.cancelAnimationFrame(frameId);
-      resizeObserver.disconnect();
-    };
-  }, []);
-
-  // Convert pillars to CarouselItem format
   const carouselItems = current.pillars.map((pillar, index) => ({
     id: index,
     title: pillar.title,
     description: pillar.body,
-    icon: <div className="w-0 h-0" />,
   }));
 
   return (
@@ -144,7 +89,6 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-stretch md:gap-6 lg:gap-8">
             {/* Highlights card */}
             <motion.aside
-              ref={highlightsRef}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.25 }}
@@ -172,23 +116,18 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             </motion.aside>
 
             {/* Carousel area */}
-            <div className="w-full self-stretch">
-              <div className="mx-auto flex h-full w-full items-stretch">
-                <Carousel
-                  items={carouselItems}
-                  baseWidth={carouselLayout.baseWidth}
-                  baseHeight={carouselLayout.baseHeight}
-                  autoplay
-                  autoplayDelay={3000}
-                  pauseOnHover={false}
-                  loop
-                  round={false}
-                />
-              </div>
+              <ContinuousLoopCarousel
+                items={carouselItems}
+                duration={26}
+                viewportClassName="w-full"
+                trackClassName="gap-20 sm:gap-26 lg:gap-28"
+                cardClassName="min-h-[15rem] w-[15.5rem]  px-4 py-5 sm:min-h-[16rem] sm:w-[17rem] sm:px-5 sm:py-6 md:min-h-[20rem] md:w-[18.5rem] md:px-6 lg:min-h-[18rem] lg:w-[20rem]"
+                titleClassName="text-[color:var(--color-thirdary)]"
+                descriptionClassName="text-secondary"
+              />
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

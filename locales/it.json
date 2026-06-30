@@ -1,9 +1,12 @@
 {
+  "_guide": "Questi campi guida sono sicuri. L'app ignora le chiavi che iniziano con _. Modifica i valori reali vicini, non il testo di _guide.",
   "meta": {
+    "_comment": "Metadati generali del sito.",
     "title": "Two Lions",
     "description": ""
   },
   "ui": {
+    "_comment": "Etichette UI condivise usate nel sito.",
     "languageToggle": {
       "italianLabel": "IT",
       "englishLabel": "EN",
@@ -14,6 +17,7 @@
     }
   },
   "hero": {
+    "_comment": "Sezione hero della homepage. Modifica l'array rotatingTexts per cambiare le parole animate.",
     "logoAlt": "Two Lions",
     "title": "Two Lions",
     "rotatingTexts": [
@@ -26,6 +30,7 @@
     ]
   },
   "introText": {
+    "_comment": "Sezione IntroText della homepage. listTitle/listItems controllano il carosello orizzontale continuo. divisionsTitle/divisions e geographicFocusTitle/geographicFocus controllano le card sotto.",
     "eyebrow": "Societa holding registrata in Delaware",
     "title": "Two Lions International Corporation",
     "listTitle": "Aree principali",
@@ -52,7 +57,8 @@
     "body": "La societa svolge attivita di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprieta intellettuale e investimento in iniziative imprenditoriali."
   },
   "sections": {
-    "title": "Divisioni",
+    "_comment": "Sezione TwoLionsDivisions della homepage. title controlla il titolo della sezione. items contiene le card delle divisioni.",
+    "title": "Divisioni Aziendali",
     "clickForMore": "Scopri di piu",
     "items": [
       {
@@ -88,6 +94,7 @@
     ]
   },
   "investmentSection": {
+    "_comment": "InvestmentSection della homepage. eyebrow1/title/lead controllano l'introduzione. eyebrow2 viene riusato sopra il carosello continuo. highlights controlla la card a sinistra. pillars controlla le card in movimento.",
     "eyebrow1": "Two Lions",
     "title": "Partnership Strategiche e Opportunita di Investimento",
     "lead": "Two Lions International Corporation sta esplorando attivamente partnership strategiche e potenziali opportunita di investimento con investitori statunitensi e internazionali, con particolare attenzione al settore Energy & Infrastructure.",
@@ -118,6 +125,7 @@
     ]
   },
   "identityAdvertisingPage": {
+    "_comment": "Pagina Identity Advertising. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
     "eyebrow": "Two Lions Division",
     "title": "Identity Advertising",

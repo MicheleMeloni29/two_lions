@@ -1,9 +1,12 @@
 {
+  "_guide": "These helper fields are safe for editing guidance. The app ignores keys that start with _. Edit the nearby real values, not the _guide text.",
   "meta": {
+    "_comment": "General site metadata.",
     "title": "Two Lions",
     "description": ""
   },
   "ui": {
+    "_comment": "Shared UI labels used across the site.",
     "languageToggle": {
       "italianLabel": "IT",
       "englishLabel": "EN",
@@ -14,6 +17,7 @@
     }
   },
   "hero": {
+    "_comment": "Homepage hero section. Edit the rotatingTexts array to change the animated words.",
     "logoAlt": "Two Lions",
     "title": "Two Lions",
     "rotatingTexts": [
@@ -26,6 +30,7 @@
     ]
   },
   "introText": {
+    "_comment": "Homepage IntroText section. listTitle/listItems control the horizontal loop carousel. divisionsTitle/divisions and geographicFocusTitle/geographicFocus control the cards below it.",
     "eyebrow": "Holding company incorporated in Delaware",
     "title": "Two Lions International Corporation",
     "listTitle": "Core activities",
@@ -52,7 +57,8 @@
     "body": "The company is engaged in strategic planning, business development, brand and intellectual property management, and investment in entrepreneurial initiatives."
   },
   "sections": {
-    "title": "Divisions",
+    "_comment": "TwoLionsDivisions section on the homepage. title controls the section heading. items contains the division cards.",
+    "title": "Business Divisions",
     "clickForMore": "Click for more",
     "items": [
       {
@@ -88,6 +94,7 @@
     ]
   },
   "investmentSection": {
+    "_comment": "InvestmentSection on the homepage. eyebrow1/title/lead control the intro. eyebrow2 is reused above the continuous carousel. highlights controls the left card. pillars controls the moving cards.",
     "eyebrow1": "Two Lions",
     "title": "Strategic Partnerships & Investment Opportunities",
     "lead": "Two Lions International Corporation is actively exploring strategic partnerships and potential investment opportunities with U.S. and international investors, with particular attention to the Energy & Infrastructure sector.",
@@ -118,6 +125,7 @@
     ]
   },
   "identityAdvertisingPage": {
+    "_comment": "Identity Advertising page. sections is the main content grid; each section has id, title, items and optional note.",
     "backToHome": "Back to home",
     "eyebrow": "Two Lions Division",
     "title": "Identity Advertising",

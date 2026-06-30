@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-5 md:px-8 md:py-11 xl:px-14 xl:py-12">
         <div className="grid gap-8 md:gap-10 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:items-start">
           <div className="max-w-md">
-            <h2 className="font-change-serif-bold text-[1.8rem] leading-[1.02] text-[color:var(--color-white)] sm:text-[2rem] md:text-[2.2rem] xl:text-[2.35rem]">
+            <h2 className="font-change-serif-bold text-[1.8rem] leading-[1.02] text-[color:var(--color-thirdary)] sm:text-[2rem] md:text-[2.2rem] xl:text-[2.35rem]">
               Two Lions International
             </h2>
             <p className="mt-4 max-w-sm text-[13px] leading-6 text-white sm:text-[14px] md:mt-5 md:text-[15px] md:leading-7">

@@ -88,7 +88,7 @@ export default function HeroIntro({
             className="pt-2 text-xl tracking-[0.1em] text-secondary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-6xl"
             initial={{ clipPath: "inset(0% 0% 100% 0%)", opacity: 0 }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.2 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 2.5 }}
           >
             International Corporation
           </motion.h1>

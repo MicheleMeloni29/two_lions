@@ -237,5 +237,129 @@
       }
     ],
     "sectionImagePlaceholder": "Space for an image dedicated to"
+  },
+  "foodBeveragePage": {
+    "_comment": "Food & Beverage page. sections is the main content grid; each section has id, title, items and optional note.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Food & Beverage",
+    "mission": "Develop a food and beverage ecosystem that brings together regional production, premium lines, horeca channels, commercial distribution and the identity value of Sardinia.",
+    "operatingAreas": "Operating Areas",
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Multi-sector division dedicated to food products, beverage, hospitality and retail.",
+      "Integration of Sardinian excellence, gourmet lines, export channels and organized distribution.",
+      "A modular approach spanning product, service, experience and territorial value."
+    ],
+    "positioningFooter": "Food, beverage, hospitality and Brand Sardinia within one development ecosystem.",
+    "visualSpace": "Division Overview",
+    "manifestoItems": [
+      "Food",
+      "Beverage",
+      "Retail"
+    ],
+    "programEyebrow": "Two Lions Food & Beverage Program",
+    "programTitle": "Product, Distribution, Hospitality and Territorial Value",
+    "programLead": "The Food & Beverage platform brings together regional production, premium lines, horeca, distribution and identity-driven initiatives through a scalable model spanning Sardinia, Italy and international export.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Food & Beverage is structured as a system where food supply chains, beverages, retail, hospitality and territorial promotion operate as one commercial architecture.",
+      "The goal is to build a platform capable of enhancing products, brands and territories through premium channels, selective distribution, events and export models."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Sardinian signature foods, gourmet lines and organic products.",
+      "Beverage, coffee, tea, wine and spirits with premium positioning.",
+      "Horeca channels, catering, banqueting and events.",
+      "Retail, distribution, export and Brand Sardinia development."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Two Lions Food",
+        "description": "Division dedicated to food products.",
+        "items": [
+          "Traditional Sardinian food production",
+          "Gourmet and premium products",
+          "Preserves and regional specialties",
+          "Organic products",
+          "International export line",
+          "Food e-commerce"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Two Lions Beverage",
+        "description": "Division dedicated to beverages.",
+        "items": [
+          "Craft beer",
+          "Non-alcoholic beverages",
+          "Water and soft drinks",
+          "Energy drinks",
+          "Functional and wellness beverages",
+          "Beverage distribution"
+        ],
+        "note": "The craft beer line is connected to the project already linked with Giunico."
+      },
+      {
+        "id": "03",
+        "title": "Two Lions Coffee & Tea",
+        "description": "Specialized division.",
+        "items": [
+          "Premium coffee",
+          "Capsules and pods",
+          "Tea and infusions",
+          "Horeca line"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "Two Lions Wine & Spirits",
+        "description": "Division dedicated to wine and spirits excellence.",
+        "items": [
+          "Sardinian wines",
+          "International wines",
+          "Premium spirits",
+          "Traditional liqueurs",
+          "Wine export"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Two Lions Hospitality Food",
+        "description": "Service division.",
+        "items": [
+          "Catering",
+          "Banqueting",
+          "Sports events",
+          "Food service",
+          "Corporate canteens"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Two Lions Retail & Distribution",
+        "description": "Commercial division.",
+        "items": [
+          "Import-export",
+          "Wholesalers",
+          "Large-scale retail distribution",
+          "Single-brand stores",
+          "Franchising"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Two Lions Brand Sardinia",
+        "description": "Identity-driven division linked to Sardinia.",
+        "items": [
+          "Certified Sardinian products",
+          "Sardinia gift boxes",
+          "Territorial promotion",
+          "Corporate gifting",
+          "Food and wine tourism"
+        ]
+      }
+    ]
   }
 }

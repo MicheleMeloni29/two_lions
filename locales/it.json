@@ -237,5 +237,129 @@
       }
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
+  },
+  "foodBeveragePage": {
+    "_comment": "Pagina Food & Beverage. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Food & Beverage",
+    "mission": "Sviluppare un ecosistema food & beverage che unisce produzioni tipiche, linee premium, canali horeca, distribuzione commerciale e valorizzazione identitaria della Sardegna.",
+    "operatingAreas": "Aree operative",
+    "positioning": "Posizionamento",
+    "positioningItems": [
+      "Divisione multisettoriale dedicata a prodotti alimentari, beverage, hospitality e retail.",
+      "Integrazione tra eccellenze sarde, linee gourmet, canali export e distribuzione organizzata.",
+      "Approccio modulare tra prodotto, servizio, esperienza e valorizzazione territoriale."
+    ],
+    "positioningFooter": "Food, beverage, ospitalita e Brand Sardinia in un unico ecosistema di sviluppo.",
+    "visualSpace": "Division overview",
+    "manifestoItems": [
+      "Food",
+      "Beverage",
+      "Retail"
+    ],
+    "programEyebrow": "Two Lions Food & Beverage Program",
+    "programTitle": "Prodotto, Distribuzione, Ospitalita e Valore Territoriale",
+    "programLead": "La piattaforma Food & Beverage aggrega produzioni tipiche, linee premium, horeca, distribuzione e iniziative identitarie con una logica scalabile tra Sardegna, Italia ed export internazionale.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Food & Beverage struttura un sistema in cui filiere alimentari, bevande, retail, hospitality e promozione territoriale lavorano come un'unica architettura commerciale.",
+      "L'obiettivo e costruire una piattaforma capace di valorizzare prodotti, brand e territori attraverso canali premium, distribuzione selettiva, eventi e modelli export."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Produzioni tipiche sarde, linee gourmet e prodotti biologici.",
+      "Beverage, coffee, tea, wine e spirits con posizionamento premium.",
+      "Canali horeca, catering, banqueting ed eventi.",
+      "Retail, distribuzione, export e valorizzazione Brand Sardinia."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Two Lions Food",
+        "description": "Divisione dedicata agli alimenti.",
+        "items": [
+          "Produzioni alimentari tipiche sarde",
+          "Prodotti gourmet e premium",
+          "Conserve e specialita regionali",
+          "Prodotti biologici",
+          "Linea export internazionale",
+          "E-commerce alimentare"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Two Lions Beverage",
+        "description": "Divisione dedicata alle bevande.",
+        "items": [
+          "Birra artigianale",
+          "Bevande analcoliche",
+          "Acque e soft drink",
+          "Energy drink",
+          "Bevande funzionali e wellness",
+          "Distribuzione beverage"
+        ],
+        "note": "La linea birra artigianale si collega al progetto gia attivato con Giunico."
+      },
+      {
+        "id": "03",
+        "title": "Two Lions Coffee & Tea",
+        "description": "Divisione specializzata.",
+        "items": [
+          "Caffe premium",
+          "Capsule e cialde",
+          "Te e infusi",
+          "Linea Horeca"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "Two Lions Wine & Spirits",
+        "description": "Divisione dedicata alle eccellenze enologiche.",
+        "items": [
+          "Vini sardi",
+          "Vini internazionali",
+          "Distillati premium",
+          "Liquori tradizionali",
+          "Export wine"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Two Lions Hospitality Food",
+        "description": "Divisione servizi.",
+        "items": [
+          "Catering",
+          "Banqueting",
+          "Eventi sportivi",
+          "Food service",
+          "Mense aziendali"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Two Lions Retail & Distribution",
+        "description": "Divisione commerciale.",
+        "items": [
+          "Import-export",
+          "Grossisti",
+          "Distribuzione GDO",
+          "Negozi monomarca",
+          "Franchising"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Two Lions Brand Sardinia",
+        "description": "Divisione identitaria legata alla Sardegna.",
+        "items": [
+          "Prodotti certificati Sardegna",
+          "Gift box Sardinia",
+          "Promozione territoriale",
+          "Corporate gifting",
+          "Turismo enogastronomico"
+        ]
+      }
+    ]
   }
 }

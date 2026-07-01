@@ -19,6 +19,10 @@ const content = {
 export default function TwoLionsDivisions({ lang }: SectionsProps) {
   const current = content[lang];
   const items = (current.items ?? []) as SectionItem[];
+  const divisionRoutes: Partial<Record<SectionItem["slug"], string>> = {
+    "publicity-advertising": "/identity-advertising",
+    "food-and-beverage": "/food-and-beverage",
+  };
 
   return (
     <section
@@ -31,7 +35,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
       <div className="pt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
         {items.map((item) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
-          const isIdentityAdvertising = item.slug === "publicity-advertising";
+          const divisionRoute = divisionRoutes[item.slug];
 
           return (
             <div
@@ -83,15 +87,15 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                   {item.label}
                 </h3>
 
-                {isIdentityAdvertising ? (
+                {divisionRoute ? (
                   <Link
-                    href="/identity-advertising"
-                    className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-white hover:text-[color:var(--color-primary)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
+                    href={divisionRoute}
+                    className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
                   >
                     Explore Division
                   </Link>
                 ) : (
-                  <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-white hover:text-[color:var(--color-primary)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
+                    <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
                     explore division
                   </span>
                 )}

@@ -62,7 +62,7 @@ export default function ContinuousLoopCarousel({
             {item.content ? (
               item.content
             ) : (
-              <div className="w-full">
+              <div className="flex h-full w-full flex-col">
                 {item.title ? (
                   <h4
                     className={joinClasses(

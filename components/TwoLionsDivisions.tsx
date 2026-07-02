@@ -90,12 +90,12 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                 {divisionRoute ? (
                   <Link
                     href={divisionRoute}
-                    className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
+                    className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)]/80 hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs"
                   >
                     Explore Division
                   </Link>
                 ) : (
-                    <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
+                    <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)]/ hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
                     explore division
                   </span>
                 )}

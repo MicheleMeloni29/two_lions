@@ -45,7 +45,7 @@ export default function IntroText({ lang }: IntroTextProps) {
         <div className="space-y-12 md:space-y-14 xl:space-y-16">
           <div className="space-y-7 md:space-y-9 xl:space-y-10">
             <div className="px-5 md:px-7 xl:px-8">
-              <h3 className="pt-10 text-[9px] font-extrabold uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+              <h3 className="pt-10 text-[9px] font-extrabold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                 {content.listTitle}
               </h3>
             </div>
@@ -54,8 +54,8 @@ export default function IntroText({ lang }: IntroTextProps) {
               items={activityItems}
               viewportClassName="relative left-1/2 w-screen -translate-x-1/2"
               trackClassName="gap-20 sm:gap-24 lg:gap-35"
-              cardClassName="min-h-[8.75rem] w-[11.25rem] ] px-3 py-3 sm:min-h-[9.5rem] sm:w-[12.75rem] sm:px-4 sm:py-4 md:min-h-[10.5rem] md:w-[15rem] md:px-5 lg:min-h-[11rem] lg:w-[16.5rem] xl:w-[18rem]"
-              descriptionClassName="text-[color:var(--color-secondary)]"
+              cardClassName="h-[8.75rem] w-[11.25rem] px-3 py-3 sm:h-[9.5rem] sm:w-[12.75rem] sm:px-4 sm:py-4 md:h-[10.5rem] md:w-[15rem] md:px-5 lg:h-[11rem] lg:w-[16.5rem] xl:w-[18rem]"
+              descriptionClassName="flex h-full items-center justify-center bg-[color:var(--color-secondary)] border-2 rounded-full border-[color:var(--color-thirdary)] px-4 py-4 text-center text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7"
             />
           </div>
 

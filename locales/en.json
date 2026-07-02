@@ -31,8 +31,8 @@
   },
   "introText": {
     "_comment": "Homepage IntroText section. listTitle/listItems control the horizontal loop carousel. divisionsTitle/divisions and geographicFocusTitle/geographicFocus control the cards below it.",
-    "eyebrow": "Holding company incorporated in Delaware",
-    "title": "Two Lions International Corporation",
+    "eyebrow": "Two Lions International Corporation",
+    "title": "Holding company incorporated in Delaware",
     "listTitle": "Core activities",
     "listItems": [
       "Strategic investments and business development.",
@@ -90,7 +90,24 @@
         "slug": "sport",
         "label": "Sport",
         "image": "TwoLions_Sport.png"
+      },
+      {
+        "slug": "two_lions_media",
+        "label": "Media e TV",
+        "image": "Media&TV.jpeg"
+      },
+      {
+        "slug": "two_lions_event",
+        "label": "Event",
+        "image": "TwoLions_Event.jpeg"
+      },
+      {
+        "slug": "two_lions_merch",
+        "label": "Merch",
+        "image": ""
       }
+
+
     ]
   },
   "investmentSection": {

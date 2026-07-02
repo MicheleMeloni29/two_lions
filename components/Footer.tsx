@@ -47,7 +47,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-6 text-[12px] leading-6 text-white md:mt-7 md:text-[13px] xl:max-w-[28rem]">
-              Copyright 2026 Two Lions International Corporation. All rights reserved.
+              Copyright 2026 Michele Meloni. All rights reserved.
             </p>
           </div>
         </div>

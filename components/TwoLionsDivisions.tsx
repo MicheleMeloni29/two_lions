@@ -22,6 +22,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
   const divisionRoutes: Partial<Record<SectionItem["slug"], string>> = {
     "publicity-advertising": "/identity-advertising",
     "food-and-beverage": "/food-and-beverage",
+    "luxury-sardabooking": "/luxury-sardabooking",
   };
 
   return (
@@ -95,7 +96,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
                     Explore Division
                   </Link>
                 ) : (
-                    <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)]/ hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
+                  <span className="inline-flex items-center border border-[color:var(--color-thirdary)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition hover:bg-[color:var(--color-thirdary)]/ hover:text-[color:var(--color-white)] hover:border-[color:var(--color-thirdary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 sm:text-xs">
                     explore division
                   </span>
                 )}

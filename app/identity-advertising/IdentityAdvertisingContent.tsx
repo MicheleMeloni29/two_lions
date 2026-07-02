@@ -13,9 +13,8 @@ const pageContent = {
   en: enMessages.identityAdvertisingPage,
 } as const;
 
-// Main image assignments for this page. Every asset below is used once in the layout.
-const heroImage = "/identityAdversiting/663d583f-8c62-4eab-844a-067181221f07.png";
-const supportImage = "/identityAdversiting/e3660c24-e862-46bd-a220-316657ab4d21.png";
+// Main image assignments for this page. The hero uses the same division asset shown on the homepage.
+const divisionBackgroundImage = "/SectionsBackgrounds/PublicityAdversiting.jpeg";
 const frameworkImage = "/identityAdversiting/ba7df3f4-ffee-44d6-8ffa-9ab08dc748ef.png";
 const sectionImages = [
   "/identityAdversiting/8e3e2b6a-f721-4cd2-aaac-a644d0d116a6.png",
@@ -100,13 +99,21 @@ export default function IdentityAdvertisingContent() {
 
       {/* Hero section:
           back link, main title/mission, positioning panel and top editorial images */}
-      <section className="relative overflow-hidden bg-white px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent md:h-40" />
+      <section className="relative overflow-hidden bg-[color:var(--color-primary)] px-4 pb-18 pt-28 text-white sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36">
+        <Image
+          src={divisionBackgroundImage}
+          alt={`${content.title} background`}
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[color:var(--color-primary)]/68" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-primary)]/35 via-[color:var(--color-primary)]/20 to-transparent md:h-40" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:gap-12 xl:gap-14">
           <Link
             href="/"
-            className="font-bold inline-flex w-fit items-center gap-3 border border-[color:var(--color-secondary)]/14 bg-white px-4 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
+            className="font-bold inline-flex w-fit items-center gap-3 border border-white/16 bg-white/12 px-4 py-3 text-[11px] uppercase tracking-[0.22em] text-white backdrop-blur-[4px] transition hover:bg-white hover:text-[color:var(--color-primary)] sm:text-[12px]"
           >
             <span aria-hidden="true">&larr;</span>
             <span>{content.backToHome}</span>
@@ -115,8 +122,8 @@ export default function IdentityAdvertisingContent() {
           {/* Top two-column composition:
               left = intro copy + positioning card
               right = hero/support imagery */}
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-stretch xl:gap-8">
-            <div className="space-y-8 md:space-y-10">
+          <div className="max-w-4xl">
+            <div className="space-y-8 border border-white/14 bg-white/10 p-6 backdrop-blur-[6px] md:space-y-10 md:p-8 xl:p-10">
               {/* Intro copy comes from identityAdvertisingPage in the locale JSON files. */}
               <div className="space-y-5 md:space-y-6">
                 <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
@@ -127,14 +134,14 @@ export default function IdentityAdvertisingContent() {
                   {content.title}
                 </h1>
 
-                <p className="max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/80 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+                <p className="max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/80 pl-4 text-[13px] leading-6 text-white/88 sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
                   {content.mission}
                 </p>
               </div>
 
               {/* Positioning card. Edit positioningItems in the locale JSON files. */}
               <div className="grid gap-5">
-                <div className="flex flex-col justify-between bg-[color:var(--color-primary)] px-5 py-6 text-white md:px-6 md:py-7">
+                <div className="flex flex-col justify-between border border-white/14 bg-[color:var(--color-primary)]/72 px-5 py-6 text-white md:px-6 md:py-7">
                   <div>
                     <div className="mb-5 flex items-center justify-between gap-4">
                       <h2 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
@@ -156,40 +163,6 @@ export default function IdentityAdvertisingContent() {
                     Identity system for urban, mobility and premium environments.
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Main hero imagery block. Adjust image heights or overlays here. */}
-            <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_11rem] xl:grid-cols-1 xl:grid-rows-[minmax(0,1fr)_15rem]">
-              <div className="group relative min-h-[24rem] overflow-hidden bg-[color:var(--color-primary)]">
-                <Image
-                  src={heroImage}
-                  alt={`${content.title} hero visual`}
-                  fill
-                  priority
-                  className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[color:var(--color-primary)] via-[color:var(--color-primary)]/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
-                  <div className="max-w-[18rem] border border-[color:var(--color-white)]/14 bg-[color:var(--color-primary)]/72 p-4 backdrop-blur-[3px] md:max-w-[20rem] md:p-5">
-                    <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                      {content.visualSpace}
-                    </p>
-                    <p className="mt-3 text-[13px] leading-6 text-white sm:text-sm md:text-[15px] md:leading-7">
-                      {content.programLead}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative hidden overflow-hidden bg-[color:var(--color-secondary)] md:block xl:min-h-[15rem]">
-                <Image
-                  src={supportImage}
-                  alt={`${content.title} support visual`}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-[color:var(--color-primary)]/34" />
               </div>
             </div>
           </div>

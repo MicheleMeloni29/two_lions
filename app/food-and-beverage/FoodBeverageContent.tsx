@@ -13,6 +13,8 @@ const pageContent = {
   en: enMessages.foodBeveragePage,
 } as const;
 
+const divisionBackgroundImage = "/SectionsBackgrounds/Fodd&Beverage.png";
+
 // Each asset is used once across the operating-area cards.
 const sectionImages = [
   "/Food&Beverage/cibo.png",
@@ -110,20 +112,28 @@ export default function FoodBeverageContent() {
 
       {/* Hero section:
           back link, division intro and strategic overview blocks */}
-      <section className="relative overflow-hidden bg-white px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent md:h-40" />
+      <section className="relative overflow-hidden bg-[color:var(--color-primary)] px-4 pb-18 pt-28 text-white sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36">
+        <Image
+          src={divisionBackgroundImage}
+          alt={`${content.title} background`}
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[color:var(--color-primary)]/68" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-primary)]/35 via-[color:var(--color-primary)]/20 to-transparent md:h-40" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:gap-12 xl:gap-14">
           <Link
             href="/"
-            className="inline-flex w-fit items-center gap-3 border border-[color:var(--color-secondary)]/14 bg-white px-4 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
+            className="inline-flex w-fit items-center gap-3 border border-white/16 bg-white/12 px-4 py-3 text-[11px] uppercase tracking-[0.22em] text-white backdrop-blur-[4px] transition hover:bg-white hover:text-[color:var(--color-primary)] sm:text-[12px]"
           >
             <span aria-hidden="true">&larr;</span>
             <span>{content.backToHome}</span>
           </Link>
 
           <div className="max-w-5xl">
-            <div className="space-y-8 md:space-y-10">
+            <div className="space-y-8 border border-white/14 bg-white/10 p-6 backdrop-blur-[6px] md:space-y-10 md:p-8 xl:p-10">
               {/* Intro copy comes from foodBeveragePage in the locale JSON files. */}
               <div className="space-y-5 md:space-y-6">
                 <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
@@ -134,7 +144,7 @@ export default function FoodBeverageContent() {
                   {content.title}
                 </h1>
 
-                <p className="max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/80 pl-4 text-[14px] leading-7 text-[color:var(--color-secondary)] sm:text-[15px] md:pl-5 md:text-[17px] md:leading-8">
+                <p className="max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/80 pl-4 text-[14px] leading-7 text-white/88 sm:text-[15px] md:pl-5 md:text-[17px] md:leading-8">
                   {content.mission}
                 </p>
               </div>
@@ -143,19 +153,19 @@ export default function FoodBeverageContent() {
                 {snapshotItems.map((item) => (
                   <div
                     key={item.label}
-                    className="border border-[color:var(--color-primary)]/10 bg-[color:var(--color-secondary)]/6 px-4 py-4"
+                    className="border border-white/14 bg-white/12 px-4 py-4 backdrop-blur-[4px]"
                   >
-                    <p className="font-change-serif-bold text-[1.8rem] leading-none text-[color:var(--color-primary)] md:text-[2.2rem]">
+                    <p className="font-change-serif-bold text-[1.8rem] leading-none text-white md:text-[2.2rem]">
                       {item.value}
                     </p>
-                    <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[11px]">
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-white/80 sm:text-[11px]">
                       {item.label}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-col justify-between bg-[color:var(--color-primary)] px-5 py-6 text-white md:px-6 md:py-7">
+              <div className="flex flex-col justify-between border border-white/14 bg-[color:var(--color-primary)]/72 px-5 py-6 text-white md:px-6 md:py-7">
                 <div>
                   <div className="mb-5 flex items-center justify-between gap-4">
                     <h2 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">

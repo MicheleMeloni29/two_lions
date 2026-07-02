@@ -106,8 +106,6 @@
         "label": "Merch",
         "image": ""
       }
-
-
     ]
   },
   "investmentSection": {
@@ -250,6 +248,128 @@
           "Two Lions TV",
           "Social media",
           "Sponsor reporting"
+        ]
+      }
+    ],
+    "sectionImagePlaceholder": "Space for an image dedicated to"
+  },
+  "luxurySardabookingPage": {
+    "_comment": "Luxury Sardabooking page. sections is the main content grid; each section has id, title, items and optional note.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Luxury Sardabooking",
+    "mission": "Luxury Sardabooking brings together luxury villas, hotels, experiences, events, real estate, concierge and corporate travel services in Sardinia.",
+    "operatingAreas": "Operating Areas",
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Premium hospitality and travel experiences for high-end clientele.",
+      "Integrated villas, hotels, events, real estate, concierge and travel services.",
+      "A Sardinian platform for curated incoming, corporate and VIP journeys."
+    ],
+    "positioningFooter": "Luxury travel, hospitality and lifestyle services in Sardinia.",
+    "visualSpace": "Division Overview",
+    "programEyebrow": "Two Lions Luxury Sardabooking Program",
+    "programTitle": "Luxury Hospitality, Experiences and Corporate Travel",
+    "programLead": "The Sardabooking platform gathers luxury villas, high-end hotels, premium experiences and corporate services in a single Sardinian hospitality ecosystem.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Luxury Sardabooking creates a premium hospitality system that connects villas, hotels, resorts, experiences and concierge services.",
+      "The division supports luxury travel and corporate incoming with a focus on Sardinian destination value and exclusive services."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Exclusive villa management and luxury resort partnerships.",
+      "Curated experiences, events and VIP concierge services.",
+      "Real estate, incoming travel and corporate hospitality offerings."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "SardaBooking Villas",
+        "items": [
+          "Ville di lusso",
+          "Ville con piscina",
+          "Residenze esclusive",
+          "Dimore storiche",
+          "Tenute private"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "SardaBooking Hotels & Resorts",
+        "items": [
+          "Hotel 4 e 5 stelle",
+          "Resort",
+          "Boutique hotel",
+          "Relais",
+          "Resort wellness"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "SardaBooking Experiences",
+        "items": [
+          "Escursioni yacht",
+          "Tour in elicottero",
+          "Golf",
+          "Wine experience",
+          "Tour archeologici",
+          "Esperienze enogastronomiche"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "SardaBooking Events",
+        "items": [
+          "Matrimoni",
+          "Eventi aziendali",
+          "Incentive",
+          "Convention",
+          "Eventi sportivi",
+          "Eventi luxury"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "SardaBooking Real Estate",
+        "items": [
+          "Vendita ville",
+          "Seconda casa",
+          "Investimenti immobiliari",
+          "Property scouting",
+          "Relocation"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "SardaBooking Concierge",
+        "items": [
+          "Transfer privati",
+          "Noleggio auto luxury",
+          "Yacht charter",
+          "Prenotazioni esclusive",
+          "Assistenza H24"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "SardaBooking Incoming & Travel",
+        "items": [
+          "Pacchetti vacanza",
+          "Incoming Sardegna",
+          "Tour operator",
+          "Crociere",
+          "Gruppi internazionali"
+        ]
+      },
+      {
+        "id": "08",
+        "title": "SardaBooking Corporate",
+        "items": [
+          "Business travel",
+          "Meeting & incentive",
+          "Hospitality aziendale",
+          "Accoglienza delegazioni"
         ]
       }
     ],

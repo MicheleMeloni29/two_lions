@@ -238,6 +238,128 @@
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   },
+  "luxurySardabookingPage": {
+    "_comment": "Pagina Luxury Sardabooking. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Luxury Sardabooking",
+    "mission": "Luxury Sardabooking unisce ville, hotel, esperienze, eventi, real estate, concierge e servizi corporate in Sardegna.",
+    "operatingAreas": "Aree operative",
+    "positioning": "Posizionamento",
+    "positioningItems": [
+      "Esperienze premium e ospitalità per una clientela di alto livello.",
+      "Servizi integrati di ville, hotel, eventi, immobiliare, concierge e travel.",
+      "Una piattaforma sarda per incoming, corporate e ospitalità VIP."
+    ],
+    "positioningFooter": "Viaggi di lusso, ospitalità e servizi lifestyle in Sardegna.",
+    "visualSpace": "Division Overview",
+    "programEyebrow": "Two Lions Luxury Sardabooking Program",
+    "programTitle": "Ville, Ospitalità, Esperienze e Corporate Travel",
+    "programLead": "La piattaforma Sardabooking riunisce ville di lusso, hotel premium, esperienze esclusive e servizi corporate in un unico ecosistema di ospitalità sardo.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Luxury Sardabooking realizza un sistema premium che collega ville, hotel, resort, esperienze e servizi concierge.",
+      "La divisione supporta il travel di lusso e l'incoming corporate con attenzione al valore territoriale della Sardegna e ai servizi esclusivi."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Gestione di ville di lusso e partnership con resort premium.",
+      "Esperienze curate, eventi e servizi concierge VIP.",
+      "Offerte immobiliari, incoming e ospitalità corporate."
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "SardaBooking Villas",
+        "items": [
+          "Ville di lusso",
+          "Ville con piscina",
+          "Residenze esclusive",
+          "Dimore storiche",
+          "Tenute private"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "SardaBooking Hotels & Resorts",
+        "items": [
+          "Hotel 4 e 5 stelle",
+          "Resort",
+          "Boutique hotel",
+          "Relais",
+          "Resort wellness"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "SardaBooking Experiences",
+        "items": [
+          "Escursioni yacht",
+          "Tour in elicottero",
+          "Golf",
+          "Wine experience",
+          "Tour archeologici",
+          "Esperienze enogastronomiche"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "SardaBooking Events",
+        "items": [
+          "Matrimoni",
+          "Eventi aziendali",
+          "Incentive",
+          "Convention",
+          "Eventi sportivi",
+          "Eventi luxury"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "SardaBooking Real Estate",
+        "items": [
+          "Vendita ville",
+          "Seconda casa",
+          "Investimenti immobiliari",
+          "Property scouting",
+          "Relocation"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "SardaBooking Concierge",
+        "items": [
+          "Transfer privati",
+          "Noleggio auto luxury",
+          "Yacht charter",
+          "Prenotazioni esclusive",
+          "Assistenza H24"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "SardaBooking Incoming & Travel",
+        "items": [
+          "Pacchetti vacanza",
+          "Incoming Sardegna",
+          "Tour operator",
+          "Crociere",
+          "Gruppi internazionali"
+        ]
+      },
+      {
+        "id": "08",
+        "title": "SardaBooking Corporate",
+        "items": [
+          "Business travel",
+          "Meeting & incentive",
+          "Hospitality aziendale",
+          "Accoglienza delegazioni"
+        ]
+      }
+    ],
+    "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
+  },
   "foodBeveragePage": {
     "_comment": "Pagina Food & Beverage. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",

@@ -67,9 +67,9 @@
         "image": "PublicityAdversiting.jpeg"
       },
       {
-        "slug": "food-and-beverage",
-        "label": "Food and Beverage",
-        "image": "Fodd&Beverage.png"
+        "slug": "smart-shelter-and-energy",
+        "label": "Smart Shelter & Energy",
+        "image": "Smart_Shelter&Energy.png"
       },
       {
         "slug": "luxury-sardabooking",
@@ -77,24 +77,24 @@
         "image": "LuxurySardabooking.png"
       },
       {
+        "slug": "food-and-beverage",
+        "label": "Food and Beverage",
+        "image": "Fodd&Beverage.png"
+      },
+      {
+        "slug": "two_lions_merch",
+        "label": "Merch",
+        "image": "TwoLions_Merch.png"
+      },
+      {
         "slug": "parfum",
         "label": "Parfum",
         "image": "Parfum.png"
       },
       {
-        "slug": "smart-shelter-and-energy",
-        "label": "Smart Shelter & Energy",
-        "image": "Smart_Shelter&Energy.png"
-      },
-      {
         "slug": "sport",
         "label": "Sport",
-        "image": "TwoLions_Sport.png"
-      },
-      {
-        "slug": "two_lions_media",
-        "label": "Media e TV",
-        "image": "Media&TV.jpeg"
+        "image": "TwoLions_Sport.jpeg"
       },
       {
         "slug": "two_lions_event",
@@ -102,9 +102,9 @@
         "image": "TwoLions_Event.jpeg"
       },
       {
-        "slug": "two_lions_merch",
-        "label": "Merch",
-        "image": ""
+        "slug": "two_lions_media",
+        "label": "Media e TV",
+        "image": "Media&TV.jpeg"
       }
     ]
   },
@@ -174,6 +174,7 @@
       {
         "id": "01",
         "title": "Identity Urban",
+        "image": "/identityAdversiting/Identity_urban.jpeg",
         "items": [
           "Identity bus shelters",
           "Climate-controlled smart stops",
@@ -186,6 +187,7 @@
       {
         "id": "02",
         "title": "Identity Mobility",
+        "image": "/identityAdversiting/Identity_Mobility.png",
         "items": [
           "Photovoltaic shelters",
           "EV charging stations",
@@ -198,6 +200,7 @@
       {
         "id": "03",
         "title": "Identity Sport",
+        "image": "/identityAdversiting/Identity_Sport.jpeg",
         "items": [
           "Named sports fields",
           "Identity grandstands",
@@ -209,6 +212,7 @@
       {
         "id": "04",
         "title": "Identity Territory",
+        "image": "/identityAdversiting/Identity_Territory.png",
         "items": [
           "\"Adopt a square\"",
           "\"Adopt a beach\"",
@@ -220,6 +224,7 @@
       {
         "id": "05",
         "title": "Identity Corporate",
+        "image": "/identityAdversiting/Identity_Corporate.png",
         "items": [
           "Corporate headquarters",
           "Monumental receptions",
@@ -231,6 +236,7 @@
       {
         "id": "06",
         "title": "Identity Premium",
+        "image": "/identityAdversiting/Identity_Premium.png",
         "items": [
           "Airports",
           "Tourist ports",
@@ -242,6 +248,7 @@
       {
         "id": "07",
         "title": "Identity Media",
+        "image": "/identityAdversiting/Identity_Media.png",
         "items": [
           "Video productions",
           "Corporate storytelling",

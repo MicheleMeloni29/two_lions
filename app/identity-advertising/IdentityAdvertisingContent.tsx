@@ -15,16 +15,6 @@ const pageContent = {
 
 // Main image assignments for this page. The hero uses the same division asset shown on the homepage.
 const divisionBackgroundImage = "/SectionsBackgrounds/PublicityAdversiting.jpeg";
-const frameworkImage = "/identityAdversiting/ba7df3f4-ffee-44d6-8ffa-9ab08dc748ef.png";
-const sectionImages = [
-  "/identityAdversiting/8e3e2b6a-f721-4cd2-aaac-a644d0d116a6.png",
-  "/identityAdversiting/9a577345-32b6-4e57-a85c-aa0819ce49e0.png",
-  "/identityAdversiting/fe9e0a33-eb6a-4d99-9cb6-48e7d65acb2b.png",
-  "/identityAdversiting/Smalt_Selter&Energy.png",
-  "/identityAdversiting/c544457c-673d-4464-97b5-430939087f18.png",
-  "/identityAdversiting/e1cc5b4d-2ffb-42c7-826e-fceeb28f11a0.png",
-  frameworkImage,
-] as const;
 
 const sectionThemes = [
   {
@@ -250,7 +240,6 @@ export default function IdentityAdvertisingContent() {
               {content.sections.map((section, index) => {
                 // Theme rotation and per-card image choice for the operating-area cards.
                 const theme = sectionThemes[index % sectionThemes.length];
-                const sectionImage = sectionImages[index];
                 const isLastCard = index === content.sections.length - 1;
                 const centerLastCardOnTablet = isLastCard && content.sections.length % 2 === 1;
                 const centerLastCardOnDesktop = isLastCard && content.sections.length % 3 === 1;
@@ -271,7 +260,7 @@ export default function IdentityAdvertisingContent() {
                   >
                     <div className="relative min-h-[14rem]">
                       <Image
-                        src={sectionImage}
+                        src={section.image}
                         alt={`${section.title} visual`}
                         fill
                         className="object-cover"

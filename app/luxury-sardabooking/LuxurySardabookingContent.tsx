@@ -131,7 +131,7 @@ export default function LuxurySardabookingContent() {
                     className="object-cover"
                 />
                 <div className="absolute inset-0 bg-[color:var(--color-primary)]/68" />
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-primary)]/35 via-[color:var(--color-primary)]/20 to-transparent md:h-40" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-trasparent via-[color:var(--color-primary)]/20 to-[color:var(--color-primary)]/35 md:h-40" />
 
                 <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:gap-12 xl:gap-14">
                     <Link
@@ -187,8 +187,8 @@ export default function LuxurySardabookingContent() {
                 </div>
             </section>
 
-            <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-14 xl:py-24">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+            <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-t from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-14 xl:py-24">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
 
                 <div className="relative mx-auto flex max-w-7xl flex-col gap-10 md:gap-12 xl:gap-14">
                     <div className="max-w-5xl space-y-5 md:space-y-6">
@@ -263,6 +263,9 @@ export default function LuxurySardabookingContent() {
                                 const isLastCard = index === content.sections.length - 1;
                                 const centerLastCardOnTablet = isLastCard && content.sections.length % 2 === 1;
                                 const centerLastCardOnDesktop = isLastCard && content.sections.length % 3 === 1;
+                                const centerLastTwoCardsOnDesktop =
+                                    content.sections.length % 3 === 2 &&
+                                    index >= content.sections.length - 2;
 
                                 return (
                                     <article
@@ -275,6 +278,9 @@ export default function LuxurySardabookingContent() {
                                                 : undefined,
                                             centerLastCardOnDesktop
                                                 ? "xl:col-[2/3] xl:max-w-none"
+                                                : undefined,
+                                            centerLastTwoCardsOnDesktop
+                                                ? "xl:translate-x-[calc(50%+0.625rem)]"
                                                 : undefined
                                         )}
                                     >

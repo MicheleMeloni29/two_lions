@@ -67,9 +67,9 @@
         "image": "PublicityAdversiting.jpeg"
       },
       {
-        "slug": "food-and-beverage",
-        "label": "Food and Beverage",
-        "image": "Fodd&Beverage.png"
+        "slug": "smart-shelter-and-energy",
+        "label": "Smart Shelter & Energy",
+        "image": "Smart_Shelter&Energy.png"
       },
       {
         "slug": "luxury-sardabooking",
@@ -77,19 +77,34 @@
         "image": "LuxurySardabooking.png"
       },
       {
+        "slug": "food-and-beverage",
+        "label": "Food and Beverage",
+        "image": "Fodd&Beverage.png"
+      },
+      {
+        "slug": "two_lions_merch",
+        "label": "Merch",
+        "image": "TwoLions_Merch.png"
+      },
+      {
         "slug": "parfum",
         "label": "Parfum",
         "image": "Parfum.png"
       },
       {
-        "slug": "smart-shelter-and-energy",
-        "label": "Smart Shelter & Energy",
-        "image": "Smart_Shelter&Energy.png"
-      },
-      {
         "slug": "sport",
         "label": "Sport",
-        "image": "TwoLions_Sport.png"
+        "image": "TwoLions_Sport.jpeg"
+      },
+      {
+        "slug": "two_lions_event",
+        "label": "Event",
+        "image": "TwoLions_Event.jpeg"
+      },
+      {
+        "slug": "two_lions_media",
+        "label": "Media e TV",
+        "image": "Media&TV.jpeg"
       }
     ]
   },
@@ -159,6 +174,7 @@
       {
         "id": "01",
         "title": "Identity Urban",
+        "image": "/identityAdversiting/Identity_urban.jpeg",
         "items": [
           "Pensiline autobus identitarie",
           "Fermate smart climatizzate",
@@ -171,6 +187,7 @@
       {
         "id": "02",
         "title": "Identity Mobility",
+        "image": "/identityAdversiting/Identity_Mobility.png",
         "items": [
           "Pensiline fotovoltaiche",
           "Colonnine di ricarica EV",
@@ -183,6 +200,7 @@
       {
         "id": "03",
         "title": "Identity Sport",
+        "image": "/identityAdversiting/Identity_Sport.jpeg",
         "items": [
           "Campi sportivi nominativi",
           "Tribune identitarie",
@@ -194,6 +212,7 @@
       {
         "id": "04",
         "title": "Identity Territory",
+        "image": "/identityAdversiting/Identity_Territory.png",
         "items": [
           "\"Adotta una piazza\"",
           "\"Adotta una spiaggia\"",
@@ -205,6 +224,7 @@
       {
         "id": "05",
         "title": "Identity Corporate",
+        "image": "/identityAdversiting/Identity_Corporate.png",
         "items": [
           "Sedi aziendali",
           "Reception monumentali",
@@ -216,6 +236,7 @@
       {
         "id": "06",
         "title": "Identity Premium",
+        "image": "/identityAdversiting/Identity_Premium.png",
         "items": [
           "Aeroporti",
           "Porti turistici",
@@ -227,6 +248,7 @@
       {
         "id": "07",
         "title": "Identity Media",
+        "image": "/identityAdversiting/Identity_Media.png",
         "items": [
           "Produzioni video",
           "Storytelling aziendale",

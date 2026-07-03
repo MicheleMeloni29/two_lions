@@ -23,8 +23,10 @@ export default function IntroText({ lang }: IntroTextProps) {
   return (
     <section
       id="intro-text"
-      className="relative overflow-hidden bg-white px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
+      className="relative overflow-hidden px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
     >
+      <div className="absolute inset-0 bg-[url('/IntroText_Background.jpeg')] bg-cover bg-center bg-no-repeat" />
+      <div className="absolute inset-0 bg-white/68" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent md:h-40" />
 
       <div className="relative mx-auto flex max-w-md flex-col gap-12 md:max-w-3xl md:gap-14 xl:max-w-7xl xl:gap-16">
@@ -59,7 +61,7 @@ export default function IntroText({ lang }: IntroTextProps) {
             />
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:gap-5">
+          <div className="grid gap-5 md:grid-cols-2 xl:gap-36">
             <div className="bg-primary px-5 py-6 text-white md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <h3 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">

@@ -121,7 +121,7 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
                 duration={26}
                 viewportClassName="w-full"
                 trackClassName="gap-20 sm:gap-26 lg:gap-28"
-                cardClassName="min-h-[15rem] w-[15.5rem]  px-4 py-5 sm:min-h-[16rem] sm:w-[17rem] sm:px-5 sm:py-6 md:min-h-[20rem] md:w-[18.5rem] md:px-6 lg:min-h-[18rem] lg:w-[20rem]"
+                cardClassName="min-h-[15rem] w-[15.5rem]  px-4 py-15 sm:min-h-[16rem] sm:w-[17rem] sm:px-5 sm:py-6 md:min-h-[20rem] md:w-[18.5rem] md:px-6 lg:min-h-[18rem] lg:w-[20rem]"
                 titleClassName="text-[color:var(--color-thirdary)]"
                 descriptionClassName="text-secondary"
               />

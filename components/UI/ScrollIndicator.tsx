@@ -21,7 +21,7 @@ export default function ScrollIndicator({
         text={label}
         speed={2.1}
         spread={135}
-        delay={0.4}
+        delay={1.8}
         className="font-change-serif-bold text-[8px] uppercase tracking-[0.18em] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm"
         color="var(--color-thirdary)"
         shineColor="var(--color-white)"

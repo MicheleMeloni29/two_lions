@@ -505,5 +505,191 @@
         ]
       }
     ]
+  },
+  "smartShelterEnergyPage": {
+    "_comment": "Pagina Smart Shelter & Energy. sections e la griglia contenuti principale; ogni sezione ha id, title, description, items e nota opzionale.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Smart Shelter & Energy",
+    "mission": "Two Lions Smart Shelter & Energy sviluppa infrastrutture intelligenti che uniscono attesa, accoglienza, energia, mobilita sostenibile e identita urbana in un unico sistema scalabile.",
+    "snapshot": {
+      "divisionsLabel": "Divisioni",
+      "subdivisionsLabel": "Sottodivisioni",
+      "keyPlatformsLabel": "Piattaforme chiave",
+      "keyPlatformsValue": "Shelter / Energy / City"
+    },
+    "operatingAreas": "Aree operative",
+    "positioning": "Posizionamento",
+    "positioningItems": [
+      "Infrastrutture intelligenti per citta, territori, mobilita e spazi pubblici.",
+      "Integrazione tra shelter, fotovoltaico, e-mobility, comfort climatico e servizi digitali.",
+      "Approccio industriale che collega progetto, costruzione, branding, gestione energetica e manutenzione."
+    ],
+    "positioningFooter": "Shelter intelligenti, infrastrutture energetiche e servizi urbani in una piattaforma unica.",
+    "programEyebrow": "Two Lions Smart Shelter & Energy Program",
+    "programTitle": "Infrastrutture intelligenti, energia urbana e servizi di nuova generazione",
+    "programLead": "La divisione costruisce un ecosistema che connette shelter smart, rinnovabili, e-mobility, smart city, comfort climatico, arredo urbano e infrastrutture identitarie.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Smart Shelter & Energy progetta spazi di attesa e accoglienza evoluti in cui utilita pubblica, comfort, energia e comunicazione convivono in un asset permanente.",
+      "L'architettura operativa consente di sviluppare programmi modulari per Comuni, aeroporti, porti, operatori della mobilita, waterfront, parchi e hub urbani ad alta frequentazione."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Shelter smart e climatizzati per mobilita, turismo e spazi pubblici.",
+      "Fotovoltaico, accumulo, microgrid e comunita energetiche.",
+      "Ricarica EV, micromobility station e hub multimodali.",
+      "Comfort climatico, monitoraggio ambientale e servizi digitali integrati."
+    ],
+    "transformation": {
+      "eyebrow": "Prima / Dopo",
+      "title": "Una strada ordinaria diventa infrastruttura urbana attiva",
+      "lead": "Il confronto mostra il passaggio da uno spazio stradale anonimo e passivo a un sistema attrezzato con pensiline intelligenti, comfort, identita visiva e servizi per la mobilita contemporanea.",
+      "beforeLabel": "Prima",
+      "beforeTitle": "Contesto attuale",
+      "beforeDescription": "Una strada senza attrezzature dedicate, con tempi di attesa esposti, bassa qualita percepita e nessun elemento capace di generare servizio, protezione o riconoscibilita urbana.",
+      "beforeImage": "/SmartSheleter&Energy/Smart_Shelter_Before.jpeg",
+      "afterLabel": "Dopo",
+      "afterTitle": "Con smart shelter",
+      "afterDescription": "L'inserimento delle pensiline trasforma la strada in un nodo urbano piu leggibile, protetto e contemporaneo, capace di integrare attesa, informazione, energia e presenza identitaria.",
+      "afterImage": "/SmartSheleter&Energy/SmartShelter_After.jpeg"
+    },
+    "organigramTitle": "Organigramma sintetico",
+    "organigramItems": [
+      "Smart Shelter",
+      "Solar & Renewable Energy",
+      "E-Mobility Infrastructure",
+      "Smart City Solutions",
+      "Climate & Comfort Systems",
+      "Urban Furniture & Design",
+      "Advertising & Identity Infrastructure",
+      "Engineering & Construction",
+      "Operations & Maintenance"
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Smart Shelter",
+        "description": "Progettazione e realizzazione di infrastrutture intelligenti per l'attesa e l'accoglienza.",
+        "image": "/SmartSheleter&Energy/Smart_Shelter.jpeg",
+        "items": [
+          "Pensiline autobus smart",
+          "Pensiline climatizzate",
+          "Fermate interattive digitali",
+          "Shelter turistici",
+          "Shelter per parchi e aree pubbliche",
+          "Shelter aeroportuali e portuali"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Solar & Renewable Energy",
+        "description": "Produzione e gestione energetica.",
+        "image": "/SmartSheleter&Energy/Solar&Renewable_Energy.png",
+        "items": [
+          "Coperture fotovoltaiche",
+          "Pensiline fotovoltaiche",
+          "Pavimentazioni fotovoltaiche carrabili",
+          "Sistemi di accumulo",
+          "Microgrid urbane",
+          "Comunita energetiche"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "E-Mobility Infrastructure",
+        "description": "Mobilita sostenibile.",
+        "image": "/SmartSheleter&Energy/E-Mobility_Infrastructure.png",
+        "items": [
+          "Colonnine di ricarica EV",
+          "Hub di ricarica rapida",
+          "Bike charging station",
+          "Micromobility station",
+          "Integrazione con partner come Sagelio"
+        ],
+        "note": "Il modulo unisce ricarica, energia e shelter in nodi di mobilita sostenibile ad alta visibilita urbana."
+      },
+      {
+        "id": "04",
+        "title": "Smart City Solutions",
+        "description": "Tecnologie per le citta intelligenti.",
+        "image": "/SmartSheleter&Energy/Smart_City_solutions.png",
+        "items": [
+          "Illuminazione intelligente",
+          "Sensori ambientali",
+          "Videosorveglianza urbana",
+          "Wi-Fi pubblico",
+          "Pannelli informativi digitali",
+          "Monitoraggio traffico"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Climate & Comfort Systems",
+        "description": "Benessere e protezione climatica.",
+        "image": "/SmartSheleter&Energy/Climate&Comfort_Systems.png",
+        "items": [
+          "Climatizzazione shelter",
+          "Purificazione aria",
+          "Sistemi ombreggianti",
+          "Recupero acqua piovana",
+          "Monitoraggio qualita dell'aria"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Urban Furniture & Design",
+        "description": "Arredo urbano di nuova generazione.",
+        "image": "/SmartSheleter&Energy/Urab_Forniture&Design.png",
+        "items": [
+          "Panchine smart",
+          "Tavoli smart",
+          "Fermate premium",
+          "Totem informativi",
+          "Pensiline pubblicitarie identitarie",
+          "Arredo per parchi e waterfront"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Advertising & Identity Infrastructure",
+        "description": "Il concetto di pubblicita identitaria applicato alle infrastrutture.",
+        "items": [
+          "Pensiline brandizzate",
+          "Fermate sponsorizzate",
+          "Naming rights urbani",
+          "Sponsorizzazioni pluriennali",
+          "Corporate urban branding",
+          "Comunicazione territoriale"
+        ],
+        "note": "Qui confluisce il modello di Identity Advertising gia sviluppato da Two Lions in una versione integrata con infrastrutture e servizi."
+      },
+      {
+        "id": "08",
+        "title": "Engineering & Construction",
+        "description": "Divisione tecnica.",
+        "items": [
+          "Progettazione civile",
+          "Progettazione impiantistica",
+          "Project management",
+          "Direzione lavori",
+          "Capitolati tecnici",
+          "Certificazioni"
+        ]
+      },
+      {
+        "id": "09",
+        "title": "Operations & Maintenance",
+        "description": "Gestione post-installazione.",
+        "items": [
+          "Manutenzione ordinaria",
+          "Manutenzione straordinaria",
+          "Telecontrollo",
+          "Assistenza remota",
+          "Contratti di service"
+        ],
+        "note": "La continuita operativa viene gestita con modelli di service, monitoraggio remoto e manutenzione programmata."
+      }
+    ]
   }
 }

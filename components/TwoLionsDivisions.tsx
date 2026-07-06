@@ -21,6 +21,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
   const items = (current.items ?? []) as SectionItem[];
   const divisionRoutes: Partial<Record<SectionItem["slug"], string>> = {
     "publicity-advertising": "/identity-advertising",
+    "smart-shelter-and-energy": "/smart-shelter-and-energy",
     "food-and-beverage": "/food-and-beverage",
     "luxury-sardabooking": "/luxury-sardabooking",
   };

@@ -505,5 +505,193 @@
         ]
       }
     ]
+  },
+
+  
+  "smartShelterEnergyPage": {
+    "_comment": "Smart Shelter & Energy page. sections is the main content grid; each section has id, title, description, items and optional note.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Smart Shelter & Energy",
+    "mission": "Two Lions Smart Shelter & Energy develops intelligent infrastructure that combines waiting areas, welcome spaces, energy, sustainable mobility and urban identity within one scalable platform.",
+    "snapshot": {
+      "divisionsLabel": "Divisions",
+      "subdivisionsLabel": "Subdivisions",
+      "keyPlatformsLabel": "Key platforms",
+      "keyPlatformsValue": "Shelter / Energy / City"
+    },
+    "operatingAreas": "Operating Areas",
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Intelligent infrastructure for cities, territories, mobility networks and public spaces.",
+      "Integration of shelters, solar systems, e-mobility, climate comfort and digital services.",
+      "An industrial approach connecting design, construction, branding, energy management and maintenance."
+    ],
+    "positioningFooter": "Smart shelter, energy infrastructure and urban services within one unified platform.",
+    "programEyebrow": "Two Lions Smart Shelter & Energy Program",
+    "programTitle": "Intelligent infrastructure, urban energy and next-generation public services",
+    "programLead": "The division builds an ecosystem that connects smart shelters, renewables, e-mobility, smart city systems, climate comfort, urban furniture and identity infrastructure.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Smart Shelter & Energy designs advanced waiting and welcome spaces where public utility, comfort, energy and communication coexist in a permanent asset.",
+      "The operating architecture supports modular programs for municipalities, airports, ports, mobility operators, waterfronts, parks and high-traffic urban hubs."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Smart and climate-controlled shelters for mobility, tourism and public spaces.",
+      "Solar systems, storage, microgrids and energy communities.",
+      "EV charging, micromobility stations and multimodal hubs.",
+      "Climate comfort, environmental monitoring and integrated digital services."
+    ],
+    "transformation": {
+      "eyebrow": "Before / After",
+      "title": "A standard street becomes active urban infrastructure",
+      "lead": "This comparison shows the shift from an anonymous and passive roadside condition to an equipped system with smart shelters, comfort, visual identity and services for contemporary mobility.",
+      "beforeLabel": "Before",
+      "beforeTitle": "Existing condition",
+      "beforeDescription": "A street without dedicated infrastructure, where waiting happens without protection, perceived quality is low and no element creates service, comfort or urban recognizability.",
+      "beforeImage": "/SmartSheleter&Energy/Smart_Shelter_Before.jpeg",
+      "afterLabel": "After",
+      "afterTitle": "Smart shelter system",
+      "afterDescription": "The addition of shelters turns the street into a clearer, safer and more contemporary urban node capable of integrating waiting, information, energy and identity presence.",
+      "afterImage": "/SmartSheleter&Energy/SmartShelter_After.jpeg"
+    },
+    "organigramTitle": "Condensed organization",
+    "organigramItems": [
+      "Smart Shelter",
+      "Solar & Renewable Energy",
+      "E-Mobility Infrastructure",
+      "Smart City Solutions",
+      "Climate & Comfort Systems",
+      "Urban Furniture & Design",
+      "Advertising & Identity Infrastructure",
+      "Engineering & Construction",
+      "Operations & Maintenance"
+    ],
+    "sections": [
+      {
+        "id": "01",
+        "title": "Smart Shelter",
+        "description": "Design and construction of intelligent infrastructure for waiting and welcoming environments.",
+        "image": "/SmartSheleter&Energy/Smart_Shelter.jpeg",
+        "items": [
+          "Smart bus shelters",
+          "Climate-controlled shelters",
+          "Interactive digital stops",
+          "Tourist shelters",
+          "Shelters for parks and public areas",
+          "Airport and port shelters"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Solar & Renewable Energy",
+        "description": "Energy generation and management.",
+        "image": "/SmartSheleter&Energy/Solar&Renewable_Energy.png",
+        "items": [
+          "Photovoltaic canopies",
+          "Solar shelters",
+          "Driveable photovoltaic paving",
+          "Energy storage systems",
+          "Urban microgrids",
+          "Energy communities"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "E-Mobility Infrastructure",
+        "description": "Sustainable mobility.",
+        "image": "/SmartSheleter&Energy/E-Mobility_Infrastructure.png",
+        "items": [
+          "EV charging stations",
+          "Fast-charging hubs",
+          "Bike charging stations",
+          "Micromobility stations",
+          "Integration with partners such as Sagelio"
+        ],
+        "note": "This module combines charging, energy and shelter infrastructure into highly visible sustainable mobility nodes."
+      },
+      {
+        "id": "04",
+        "title": "Smart City Solutions",
+        "description": "Technology for intelligent cities.",
+        "image": "/SmartSheleter&Energy/Smart_City_solutions.png",
+        "items": [
+          "Smart lighting",
+          "Environmental sensors",
+          "Urban video surveillance",
+          "Public Wi-Fi",
+          "Digital information panels",
+          "Traffic monitoring"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Climate & Comfort Systems",
+        "description": "Wellbeing and climate protection.",
+        "image": "/SmartSheleter&Energy/Climate&Comfort_Systems.png",
+        "items": [
+          "Shelter climate control",
+          "Air purification",
+          "Shading systems",
+          "Rainwater recovery",
+          "Air quality monitoring"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Urban Furniture & Design",
+        "description": "Next-generation urban furniture.",
+        "image": "/SmartSheleter&Energy/Urab_Forniture&Design.png",
+        "items": [
+          "Smart benches",
+          "Smart tables",
+          "Premium stops",
+          "Information totems",
+          "Identity advertising shelters",
+          "Furniture for parks and waterfronts"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Advertising & Identity Infrastructure",
+        "description": "The identity advertising concept applied to infrastructure.",
+        "items": [
+          "Branded shelters",
+          "Sponsored stops",
+          "Urban naming rights",
+          "Multi-year sponsorships",
+          "Corporate urban branding",
+          "Territorial communication"
+        ],
+        "note": "This area extends the Identity Advertising model into a fully integrated infrastructure and service platform."
+      },
+      {
+        "id": "08",
+        "title": "Engineering & Construction",
+        "description": "Technical division.",
+        "items": [
+          "Civil engineering design",
+          "Plant and systems engineering",
+          "Project management",
+          "Construction supervision",
+          "Technical specifications",
+          "Certifications"
+        ]
+      },
+      {
+        "id": "09",
+        "title": "Operations & Maintenance",
+        "description": "Post-installation management.",
+        "items": [
+          "Routine maintenance",
+          "Extraordinary maintenance",
+          "Remote monitoring",
+          "Remote assistance",
+          "Service contracts"
+        ],
+        "note": "Operational continuity is handled through service models, remote supervision and planned maintenance."
+      }
+    ]
   }
 }

@@ -141,7 +141,7 @@ export default function SmartShelterEnergyContent() {
         }
       />
 
-      <section className="relative overflow-hidden bg-[color:var(--color-primary)] px-4 pb-14 pt-24 text-white sm:px-5 sm:pb-16 sm:pt-26 md:px-8 md:pb-20 md:pt-30 xl:px-14 xl:pb-28 xl:pt-34">
+      <section className="relative overflow-hidden px-4 pb-14 pt-24 text-white sm:px-5 sm:pb-16 sm:pt-26 md:px-8 md:pb-20 md:pt-30 xl:px-14 xl:pb-28 xl:pt-34">
         <Image
           src={divisionBackgroundImage}
           alt={`${content.title} background`}
@@ -204,6 +204,7 @@ export default function SmartShelterEnergyContent() {
         </div>
       </section>
 
+      {/* mid-section */}
       <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-14 text-primary sm:px-5 sm:py-16 md:px-8 md:py-20 xl:px-14 xl:py-24">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
 
@@ -248,7 +249,7 @@ export default function SmartShelterEnergyContent() {
               </div>
             </div>
 
-            <aside className="overflow-hidden border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] shadow-[0_24px_60px_rgba(31,39,92,0.18)] md:px-6 md:py-7">
+            <aside className="overflow-hidden border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
                   {content.focus}
@@ -281,7 +282,7 @@ export default function SmartShelterEnergyContent() {
                 <h3 className="mt-4 font-change-serif-bold max-w-[14ch] text-[1.9rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.2rem] md:text-[2.7rem]">
                   {content.transformation.title}
                 </h3>
-                <p className="mt-5 max-w-xl pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+                <p className="mt-5 max-w-xl pl-4 text-[13px] leading-6 border-l-2 border-[color:var(--color-thirdary)]/65 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
                   {content.transformation.lead}
                 </p>
               </div>
@@ -302,14 +303,6 @@ export default function SmartShelterEnergyContent() {
                       </div>
                     </div>
                   </div>
-                  <div className="bg-white px-4 py-4 md:px-5">
-                    <h4 className="font-change-serif-bold text-[1.05rem] uppercase tracking-[0.05em] text-[color:var(--color-primary)] md:text-[1.15rem]">
-                      {content.transformation.beforeTitle}
-                    </h4>
-                    <p className="mt-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
-                      {content.transformation.beforeDescription}
-                    </p>
-                  </div>
                 </article>
 
                 <article className="bg-[color:var(--color-primary)]/3 p-3 md:p-4">
@@ -326,14 +319,6 @@ export default function SmartShelterEnergyContent() {
                         {content.transformation.afterLabel}
                       </div>
                     </div>
-                  </div>
-                  <div className="bg-white px-4 py-4 md:px-5">
-                    <h4 className="font-change-serif-bold text-[1.05rem] uppercase tracking-[0.05em] text-[color:var(--color-primary)] md:text-[1.15rem]">
-                      {content.transformation.afterTitle}
-                    </h4>
-                    <p className="mt-3 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
-                      {content.transformation.afterDescription}
-                    </p>
                   </div>
                 </article>
               </div>

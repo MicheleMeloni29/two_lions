@@ -86,7 +86,7 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
           </motion.div>
 
           {/* Second row: Highlights + Carousel */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-stretch md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start md:gap-6 lg:gap-8">
             {/* Highlights card */}
             <motion.aside
               initial="hidden"
@@ -94,9 +94,9 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
               viewport={{ once: true, amount: 0.25 }}
               variants={fadeUp}
               custom={0.16}
-              className="h-full border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 lg:px-8"
+              className="flex flex-col justify-center border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-5 text-[color:var(--color-white)] md:px-6 md:py-6 lg:px-8 lg:py-6"
             >
-              <div className="mb-5 flex items-center justify-between gap-4">
+              <div className="mb-3 flex items-center justify-between gap-4 md:mb-4">
                 <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
                   {current.highlightsTitle}
                 </p>
@@ -116,6 +116,14 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
             </motion.aside>
 
             {/* Carousel area */}
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={fadeUp}
+              custom={0.22}
+              className="flex w-full items-center justify-center"
+            >
               <ContinuousLoopCarousel
                 items={carouselItems}
                 duration={26}
@@ -125,7 +133,8 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
                 titleClassName="text-[color:var(--color-thirdary)]"
                 descriptionClassName="text-secondary"
               />
-            </div>
+            </motion.div>
+          </div>
           </div>
         </div>
     </section>

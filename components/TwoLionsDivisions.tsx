@@ -24,6 +24,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
     "smart-shelter-and-energy": "/smart-shelter-and-energy",
     "food-and-beverage": "/food-and-beverage",
     "luxury-sardabooking": "/luxury-sardabooking",
+    parfum: "/parfum",
   };
 
   return (

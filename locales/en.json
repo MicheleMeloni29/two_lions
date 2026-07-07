@@ -508,6 +508,151 @@
   },
 
   
+  "parfumPage": {
+    "_comment": "Parfum page. sections is the main content grid; each section has id, title, description, items and optional note.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Parfum",
+    "mission": "Two Lions Parfum turns fragrance into an identity symbol able to unite clubs, athletes, executives, supporters and sponsors through an object designed to last over time.",
+    "nfcLabel": "NFC",
+    "nfcMeaning": "Nobility Strength Courage",
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Identity fragrances designed for sports clubs, communities and commemorative collections.",
+      "Integration of physical product, emotional storytelling, heritage value and digital content.",
+      "A scalable format for sports organizations, sponsor companies, territories and special events."
+    ],
+    "positioningFooter": "Fragrance, belonging and collective memory within one experience.",
+    "conceptEyebrow": "The Concept",
+    "conceptTitle": "NFC The Essence of Belonging",
+    "conceptLead": "The idea is to turn fragrance into an emotional and distinctive symbol, where the act of purchase becomes an entry point into a recognizable community.",
+    "conceptQuote": "You do not wear a perfume. You wear your belonging.",
+    "conceptStatement": "The athlete, executive, supporter or club member is not simply buying a fragrance, but a lasting sign of their own community.",
+    "programEyebrow": "Two Lions Parfum Program",
+    "programTitle": "Club Identity, Heritage Collection and Digital Object",
+    "programLead": "The division imagines club-dedicated lines, limited celebratory editions and connected bottles that expand fragrance into a narrative, digital and collectible experience.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "Two Lions Parfum builds a platform where bottle design, club identity, numbering, packaging and digital activation work as one coordinated system.",
+      "The project can be applied to sports organizations, sponsors, territories, cities and special events, creating an identity object far stronger than simple sponsorship visibility."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "Club Line with dedicated essences for sports organizations and vertical communities.",
+      "Numbered limited editions with certificate of authenticity and celebratory packaging.",
+      "Premium NFC version with instant access to exclusive smartphone content.",
+      "A model that can support sports activities, events and social initiatives for the club."
+    ],
+    "visualsEyebrow": "Visual Space",
+    "visualsTitle": "Reserved Areas for Future Creative Assets",
+    "visualsLead": "The page already includes dedicated spaces for bottle shots, celebratory packs and narrative visuals that can be inserted as soon as they are available.",
+    "visualComingSoonLabel": "coming soon",
+    "visualPlaceholderLabel": "Visual placeholder",
+    "visualPlaceholders": [
+      {
+        "id": "01",
+        "title": "Club Bottle",
+        "caption": "Reserved space for the official bottle customized with club logo, team colors and progressive numbering."
+      },
+      {
+        "id": "02",
+        "title": "Limited Edition Pack",
+        "caption": "Reserved space for celebratory packaging, certificate of authenticity and premium edition details."
+      },
+      {
+        "id": "03",
+        "title": "NFC Experience",
+        "caption": "Reserved space for the digital touchpoint visual: smartphone, club story, video, sponsors and exclusive content."
+      }
+    ],
+    "launchEyebrow": "Immediate Application",
+    "launchTitle": "Italia Master 65 Breda 2026",
+    "launchLead": "A first official edition could launch as NFC Italia Master 65, with the payoff The Essence of Azzurro Pride and a visual system aligned with the world-championship journey, sports memory and national heritage.",
+    "launchItems": [
+      "Tricolor packaging",
+      "Italia Master logo",
+      "Two Lions Sport logo",
+      "Limited numbering",
+      "QR / NFC with world championship journey video"
+    ],
+    "launchFooter": "It could become the first official product in the Two Lions Sport Heritage Collection, linking athlete, supporter and sponsor to the team's story.",
+    "operatingAreas": "Operating Areas",
+    "sections": [
+      {
+        "id": "01",
+        "title": "Club Line",
+        "description": "Each organization can have its own exclusive and recognizable essence.",
+        "items": [
+          "Ferrini Hockey",
+          "Amsicora Hockey",
+          "Italian Master National Team",
+          "Two Lions Sport",
+          "Two Lions Cup Sardinia",
+          "Padel clubs, golf clubs and yacht clubs"
+        ],
+        "note": "The bottle can feature the club logo, team colors and the progressive number of the series."
+      },
+      {
+        "id": "02",
+        "title": "Limited Editions",
+        "description": "Each release can become a celebratory piece of sports history.",
+        "items": [
+          "Numbered series dedicated to teams, tournaments and anniversaries",
+          "Certificate of authenticity",
+          "Celebratory packaging",
+          "Collectible value for players, executives and supporters"
+        ],
+        "note": "The goal is to let people acquire a fragment of shared memory, not just a product."
+      },
+      {
+        "id": "03",
+        "title": "Premium NFC Version",
+        "description": "The bottle can integrate an NFC tag to open exclusive content with a simple gesture.",
+        "items": [
+          "Club history",
+          "Team photos",
+          "Celebratory videos",
+          "Sports results",
+          "Message from the president",
+          "Sponsor area"
+        ],
+        "note": "The fragrance also becomes a digital and collectible object with premium authentication and traceability."
+      },
+      {
+        "id": "04",
+        "title": "Economic Model",
+        "description": "The line is designed to be sustainable in production and useful in generating resources for the club.",
+        "items": [
+          "Limited-series production dedicated to the organization",
+          "Contained industrial cost",
+          "Direct sales to members, supporters, executives and community backers",
+          "Margin that can support away trips, youth development, events and social activities"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Fragrance Division",
+        "description": "The vision extends beyond sport into a structured three-line division.",
+        "items": [
+          "NFC Sport for sports organizations",
+          "NFC Corporate for companies and sponsors",
+          "NFC Heritage for territories, cities and events"
+        ],
+        "note": "Fragrance becomes a repeatable format across communities, business identity and territorial memory."
+      },
+      {
+        "id": "06",
+        "title": "Project Strength",
+        "description": "The concept delivers more value than simple brand exposure.",
+        "items": [
+          "An identity object that remains over time",
+          "Emotional connection between athlete, supporter and sponsor",
+          "A tool for belonging and recognition",
+          "A product able to tell the team's story"
+        ]
+      }
+    ]
+  },
   "smartShelterEnergyPage": {
     "_comment": "Smart Shelter & Energy page. sections is the main content grid; each section has id, title, description, items and optional note.",
     "backToHome": "Back to home",

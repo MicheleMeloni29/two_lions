@@ -173,63 +173,39 @@ export default function ParfumContent() {
                 </p>
               </div>
 
-              <div className="overflow-hidden border border-[color:var(--color-thirdary)]/28 bg-[linear-gradient(180deg,rgba(197,160,89,0.18),rgba(255,255,255,0.06))]">
-                <div className="grid gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-                  <div className="min-w-0 border-b border-white/12 px-4 py-5 sm:px-5 sm:py-6 lg:border-b-0 lg:border-r">
-                    <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                      {content.nfcLabel}
-                    </p>
-                    <p className="mt-4 font-change-serif-bold text-[clamp(2.6rem,16vw,5.2rem)] uppercase leading-[0.86] tracking-[0.02em] text-white">
-                      NFC
-                    </p>
-                    <p className="mt-3 max-w-[14ch] text-[13px] leading-6 text-white/88 break-words sm:text-sm md:text-[15px] md:leading-7">
-                      {content.conceptTitle}
-                    </p>
-                  </div>
+              <div className="pt-6">
+                <div className="grid gap-5">
 
-                  <div className="min-w-0 px-4 py-5 sm:px-5 sm:py-6">
-                    <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                      {content.nfcMeaning}
-                    </p>
-                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                      {nfcWords.map((word) => (
-                        <div
-                          key={word}
-                          className="min-w-0 border border-white/12 bg-white/10 px-4 py-4 backdrop-blur-[3px]"
-                        >
-                          <p className="font-change-serif-bold text-[1.15rem] uppercase leading-[1.02] tracking-[0.03em] text-white break-words sm:text-[1.25rem]">
-                            {word}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ul className="grid w-full gap-3 sm:grid-cols-3 sm:items-stretch">
+                    {nfcWords.map((word) => (
+                      <li
+                        key={word}
+                        className="flex min-h-[4.5rem] min-w-0 w-full items-center justify-center px-3 py-4 text-center"
+                      >
+                        <p className="w-full text-center font-change-serif-bold text-[1rem] uppercase leading-none tracking-[0.015em] whitespace-nowrap text-white sm:text-[1.1rem] md:text-[1.16rem]">
+                          {word}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              <div className="grid gap-4 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-                <div className="min-w-0 border border-white/14 bg-[color:var(--color-primary)]/74 px-4 py-5 sm:px-5 sm:py-6">
-                  <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                    {content.conceptEyebrow}
-                  </p>
-                  <p className="mt-3 text-[13px] leading-6 text-white/88 break-words sm:text-sm md:text-[15px] md:leading-7">
-                    {content.conceptLead}
-                  </p>
-                </div>
-
-                <div className="min-w-0 border border-white/14 bg-white/12 px-4 py-5 sm:px-5 sm:py-6">
-                  <p className="font-change-serif-bold text-[1.25rem] leading-[1.08] text-white break-words sm:text-[1.45rem] md:text-[1.65rem]">
-                    &quot;{content.conceptQuote}&quot;
-                  </p>
-                  <p className="mt-4 text-[13px] leading-6 text-white/88 break-words sm:text-sm md:text-[15px] md:leading-7">
-                    {content.conceptStatement}
-                  </p>
-                </div>
+              <div className="min-w-0 border border-white/14 bg-[color:var(--color-primary)]/74 px-4 py-5 text-white backdrop-blur-[4px] sm:px-5 sm:py-6 md:px-6 md:py-7">
+                <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                  {content.conceptEyebrow}
+                </p>
+                <p className="mt-3 text-[13px] leading-6 text-white/88 break-words sm:text-sm md:text-[15px] md:leading-7">
+                  {content.conceptLead}
+                </p>
+                <p className="mt-5 pt-5 font-change-serif-bold text-[1.25rem] leading-[1.08] text-white break-words sm:text-[1.45rem] md:text-[1.25rem]">
+                  &quot;{content.conceptQuote}&quot;
+                </p>
               </div>
             </div>
 
-            <div className="min-w-0 flex flex-col justify-between border border-white/14 bg-[color:var(--color-primary)]/78 px-4 py-5 text-white backdrop-blur-[4px] sm:px-5 sm:py-6 md:px-6 md:py-7">
-              <div>
+            <div className="min-w-0 xl:self-end">
+              <div className="min-w-0 border border-white/14 bg-[color:var(--color-primary)]/78 px-4 py-5 text-white backdrop-blur-[4px] sm:px-5 sm:py-6 md:px-6 md:py-7">
                 <div className="mb-5 flex items-center justify-between gap-4">
                   <h2 className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                     {content.positioning}
@@ -245,12 +221,12 @@ export default function ParfumContent() {
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="mt-8 space-y-5 border-t border-[color:var(--color-white)]/14 pt-5">
-                <p className="text-[11px] uppercase leading-5 tracking-[0.18em] text-[color:var(--color-thirdary)] break-words sm:text-[12px] sm:tracking-[0.24em]">
-                  {content.positioningFooter}
-                </p>
+                <div className="mt-6 border-t border-[color:var(--color-white)]/14 pt-5">
+                  <p className="text-[11px] uppercase leading-5 tracking-[0.18em] text-[color:var(--color-thirdary)] break-words sm:text-[12px] sm:tracking-[0.24em]">
+                    {content.positioningFooter}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

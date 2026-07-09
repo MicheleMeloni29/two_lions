@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import enMessages from "@/locales/en.json";
+import itMessages from "@/locales/it.json";
 
 function HeadquartersIcon() {
   return (
@@ -44,6 +46,33 @@ function LocationPinIcon() {
   );
 }
 
+type OfficeDataRowProps = {
+  label: string;
+  children: ReactNode;
+};
+
+function OfficeDataRow({ label, children }: OfficeDataRowProps) {
+  return (
+    <div className="grid gap-2 border-b border-[color:rgba(31,39,92,0.1)] pb-4 last:border-b-0 last:pb-0 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4">
+      <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
+        {label}
+      </p>
+      <div className="text-[13px] leading-6 text-primary sm:text-[14px] md:text-[15px] md:leading-7">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+type OfficesSectionProps = {
+  lang: "it" | "en";
+};
+
+const content = {
+  it: itMessages.officeSection,
+  en: enMessages.officeSection,
+} as const;
+
 type OfficeCardProps = {
   id: string;
   eyebrow: string;
@@ -51,72 +80,142 @@ type OfficeCardProps = {
   lines: string[];
   emphasis?: string;
   icon: ReactNode;
+  details?: ReactNode;
+  articleClassName?: string;
+  contentClassName?: string;
+  detailsClassName?: string;
 };
 
-function OfficeCard({ id, eyebrow, title, lines, emphasis, icon }: OfficeCardProps) {
+function OfficeCard({
+  id,
+  eyebrow,
+  title,
+  lines,
+  emphasis,
+  icon,
+  details,
+  articleClassName,
+  contentClassName,
+  detailsClassName,
+}: OfficeCardProps) {
   return (
     <article
       id={id}
-      className="px-5 py-8 text-center sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12 2xl:px-5 2xl:py-14"
+      className={`rounded-[2rem] px-5 py-8  sm:px-6 sm:py-9 md:px-7 md:py-10 xl:px-8 xl:py-12 ${articleClassName ?? ""}`}
     >
-      <div className="mx-auto flex max-w-[20rem] flex-col items-center">
-        <div className="flex justify-center">{icon}</div>
-        <h3 className="mt-4 font-change-serif-bold text-[1.35rem] leading-tight text-primary sm:text-[1.5rem] md:mt-5 md:text-[1.65rem] xl:text-[1.85rem]">
-          {title}
-        </h3>
-        <p className="mt-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-          {eyebrow}
-        </p>
-        <div className="mt-5 space-y-1 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:mt-6 md:text-[15px] md:leading-7">
-          {lines.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
-        </div>
-        {emphasis ? (
-          <p className="mt-5 font-semibold text-primary md:mt-6 md:text-[15px]">
-            {emphasis}
+      <div
+        className={`grid gap-8 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:gap-10 ${contentClassName ?? ""}`}
+      >
+        <div className="flex flex-col items-start">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[color:rgba(31,39,92,0.08)]">
+            {icon}
+          </div>
+          <p className="mt-5 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+            {eyebrow}
           </p>
-        ) : null}
+          <h3 className="mt-3 font-change-serif-bold text-[1.35rem] leading-tight text-primary sm:text-[1.5rem] md:text-[1.65rem] xl:text-[1.85rem]">
+            {title}
+          </h3>
+          {emphasis ? (
+            <p className="mt-6 border-l-2 border-[color:var(--color-thirdary)] pl-4 font-semibold text-primary md:text-[15px]">
+              {emphasis}
+            </p>
+          ) : null}
+        </div>
+
+        <div className="border-t border-[color:rgba(31,39,92,0.12)] pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+          {details ? (
+            <div
+              className={`w-full text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:text-[15px] md:leading-7 ${detailsClassName ?? ""}`}
+            >
+              {details}
+            </div>
+          ) : (
+            <div className="w-full space-y-2 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-[14px] md:text-[15px] md:leading-7">
+              {lines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </article>
   );
 }
 
-export default function OfficesSection() {
+export default function OfficesSection({ lang }: OfficesSectionProps) {
+  const current = content[lang];
+
   return (
     <section
       id="offices"
       className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-14 md:px-8 md:py-16 xl:px-14 xl:py-20"
     >
       <div className="absolute inset-0 bg-[url('/identityAdversiting/Identity_Corporate.png')] bg-cover bg-center bg-no-repeat" />
-      <div className="absolute inset-0 bg-white/88" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.74)_0%,rgba(255,255,255,0.78)_48%,rgba(31,39,92,0.12)_100%)]" />
+      <div className="absolute inset-0 bg-white/80" />
+      <div className="absolute inset-0" />
 
-      <div className="relative mx-auto grid max-w-6xl gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
-        <OfficeCard
-          id="office-delaware"
-          icon={<HeadquartersIcon />}
-          title="Corporate Headquarters"
-          eyebrow="Lewes, Delaware, USA"
-          lines={[
-            "16192 Coastal Highway",
-            "Lewes, DE 19958 USA",
-            "File Number: 10426498",
-            "(EIN) 37-2212324",
-          ]}
-        />
-        <OfficeCard
-          id="office-cagliari"
-          icon={<LocationPinIcon />}
-          title="Italian Operations"
-          eyebrow="Cagliari, Sardinia, IT"
-          lines={[
-            "Via Goffredo Mameli 96",
-            "Interno 14, Floor 7",
-            "Cagliari 09123",
-          ]}
-          emphasis="EU Strategic Hub"
-        />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="max-w-6xl xl:max-w-[82%]">
+          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+            {current.eyebrow}
+          </p>
+          <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] text-primary sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
+            {current.title}
+          </h2>
+          <p className="mt-7 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+            {current.lead}
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 lg:gap-10 xl:mt-14 xl:gap-12">
+          <OfficeCard
+            id="office-delaware"
+            icon={<HeadquartersIcon />}
+            title={current.headquarters.title}
+            eyebrow={current.headquarters.eyebrow}
+            lines={[]}
+            details={
+              <div className="space-y-4">
+                {current.headquarters.rows.map((row) => (
+                  <OfficeDataRow key={row.label} label={row.label}>
+                    {row.lines.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </OfficeDataRow>
+                ))}
+              </div>
+            }
+          />
+
+          <OfficeCard
+            id="office-cagliari"
+            icon={<LocationPinIcon />}
+            title={current.italianOperations.title}
+            eyebrow={current.italianOperations.eyebrow}
+            contentClassName="lg:grid-cols-[minmax(0,0.24fr)_minmax(0,0.76fr)]"
+            detailsClassName="lg:pt-1"
+            lines={[]}
+            emphasis={current.italianOperations.emphasis}
+            details={
+              <div className="grid gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
+                {current.italianOperations.offices.map((office) => (
+                  <div key={office.label} className="rounded-[1.5rem] px-5 py-5">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
+                      {office.label}
+                    </p>
+                    <p className="mt-3 font-semibold text-primary">{office.city}</p>
+                    <div className="mt-3 space-y-1 text-[color:var(--color-secondary)]">
+                      {office.lines.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+          />
+        </div>
       </div>
     </section>
   );

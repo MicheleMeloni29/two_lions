@@ -29,6 +29,9 @@
       "SPORT"
     ]
   },
+
+
+  
   "introText": {
     "_comment": "Sezione IntroText della homepage. listTitle/listItems controllano il carosello orizzontale continuo. divisionsTitle/divisions e geographicFocusTitle/geographicFocus controllano le card sotto.",
     "eyebrow": "Societa holding registrata in Delaware",
@@ -56,6 +59,9 @@
     ],
     "body": "La societa svolge attivita di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprieta intellettuale e investimento in iniziative imprenditoriali."
   },
+
+
+
   "sections": {
     "_comment": "Sezione TwoLionsDivisions della homepage. title controlla il titolo della sezione. items contiene le card delle divisioni.",
     "eyebrow": "Two Lions",
@@ -110,6 +116,8 @@
       }
     ]
   },
+
+
   "investmentSection": {
     "_comment": "InvestmentSection della homepage. eyebrow1/title/lead controllano l'introduzione. eyebrow2 viene riusato sopra il carosello continuo. highlights controlla la card a sinistra. pillars controlla le card in movimento.",
     "eyebrow1": "Two Lions",
@@ -141,22 +149,93 @@
       }
     ]
   },
+
+  "officeSection": {
+    "_comment": "Sezione sedi della homepage. eyebrow/title/lead controllano l'intestazione; headquarters e italianOperations controllano le due card.",
+    "eyebrow": "Two Lions",
+    "title": "Presenza Corporate",
+    "lead": "Two Lions coordina la propria sede legale e le sedi operative italiane attraverso una struttura formale pensata per attivita istituzionali, corporate e territoriali.",
+    "headquarters": {
+      "eyebrow": "Lewes, Delaware, USA",
+      "title": "Corporate Headquarters",
+      "rows": [
+        {
+          "label": "Registered Address",
+          "lines": [
+            "16192 Coastal Highway",
+            "Lewes, DE 19958 USA"
+          ]
+        },
+        {
+          "label": "Corporate Filing",
+          "lines": [
+            "File Number: 10426498"
+          ]
+        },
+        {
+          "label": "Tax Identification",
+          "lines": [
+            "(EIN) 37-2212324"
+          ]
+        }
+      ]
+    },
+    "italianOperations": {
+      "eyebrow": "Cagliari, Olbia, Roma",
+      "title": "Italian Operations",
+      "emphasis": "EU Strategic Hub",
+      "offices": [
+        {
+          "label": "Sardinia Office",
+          "city": "Cagliari, Sardinia, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Cagliari 09123"
+          ]
+        },
+        {
+          "label": "Northern Hub",
+          "city": "Olbia, Sardinia, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Olbia 09123"
+          ]
+        },
+        {
+          "label": "Institutional Desk",
+          "city": "Roma, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Roma 09123"
+          ]
+        }
+      ]
+    }
+  },
+
+
+
   "contactSection": {
-    "_comment": "Sezione contatti della homepage. L'invio apre il client email dell'utente tramite mailto.",
+    "_comment": "Sezione contatti della homepage. L'invio avviene tramite API server-side.",
     "eyebrow": "Contatto diretto",
     "title": "Parliamo del progetto",
     "lead": "Usa questo spazio per inviare una richiesta introduttiva, proporre una partnership o fissare un primo confronto operativo con Two Lions.",
     "directLabel": "Indirizzo di riferimento",
     "missingEmail": "Configura NEXT_PUBLIC_CONTACT_EMAIL",
-    "note": "Al click si apre il client email predefinito con oggetto e messaggio gia compilati.",
-    "setupNote": "Per attivare il form imposta NEXT_PUBLIC_CONTACT_EMAIL con l'indirizzo destinatario.",
-    "configurationError": "Il form non puo inviare email finche non e configurato un indirizzo destinatario.",
+    "note": "Il form invia il messaggio direttamente dal sito.",
+    "setupNote": "Per attivare il form imposta CONTACT_EMAIL_TO, CONTACT_EMAIL_FROM e RESEND_API_KEY.",
+    "configurationError": "Il servizio email non e ancora configurato correttamente sul server.",
     "incompleteError": "Compila tutti i campi prima di inviare il messaggio.",
     "invalidEmailError": "Inserisci un indirizzo email valido prima di continuare.",
     "missingFieldsPrefix": "Completa questi campi per abilitare l'invio:",
-    "openingNote": "Sto aprendo il client email predefinito con il messaggio precompilato.",
     "readyToSend": "Tutti i campi sono corretti. Ora puoi inviare l'email.",
-    "clientHint": "Se al click non succede nulla, verifica che sul dispositivo sia configurata un'app email predefinita.",
+    "sendingMessage": "Invio del messaggio in corso.",
+    "submitSuccess": "Messaggio inviato correttamente.",
+    "submitError": "Invio non riuscito. Controlla la configurazione del servizio email e riprova.",
+    "sendingCta": "Invio...",
     "cta": "Invia email",
     "fields": {
       "name": "Nome",
@@ -171,6 +250,9 @@
       "message": "Scrivi qui il tuo messaggio"
     }
   },
+
+
+
   "identityAdvertisingPage": {
     "_comment": "Pagina Identity Advertising. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -292,6 +374,9 @@
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   },
+
+
+
   "luxurySardabookingPage": {
     "_comment": "Pagina Luxury Sardabooking. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -414,6 +499,9 @@
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   },
+
+
+
   "foodBeveragePage": {
     "_comment": "Pagina Food & Beverage. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -538,6 +626,9 @@
       }
     ]
   },
+
+
+
   "parfumPage": {
     "_comment": "Pagina Parfum. sections e la griglia contenuti principale; ogni sezione ha id, title, description, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -683,6 +774,9 @@
       }
     ]
   },
+
+
+
   "sportPage": {
     "_comment": "Pagina Sport. sections e la griglia contenuti principale; visualPlaceholders prepara slot immagine futuri via JSON.",
     "backToHome": "Torna alla home",
@@ -903,6 +997,9 @@
       }
     ]
   },
+
+
+
   "smartShelterEnergyPage": {
     "_comment": "Pagina Smart Shelter & Energy. sections e la griglia contenuti principale; ogni sezione ha id, title, description, items e nota opzionale.",
     "backToHome": "Back to home",

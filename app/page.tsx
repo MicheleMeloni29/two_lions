@@ -38,8 +38,8 @@ export default function Home() {
       <IntroText lang={lang} />
       <TwoLionsDivisions lang={lang} />
       <InvestmentSection lang={lang} />
-      <OfficesSection />
       <ContactSection lang={lang} />
+      <OfficesSection lang={lang} />
     </main>
   );
 }

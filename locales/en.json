@@ -141,22 +141,91 @@
       }
     ]
   },
+
+  "officeSection": {
+    "_comment": "Homepage offices section. eyebrow/title/lead control the intro; headquarters and italianOperations control the two cards.",
+    "eyebrow": "Two Lions",
+    "title": "Corporate Presence",
+    "lead": "Two Lions coordinates its legal headquarters and Italian operational offices through a formal structure designed for institutional, corporate and territorial activities.",
+    "headquarters": {
+      "eyebrow": "Lewes, Delaware, USA",
+      "title": "Corporate Headquarters",
+      "rows": [
+        {
+          "label": "Registered Address",
+          "lines": [
+            "16192 Coastal Highway",
+            "Lewes, DE 19958 USA"
+          ]
+        },
+        {
+          "label": "Corporate Filing",
+          "lines": [
+            "File Number: 10426498"
+          ]
+        },
+        {
+          "label": "Tax Identification",
+          "lines": [
+            "(EIN) 37-2212324"
+          ]
+        }
+      ]
+    },
+    "italianOperations": {
+      "eyebrow": "Cagliari, Olbia, Roma",
+      "title": "Italian Operations",
+      "emphasis": "EU Strategic Hub",
+      "offices": [
+        {
+          "label": "Sardinia Office",
+          "city": "Cagliari, Sardinia, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Cagliari 09123"
+          ]
+        },
+        {
+          "label": "Northern Hub",
+          "city": "Olbia, Sardinia, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Olbia 09123"
+          ]
+        },
+        {
+          "label": "Institutional Desk",
+          "city": "Roma, IT",
+          "lines": [
+            "Via Goffredo Mameli 96",
+            "Interno 14, Floor 7",
+            "Roma 09123"
+          ]
+        }
+      ]
+    }
+  },
+
   "contactSection": {
-    "_comment": "Homepage contact section. Submission opens the user's email client via mailto.",
+    "_comment": "Homepage contact section. Submission is handled by a server-side API.",
     "eyebrow": "Direct contact",
     "title": "Start the conversation",
     "lead": "Use this area to send an introductory request, propose a partnership or schedule an initial operational conversation with Two Lions.",
     "directLabel": "Reference email",
     "missingEmail": "Configure NEXT_PUBLIC_CONTACT_EMAIL",
-    "note": "Clicking the button opens the default email client with the subject and message already prepared.",
-    "setupNote": "To enable the form, set NEXT_PUBLIC_CONTACT_EMAIL to the destination address.",
-    "configurationError": "The form cannot send email until a destination address is configured.",
+    "note": "The form sends the message directly from the website.",
+    "setupNote": "To enable the form, set CONTACT_EMAIL_TO, CONTACT_EMAIL_FROM and RESEND_API_KEY.",
+    "configurationError": "The email service is not configured correctly on the server yet.",
     "incompleteError": "Complete every field before sending the message.",
     "invalidEmailError": "Enter a valid email address before continuing.",
     "missingFieldsPrefix": "Complete these fields to enable sending:",
-    "openingNote": "Opening the default email client with the prefilled message.",
     "readyToSend": "All fields are valid. You can now send the email.",
-    "clientHint": "If nothing happens after clicking, make sure a default email app is configured on the device.",
+    "sendingMessage": "Sending message.",
+    "submitSuccess": "Message sent successfully.",
+    "submitError": "Sending failed. Check the email service configuration and try again.",
+    "sendingCta": "Sending...",
     "cta": "Send email",
     "fields": {
       "name": "Name",

@@ -6,6 +6,7 @@ import IntroText from "@/components/IntroText";
 import InvestmentSection from "@/components/InvestmentSection";
 import TwoLionsDivisions from "@/components/TwoLionsDivisions";
 import OfficesSection from "@/components/OfficesSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   const [lang, setLang] = useState<"it" | "en">("en");
@@ -38,6 +39,7 @@ export default function Home() {
       <TwoLionsDivisions lang={lang} />
       <InvestmentSection lang={lang} />
       <OfficesSection />
+      <ContactSection lang={lang} />
     </main>
   );
 }

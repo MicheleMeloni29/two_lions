@@ -58,7 +58,9 @@
   },
   "sections": {
     "_comment": "TwoLionsDivisions section on the homepage. title controls the section heading. items contains the division cards.",
+    "eyebrow": "Two Lions",
     "title": "Business Divisions",
+    "lead": "The operating divisions of Two Lions bring together projects, brands and platforms designed to generate commercial growth, strategic positioning and long-term value.",
     "clickForMore": "Click for more",
     "items": [
       {
@@ -138,6 +140,29 @@
         "body": "The business model includes ownership, protection and commercialization of trademarks, intellectual property, operating formats and licensing opportunities."
       }
     ]
+  },
+  "contactSection": {
+    "_comment": "Homepage contact section. Submission opens the user's email client via mailto.",
+    "eyebrow": "Direct contact",
+    "title": "Start the conversation",
+    "lead": "Use this area to send an introductory request, propose a partnership or schedule an initial operational conversation with Two Lions.",
+    "directLabel": "Reference email",
+    "missingEmail": "Configure NEXT_PUBLIC_CONTACT_EMAIL",
+    "note": "Clicking the button opens the default email client with the subject and message already prepared.",
+    "setupNote": "To enable the form, set NEXT_PUBLIC_CONTACT_EMAIL to the destination address.",
+    "cta": "Send email",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "name@company.com",
+      "subject": "Partnership, investment or information request",
+      "message": "Write your message here"
+    }
   },
   "identityAdvertisingPage": {
     "_comment": "Identity Advertising page. sections is the main content grid; each section has id, title, items and optional note.",
@@ -649,6 +674,226 @@
           "Emotional connection between athlete, supporter and sponsor",
           "A tool for belonging and recognition",
           "A product able to tell the team's story"
+        ]
+      }
+    ]
+  },
+  "sportPage": {
+    "_comment": "Sport page. sections is the main content grid; visualPlaceholders prepares future image slots via JSON.",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Two Lions Sport",
+    "mission": "Sports division of Two Lions Intl. Corp.",
+    "heroImage": "/SectionsBackgrounds/TwoLions_Sport.jpeg",
+    "heroImageAlt": "Two Lions Sport background",
+    "snapshot": {
+      "divisionsValue": "09",
+      "divisionsLabel": "Divisions",
+      "macroAreasValue": "05",
+      "macroAreasLabel": "Macro areas",
+      "brandsValue": "04",
+      "brandsLabel": "Brands / channels"
+    },
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Integrated sports platform connecting events, academy, media, merchandising and facility development.",
+      "International approach designed for tournaments, institutional relations, sponsorship and proprietary formats.",
+      "Scalable architecture across hockey, padel, sportwear, broadcasting and sports infrastructure."
+    ],
+    "positioningFooter": "Events, sports formats, media and infrastructure within one Two Lions architecture.",
+    "programEyebrow": "Two Lions Sport Platform",
+    "programTitle": "Events, academy, media and infrastructure for international sport",
+    "programLead": "Two Lions Sport structures a complete pipeline linking competitions, content, academy, sponsors, merchandising and facility development inside one coherent platform, mirrored here through a mobile-first editorial layout.",
+    "framework": "Framework",
+    "frameworkParagraphs": [
+      "The division is designed to coordinate sports brands, international events, media activations and operational services under one strategic direction.",
+      "The model can activate tournaments, academy programs, video productions, partnerships and facility development while keeping continuity between project, storytelling and monetization."
+    ],
+    "focus": "Focus",
+    "focusItems": [
+      "International events and proprietary formats signed by Two Lions.",
+      "Vertical development of hockey and padel across academy, tournaments and foreign relations.",
+      "Owned media, streaming, interviews and social content for sponsors and communities.",
+      "Sportwear, facilities and academy as the physical and commercial extension of the platform."
+    ],
+    "visualsEyebrow": "Visual Space",
+    "visualsTitle": "Areas already prepared for future image inserts",
+    "visualsLead": "The page includes reserved editorial slots for event visuals, camps, facilities and media content. Images can be added later from the JSON files without changing the layout.",
+    "visualComingSoonLabel": "coming soon",
+    "visualPlaceholderLabel": "Visual placeholder",
+    "visualPlaceholders": [
+      {
+        "id": "01",
+        "title": "Sport Events",
+        "caption": "Reserved area for key visuals covering tournaments, hospitality and signature Two Lions Sport events."
+      },
+      {
+        "id": "02",
+        "title": "Hockey & Padel",
+        "caption": "Reserved area for academy imagery, international competitions, summer camps and amateur circuits."
+      },
+      {
+        "id": "03",
+        "title": "Facilities & Media",
+        "caption": "Reserved area for sports center renders, streaming sets, interviews or TV content."
+      }
+    ],
+    "organizationEyebrow": "Two Lions Sport Structure",
+    "organigramTitle": "Condensed organization",
+    "organigramItems": [
+      "Hockey",
+      "Padel",
+      "Events",
+      "Sportwear",
+      "Media & TV",
+      "Marketing & Sponsorship",
+      "Academy",
+      "Facilities",
+      "Awards"
+    ],
+    "macroAreasTitle": "5 primary macro areas",
+    "macroAreasLead": "For an international holding company such as Two Lions International Corporation, the most effective sports structure is organized around five coordination poles that keep content, facilities, product and events aligned.",
+    "macroAreas": [
+      "Sport Events",
+      "Hockey",
+      "Media & TV",
+      "Sportwear",
+      "Facilities & Academy"
+    ],
+    "operatingAreas": "Operating Areas",
+    "sections": [
+      {
+        "id": "01",
+        "title": "Two Lions Sport Events",
+        "description": "Management and organization of sports events.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "International tournaments",
+          "Championships",
+          "Corporate events",
+          "Hospitality",
+          "Sponsorships"
+        ],
+        "projectsLabel": "Projects",
+        "projects": [
+          "Two Lions Cup Sardinia 2027",
+          "Two Lions Padel Event 2026"
+        ]
+      },
+      {
+        "id": "02",
+        "title": "Two Lions Hockey",
+        "description": "Division dedicated to field hockey.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Tournament organization",
+          "Academy",
+          "International relations",
+          "Master national teams",
+          "Summer camps"
+        ],
+        "projectsLabel": "Projects",
+        "projects": [
+          "World Masters Hockey Breda 2026",
+          "Two Lions Cup Sardinia"
+        ]
+      },
+      {
+        "id": "03",
+        "title": "Two Lions Padel",
+        "description": "Division dedicated to padel.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Events",
+          "Amateur circuits",
+          "Academy",
+          "Facility management"
+        ]
+      },
+      {
+        "id": "04",
+        "title": "Two Lions Sportwear",
+        "description": "Technical apparel and merchandising.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Match jerseys",
+          "Representation tracksuits",
+          "Casual line",
+          "Accessories"
+        ],
+        "brandsLabel": "Brand",
+        "brands": [
+          "Two Lions Sport"
+        ]
+      },
+      {
+        "id": "05",
+        "title": "Two Lions Media & TV",
+        "description": "Sports content production.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Streaming",
+          "Interviews",
+          "Video productions",
+          "Social Media"
+        ],
+        "brandsLabel": "Brands",
+        "brands": [
+          "Two Lions TV",
+          "Hockey Italia TV",
+          "Ockey Channel TV"
+        ]
+      },
+      {
+        "id": "06",
+        "title": "Two Lions Marketing & Sponsorship",
+        "description": "Sponsor and partnership management.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Sponsor scouting",
+          "Naming rights",
+          "Identity sponsorships",
+          "International partnerships"
+        ]
+      },
+      {
+        "id": "07",
+        "title": "Two Lions Academy",
+        "description": "Sports education and training.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Internships",
+          "Technical courses",
+          "Executive training",
+          "Referee training"
+        ]
+      },
+      {
+        "id": "08",
+        "title": "Two Lions Facilities",
+        "description": "Development and management of sports facilities.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Hockey fields",
+          "Padel courts",
+          "Club house",
+          "Sports real estate projects"
+        ],
+        "projectsLabel": "Projects",
+        "projects": [
+          "Two Lions Sports Center with hockey, padel and club house."
+        ]
+      },
+      {
+        "id": "09",
+        "title": "Two Lions Awards",
+        "description": "Trophies and recognitions.",
+        "competenciesLabel": "Competencies",
+        "items": [
+          "Annual awards",
+          "Hall of Fame",
+          "Top scorer",
+          "Fair Play award"
         ]
       }
     ]

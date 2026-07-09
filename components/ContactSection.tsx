@@ -1,0 +1,167 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import enMessages from "@/locales/en.json";
+import itMessages from "@/locales/it.json";
+
+type ContactSectionProps = {
+  lang: "it" | "en";
+};
+
+type ContactFormState = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+const content = {
+  it: itMessages.contactSection,
+  en: enMessages.contactSection,
+} as const;
+
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ?? "";
+
+const initialState: ContactFormState = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
+
+export default function ContactSection({ lang }: ContactSectionProps) {
+  const current = content[lang];
+  const [form, setForm] = useState<ContactFormState>(initialState);
+  const isConfigured = CONTACT_EMAIL.length > 0;
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!isConfigured) {
+      return;
+    }
+
+    const subject = encodeURIComponent(form.subject.trim());
+    const body = encodeURIComponent(
+      [
+        `${current.fields.name}: ${form.name.trim()}`,
+        `${current.fields.email}: ${form.email.trim()}`,
+        "",
+        form.message.trim(),
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <section
+      id="contact"
+      className="relative -mt-px overflow-hidden bg-[linear-gradient(180deg,var(--color-white)_0%,rgba(31,39,92,0.08)_52%,rgba(37,30,87,0.18)_100%)] px-4 py-14 sm:px-5 md:px-8 md:py-18 xl:px-14 xl:py-22"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(31,39,92,0.08),transparent_28%)]" />
+
+      <div className="relative mx-auto w-full">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full p-6 sm:p-7 md:p-8 lg:p-10 xl:p-12"
+        >
+          <div className="max-w-6xl pb-7 xl:max-w-[82%]">
+            <div>
+              <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                {current.eyebrow}
+              </p>
+              <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] text-primary sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
+                {current.title}
+              </h2>
+              <p className="mt-7 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+                {current.lead}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="block">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-secondary)]">
+                {current.fields.name}
+              </span>
+              <input
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={(event) =>
+                  setForm((currentForm) => ({ ...currentForm, name: event.target.value }))
+                }
+                required
+                className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+                placeholder={current.placeholders.name}
+              />
+            </label>
+
+            <label className="block">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-secondary)]">
+                {current.fields.email}
+              </span>
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={(event) =>
+                  setForm((currentForm) => ({ ...currentForm, email: event.target.value }))
+                }
+                required
+                className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+                placeholder={current.placeholders.email}
+              />
+            </label>
+          </div>
+
+          <label className="mt-5 block">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-secondary)]">
+              {current.fields.subject}
+            </span>
+            <input
+              type="text"
+              name="subject"
+              value={form.subject}
+              onChange={(event) =>
+                setForm((currentForm) => ({ ...currentForm, subject: event.target.value }))
+              }
+              required
+              className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+              placeholder={current.placeholders.subject}
+            />
+          </label>
+
+          <label className="mt-5 block">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-secondary)]">
+              {current.fields.message}
+            </span>
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={(event) =>
+                setForm((currentForm) => ({ ...currentForm, message: event.target.value }))
+              }
+              required
+              rows={7}
+              className="mt-2 min-h-[10.5rem] w-full resize-y border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+              placeholder={current.placeholders.message}
+            />
+          </label>
+
+          <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+
+            <button
+              type="submit"
+              disabled={!isConfigured}
+              className="inline-flex min-h-12 items-center justify-center bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              {current.cta}
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}

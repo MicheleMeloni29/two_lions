@@ -25,6 +25,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
     "food-and-beverage": "/food-and-beverage",
     "luxury-sardabooking": "/luxury-sardabooking",
     parfum: "/parfum",
+    sport: "/sport",
   };
 
   return (
@@ -32,10 +33,20 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
       id="sections"
       className="bg-[color:var(--color-primary)] px-4 py-10 sm:px-5 md:px-8 md:py-14 lg:p-6"
     >
-      <h2 className="pt-10 pb-8 text-[color:var(--color-white)] font-change-serif-bold max-w-[14ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[18ch] md:text-[3.4rem] xl:max-w-[20ch] xl:text-[4rem]">
-        {current.title}
-      </h2>
-      <div className="pt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-6xl pt-10">
+          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+            {current.eyebrow}
+          </p>
+          <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] text-[color:var(--color-white)] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[18ch] md:text-[3.4rem] xl:max-w-[20ch] xl:text-[4rem]">
+            {current.title}
+          </h2>
+          <p className="mt-7 max-w-4xl border-l border-[color:var(--color-thirdary)] pl-4 text-[13px] leading-6 text-[color:var(--color-white)]/82 sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+            {current.lead}
+          </p>
+        </div>
+
+        <div className="pt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
         {items.map((item) => {
           const hasBackgroundImage = Boolean(item.image?.trim());
           const divisionRoute = divisionRoutes[item.slug];
@@ -106,6 +117,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
             </div>
           );
         })}
+        </div>
       </div>
     </section>
   );

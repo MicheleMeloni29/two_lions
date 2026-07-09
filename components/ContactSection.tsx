@@ -20,7 +20,7 @@ const content = {
   en: enMessages.contactSection,
 } as const;
 
-const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ?? "";
+const CONTACT_EMAIL = "melonimichelee29@gmail.com";
 
 const initialState: ContactFormState = {
   name: "",

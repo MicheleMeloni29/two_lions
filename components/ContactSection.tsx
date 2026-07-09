@@ -29,15 +29,55 @@ const initialState: ContactFormState = {
   message: "",
 };
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function ContactSection({ lang }: ContactSectionProps) {
   const current = content[lang];
   const [form, setForm] = useState<ContactFormState>(initialState);
   const isConfigured = CONTACT_EMAIL.length > 0;
+  const missingFields: string[] = [];
+
+  if (!form.name.trim()) {
+    missingFields.push(current.fields.name);
+  }
+
+  if (!form.email.trim()) {
+    missingFields.push(current.fields.email);
+  }
+
+  if (!form.subject.trim()) {
+    missingFields.push(current.fields.subject);
+  }
+
+  if (!form.message.trim()) {
+    missingFields.push(current.fields.message);
+  }
+
+  const emailIsValid =
+    !form.email.trim() || emailPattern.test(form.email.trim());
+  const canSubmit = isConfigured && missingFields.length === 0 && emailIsValid;
+  const statusMessages: string[] = [];
+
+  if (!isConfigured) {
+    statusMessages.push(current.configurationError);
+  }
+
+  if (missingFields.length > 0) {
+    statusMessages.push(`${current.missingFieldsPrefix} ${missingFields.join(", ")}.`);
+  }
+
+  if (form.email.trim() && !emailIsValid) {
+    statusMessages.push(current.invalidEmailError);
+  }
+
+  if (statusMessages.length === 0) {
+    statusMessages.push(current.readyToSend);
+  }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!isConfigured) {
+    if (!canSubmit) {
       return;
     }
 
@@ -63,6 +103,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
 
       <div className="relative mx-auto w-full">
         <form
+          noValidate
           onSubmit={handleSubmit}
           className="w-full p-6 sm:p-7 md:p-8 lg:p-10 xl:p-12"
         >
@@ -93,7 +134,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                   setForm((currentForm) => ({ ...currentForm, name: event.target.value }))
                 }
                 required
-                className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+                className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
                 placeholder={current.placeholders.name}
               />
             </label>
@@ -110,7 +151,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                   setForm((currentForm) => ({ ...currentForm, email: event.target.value }))
                 }
                 required
-                className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+                className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
                 placeholder={current.placeholders.email}
               />
             </label>
@@ -128,7 +169,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                 setForm((currentForm) => ({ ...currentForm, subject: event.target.value }))
               }
               required
-              className="mt-2 w-full border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+              className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
               placeholder={current.placeholders.subject}
             />
           </label>
@@ -145,17 +186,28 @@ export default function ContactSection({ lang }: ContactSectionProps) {
               }
               required
               rows={7}
-              className="mt-2 min-h-[10.5rem] w-full resize-y border border-[color:var(--color-secondary)]/35 bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/55 focus:border-[color:var(--color-thirdary)]"
+              className="mt-2 min-h-[10.5rem] w-full resize-y border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
               placeholder={current.placeholders.message}
             />
           </label>
 
-          <div className="mt-6 flex justify-stretch sm:justify-start md:justify-end">
+          <div className="mt-6 flex flex-col gap-3 sm:items-start md:items-end">
+            <div
+              role="status"
+              className={`max-w-xl space-y-1 text-[12px] leading-6 sm:text-[13px] ${
+                canSubmit ? "text-[color:var(--color-thirdary)]" : "text-[color:var(--color-thirdary)]"
+              }`}
+            >
+              {statusMessages.map((message) => (
+                <p key={message}>{message}</p>
+              ))}
+            </div>
 
             <button
               type="submit"
-              disabled={!isConfigured}
-              className="inline-flex min-h-12 w-full items-center justify-center bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
+              disabled={!canSubmit}
+              aria-disabled={!canSubmit}
+              className="inline-flex min-h-12 w-full items-center justify-center bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
             >
               {current.cta}
             </button>

@@ -150,6 +150,13 @@
     "missingEmail": "Configure NEXT_PUBLIC_CONTACT_EMAIL",
     "note": "Clicking the button opens the default email client with the subject and message already prepared.",
     "setupNote": "To enable the form, set NEXT_PUBLIC_CONTACT_EMAIL to the destination address.",
+    "configurationError": "The form cannot send email until a destination address is configured.",
+    "incompleteError": "Complete every field before sending the message.",
+    "invalidEmailError": "Enter a valid email address before continuing.",
+    "missingFieldsPrefix": "Complete these fields to enable sending:",
+    "openingNote": "Opening the default email client with the prefilled message.",
+    "readyToSend": "All fields are valid. You can now send the email.",
+    "clientHint": "If nothing happens after clicking, make sure a default email app is configured on the device.",
     "cta": "Send email",
     "fields": {
       "name": "Name",

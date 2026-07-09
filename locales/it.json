@@ -150,6 +150,13 @@
     "missingEmail": "Configura NEXT_PUBLIC_CONTACT_EMAIL",
     "note": "Al click si apre il client email predefinito con oggetto e messaggio gia compilati.",
     "setupNote": "Per attivare il form imposta NEXT_PUBLIC_CONTACT_EMAIL con l'indirizzo destinatario.",
+    "configurationError": "Il form non puo inviare email finche non e configurato un indirizzo destinatario.",
+    "incompleteError": "Compila tutti i campi prima di inviare il messaggio.",
+    "invalidEmailError": "Inserisci un indirizzo email valido prima di continuare.",
+    "missingFieldsPrefix": "Completa questi campi per abilitare l'invio:",
+    "openingNote": "Sto aprendo il client email predefinito con il messaggio precompilato.",
+    "readyToSend": "Tutti i campi sono corretti. Ora puoi inviare l'email.",
+    "clientHint": "Se al click non succede nulla, verifica che sul dispositivo sia configurata un'app email predefinita.",
     "cta": "Invia email",
     "fields": {
       "name": "Nome",

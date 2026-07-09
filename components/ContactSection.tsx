@@ -150,12 +150,12 @@ export default function ContactSection({ lang }: ContactSectionProps) {
             />
           </label>
 
-          <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div className="mt-6 flex justify-stretch sm:justify-start md:justify-end">
 
             <button
               type="submit"
               disabled={!isConfigured}
-              className="inline-flex min-h-12 items-center justify-center bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+              className="inline-flex min-h-12 w-full items-center justify-center bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
             >
               {current.cta}
             </button>

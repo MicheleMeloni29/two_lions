@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 export type ContinuousLoopCarouselItem = {
@@ -33,7 +34,38 @@ export default function ContinuousLoopCarousel({
   titleClassName,
   descriptionClassName,
 }: ContinuousLoopCarouselProps) {
-  const loopItems = [...items, ...items];
+  const groupRef = useRef<HTMLDivElement | null>(null);
+  const [groupWidth, setGroupWidth] = useState(0);
+
+  useEffect(() => {
+    const node = groupRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    const updateWidth = () => {
+      setGroupWidth(node.scrollWidth);
+    };
+
+    updateWidth();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateWidth();
+    });
+
+    resizeObserver.observe(node);
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [items, trackClassName, cardClassName, titleClassName, descriptionClassName]);
+
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -43,47 +75,60 @@ export default function ContinuousLoopCarousel({
       )}
     >
       <motion.div
-        className={joinClasses("flex w-max", trackClassName)}
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        className="flex w-max"
+        animate={groupWidth > 0 ? { x: -groupWidth } : undefined}
+        transition={
+          groupWidth > 0
+            ? {
+                duration,
+                repeat: Infinity,
+                ease: "linear",
+              }
+            : undefined
+        }
       >
-        {loopItems.map((item, index) => (
-          <article
-            key={`${item.id}-${index}`}
-            className={joinClasses(
-              "flex shrink-0 items-center text-center",
-              cardClassName
-            )}
+        {[0, 1].map((groupIndex) => (
+          <div
+            key={groupIndex}
+            ref={groupIndex === 0 ? groupRef : undefined}
+            aria-hidden={groupIndex === 1 ? true : undefined}
+            className={joinClasses("flex shrink-0 w-max", trackClassName)}
           >
-            {item.content ? (
-              item.content
-            ) : (
-              <div className="flex h-full w-full flex-col">
-                {item.title ? (
-                  <h4
-                    className={joinClasses(
-                      "mb-3 text-[1.06rem] font-black leading-[1.12] text-[color:var(--color-thirdary)] sm:mb-4 sm:text-[1.12rem] md:text-[1.2rem]",
-                      titleClassName
-                    )}
-                  >
-                    {item.title}
-                  </h4>
-                ) : null}
-                <p
-                  className={joinClasses(
-                    "w-full text-[13px] leading-6 sm:text-sm md:text-[15px] md:leading-7",
-                    descriptionClassName
-                  )}
-                >
-                  {item.description}
-                </p>
-              </div>
-            )}
-          </article>
+            {items.map((item, itemIndex) => (
+              <article
+                key={`${groupIndex}-${item.id}-${itemIndex}`}
+                className={joinClasses(
+                  "flex shrink-0 items-center text-center",
+                  cardClassName
+                )}
+              >
+                {item.content ? (
+                  item.content
+                ) : (
+                  <div className="flex h-full w-full flex-col">
+                    {item.title ? (
+                      <h4
+                        className={joinClasses(
+                          "mb-3 text-[1.06rem] font-black leading-[1.12] text-[color:var(--color-thirdary)] sm:mb-4 sm:text-[1.12rem] md:text-[1.2rem]",
+                          titleClassName
+                        )}
+                      >
+                        {item.title}
+                      </h4>
+                    ) : null}
+                    <p
+                      className={joinClasses(
+                        "w-full text-[13px] leading-6 sm:text-sm md:text-[15px] md:leading-7",
+                        descriptionClassName
+                      )}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
         ))}
       </motion.div>
     </div>

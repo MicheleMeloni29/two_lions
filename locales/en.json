@@ -178,7 +178,6 @@
       "emphasis": "EU Strategic Hub",
       "offices": [
         {
-          "label": "Sardinia Office",
           "city": "Cagliari, Sardinia, IT",
           "lines": [
             "Via Goffredo Mameli 96",
@@ -187,21 +186,17 @@
           ]
         },
         {
-          "label": "Northern Hub",
           "city": "Olbia, Sardinia, IT",
           "lines": [
-            "Via Goffredo Mameli 96",
-            "Interno 14, Floor 7",
-            "Olbia 09123"
+            "Via Seychelles 13",
+            "Olbia 07026"
           ]
         },
         {
-          "label": "Institutional Desk",
           "city": "Roma, IT",
           "lines": [
-            "Via Goffredo Mameli 96",
-            "Interno 14, Floor 7",
-            "Roma 09123"
+            "Via Maiolo 18",
+            "Roma 00132"
           ]
         }
       ]
@@ -777,8 +772,61 @@
       "Scalable architecture across hockey, padel, sportwear, broadcasting and sports infrastructure."
     ],
     "positioningFooter": "Events, sports formats, media and infrastructure within one Two Lions architecture.",
+    "sponsorSection": {
+      "eyebrow": "World Masters Hockey World Cup 2026",
+      "title": "Official Sponsor Breda 2026",
+      "lead": "Two Lions will be present as an official sponsor at the World Masters Hockey World Cup 2026, scheduled in Breda, Netherlands, in August 2026. The presence will combine brand activation, dedicated merch and Leo mascot visibility within the broader Two Lions experience.",
+      "overviewTitle": "Official presence",
+      "overviewItems": [
+        "Two Lions joins the World Masters Hockey World Cup 2026 with an official international sponsorship presence.",
+        "The activation includes brand visibility, event-dedicated merchandising and a coordinated narrative across field experience and communication.",
+        "The Breda presence strengthens the positioning of Two Lions Sport within international hockey and in its relationships with communities, sponsors and delegations."
+      ],
+      "carouselEyebrow": "Official event merch",
+      "carouselTitle": "Breda 2026 Merch",
+      "carouselLead": "A minimal selection of official Two Lions merch designed for Breda 2026, shown through the cutout garments and accessories from the event capsule.",
+      "carouselItems": [
+        {
+          "id": "01",
+          "image": "/Breda2026_Merch/BackPack.png",
+          "alt": "Two Lions Breda 2026 backpack"
+        },
+        {
+          "id": "02",
+          "image": "/Breda2026_Merch/Cap.png",
+          "alt": "Two Lions Breda 2026 cap"
+        },
+        {
+          "id": "03",
+          "image": "/Breda2026_Merch/Harness.png",
+          "alt": "Two Lions Breda 2026 harness"
+        },
+        {
+          "id": "04",
+          "image": "/Breda2026_Merch/Lanyard.png",
+          "alt": "Two Lions Breda 2026 lanyard"
+        },
+        {
+          "id": "05",
+          "image": "/Breda2026_Merch/Pochette.png",
+          "alt": "Two Lions Breda 2026 pochette"
+        },
+        {
+          "id": "06",
+          "image": "/Breda2026_Merch/Polo.png",
+          "alt": "Two Lions Breda 2026 polo"
+        },
+        {
+          "id": "07",
+          "image": "/Breda2026_Merch/Shorts.png",
+          "alt": "Two Lions Breda 2026 shorts"
+        }
+      ],
+      "mascotEyebrow": "Mascot visual",
+      "mascotImageAlt": "Leo mascot Breda 2026"
+    },
     "programEyebrow": "Two Lions Sport Platform",
-    "programTitle": "Events, academy, media and infrastructure for international sport",
+    "programTitle": "Infrastructure for international sport",
     "programLead": "Two Lions Sport structures a complete pipeline linking competitions, content, academy, sponsors, merchandising and facility development inside one coherent platform, mirrored here through a mobile-first editorial layout.",
     "framework": "Framework",
     "frameworkParagraphs": [

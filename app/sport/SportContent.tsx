@@ -4,6 +4,7 @@ import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import ContinuousLoopCarousel from "@/components/UI/ContinuousLoopCarousel";
 import ToggleLang from "@/components/UI/toggleLang";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -29,6 +30,27 @@ type SportSection = {
   note?: string;
 };
 
+type SportSponsorCarouselItem = {
+  id: string;
+  image?: string;
+  alt?: string;
+};
+
+type SportSponsorSection = {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  overviewTitle: string;
+  overviewItems: string[];
+  carouselEyebrow: string;
+  carouselTitle: string;
+  carouselLead: string;
+  carouselItems: SportSponsorCarouselItem[];
+  mascotEyebrow: string;
+  mascotImage?: string;
+  mascotImageAlt?: string;
+};
+
 type SportPageContent = {
   backToHome: string;
   eyebrow: string;
@@ -47,6 +69,7 @@ type SportPageContent = {
   positioning: string;
   positioningItems: string[];
   positioningFooter: string;
+  sponsorSection: SportSponsorSection;
   programEyebrow: string;
   programTitle: string;
   programLead: string;
@@ -116,6 +139,25 @@ export default function SportContent() {
   const [lang, setLang] = useState<"it" | "en">("it");
   const content = pageContent[lang];
   const hasHeroImage = Boolean(content.heroImage?.trim());
+  const hasMascotImage = Boolean(content.sponsorSection.mascotImage?.trim());
+  const sponsorCarouselItems = content.sponsorSection.carouselItems.map((item) => ({
+    id: item.id,
+    description: "",
+    content: (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="relative h-full w-full">
+          {item.image ? (
+            <Image
+              src={item.image}
+              alt={item.alt ?? "Breda 2026 merch"}
+              fill
+              className="object-contain"
+            />
+          ) : null}
+        </div>
+      </div>
+    ),
+  }));
 
   useLayoutEffect(() => {
     const html = document.documentElement;
@@ -247,10 +289,101 @@ export default function SportContent() {
       </section>
 
       <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(31,39,92,0.10),transparent_30%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
 
         <div className="relative mx-auto flex max-w-[92rem] flex-col gap-10 md:gap-12 xl:gap-16 2xl:gap-18">
-          <div className="max-w-6xl space-y-5 md:space-y-6 xl:space-y-7">
+          <div className="space-y-10 md:space-y-12 xl:space-y-14">
+            <div className="max-w-5xl space-y-5 md:space-y-6">
+              <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                {content.sponsorSection.eyebrow}
+              </p>
+              <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[18ch] md:text-[3.5rem] xl:max-w-[16ch] xl:text-[4.2rem]">
+                {content.sponsorSection.title}
+              </h2>
+              <p className="max-w-3xl border-l-2 border-[color:var(--color-thirdary)] pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+                {content.sponsorSection.lead}
+              </p>
+            </div>
+
+            <div className="grid gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-stretch xl:gap-6">
+              <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-8">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
+                <div className="relative">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px] xl:text-[12px]">
+                      {content.sponsorSection.overviewTitle}
+                    </p>
+                  </div>
+
+                  <ul className="space-y-4">
+                    {content.sponsorSection.overviewItems.map((item) => (
+                      <li
+                        key={item}
+                        className="border-b border-[color:var(--color-primary)]/10 pb-4 last:border-b-0 last:pb-0"
+                      >
+                        <p className="mt-2 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7 xl:text-[16px] xl:leading-8">
+                          {item}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <aside className="relative overflow-hidden p-5 backdrop-blur-[2px] md:p-7 xl:p-8">
+                <div className="pointer-events-none absolute inset-0" />
+                <div className="relative flex h-full flex-col">
+                  <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                    {content.sponsorSection.mascotEyebrow}
+                  </p>
+
+                  <div className="mt-6 flex-1">
+                    <div className="relative h-full min-h-[20rem] overflow-hidden xl:min-h-[24rem]">
+                      {hasMascotImage ? (
+                        <>
+                          <Image
+                            src={content.sponsorSection.mascotImage!}
+                            alt={content.sponsorSection.mascotImageAlt ?? content.sponsorSection.mascotEyebrow}
+                            fill
+                            className="object-contain object-bottom"
+                          />
+                        </>
+                      ) : null}
+
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div className="relative backdrop-blur-[2px]">
+                <div className="pointer-events-none absolute inset-0 ]" />
+                <div className="relative px-5 py-6 md:px-7 md:py-8 xl:px-8 xl:py-8">
+                  <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                    {content.sponsorSection.carouselEyebrow}
+                  </p>
+                  <h3 className="mt-4 max-w-[12ch] font-change-serif-bold text-[1.7rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:max-w-[15ch] sm:text-[2.2rem] md:text-[2.6rem] xl:max-w-[14ch] xl:text-[2.6rem]">
+                    {content.sponsorSection.carouselTitle}
+                  </h3>
+                  <p className="mt-5 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+                    {content.sponsorSection.carouselLead}
+                  </p>
+                </div>
+
+                <div className="relative pb-5 md:pb-6 xl:pb-7">
+                  <ContinuousLoopCarousel
+                    items={sponsorCarouselItems}
+                    duration={28}
+                    viewportClassName="w-full"
+                    trackClassName="gap-8 px-5 md:gap-10 md:px-7 lg:gap-10 xl:gap-26 xl:px-8 2xl:gap-32"
+                    cardClassName="h-[15rem] w-[11rem] sm:h-[16rem] sm:w-[12rem] md:h-[18rem] md:w-[13rem] xl:h-[20rem] xl:w-[15rem]"
+                  />
+                </div>
+            </div>
+          </div>
+
+          <div className="max-w-6xl space-y-5 md:space-y-6 xl:space-y-7 ">
             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
               {content.programEyebrow}
             </p>
@@ -263,7 +396,7 @@ export default function SportContent() {
           </div>
 
           <div className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-stretch xl:gap-7 2xl:gap-8">
-            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] md:p-7 xl:p-10 2xl:p-12">
+            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
               <div className="relative">
                 <div className="mb-6 flex items-center justify-between gap-4 xl:mb-7">
@@ -290,7 +423,7 @@ export default function SportContent() {
               </div>
             </div>
 
-            <aside className="flex flex-col justify-between border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-[color:var(--color-white)] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
+            <aside className="flex flex-col justify-between border border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/94 px-5 py-6 text-[color:var(--color-white)] backdrop-blur-[2px] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
               <div>
                 <div className="mb-5 flex items-center justify-between gap-4 xl:mb-6">
                   <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px] xl:text-[12px]">
@@ -313,76 +446,8 @@ export default function SportContent() {
             </aside>
           </div>
 
-          <div className="overflow-hidden border border-[color:var(--color-primary)]/10 bg-white shadow-[0_28px_80px_rgba(31,39,92,0.08)]">
-            <div className="px-5 py-6 md:px-7 md:py-8 xl:px-10 xl:py-10 2xl:px-12 2xl:py-12">
-              <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                {content.visualsEyebrow}
-              </p>
-              <h3 className="mt-4 max-w-[12ch] font-change-serif-bold text-[1.7rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:max-w-[15ch] sm:text-[2.2rem] md:text-[2.6rem] xl:max-w-[15ch] xl:text-[2.6rem]">
-                {content.visualsTitle}
-              </h3>
-              <p className="mt-5 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7 xl:max-w-[52rem] xl:pl-6 xl:text-[17px] xl:leading-8">
-                {content.visualsLead}
-              </p>
-            </div>
-
-            <div className="grid gap-px bg-[color:var(--color-primary)]/8 md:grid-cols-3">
-              {content.visualPlaceholders.map((visual) => {
-                const hasVisualImage = Boolean(visual.image?.trim());
-
-                return (
-                  <div key={visual.id} className="bg-white p-4 md:p-5 xl:p-6">
-                    <div className="relative overflow-hidden border border-dashed border-[color:var(--color-primary)]/18 bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.18),transparent_45%),linear-gradient(180deg,rgba(31,39,92,0.04),rgba(31,39,92,0.08))]">
-                      {hasVisualImage ? (
-                        <div className="relative aspect-[4/5] sm:aspect-[16/10] md:aspect-[4/5] xl:aspect-[5/6]">
-                          <Image
-                            src={visual.image!}
-                            alt={visual.alt ?? visual.title}
-                            fill
-                            className="object-cover"
-                          />
-                          <div className="absolute inset-0 bg-linear-to-t from-[color:var(--color-primary)]/76 via-[color:var(--color-primary)]/22 to-transparent" />
-                          <div className="absolute left-4 top-4 border border-white/18 bg-[color:var(--color-primary)]/56 px-3 py-2 text-[9px] uppercase tracking-[0.22em] text-white backdrop-blur-[2px] sm:text-[10px]">
-                            {visual.id}
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="min-h-[21rem] px-4 py-4 sm:min-h-0 sm:aspect-[16/10] md:aspect-[4/5] md:px-5 md:py-5 xl:min-h-[24rem] xl:aspect-[5/6] xl:px-6 xl:py-6">
-                          <div className="flex h-full flex-col justify-between">
-                            <div className="flex items-center justify-between gap-3">
-                              <span className="text-[9px] uppercase tracking-[0.18em] text-[color:var(--color-thirdary)] sm:text-[10px] sm:tracking-[0.22em]">
-                                {content.visualsEyebrow}
-                              </span>
-                              <span className="text-right text-[9px] uppercase leading-4 tracking-[0.18em] text-[color:var(--color-primary)]/55 sm:text-[10px] sm:tracking-[0.22em]">
-                                {content.visualComingSoonLabel}
-                              </span>
-                            </div>
-
-                            <div className="space-y-4">
-                              <div className="h-px w-14 bg-[color:var(--color-thirdary)]/60" />
-                              <h4 className="font-change-serif-bold max-w-[10ch] text-[1.2rem] uppercase leading-[1.02] tracking-[0.02em] text-[color:var(--color-primary)] sm:text-[1.35rem] md:text-[1.55rem] md:tracking-[0.04em] xl:text-[1.55rem]">
-                                {visual.title}
-                              </h4>
-                              <p className="text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7 xl:text-[16px] xl:leading-8">
-                                {visual.caption}
-                              </p>
-                            </div>
-
-                            <div className="mt-6 border-t border-[color:var(--color-primary)]/10 pt-4 text-[11px] uppercase leading-5 tracking-[0.18em] text-[color:var(--color-primary)]/60 sm:tracking-[0.24em]">
-                              {content.visualPlaceholderLabel}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
           <div className="grid gap-5 xl:grid-cols-[minmax(21rem,0.86fr)_minmax(0,1.14fr)] xl:items-stretch xl:gap-7 2xl:gap-8">
-            <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-5 py-6 text-white md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
+            <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/94 px-5 py-6 text-white backdrop-blur-[2px] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
               <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
                 {content.organizationEyebrow}
               </p>
@@ -401,7 +466,7 @@ export default function SportContent() {
               </ul>
             </div>
 
-            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] md:p-7 xl:p-10 2xl:p-12">
+            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
               <div className="relative">
                 <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">

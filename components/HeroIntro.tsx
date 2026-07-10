@@ -70,7 +70,7 @@ export default function HeroIntro({
               width={240}
               height={240}
               priority
-              className="object-contain text-primary w-60 h-46 md:w-80 md:h-56 lg:w-100 lg:h-64 xl:w-120 xl:h-80 2xl:w-150 2xl:h-96"
+              className="object-contain text-primary w-60 h-46 md:w-70 md:h-56 lg:w-80 lg:h-64 xl:w-100 xl:h-76 2xl:w-120 2xl:h-76"
             />
           </motion.div>
 

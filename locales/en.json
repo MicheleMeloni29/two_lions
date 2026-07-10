@@ -141,7 +141,6 @@
       }
     ]
   },
-
   "officeSection": {
     "_comment": "Homepage offices section. eyebrow/title/lead control the intro; headquarters and italianOperations control the two cards.",
     "eyebrow": "Two Lions",
@@ -202,7 +201,6 @@
       ]
     }
   },
-
   "contactSection": {
     "_comment": "Homepage contact section. Submission is handled by a server-side API.",
     "eyebrow": "Direct contact",
@@ -602,8 +600,6 @@
       }
     ]
   },
-
-  
   "parfumPage": {
     "_comment": "Parfum page. sections is the main content grid; each section has id, title, description, items and optional note.",
     "backToHome": "Back to home",
@@ -784,7 +780,7 @@
       ],
       "carouselEyebrow": "Official event merch",
       "carouselTitle": "Breda 2026 Merch",
-      "carouselLead": "A minimal selection of official Two Lions merch designed for Breda 2026, shown through the cutout garments and accessories from the event capsule.",
+      "carouselLead": "Official merchandise for the Italian national delegation attending the Breda 2026 global event. This is official merchandise, designed and produced by TwoLions Sport.",
       "carouselItems": [
         {
           "id": "01",

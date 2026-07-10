@@ -47,16 +47,18 @@ function LocationPinIcon() {
 }
 
 type OfficeDataRowProps = {
-  label: string;
+  label?: string;
   children: ReactNode;
 };
 
 function OfficeDataRow({ label, children }: OfficeDataRowProps) {
   return (
     <div className="grid gap-2 border-b border-[color:rgba(31,39,92,0.1)] pb-4 last:border-b-0 last:pb-0 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
-        {label}
-      </p>
+      {label ? (
+        <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
+          {label}
+        </p>
+      ) : null}
       <div className="text-[13px] leading-6 text-primary sm:text-[14px] md:text-[15px] md:leading-7">
         {children}
       </div>
@@ -73,10 +75,21 @@ const content = {
   en: enMessages.officeSection,
 } as const;
 
+type OfficeRow = {
+  label?: string;
+  lines: string[];
+};
+
+type ItalianOffice = {
+  label?: string;
+  city?: string;
+  lines: string[];
+};
+
 type OfficeCardProps = {
   id: string;
-  eyebrow: string;
-  title: string;
+  eyebrow?: string;
+  title?: string;
   lines: string[];
   emphasis?: string;
   icon: ReactNode;
@@ -110,12 +123,16 @@ function OfficeCard({
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[color:rgba(31,39,92,0.08)]">
             {icon}
           </div>
-          <p className="mt-5 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-            {eyebrow}
-          </p>
-          <h3 className="mt-3 font-change-serif-bold text-[1.35rem] leading-tight text-primary sm:text-[1.5rem] md:text-[1.65rem] xl:text-[1.85rem]">
-            {title}
-          </h3>
+          {eyebrow ? (
+            <p className="mt-5 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
+              {eyebrow}
+            </p>
+          ) : null}
+          {title ? (
+            <h3 className="mt-3 font-change-serif-bold text-[1.35rem] leading-tight text-primary sm:text-[1.5rem] md:text-[1.65rem] xl:text-[1.85rem]">
+              {title}
+            </h3>
+          ) : null}
           {emphasis ? (
             <p className="mt-6 border-l-2 border-[color:var(--color-thirdary)] pl-4 font-semibold text-primary md:text-[15px]">
               {emphasis}
@@ -145,6 +162,8 @@ function OfficeCard({
 
 export default function OfficesSection({ lang }: OfficesSectionProps) {
   const current = content[lang];
+  const headquartersRows = current.headquarters.rows as OfficeRow[];
+  const italianOffices = current.italianOperations.offices as ItalianOffice[];
 
   return (
     <section
@@ -157,15 +176,21 @@ export default function OfficesSection({ lang }: OfficesSectionProps) {
 
       <div className="relative mx-auto max-w-7xl">
         <div className="max-w-6xl xl:max-w-[82%]">
-          <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-            {current.eyebrow}
-          </p>
-          <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] text-primary sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
-            {current.title}
-          </h2>
-          <p className="mt-7 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
-            {current.lead}
-          </p>
+          {current.eyebrow ? (
+            <p className="mb-4 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+              {current.eyebrow}
+            </p>
+          ) : null}
+          {current.title ? (
+            <h2 className="font-change-serif-bold max-w-[15ch] text-[2.1rem] leading-[0.94] uppercase tracking-[0.015em] text-primary sm:max-w-[16ch] sm:text-[2.5rem] md:max-w-[19ch] md:text-[3.5rem] xl:max-w-[21ch] xl:text-[4.2rem]">
+              {current.title}
+            </h2>
+          ) : null}
+          {current.lead ? (
+            <p className="mt-7 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:pl-5 md:text-[15px] md:leading-7">
+              {current.lead}
+            </p>
+          ) : null}
         </div>
 
         <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 lg:gap-10 xl:mt-14 xl:gap-12">
@@ -177,8 +202,11 @@ export default function OfficesSection({ lang }: OfficesSectionProps) {
             lines={[]}
             details={
               <div className="space-y-4">
-                {current.headquarters.rows.map((row) => (
-                  <OfficeDataRow key={row.label} label={row.label}>
+                {headquartersRows.map((row) => (
+                  <OfficeDataRow
+                    key={[row.label ?? "", ...(row.lines ?? [])].join("-")}
+                    label={row.label}
+                  >
                     {row.lines.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -199,12 +227,21 @@ export default function OfficesSection({ lang }: OfficesSectionProps) {
             emphasis={current.italianOperations.emphasis}
             details={
               <div className="grid gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
-                {current.italianOperations.offices.map((office) => (
-                  <div key={office.label} className="rounded-[1.5rem] px-5 py-5">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
-                      {office.label}
-                    </p>
-                    <p className="mt-3 font-semibold text-primary">{office.city}</p>
+                {italianOffices.map((office) => (
+                  <div
+                    key={[office.label ?? "", office.city ?? "", ...(office.lines ?? [])].join("-")}
+                    className="rounded-[1.5rem] px-5 py-5"
+                  >
+                    {office.label ? (
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)]">
+                        {office.label}
+                      </p>
+                    ) : null}
+                    {office.city ? (
+                      <p className={`${office.label ? "mt-3 " : ""}font-semibold text-primary`}>
+                        {office.city}
+                      </p>
+                    ) : null}
                     <div className="mt-3 space-y-1 text-[color:var(--color-secondary)]">
                       {office.lines.map((line) => (
                         <p key={line}>{line}</p>

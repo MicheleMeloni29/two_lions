@@ -307,9 +307,9 @@ export default function SportContent() {
             </div>
 
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-stretch xl:gap-6">
-              <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-8">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
-                <div className="relative">
+              <div className="relative h-full overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-8">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.10),transparent_34%)]" />
+                <div className="relative flex h-full flex-col">
                   <div className="mb-6 flex items-center justify-between gap-4">
                     <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px] xl:text-[12px]">
                       {content.sponsorSection.overviewTitle}
@@ -331,59 +331,65 @@ export default function SportContent() {
                 </div>
               </div>
 
-              <aside className="relative overflow-hidden p-5 backdrop-blur-[2px] md:p-7 xl:p-8">
-                <div className="pointer-events-none absolute inset-0" />
+              <aside className="relative h-full overflow-hidden p-5 md:p-7 xl:p-8">
                 <div className="relative flex h-full flex-col">
                   <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                     {content.sponsorSection.mascotEyebrow}
                   </p>
 
                   <div className="mt-6 flex-1">
-                    <div className="relative h-full min-h-[20rem] overflow-hidden xl:min-h-[24rem]">
+                    <div className="relative h-full min-h-[16rem] overflow-hidden sm:min-h-[18rem] md:min-h-[20rem] xl:min-h-[22rem]">
                       {hasMascotImage ? (
-                        <>
-                          <Image
-                            src={content.sponsorSection.mascotImage!}
-                            alt={content.sponsorSection.mascotImageAlt ?? content.sponsorSection.mascotEyebrow}
-                            fill
-                            className="object-contain object-bottom"
-                          />
-                        </>
+                        <Image
+                          src={content.sponsorSection.mascotImage!}
+                          alt={
+                            content.sponsorSection.mascotImageAlt ??
+                            content.sponsorSection.mascotEyebrow
+                          }
+                          fill
+                          className="object-contain object-bottom"
+                        />
                       ) : null}
-
                     </div>
                   </div>
                 </div>
               </aside>
             </div>
 
-            <div className="relative backdrop-blur-[2px]">
-                <div className="pointer-events-none absolute inset-0 ]" />
-                <div className="relative px-5 py-6 md:px-7 md:py-8 xl:px-8 xl:py-8">
-                  <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                    {content.sponsorSection.carouselEyebrow}
-                  </p>
-                  <h3 className="mt-4 max-w-[12ch] font-change-serif-bold text-[1.7rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:max-w-[15ch] sm:text-[2.2rem] md:text-[2.6rem] xl:max-w-[14ch] xl:text-[2.6rem]">
-                    {content.sponsorSection.carouselTitle}
-                  </h3>
-                  <p className="mt-5 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
-                    {content.sponsorSection.carouselLead}
-                  </p>
-                </div>
+            <div className="relative overflow-hidden backdrop-blur-[3px]">
+              <div className="pointer-events-none absolute" />
+              <div className="relative px-5 py-6 md:px-7 md:py-8 xl:px-8 xl:py-8">
+                <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                  {content.sponsorSection.carouselEyebrow}
+                </p>
+                <h3 className="mt-4 max-w-[12ch] font-change-serif-bold text-[1.7rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:max-w-[15ch] sm:text-[2.2rem] md:text-[2.6rem] xl:max-w-[14ch] xl:text-[2.6rem]">
+                  {content.sponsorSection.carouselTitle}
+                </h3>
+                <p className="mt-5 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+                  {content.sponsorSection.carouselLead}
+                </p>
+              </div>
 
-                <div className="relative pb-5 md:pb-6 xl:pb-7">
-                  <ContinuousLoopCarousel
-                    items={sponsorCarouselItems}
-                    duration={28}
-                    viewportClassName="w-full"
-                    trackClassName="gap-8 px-5 md:gap-10 md:px-7 lg:gap-10 xl:gap-26 xl:px-8 2xl:gap-32"
-                    cardClassName="h-[15rem] w-[11rem] sm:h-[16rem] sm:w-[12rem] md:h-[18rem] md:w-[13rem] xl:h-[20rem] xl:w-[15rem]"
-                  />
-                </div>
+              <div className="relative pb-5 md:pb-6 xl:pb-7">
+                <ContinuousLoopCarousel
+                  items={sponsorCarouselItems}
+                  duration={28}
+                  viewportClassName="w-full"
+                  trackClassName="gap-8 px-5 md:gap-10 md:px-7 lg:gap-10 xl:gap-26 xl:px-8 2xl:gap-32"
+                  cardClassName="h-[15rem] w-[11rem] sm:h-[16rem] sm:w-[12rem] md:h-[18rem] md:w-[13rem] xl:h-[20rem] xl:w-[15rem]"
+                />
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="max-w-6xl space-y-5 md:space-y-6 xl:space-y-7 ">
+      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(31,39,92,0.10),transparent_30%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+
+        <div className="relative mx-auto flex max-w-[92rem] flex-col gap-10 md:gap-12 xl:gap-16 2xl:gap-18">
+          <div className="max-w-6xl space-y-5 md:space-y-6 xl:space-y-7">
             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
               {content.programEyebrow}
             </p>
@@ -396,7 +402,7 @@ export default function SportContent() {
           </div>
 
           <div className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-stretch xl:gap-7 2xl:gap-8">
-            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
+            <div className="relative self-start overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
               <div className="relative">
                 <div className="mb-6 flex items-center justify-between gap-4 xl:mb-7">
@@ -423,7 +429,7 @@ export default function SportContent() {
               </div>
             </div>
 
-            <aside className="flex flex-col justify-between border border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/94 px-5 py-6 text-[color:var(--color-white)] backdrop-blur-[2px] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
+            <aside className="flex h-full flex-col justify-between border border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/94 px-5 py-6 text-[color:var(--color-white)] backdrop-blur-[2px] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
               <div>
                 <div className="mb-5 flex items-center justify-between gap-4 xl:mb-6">
                   <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px] xl:text-[12px]">
@@ -444,53 +450,6 @@ export default function SportContent() {
                 </ul>
               </div>
             </aside>
-          </div>
-
-          <div className="grid gap-5 xl:grid-cols-[minmax(21rem,0.86fr)_minmax(0,1.14fr)] xl:items-stretch xl:gap-7 2xl:gap-8">
-            <div className="border border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/94 px-5 py-6 text-white backdrop-blur-[2px] md:px-6 md:py-7 xl:px-8 xl:py-9 2xl:px-9">
-              <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-secondary)] sm:text-[10px] md:text-[11px]">
-                {content.organizationEyebrow}
-              </p>
-              <h3 className="mt-4 font-change-serif-bold max-w-[12ch] text-[1.8rem] leading-[0.96] uppercase tracking-[0.015em] text-white sm:text-[2.2rem] md:text-[2.6rem] xl:text-[2.6rem]">
-                {content.organigramTitle}
-              </h3>
-              <ul className="mt-6 space-y-3 xl:mt-8 xl:space-y-4">
-                {content.organigramItems.map((item) => (
-                  <li
-                    key={item}
-                    className="border-b border-[color:var(--color-white)]/18 pb-3 text-[13px] uppercase tracking-[0.16em] text-white sm:text-sm md:text-[15px] md:leading-7 xl:pb-4 xl:text-[16px] xl:leading-8 last:border-b-0 last:pb-0"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
-              <div className="relative">
-                <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                  {content.organizationEyebrow}
-                </p>
-                <h3 className="mt-4 max-w-[13ch] font-change-serif-bold text-[1.8rem] leading-[0.96] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:max-w-[15ch] sm:text-[2.2rem] md:text-[2.6rem] xl:text-[2.6rem]">
-                  {content.macroAreasTitle}
-                </h3>
-                <p className="mt-5 max-w-3xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7 xl:max-w-[44rem] xl:pl-6 xl:text-[17px] xl:leading-8">
-                  {content.macroAreasLead}
-                </p>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:mt-8 xl:gap-4">
-                  {content.macroAreas.map((item) => (
-                    <div
-                      key={item}
-                      className="border border-[color:var(--color-primary)]/10 bg-white px-4 py-4 text-[12px] uppercase tracking-[0.18em] text-[color:var(--color-primary)] sm:text-[13px] xl:px-5 xl:py-5 xl:text-[14px]"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="space-y-6 pt-14 md:space-y-7 md:pt-18 xl:space-y-8 xl:pt-24 2xl:pt-28">

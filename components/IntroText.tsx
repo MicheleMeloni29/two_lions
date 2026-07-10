@@ -18,6 +18,15 @@ export default function IntroText({ lang }: IntroTextProps) {
   const activityItems = content.listItems.map((item, index) => ({
     id: index,
     description: item,
+    content: (
+      <div className="flex h-full w-full flex-col justify-between border border-[color:var(--color-primary)]/10 bg-[color:var(--color-white)]/94 px-4 py-4 text-left shadow-[0_18px_38px_rgba(31,39,92,0.08)] backdrop-blur-[2px] sm:px-5 sm:py-5">
+        <div className="h-px w-10 bg-[color:var(--color-thirdary)]/45" />
+        <p className="mt-4 flex-1 text-[13px] leading-6 text-[color:var(--color-primary)] sm:text-sm md:text-[15px] md:leading-7">
+          {item}
+        </p>
+        <div className="mt-4 h-px w-12 bg-[color:var(--color-secondary)]/18" />
+      </div>
+    ),
   }));
 
   return (
@@ -52,13 +61,20 @@ export default function IntroText({ lang }: IntroTextProps) {
               </h3>
             </div>
 
-            <ContinuousLoopCarousel
-              items={activityItems}
-              viewportClassName="relative left-1/2 w-screen -translate-x-1/2"
-              trackClassName="gap-20 sm:gap-24 lg:gap-35"
-              cardClassName="h-[8.75rem] w-[11.25rem] px-3 py-3 sm:h-[9.5rem] sm:w-[12.75rem] sm:px-4 sm:py-4 md:h-[10.5rem] md:w-[15rem] md:px-5 lg:h-[11rem] lg:w-[16.5rem] xl:w-[18rem]"
-              descriptionClassName="flex h-full items-center justify-center bg-[color:var(--color-secondary)] border-2 rounded-full border-[color:var(--color-thirdary)] px-4 py-4 text-center text-[13px] leading-6 text-[color:var(--color-white)] sm:text-sm md:text-[15px] md:leading-7"
-            />
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-white/75 via-white/30 to-transparent sm:w-10 md:w-12" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-white/75 via-white/30 to-transparent sm:w-10 md:w-12" />
+
+              <div className="px-5 md:px-7 xl:px-8">
+                <ContinuousLoopCarousel
+                  items={activityItems}
+                  duration={24}
+                  viewportClassName="w-full"
+                  trackClassName="gap-6 pr-6 md:gap-7 md:pr-7 xl:gap-9 xl:pr-9 2xl:gap-11 2xl:pr-11"
+                  cardClassName="h-[9.75rem] w-[13.5rem] sm:h-[10.25rem] sm:w-[14.25rem] md:h-[10.75rem] md:w-[15rem] xl:h-[11.25rem] xl:w-[15.75rem]"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:gap-36">

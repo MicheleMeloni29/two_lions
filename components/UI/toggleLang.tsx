@@ -19,8 +19,8 @@ export default function ToggleLang({
         className="text-xs font-bold uppercase tracking-[0.25em] transition-colors md:text-sm"
         style={{
           color: isEnglish
-            ? "var(--color-light-blue)"
-            : "var(--color-primary)",
+            ? "var(--color-secondary)"
+            : "var(--color-thirdary)",
         }}
       >
         IT
@@ -65,7 +65,7 @@ export default function ToggleLang({
         className="text-xs font-bold uppercase tracking-[0.25em] transition-colors md:text-sm"
         style={{
           color: isEnglish
-            ? "var(--color-primary)"
+            ? "var(--color-thirdary)"
             : "var(--color-secondary)",
         }}
       >

@@ -76,7 +76,7 @@ export default function HeroIntro({
 
           {/* Holding name */}
           <motion.h1
-            className="font-change-serif-bold text-4xl uppercase tracking-[0.1em] text-primary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+            className="font-change-serif-bold text-4xl uppercase tracking-[0.1em] text-primary md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
             initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 1.5 }}
@@ -85,7 +85,7 @@ export default function HeroIntro({
           </motion.h1>
           {/* Holding name */}
           <motion.h1
-            className="pt-2 text-xl tracking-[0.1em] text-secondary md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-6xl"
+            className="pt-2 text-xl tracking-[0.1em] text-secondary md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-5xl"
             initial={{ clipPath: "inset(0% 0% 100% 0%)", opacity: 0 }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 2.5 }}

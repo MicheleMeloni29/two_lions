@@ -333,11 +333,8 @@ export default function SportContent() {
                 </div>
               </div>
 
-              <aside className="relative overflow-hidden p-5 md:p-7 xl:col-start-2 xl:row-span-2 xl:min-h-[36rem] xl:p-0 2xl:min-h-[40rem]">
+              <aside className="relative overflow-hidden p-5 md:p-7 xl:col-start-2 xl:row-span-2 xl:min-h-[38rem] xl:p-0 2xl:min-h-[40rem]">
                 <div className="relative flex h-full flex-col xl:w-full">
-                  <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                    {content.sponsorSection.mascotEyebrow}
-                  </p>
 
                   <div className="mt-6 flex-1 xl:mt-0 xl:flex xl:h-full xl:w-full xl:items-end">
                     <div className="relative h-full w-full min-h-[16rem] overflow-hidden sm:min-h-[18rem] md:min-h-[20rem] xl:min-h-[36rem] 2xl:min-h-[40rem]">
@@ -349,20 +346,16 @@ export default function SportContent() {
                             content.sponsorSection.mascotEyebrow
                           }
                           fill
-                          className="object-contain object-bottom"
+                          className="object-contain object-bottom translate-y-1 md:translate-y-2 xl:translate-y-3 2xl:translate-y-4"
                         />
                       ) : null}
 
-                      <div className="absolute left-[54%] top-[13%] z-10 w-[13ch] sm:left-[55%] sm:top-[13%] sm:w-[14ch] md:left-[57%] md:top-[14%] md:w-[16ch] lg:left-[59%] lg:top-[15%] lg:w-[18ch] xl:left-[66%] xl:top-[16%] xl:w-[22ch] 2xl:left-[68%] 2xl:top-[17%] 2xl:w-[24ch]">
+                      <div className="absolute left-[54%] top-[10%] z-10 w-[14ch] sm:left-[55%] sm:top-[10%] sm:w-[15ch] md:left-[57%] md:top-[11%] md:w-[17ch] lg:left-[59%] lg:top-[12%] lg:w-[19ch] xl:left-[66%] xl:top-[13%] xl:w-[22ch] 2xl:left-[68%] 2xl:top-[14%] 2xl:w-[24ch]">
                         <TextType
                           key={lang}
                           as="p"
                           text={content.sponsorSection.mascotLine}
-                          typingSpeed={34}
-                          initialDelay={250}
                           startOnVisible
-                          loop={false}
-                          showCursor={false}
                           className="text-[10px] leading-[1.45] tracking-[0.01em] text-[color:var(--color-primary)] sm:text-[11px] md:text-[12px] lg:text-[13px] xl:text-[1rem] xl:leading-[1.5] 2xl:text-[1.1rem]"
                         />
                       </div>

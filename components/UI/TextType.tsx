@@ -37,13 +37,13 @@ interface TextTypeProps extends HTMLAttributes<HTMLElement> {
 const TextType = ({
   text,
   as: Component = 'div',
-  typingSpeed = 50,
-  initialDelay = 0,
-  pauseDuration = 2000,
-  deletingSpeed = 30,
-  loop = true,
+  typingSpeed = 48,
+  initialDelay = 300,
+  pauseDuration = 4000,
+  deletingSpeed = 99999,
+  loop = false,
   className = '',
-  showCursor = true,
+  showCursor = false,
   hideCursorWhileTyping = false,
   cursorCharacter = '|',
   cursorClassName = '',
@@ -55,11 +55,11 @@ const TextType = ({
   reverseMode = false,
   ...props
 }: TextTypeProps) => {
-  const [displayedText, setDisplayedText] = useState('');
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
+  const [hasEntered, setHasEntered] = useState(!startOnVisible);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const observerRef = useRef<HTMLDivElement>(null);
 
@@ -78,6 +78,7 @@ const TextType = ({
   const processedText = reverseMode
     ? currentText.split('').reverse().join('')
     : currentText;
+  const displayedText = processedText.slice(0, currentCharIndex);
   const currentTextColor =
     textColors.length > 0
       ? textColors[currentTextIndex % textColors.length]
@@ -85,6 +86,18 @@ const TextType = ({
   const componentClassName = `inline-block whitespace-pre-wrap tracking-tight ${className}`.trim();
   const shouldHideCursor =
     hideCursorWhileTyping && (currentCharIndex < currentText.length || isDeleting);
+  const typingSchedule = useMemo(
+    () =>
+      Array.from({ length: processedText.length }).reduce<number[]>(
+        (schedule) => [
+          ...schedule,
+          (schedule[schedule.length - 1] ?? 0) +
+            (variableSpeed ? getRandomSpeed() : typingSpeed)
+        ],
+        []
+      ),
+    [getRandomSpeed, processedText.length, typingSpeed, variableSpeed]
+  );
 
   useEffect(() => {
     if (!startOnVisible || !observerRef.current) {
@@ -106,6 +119,20 @@ const TextType = ({
 
     return () => observer.disconnect();
   }, [startOnVisible]);
+
+  useEffect(() => {
+    if (!isVisible || hasEntered) {
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      setHasEntered(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [hasEntered, isVisible]);
 
   useEffect(() => {
     if (!showCursor || !cursorRef.current) {
@@ -131,11 +158,28 @@ const TextType = ({
       return;
     }
 
-    let timeout: ReturnType<typeof setTimeout> | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let frameId: number | undefined;
 
-    if (isDeleting) {
-      if (displayedText === '') {
-        timeout = setTimeout(() => {
+    const updateDeleting = () => {
+      const startedAt = performance.now();
+      const initialCount = currentCharIndex;
+
+      const tick = (now: number) => {
+        const elapsed = now - startedAt;
+        const removedChars = Math.floor(elapsed / deletingSpeed);
+        const nextCount = Math.max(0, initialCount - removedChars);
+
+        if (nextCount !== initialCount) {
+          setCurrentCharIndex((prev) => (prev === nextCount ? prev : nextCount));
+        }
+
+        if (nextCount > 0) {
+          frameId = window.requestAnimationFrame(tick);
+          return;
+        }
+
+        timeoutId = setTimeout(() => {
           setIsDeleting(false);
 
           if (onSentenceComplete) {
@@ -149,49 +193,74 @@ const TextType = ({
           setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
         }, 0);
+      };
 
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const updateTyping = () => {
+      const startedAt = performance.now();
+      const initialCount = currentCharIndex;
+      const initialOffset = initialCount > 0 ? typingSchedule[initialCount - 1] ?? 0 : 0;
+
+      const tick = (now: number) => {
+        const elapsed = now - startedAt + initialOffset;
+        const nextCount = typingSchedule.filter((time) => time <= elapsed).length;
+
+        if (nextCount !== initialCount) {
+          setCurrentCharIndex((prev) => (prev === nextCount ? prev : nextCount));
+        }
+
+        if (nextCount < processedText.length) {
+          frameId = window.requestAnimationFrame(tick);
+          return;
+        }
+
+        if (loop || currentTextIndex < textArray.length - 1) {
+          timeoutId = setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseDuration);
+        }
+      };
+
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    if (isDeleting) {
+      if (currentCharIndex === 0) {
+        timeoutId = setTimeout(() => {
+          setIsDeleting(false);
+
+          if (onSentenceComplete) {
+            onSentenceComplete(currentText, currentTextIndex);
+          }
+
+          if (currentTextIndex === textArray.length - 1 && !loop) {
+            return;
+          }
+
+          setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
+          setCurrentCharIndex(0);
+        }, 0);
         return;
       }
 
-      timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev.slice(0, -1));
-      }, deletingSpeed);
-
-      return () => {
-        if (timeout) {
-          clearTimeout(timeout);
-        }
-      };
-    }
-
-    if (currentCharIndex < processedText.length) {
-      timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + processedText[currentCharIndex]);
-        setCurrentCharIndex((prev) => prev + 1);
-      }, variableSpeed ? getRandomSpeed() : typingSpeed);
+      updateDeleting();
+    } else if (currentCharIndex < processedText.length) {
+      timeoutId = setTimeout(updateTyping, currentCharIndex === 0 ? initialDelay : 0);
     } else if (loop || currentTextIndex < textArray.length - 1) {
-      timeout = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIsDeleting(true);
       }, pauseDuration);
     }
 
-    if (currentCharIndex === 0 && displayedText === '') {
-      const delayedTimeout = timeout;
-      timeout = setTimeout(() => {
-        if (delayedTimeout) {
-          clearTimeout(delayedTimeout);
-        }
-
-        if (processedText.length > 0) {
-          setDisplayedText(processedText[0]);
-          setCurrentCharIndex(1);
-        }
-      }, initialDelay);
-    }
-
     return () => {
-      if (timeout) {
-        clearTimeout(timeout);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
       }
     };
   }, [
@@ -199,8 +268,6 @@ const TextType = ({
     currentText,
     currentTextIndex,
     deletingSpeed,
-    displayedText,
-    getRandomSpeed,
     initialDelay,
     isDeleting,
     isVisible,
@@ -209,8 +276,7 @@ const TextType = ({
     pauseDuration,
     processedText,
     textArray.length,
-    typingSpeed,
-    variableSpeed
+    typingSchedule
   ]);
 
   const renderedContent = (
@@ -232,7 +298,9 @@ const TextType = ({
   const typedElement = createElement(
     Component,
     {
-      className: componentClassName,
+      className: `${componentClassName} transition-[opacity,transform,filter] duration-700 ease-out will-change-transform motion-reduce:transition-none ${
+        hasEntered ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-2 blur-[2px] opacity-0'
+      }`.trim(),
       ...props
     },
     renderedContent

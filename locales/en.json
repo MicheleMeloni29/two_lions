@@ -778,6 +778,7 @@
         "The activation includes brand visibility, event-dedicated merchandising and a coordinated narrative across field experience and communication.",
         "The Breda presence strengthens the positioning of Two Lions Sport within international hockey and in its relationships with communities, sponsors and delegations."
       ],
+      "mascotLine": "Hi, I'm Leo and I will be the official mascot of the World Masters Hockey in Breda.",
       "carouselEyebrow": "Official event merch",
       "carouselTitle": "Breda 2026 Merch",
       "carouselLead": "Official merchandise for the Italian national delegation attending the Breda 2026 global event. This is official merchandise, designed and produced by TwoLions Sport.",
@@ -819,6 +820,7 @@
         }
       ],
       "mascotEyebrow": "Mascot visual",
+      "mascotImage": "/Breda2026_Merch/Leo.png",
       "mascotImageAlt": "Leo mascot Breda 2026"
     },
     "programEyebrow": "Two Lions Sport Platform",

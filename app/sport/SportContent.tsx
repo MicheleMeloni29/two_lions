@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
 import ContinuousLoopCarousel from "@/components/UI/ContinuousLoopCarousel";
+import TextType from "@/components/UI/TextType";
 import ToggleLang from "@/components/UI/toggleLang";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -42,6 +43,7 @@ type SportSponsorSection = {
   lead: string;
   overviewTitle: string;
   overviewItems: string[];
+  mascotLine: string;
   carouselEyebrow: string;
   carouselTitle: string;
   carouselLead: string;
@@ -294,7 +296,8 @@ export default function SportContent() {
 
         <div className="relative mx-auto flex max-w-[92rem] flex-col gap-10 md:gap-12 xl:gap-16 2xl:gap-18">
           <div className="space-y-10 md:space-y-12 xl:space-y-14">
-            <div className="max-w-5xl space-y-5 md:space-y-6">
+            <div className="grid gap-5 xl:grid-cols-[minmax(0,1.04fr)_minmax(21rem,0.96fr)] xl:gap-6 2xl:gap-8">
+            <div className="max-w-5xl space-y-5 md:space-y-6 xl:col-start-1 xl:row-start-1 xl:max-w-none">
               <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                 {content.sponsorSection.eyebrow}
               </p>
@@ -306,8 +309,7 @@ export default function SportContent() {
               </p>
             </div>
 
-            <div className="grid gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-stretch xl:gap-6">
-              <div className="relative h-full overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-8">
+              <div className="relative h-full overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:col-start-1 xl:row-start-2 xl:p-8">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.10),transparent_34%)]" />
                 <div className="relative flex h-full flex-col">
                   <div className="mb-6 flex items-center justify-between gap-4">
@@ -331,14 +333,14 @@ export default function SportContent() {
                 </div>
               </div>
 
-              <aside className="relative h-full overflow-hidden p-5 md:p-7 xl:p-8">
-                <div className="relative flex h-full flex-col">
+              <aside className="relative overflow-hidden p-5 md:p-7 xl:col-start-2 xl:row-span-2 xl:min-h-[36rem] xl:p-0 2xl:min-h-[40rem]">
+                <div className="relative flex h-full flex-col xl:w-full">
                   <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                     {content.sponsorSection.mascotEyebrow}
                   </p>
 
-                  <div className="mt-6 flex-1">
-                    <div className="relative h-full min-h-[16rem] overflow-hidden sm:min-h-[18rem] md:min-h-[20rem] xl:min-h-[22rem]">
+                  <div className="mt-6 flex-1 xl:mt-0 xl:flex xl:h-full xl:w-full xl:items-end">
+                    <div className="relative h-full w-full min-h-[16rem] overflow-hidden sm:min-h-[18rem] md:min-h-[20rem] xl:min-h-[36rem] 2xl:min-h-[40rem]">
                       {hasMascotImage ? (
                         <Image
                           src={content.sponsorSection.mascotImage!}
@@ -350,6 +352,20 @@ export default function SportContent() {
                           className="object-contain object-bottom"
                         />
                       ) : null}
+
+                      <div className="absolute left-[54%] top-[13%] z-10 w-[13ch] sm:left-[55%] sm:top-[13%] sm:w-[14ch] md:left-[57%] md:top-[14%] md:w-[16ch] lg:left-[59%] lg:top-[15%] lg:w-[18ch] xl:left-[66%] xl:top-[16%] xl:w-[22ch] 2xl:left-[68%] 2xl:top-[17%] 2xl:w-[24ch]">
+                        <TextType
+                          key={lang}
+                          as="p"
+                          text={content.sponsorSection.mascotLine}
+                          typingSpeed={34}
+                          initialDelay={250}
+                          startOnVisible
+                          loop={false}
+                          showCursor={false}
+                          className="text-[10px] leading-[1.45] tracking-[0.01em] text-[color:var(--color-primary)] sm:text-[11px] md:text-[12px] lg:text-[13px] xl:text-[1rem] xl:leading-[1.5] 2xl:text-[1.1rem]"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -402,9 +418,9 @@ export default function SportContent() {
           </div>
 
           <div className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-stretch xl:gap-7 2xl:gap-8">
-            <div className="relative self-start overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:p-10 2xl:p-12">
+            <div className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-white/92 p-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] backdrop-blur-[3px] md:p-7 xl:h-full xl:p-10 2xl:p-12">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.14),transparent_34%)]" />
-              <div className="relative">
+              <div className="relative flex h-full flex-col">
                 <div className="mb-6 flex items-center justify-between gap-4 xl:mb-7">
                   <p className="text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px] xl:text-[12px]">
                     {content.framework}

@@ -1,10 +1,12 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import StoreCtaSection from "@/components/food-beverage/StoreCtaSection";
 import CompactHeader from "@/components/UI/CompactHeader";
 import ToggleLang from "@/components/UI/toggleLang";
+import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -61,6 +63,50 @@ export default function FoodBeverageContent() {
     (total, section) => total + section.items.length,
     0
   );
+  const storeCtaContent =
+    lang === "it"
+      ? {
+          eyebrow: "Two Lions Online Store",
+          title: "Entra nella vetrina digitale del Food & Beverage",
+          description:
+            "Abbiamo aggiunto uno store editoriale dedicato a linee food, beverage e gift box: una base riutilizzabile pronta per evolvere in catalogo, showcase commerciale o canale B2B.",
+          highlights: [
+            "Componenti modulari per collection e prodotti",
+            "Layout coerente con retail, horeca ed export",
+            "Presentazione premium allineata al linguaggio Two Lions",
+          ],
+          primaryAction: {
+            href: "/food-and-beverage/store",
+            label: "Apri lo store online",
+            variant: "gold" as const,
+          },
+          secondaryAction: {
+            href: "/#contact",
+            label: "Richiedi attivazione",
+            variant: "light" as const,
+          },
+        }
+      : {
+          eyebrow: "Two Lions Online Store",
+          title: "Enter the Food & Beverage digital showcase",
+          description:
+            "A new editorial storefront is now in place for food, beverage and gift-box lines: a reusable base ready to evolve into a catalog, commercial showcase or B2B channel.",
+          highlights: [
+            "Modular components for collections and products",
+            "A layout aligned with retail, horeca and export",
+            "Premium presentation consistent with the Two Lions language",
+          ],
+          primaryAction: {
+            href: "/food-and-beverage/store",
+            label: "Open the online store",
+            variant: "gold" as const,
+          },
+          secondaryAction: {
+            href: "/#contact",
+            label: "Request activation",
+            variant: "light" as const,
+          },
+        };
   const snapshotItems =
     lang === "it"
       ? [
@@ -74,27 +120,7 @@ export default function FoodBeverageContent() {
           { value: "Horeca / Export", label: "Key channels" },
         ];
 
-  useLayoutEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-    const previousHtmlScrollBehavior = html.style.scrollBehavior;
-    const previousBodyScrollBehavior = body.style.scrollBehavior;
-
-    html.style.scrollBehavior = "auto";
-    body.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-
-    const restoreScrollBehavior = window.requestAnimationFrame(() => {
-      html.style.scrollBehavior = previousHtmlScrollBehavior;
-      body.style.scrollBehavior = previousBodyScrollBehavior;
-    });
-
-    return () => {
-      window.cancelAnimationFrame(restoreScrollBehavior);
-      html.style.scrollBehavior = previousHtmlScrollBehavior;
-      body.style.scrollBehavior = previousBodyScrollBehavior;
-    };
-  }, []);
+  useResetScrollOnMount();
 
   return (
     <main className="min-h-screen bg-white text-primary">
@@ -290,7 +316,18 @@ export default function FoodBeverageContent() {
 
           {/* Division architecture:
               this section now follows a cleaner desktop grid while staying closer to the source script. */}
-          <div className="space-y-6 pt-20 md:space-y-7">
+          <StoreCtaSection
+            eyebrow={storeCtaContent.eyebrow}
+            title={storeCtaContent.title}
+            description={storeCtaContent.description}
+            highlights={storeCtaContent.highlights}
+            imageSrc="/Food&Beverage/vino_mare.png"
+            imageAlt={`${content.title} online store preview`}
+            primaryAction={storeCtaContent.primaryAction}
+            secondaryAction={storeCtaContent.secondaryAction}
+          />
+
+          <div className="space-y-6 pt-6 md:space-y-7 md:pt-8">
             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
               {content.operatingAreas}
             </p>

@@ -2,6 +2,7 @@ import type { StoreProduct } from "@/components/store/types";
 
 export type StorePageContent = {
   allProductsLabel: string;
+  discountsLabel: string;
   resultsLabel: string;
   emptyLabel: string;
   addToCartLabel: string;
@@ -9,6 +10,22 @@ export type StorePageContent = {
   openProductLabel: string;
   backToStoreLabel: string;
   detailLabel: string;
+  cartTitle: string;
+  emptyCartLabel: string;
+  checkoutLabel: string;
+  quantityLabel: string;
+  totalLabel: string;
+  cartAriaLabel: string;
+  removeFromCartLabel: string;
+  checkoutTitle: string;
+  checkoutEmptyLabel: string;
+  sortLabel: string;
+  filterLabel: string;
+  sortOptions: {
+    priceAsc: string;
+    priceDesc: string;
+    nameAsc: string;
+  };
   categories: string[];
   products: StoreProduct[];
 };
@@ -16,6 +33,7 @@ export type StorePageContent = {
 export const storePageContent: Record<"it" | "en", StorePageContent> = {
   it: {
     allProductsLabel: "Tutti",
+    discountsLabel: "Sconti",
     resultsLabel: "prodotti",
     emptyLabel: "Nessun prodotto disponibile per questo filtro.",
     addToCartLabel: "Aggiungi al carrello",
@@ -23,6 +41,22 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     openProductLabel: "Apri prodotto",
     backToStoreLabel: "Torna allo store",
     detailLabel: "Descrizione completa",
+    cartTitle: "Carrello",
+    emptyCartLabel: "Il carrello e vuoto.",
+    checkoutLabel: "Procedi al pagamento",
+    quantityLabel: "Qta",
+    totalLabel: "Totale",
+    cartAriaLabel: "Apri il carrello",
+    removeFromCartLabel: "Rimuovi",
+    checkoutTitle: "Checkout",
+    checkoutEmptyLabel: "Aggiungi prodotti al carrello per procedere.",
+    sortLabel: "Ordina per",
+    filterLabel: "Filtra per",
+    sortOptions: {
+      priceAsc: "Prezzo crescente",
+      priceDesc: "Prezzo decrescente",
+      nameAsc: "Nome A-Z",
+    },
     categories: [
       "Food",
       "Beverage",
@@ -36,7 +70,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "pantry-sardegna-selection",
         category: "Food",
         name: "Pantry Sardegna Selection",
+        amountCents: 3800,
         price: "EUR 38,00",
+        isDiscounted: false,
         shortDescription:
           "Una selezione visuale per pantry premium, conserve e specialita territoriali pensata per retail gourmet e gift format.",
         fullDescription: [
@@ -52,7 +88,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "giunico-coastal-lager",
         category: "Beverage",
         name: "Giunico Coastal Lager",
+        amountCents: 950,
         price: "EUR 9,50",
+        isDiscounted: true,
         shortDescription:
           "Una referenza craft a forte identita visuale, adatta a locali, beach club, eventi branded e distribuzione selettiva.",
         fullDescription: [
@@ -68,7 +106,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "caffe-mare-signature-roast",
         category: "Coffee & Tea",
         name: "Caffe Mare Signature Roast",
+        amountCents: 1800,
         price: "EUR 18,00",
+        isDiscounted: false,
         shortDescription:
           "Una linea dedicata a coffee experience e hospitality, con posizionamento premium per boutique hotel, lounge e food service.",
         fullDescription: [
@@ -84,7 +124,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "cannonau-cellar-reserve",
         category: "Wine & Spirits",
         name: "Cannonau Cellar Reserve",
+        amountCents: 4200,
         price: "EUR 42,00",
+        isDiscounted: true,
         shortDescription:
           "Una bottiglia pensata per ristorazione, gifting e selezioni enologiche con una narrativa elegante e identitaria.",
         fullDescription: [
@@ -100,7 +142,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "mediterranean-soft-drinks-set",
         category: "Beverage",
         name: "Mediterranean Soft Drinks Set",
+        amountCents: 2400,
         price: "EUR 24,00",
+        isDiscounted: true,
         shortDescription:
           "Un assortimento dedicato a beach club, hospitality e attivazioni estive, con immagine luminosa e versatile.",
         fullDescription: [
@@ -116,7 +160,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "blue-heritage-tuna",
         category: "Food",
         name: "Blue Heritage Tuna",
+        amountCents: 1600,
         price: "EUR 16,00",
+        isDiscounted: false,
         shortDescription:
           "Una proposta adatta a specialty retail, gift box gourmet e storytelling mediterraneo ad alto valore percepito.",
         fullDescription: [
@@ -132,7 +178,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "vermentino-shoreline-edition",
         category: "Brand Sardinia",
         name: "Vermentino Shoreline Edition",
+        amountCents: 2900,
         price: "EUR 29,00",
+        isDiscounted: true,
         shortDescription:
           "Una signature bottle pronta per welcome kit, gifting e selezioni rappresentative legate al racconto della Sardegna.",
         fullDescription: [
@@ -147,6 +195,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
   },
   en: {
     allProductsLabel: "All",
+    discountsLabel: "Discounts",
     resultsLabel: "products",
     emptyLabel: "No products are available for this filter.",
     addToCartLabel: "Add to cart",
@@ -154,6 +203,22 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     openProductLabel: "Open product",
     backToStoreLabel: "Back to store",
     detailLabel: "Full description",
+    cartTitle: "Cart",
+    emptyCartLabel: "Your cart is empty.",
+    checkoutLabel: "Proceed to payment",
+    quantityLabel: "Qty",
+    totalLabel: "Total",
+    cartAriaLabel: "Open cart",
+    removeFromCartLabel: "Remove",
+    checkoutTitle: "Checkout",
+    checkoutEmptyLabel: "Add products to the cart to continue.",
+    sortLabel: "Sort by",
+    filterLabel: "Filter by",
+    sortOptions: {
+      priceAsc: "Price low to high",
+      priceDesc: "Price high to low",
+      nameAsc: "Name A-Z",
+    },
     categories: [
       "Food",
       "Beverage",
@@ -167,7 +232,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "pantry-sardegna-selection",
         category: "Food",
         name: "Pantry Sardinia Selection",
+        amountCents: 3800,
         price: "EUR 38.00",
+        isDiscounted: false,
         shortDescription:
           "A visual selection for premium pantry products, preserves and regional specialties designed for gourmet retail and gift formats.",
         fullDescription: [
@@ -183,7 +250,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "giunico-coastal-lager",
         category: "Beverage",
         name: "Giunico Coastal Lager",
+        amountCents: 950,
         price: "EUR 9.50",
+        isDiscounted: true,
         shortDescription:
           "A craft reference with strong visual identity, suited to venues, beach clubs, branded events and selective distribution.",
         fullDescription: [
@@ -199,7 +268,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "caffe-mare-signature-roast",
         category: "Coffee & Tea",
         name: "Caffe Mare Signature Roast",
+        amountCents: 1800,
         price: "EUR 18.00",
+        isDiscounted: false,
         shortDescription:
           "A line dedicated to coffee experience and hospitality, with premium positioning for boutique hotels, lounges and food service.",
         fullDescription: [
@@ -215,7 +286,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "cannonau-cellar-reserve",
         category: "Wine & Spirits",
         name: "Cannonau Cellar Reserve",
+        amountCents: 4200,
         price: "EUR 42.00",
+        isDiscounted: true,
         shortDescription:
           "A bottle designed for restaurants, gifting and wine selections with an elegant and identity-driven narrative.",
         fullDescription: [
@@ -231,7 +304,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "mediterranean-soft-drinks-set",
         category: "Beverage",
         name: "Mediterranean Soft Drinks Set",
+        amountCents: 2400,
         price: "EUR 24.00",
+        isDiscounted: true,
         shortDescription:
           "An assortment built for beach clubs, hospitality and summer activations with a bright, versatile image system.",
         fullDescription: [
@@ -247,7 +322,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "blue-heritage-tuna",
         category: "Food",
         name: "Blue Heritage Tuna",
+        amountCents: 1600,
         price: "EUR 16.00",
+        isDiscounted: false,
         shortDescription:
           "A proposal suited to specialty retail, gourmet gift boxes and Mediterranean storytelling with high perceived value.",
         fullDescription: [
@@ -263,7 +340,9 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         slug: "vermentino-shoreline-edition",
         category: "Brand Sardinia",
         name: "Vermentino Shoreline Edition",
+        amountCents: 2900,
         price: "EUR 29.00",
+        isDiscounted: true,
         shortDescription:
           "A signature bottle ready for welcome kits, gifting and representative selections tied to the Sardinian narrative.",
         fullDescription: [

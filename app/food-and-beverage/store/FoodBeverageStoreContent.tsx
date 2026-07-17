@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import StoreCartDropdown from "@/components/store/StoreCartDropdown";
 import CompactHeader from "@/components/UI/CompactHeader";
-import ToggleLang from "@/components/UI/toggleLang";
 import StoreProductGrid from "@/components/store/StoreProductGrid";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { storePageContent } from "./storeContent";
@@ -16,12 +16,23 @@ export default function FoodBeverageStoreContent() {
   return (
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
-        rightContent={
-          <ToggleLang
+        lang={lang}
+        onToggleLang={() =>
+          setLang((current) => (current === "it" ? "en" : "it"))
+        }
+        accessory={
+          <StoreCartDropdown
             lang={lang}
-            onToggle={() =>
-              setLang((current) => (current === "it" ? "en" : "it"))
-            }
+            products={content.products}
+            labels={{
+              cartTitle: content.cartTitle,
+              emptyCartLabel: content.emptyCartLabel,
+              checkoutLabel: content.checkoutLabel,
+              quantityLabel: content.quantityLabel,
+              totalLabel: content.totalLabel,
+              cartAriaLabel: content.cartAriaLabel,
+              removeFromCartLabel: content.removeFromCartLabel,
+            }}
           />
         }
       />
@@ -31,11 +42,15 @@ export default function FoodBeverageStoreContent() {
           <StoreProductGrid
             anchorId="catalogo"
             allLabel={content.allProductsLabel}
+            discountsLabel={content.discountsLabel}
             resultsLabel={content.resultsLabel}
             emptyLabel={content.emptyLabel}
             addToCartLabel={content.addToCartLabel}
             addedToCartLabel={content.addedToCartLabel}
             openProductLabel={content.openProductLabel}
+            sortLabel={content.sortLabel}
+            filterLabel={content.filterLabel}
+            sortOptions={content.sortOptions}
             categories={content.categories}
             products={content.products}
           />

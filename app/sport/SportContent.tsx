@@ -6,7 +6,6 @@ import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
 import ContinuousLoopCarousel from "@/components/UI/ContinuousLoopCarousel";
 import TextType from "@/components/UI/TextType";
-import ToggleLang from "@/components/UI/toggleLang";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -186,13 +185,9 @@ export default function SportContent() {
   return (
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
-        rightContent={
-          <ToggleLang
-            lang={lang}
-            onToggle={() =>
-              setLang((current) => (current === "it" ? "en" : "it"))
-            }
-          />
+        lang={lang}
+        onToggleLang={() =>
+          setLang((current) => (current === "it" ? "en" : "it"))
         }
       />
 

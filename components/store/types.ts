@@ -28,7 +28,9 @@ export type StoreProduct = {
   slug: string;
   category: string;
   name: string;
+  amountCents: number;
   price: string;
+  isDiscounted: boolean;
   shortDescription: string;
   fullDescription: string[];
   imageSrc: string;

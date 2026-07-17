@@ -3,9 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import StoreCtaSection from "@/components/food-beverage/StoreCtaSection";
 import CompactHeader from "@/components/UI/CompactHeader";
-import ToggleLang from "@/components/UI/toggleLang";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -66,46 +64,12 @@ export default function FoodBeverageContent() {
   const storeCtaContent =
     lang === "it"
       ? {
-          eyebrow: "Two Lions Online Store",
-          title: "Entra nella vetrina digitale del Food & Beverage",
-          description:
-            "Abbiamo aggiunto uno store editoriale dedicato a linee food, beverage e gift box: una base riutilizzabile pronta per evolvere in catalogo, showcase commerciale o canale B2B.",
-          highlights: [
-            "Componenti modulari per collection e prodotti",
-            "Layout coerente con retail, horeca ed export",
-            "Presentazione premium allineata al linguaggio Two Lions",
-          ],
-          primaryAction: {
-            href: "/food-and-beverage/store",
-            label: "Apri lo store online",
-            variant: "gold" as const,
-          },
-          secondaryAction: {
-            href: "/#contact",
-            label: "Richiedi attivazione",
-            variant: "light" as const,
-          },
+          title: "Scopri lo store online Food & Beverage",
+          actionLabel: "Apri lo store online",
         }
       : {
-          eyebrow: "Two Lions Online Store",
-          title: "Enter the Food & Beverage digital showcase",
-          description:
-            "A new editorial storefront is now in place for food, beverage and gift-box lines: a reusable base ready to evolve into a catalog, commercial showcase or B2B channel.",
-          highlights: [
-            "Modular components for collections and products",
-            "A layout aligned with retail, horeca and export",
-            "Premium presentation consistent with the Two Lions language",
-          ],
-          primaryAction: {
-            href: "/food-and-beverage/store",
-            label: "Open the online store",
-            variant: "gold" as const,
-          },
-          secondaryAction: {
-            href: "/#contact",
-            label: "Request activation",
-            variant: "light" as const,
-          },
+          title: "Discover the Food & Beverage online store",
+          actionLabel: "Open the online store",
         };
   const snapshotItems =
     lang === "it"
@@ -126,13 +90,9 @@ export default function FoodBeverageContent() {
     <main className="min-h-screen bg-white text-primary">
       {/* Sticky compact header with language toggle */}
       <CompactHeader
-        rightContent={
-          <ToggleLang
-            lang={lang}
-            onToggle={() =>
-              setLang((current) => (current === "it" ? "en" : "it"))
-            }
-          />
+        lang={lang}
+        onToggleLang={() =>
+          setLang((current) => (current === "it" ? "en" : "it"))
         }
       />
 
@@ -314,23 +274,26 @@ export default function FoodBeverageContent() {
             </div>
           </div>
 
-          {/* Division architecture:
-              this section now follows a cleaner desktop grid while staying closer to the source script. */}
-          <StoreCtaSection
-            eyebrow={storeCtaContent.eyebrow}
-            title={storeCtaContent.title}
-            description={storeCtaContent.description}
-            highlights={storeCtaContent.highlights}
-            imageSrc="/Food&Beverage/vino_mare.png"
-            imageAlt={`${content.title} online store preview`}
-            primaryAction={storeCtaContent.primaryAction}
-            secondaryAction={storeCtaContent.secondaryAction}
-          />
-
           <div className="space-y-6 pt-6 md:space-y-7 md:pt-8">
-            <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-              {content.operatingAreas}
-            </p>
+            <div className="px-5 py-8 text-center md:px-8 md:py-10">
+              <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
+                <h3 className="font-change-serif-bold max-w-[18ch] text-[1.9rem] leading-[0.95] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.3rem] md:text-[3rem]">
+                  {storeCtaContent.title}
+                </h3>
+                <Link
+                  href="/food-and-beverage/store"
+                  className="inline-flex w-fit items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
+                >
+                  {storeCtaContent.actionLabel}
+                </Link>
+              </div>
+            </div>
+
+            <div className="border-b border-[color:var(--color-primary)]/10 pb-6">
+              <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
+                {content.operatingAreas}
+              </p>
+            </div>
 
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
               {content.sections.map((section, index) => {

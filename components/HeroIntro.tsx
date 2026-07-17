@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./UI/ScrollIndicator";
-import ToggleLang from "./UI/toggleLang";
 import CompactHeader from "./UI/CompactHeader";
 
 type HeroIntroProps = {
@@ -28,27 +27,9 @@ export default function HeroIntro({
       <CompactHeader
         isVisible={isCompactHeader}
         logoHref="/#top"
-        rightContent={
-          <ToggleLang
-            lang={lang}
-            onToggle={onToggleLang}
-            className="shrink-0"
-          />
-        }
+        lang={lang}
+        onToggleLang={onToggleLang}
       />
-
-      <motion.div
-        className="fixed top-3 right-3 z-[60] md:top-6 md:right-6"
-        initial={false}
-        animate={{
-          opacity: isCompactHeader ? 0 : 1,
-          y: isCompactHeader ? -10 : 0,
-          pointerEvents: isCompactHeader ? "none" : "auto",
-        }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <ToggleLang lang={lang} onToggle={onToggleLang} />
-      </motion.div>
 
       <motion.div
         id="top"

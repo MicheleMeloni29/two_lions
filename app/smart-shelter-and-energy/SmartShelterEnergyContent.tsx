@@ -4,7 +4,6 @@ import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
-import ToggleLang from "@/components/UI/toggleLang";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -133,11 +132,9 @@ export default function SmartShelterEnergyContent() {
   return (
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
-        rightContent={
-          <ToggleLang
-            lang={lang}
-            onToggle={() => setLang((current) => (current === "it" ? "en" : "it"))}
-          />
+        lang={lang}
+        onToggleLang={() =>
+          setLang((current) => (current === "it" ? "en" : "it"))
         }
       />
 

@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/store/AddToCartButton";
+import StoreCartDropdown from "@/components/store/StoreCartDropdown";
 import CompactHeader from "@/components/UI/CompactHeader";
-import ToggleLang from "@/components/UI/toggleLang";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { getStoreProduct, storePageContent } from "../storeContent";
 
@@ -30,12 +30,23 @@ export default function ProductDetailContent({
   return (
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
-        rightContent={
-          <ToggleLang
+        lang={lang}
+        onToggleLang={() =>
+          setLang((current) => (current === "it" ? "en" : "it"))
+        }
+        accessory={
+          <StoreCartDropdown
             lang={lang}
-            onToggle={() =>
-              setLang((current) => (current === "it" ? "en" : "it"))
-            }
+            products={content.products}
+            labels={{
+              cartTitle: content.cartTitle,
+              emptyCartLabel: content.emptyCartLabel,
+              checkoutLabel: content.checkoutLabel,
+              quantityLabel: content.quantityLabel,
+              totalLabel: content.totalLabel,
+              cartAriaLabel: content.cartAriaLabel,
+              removeFromCartLabel: content.removeFromCartLabel,
+            }}
           />
         }
       />

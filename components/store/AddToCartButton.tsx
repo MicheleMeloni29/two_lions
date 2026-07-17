@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useStoreCart } from "@/hooks/useStoreCart";
 import { cn } from "@/lib/utils";
-
-const CART_STORAGE_KEY = "two-lions-store-cart";
 
 type AddToCartButtonProps = {
   productSlug: string;
@@ -12,47 +10,17 @@ type AddToCartButtonProps = {
   className?: string;
 };
 
-type CartState = Record<string, number>;
-
-function readCart(): CartState {
-  if (typeof window === "undefined") {
-    return {};
-  }
-
-  const rawCart = window.localStorage.getItem(CART_STORAGE_KEY);
-
-  if (!rawCart) {
-    return {};
-  }
-
-  try {
-    return JSON.parse(rawCart) as CartState;
-  } catch {
-    return {};
-  }
-}
-
 export default function AddToCartButton({
   productSlug,
   idleLabel,
   addedLabel,
   className,
 }: AddToCartButtonProps) {
-  const [isAdded, setIsAdded] = useState(() => {
-    const cart = readCart();
-    return Boolean(cart[productSlug]);
-  });
+  const { cart, addItem } = useStoreCart();
+  const isAdded = Boolean(cart[productSlug]);
 
   const handleClick = () => {
-    const currentCart = readCart();
-    const nextQuantity = (currentCart[productSlug] ?? 0) + 1;
-    const nextCart = {
-      ...currentCart,
-      [productSlug]: nextQuantity,
-    };
-
-    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(nextCart));
-    setIsAdded(true);
+    addItem(productSlug);
   };
 
   return (

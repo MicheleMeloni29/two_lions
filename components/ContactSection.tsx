@@ -156,7 +156,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                   setForm((currentForm) => ({ ...currentForm, name: event.target.value }));
                 }}
                 required
-                className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
+                className="mt-2 w-full border-b border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
                 placeholder={current.placeholders.name}
               />
             </label>
@@ -175,7 +175,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                   setForm((currentForm) => ({ ...currentForm, email: event.target.value }));
                 }}
                 required
-                className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
+                className="mt-2 w-full border-b border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
                 placeholder={current.placeholders.email}
               />
             </label>
@@ -195,7 +195,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                 setForm((currentForm) => ({ ...currentForm, subject: event.target.value }));
               }}
               required
-              className="mt-2 w-full border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
+              className="mt-2 w-full border-b border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
               placeholder={current.placeholders.subject}
             />
           </label>
@@ -214,7 +214,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
               }}
               required
               rows={7}
-              className="mt-2 min-h-[10.5rem] w-full resize-y border border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
+              className="mt-2 min-h-[10.5rem] w-full resize-y border-b border-[color:var(--color-secondary)] bg-transparent px-4 py-3 text-[14px] text-primary outline-none transition-colors placeholder:text-[color:var(--color-secondary)]/35 focus:border-[color:var(--color-thirdary)]"
               placeholder={current.placeholders.message}
             />
           </label>

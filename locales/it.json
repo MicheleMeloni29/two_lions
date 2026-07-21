@@ -90,19 +90,14 @@
         "image": "Fodd&Beverage.png"
       },
       {
-        "slug": "two_lions_merch",
-        "label": "Merch",
-        "image": "TwoLions_Merch.png"
+        "slug": "sport",
+        "label": "Sport",
+        "image": "TwoLions_Sport.jpeg"
       },
       {
         "slug": "parfum",
         "label": "Parfum",
         "image": "Parfum.png"
-      },
-      {
-        "slug": "sport",
-        "label": "Sport",
-        "image": "TwoLions_Sport.jpeg"
       },
       {
         "slug": "two_lions_event",
@@ -113,6 +108,11 @@
         "slug": "two_lions_media",
         "label": "Media e TV",
         "image": "Media&TV.jpeg"
+      },
+      {
+        "slug": "two_lions_pay",
+        "label": "Pay",
+        "image": ""
       }
     ]
   },
@@ -798,7 +798,7 @@
     "sponsorSection": {
       "eyebrow": "World Masters Hockey World Cup 2026",
       "title": "Official Sponsor Breda 2026",
-      "lead": "Two Lions sara presente come official sponsor al World Masters Hockey World Cup 2026, in programma a Breda, nei Paesi Bassi, ad agosto 2026. La presenza accompagnera l'evento con attivazione di brand, merch dedicato e mascotte Leo all'interno dell'esperienza Two Lions.",
+      "lead": "Two Lions sara presente come official sponsor della nazionale italiana ai Masters Hockey World Cup 2026, in programma a Breda, nei Paesi Bassi, ad agosto 2026. La presenza accompagnera l'evento con attivazione di brand, merch dedicato e mascotte Leo all'interno dell'esperienza Two Lions.",
       "overviewTitle": "Presenza ufficiale",
       "overviewItems": [
         "Two Lions partecipa al World Masters Hockey World Cup 2026 con una presenza ufficiale di sponsorship internazionale.",
@@ -808,7 +808,7 @@
       "mascotLine": " ''Io sono il Signor Leo, la mascotte Italiana della Coppa del Mondo di Hockey Maters 2026 a Breda!'' ",
       "carouselEyebrow": "Official event merch",
       "carouselTitle": "Merch Breda 2026",
-      "carouselLead": "Merch ufficiale della nazirappresentanza italiana per l'evento mondiale di Breda 2026. Si tratta di merchandising ufficiale, ideato e realizzato da TwoLions Sport.",
+      "carouselLead": "Sponsor della nazionale italiana Hockey Masters per l'evento mondiale di Breda 2026. Si tratta di merchandising ufficiale, ideato e realizzato da Two Lions Sport.",
       "carouselItems": [
         {
           "id": "01",

@@ -84,19 +84,14 @@
         "image": "Fodd&Beverage.png"
       },
       {
-        "slug": "two_lions_merch",
-        "label": "Merch",
-        "image": "TwoLions_Merch.png"
+        "slug": "sport",
+        "label": "Sport",
+        "image": "TwoLions_Sport.jpeg"
       },
       {
         "slug": "parfum",
         "label": "Parfum",
         "image": "Parfum.png"
-      },
-      {
-        "slug": "sport",
-        "label": "Sport",
-        "image": "TwoLions_Sport.jpeg"
       },
       {
         "slug": "two_lions_event",
@@ -107,6 +102,11 @@
         "slug": "two_lions_media",
         "label": "Media e TV",
         "image": "Media&TV.jpeg"
+      },
+      {
+        "slug": "two_lions_pay",
+        "label": "Pay",
+        "image": ""
       }
     ]
   },
@@ -174,13 +174,12 @@
     "italianOperations": {
       "eyebrow": "Cagliari, Olbia, Roma",
       "title": "Italian Operations",
-      "emphasis": "EU Strategic Hub",
+      "emphasis": "Two Lions srl",
       "offices": [
         {
           "city": "Cagliari, Sardinia, IT",
           "lines": [
             "Via Goffredo Mameli 96",
-            "Interno 14, Floor 7",
             "Cagliari 09123"
           ]
         },

@@ -1,34 +1,4 @@
-import type { StoreProduct } from "@/components/store/types";
-
-export type StorePageContent = {
-  allProductsLabel: string;
-  discountsLabel: string;
-  resultsLabel: string;
-  emptyLabel: string;
-  addToCartLabel: string;
-  addedToCartLabel: string;
-  openProductLabel: string;
-  backToStoreLabel: string;
-  detailLabel: string;
-  cartTitle: string;
-  emptyCartLabel: string;
-  checkoutLabel: string;
-  quantityLabel: string;
-  totalLabel: string;
-  cartAriaLabel: string;
-  removeFromCartLabel: string;
-  checkoutTitle: string;
-  checkoutEmptyLabel: string;
-  sortLabel: string;
-  filterLabel: string;
-  sortOptions: {
-    priceAsc: string;
-    priceDesc: string;
-    nameAsc: string;
-  };
-  categories: string[];
-  products: StoreProduct[];
-};
+import type { StorePageContent } from "@/components/store/types";
 
 export const storePageContent: Record<"it" | "en", StorePageContent> = {
   it: {

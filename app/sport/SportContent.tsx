@@ -139,6 +139,16 @@ function joinClasses(...classes: Array<string | undefined>) {
 export default function SportContent() {
   const [lang, setLang] = useState<"it" | "en">("it");
   const content = pageContent[lang];
+  const storeCtaContent =
+    lang === "it"
+      ? {
+          title: "Scopri lo store online Sport",
+          actionLabel: "Apri lo store online",
+        }
+      : {
+          title: "Discover the Sport online store",
+          actionLabel: "Open the online store",
+        };
   const hasHeroImage = Boolean(content.heroImage?.trim());
   const hasMascotImage = Boolean(content.sponsorSection.mascotImage?.trim());
   const sponsorCarouselItems = content.sponsorSection.carouselItems.map((item) => ({
@@ -382,6 +392,20 @@ export default function SportContent() {
                   trackClassName="gap-8 px-5 md:gap-10 md:px-7 lg:gap-10 xl:gap-26 xl:px-8 2xl:gap-32"
                   cardClassName="h-[15rem] w-[11rem] sm:h-[16rem] sm:w-[12rem] md:h-[18rem] md:w-[13rem] xl:h-[20rem] xl:w-[15rem]"
                 />
+              </div>
+            </div>
+
+            <div className="px-5 py-8 text-center md:px-8 md:py-10">
+              <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
+                <h3 className="font-change-serif-bold max-w-[18ch] text-[1.9rem] leading-[0.95] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.3rem] md:text-[3rem]">
+                  {storeCtaContent.title}
+                </h3>
+                <Link
+                  href="/sport/store"
+                  className="inline-flex w-fit items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
+                >
+                  {storeCtaContent.actionLabel}
+                </Link>
               </div>
             </div>
           </div>

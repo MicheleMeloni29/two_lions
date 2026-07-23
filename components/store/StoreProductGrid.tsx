@@ -10,6 +10,7 @@ type MobileFilterValue = "all" | "discounts" | string;
 
 type StoreProductGridProps = {
   anchorId?: string;
+  productBasePath: string;
   allLabel: string;
   discountsLabel: string;
   resultsLabel: string;
@@ -30,6 +31,7 @@ type StoreProductGridProps = {
 
 export default function StoreProductGrid({
   anchorId,
+  productBasePath,
   allLabel,
   discountsLabel,
   resultsLabel,
@@ -168,6 +170,7 @@ export default function StoreProductGrid({
             <StoreProductCard
               key={product.id}
               product={product}
+              productBasePath={productBasePath}
               addToCartLabel={addToCartLabel}
               addedToCartLabel={addedToCartLabel}
               openProductLabel={openProductLabel}

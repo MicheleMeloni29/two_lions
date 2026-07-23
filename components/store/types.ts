@@ -37,6 +37,42 @@ export type StoreProduct = {
   imageAlt: string;
 };
 
+export type StoreCatalogProduct = StoreProduct & {
+  storeBasePath: string;
+};
+
+export type StorePageContent = {
+  allProductsLabel: string;
+  discountsLabel: string;
+  resultsLabel: string;
+  emptyLabel: string;
+  addToCartLabel: string;
+  addedToCartLabel: string;
+  openProductLabel: string;
+  backToStoreLabel: string;
+  detailLabel: string;
+  cartTitle: string;
+  emptyCartLabel: string;
+  checkoutLabel: string;
+  quantityLabel: string;
+  totalLabel: string;
+  cartAriaLabel: string;
+  removeFromCartLabel: string;
+  checkoutTitle: string;
+  checkoutEmptyLabel: string;
+  sortLabel: string;
+  filterLabel: string;
+  sortOptions: {
+    priceAsc: string;
+    priceDesc: string;
+    nameAsc: string;
+  };
+  categories: string[];
+  products: StoreProduct[];
+};
+
+export type StoreContentByLanguage = Record<"it" | "en", StorePageContent>;
+
 export type StoreServiceContent = {
   eyebrow: string;
   title: string;

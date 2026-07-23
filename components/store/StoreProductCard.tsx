@@ -5,6 +5,7 @@ import type { StoreProduct } from "./types";
 
 type StoreProductCardProps = {
   product: StoreProduct;
+  productBasePath: string;
   addToCartLabel: string;
   addedToCartLabel: string;
   openProductLabel: string;
@@ -12,6 +13,7 @@ type StoreProductCardProps = {
 
 export default function StoreProductCard({
   product,
+  productBasePath,
   addToCartLabel,
   addedToCartLabel,
   openProductLabel,
@@ -23,6 +25,7 @@ export default function StoreProductCard({
           src={product.imageSrc}
           alt={product.imageAlt}
           fill
+          sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 90vw"
           className="object-cover"
         />
       </div>
@@ -44,7 +47,7 @@ export default function StoreProductCard({
         />
 
         <StoreLinkButton
-          href={`/food-and-beverage/store/${product.slug}`}
+          href={`${productBasePath}/${product.slug}`}
           label={openProductLabel}
           variant="outline"
           className="mt-auto w-full"

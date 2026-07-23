@@ -6,11 +6,12 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { formatStorePrice } from "@/lib/storePricing";
 import { useStoreCart } from "@/hooks/useStoreCart";
-import type { StoreProduct } from "./types";
+import type { StoreCatalogProduct } from "./types";
 
 type StoreCartDropdownProps = {
   lang: "it" | "en";
-  products: StoreProduct[];
+  products: StoreCatalogProduct[];
+  checkoutHref: string;
   labels: {
     cartTitle: string;
     emptyCartLabel: string;
@@ -25,6 +26,7 @@ type StoreCartDropdownProps = {
 export default function StoreCartDropdown({
   lang,
   products,
+  checkoutHref,
   labels,
 }: StoreCartDropdownProps) {
   const { cart, itemCount, removeItem } = useStoreCart();
@@ -129,19 +131,20 @@ export default function StoreCartDropdown({
                     className="grid grid-cols-[4rem_minmax(0,1fr)_auto] gap-3"
                   >
                     <Link
-                      href={`/food-and-beverage/store/${product.slug}`}
+                      href={`${product.storeBasePath}/${product.slug}`}
                       className="relative aspect-square overflow-hidden border border-[color:var(--color-primary)]/8 bg-[color:var(--color-secondary)]/4"
                     >
                       <Image
                         src={product.imageSrc}
                         alt={product.imageAlt}
                         fill
+                        sizes="64px"
                         className="object-cover"
                       />
                     </Link>
 
                     <Link
-                      href={`/food-and-beverage/store/${product.slug}`}
+                      href={`${product.storeBasePath}/${product.slug}`}
                       className="min-w-0 space-y-2"
                     >
                       <p className="font-change-serif-bold text-[0.95rem] uppercase leading-[1.08] tracking-[0.02em] text-[color:var(--color-primary)]">
@@ -178,7 +181,7 @@ export default function StoreCartDropdown({
               </div>
 
               <Link
-                href="/food-and-beverage/store/checkout"
+                href={checkoutHref}
                 className="inline-flex w-full items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-5 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
               >
                 {labels.checkoutLabel}

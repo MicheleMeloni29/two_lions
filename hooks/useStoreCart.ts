@@ -11,13 +11,14 @@ import {
 } from "@/lib/storeCart";
 
 export function useStoreCart() {
-  const [cart, setCart] = useState<StoreCartState>(() => readStoreCart());
+  const [cart, setCart] = useState<StoreCartState>({});
 
   useEffect(() => {
     const syncCart = () => {
       setCart(readStoreCart());
     };
 
+    syncCart();
     window.addEventListener(STORE_CART_EVENT, syncCart);
     window.addEventListener("storage", syncCart);
 

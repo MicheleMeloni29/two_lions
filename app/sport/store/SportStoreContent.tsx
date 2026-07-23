@@ -3,11 +3,11 @@
 import StoreCatalogContent from "@/components/store/StoreCatalogContent";
 import { storePageContent } from "./storeContent";
 
-export default function FoodBeverageStoreContent() {
+export default function SportStoreContent() {
   return (
     <StoreCatalogContent
       contentByLanguage={storePageContent}
-      storeBasePath="/food-and-beverage/store"
+      storeBasePath="/sport/store"
     />
   );
 }

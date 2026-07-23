@@ -14,7 +14,7 @@ export default function ProductDetailContent({
     <StoreProductDetailContent
       slug={slug}
       contentByLanguage={storePageContent}
-      storeBasePath="/food-and-beverage/store"
+      storeBasePath="/sport/store"
     />
   );
 }

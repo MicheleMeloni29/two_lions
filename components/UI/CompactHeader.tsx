@@ -12,7 +12,7 @@ import {
   isDivisionPath,
   isShopPath,
   navigationLabels,
-  shopHref,
+  shopNavItems,
   type SiteLang,
 } from "@/lib/siteNavigation";
 
@@ -34,12 +34,16 @@ export default function CompactHeader({
   const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [isDesktopDivisionOpen, setIsDesktopDivisionOpen] = useState(false);
+  const [isDesktopShopOpen, setIsDesktopShopOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileDivisionOpen, setIsMobileDivisionOpen] = useState(false);
+  const [isMobileShopOpen, setIsMobileShopOpen] = useState(false);
   const rafRef = useRef<number | null>(null);
   const desktopDivisionRef = useRef<HTMLDivElement | null>(null);
+  const desktopShopRef = useRef<HTMLDivElement | null>(null);
   const mobileDrawerRef = useRef<HTMLDivElement | null>(null);
   const mobileDivisionId = useId();
+  const mobileShopId = useId();
   const labels = navigationLabels[lang ?? "it"];
   const isHomeActive = pathname === "/";
   const isDivisionActive = isDivisionPath(pathname);
@@ -48,7 +52,7 @@ export default function CompactHeader({
 
   const getNavLinkClassName = (isActive: boolean) =>
     [
-      "text-[11px] uppercase tracking-[0.24em] transition-colors duration-200 md:text-[12px]",
+      "inline-flex items-center text-[12px] uppercase leading-none tracking-[0.24em] transition-colors duration-200 md:h-11 md:text-[12px] lg:text-[14px] xl:text-[14px]",
       isActive
         ? "text-[color:var(--color-thirdary)]"
         : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)]",
@@ -79,7 +83,7 @@ export default function CompactHeader({
   }, []);
 
   useEffect(() => {
-    if (!isDesktopDivisionOpen) return;
+    if (!isDesktopDivisionOpen && !isDesktopShopOpen) return;
 
     const handlePointerDown = (event: MouseEvent) => {
       if (
@@ -88,11 +92,19 @@ export default function CompactHeader({
       ) {
         setIsDesktopDivisionOpen(false);
       }
+
+      if (
+        desktopShopRef.current &&
+        !desktopShopRef.current.contains(event.target as Node)
+      ) {
+        setIsDesktopShopOpen(false);
+      }
     };
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsDesktopDivisionOpen(false);
+        setIsDesktopShopOpen(false);
       }
     };
 
@@ -103,7 +115,7 @@ export default function CompactHeader({
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [isDesktopDivisionOpen]);
+  }, [isDesktopDivisionOpen, isDesktopShopOpen]);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -182,7 +194,7 @@ export default function CompactHeader({
 
           <nav
             aria-label={labels.navigation}
-            className="hidden items-center gap-8 md:flex"
+            className="hidden items-center gap-8 md:flex lg:gap-14 xl:gap-24"
           >
             <Link
               href={homeHref}
@@ -196,10 +208,11 @@ export default function CompactHeader({
             <div className="relative" ref={desktopDivisionRef}>
               <button
                 type="button"
-                className={`${getNavLinkClassName(isDivisionActive)} inline-flex items-center gap-2`}
-                onClick={() =>
-                  setIsDesktopDivisionOpen((current) => !current)
-                }
+                className={`${getNavLinkClassName(isDivisionActive)} gap-2`}
+                onClick={() => {
+                  setIsDesktopShopOpen(false);
+                  setIsDesktopDivisionOpen((current) => !current);
+                }}
                 aria-expanded={isDesktopDivisionOpen}
                 aria-label={
                   isDesktopDivisionOpen
@@ -236,7 +249,7 @@ export default function CompactHeader({
                         <Link
                           key={item.slug}
                           href={item.href}
-                          className={`text-[10px] uppercase tracking-[0.22em] transition-colors ${
+                          className={`text-[10px] uppercase tracking-[0.22em] transition-colors lg:text-[12px] ${
                             isItemActive
                               ? "text-[color:var(--color-thirdary)]"
                               : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)]"
@@ -253,14 +266,64 @@ export default function CompactHeader({
               ) : null}
             </div>
 
-            <Link
-              href={shopHref}
-              className={getNavLinkClassName(isShopActive)}
-              onClick={() => setIsDesktopDivisionOpen(false)}
-              aria-current={isShopActive ? "page" : undefined}
-            >
-              {labels.shop}
-            </Link>
+            <div className="relative" ref={desktopShopRef}>
+              <button
+                type="button"
+                className={`${getNavLinkClassName(isShopActive)} gap-2`}
+                onClick={() => {
+                  setIsDesktopDivisionOpen(false);
+                  setIsDesktopShopOpen((current) => !current);
+                }}
+                aria-expanded={isDesktopShopOpen}
+                aria-label={
+                  isDesktopShopOpen ? labels.closeShopMenu : labels.openShopMenu
+                }
+              >
+                <span>{labels.shop}</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className={`h-4 w-4 transition-transform ${
+                    isDesktopShopOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+
+              {isDesktopShopOpen ? (
+                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 bg-[color:var(--color-white)]/98 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)]">
+                  <div className="grid gap-3">
+                    {shopNavItems.map((item) => {
+                      const isItemActive =
+                        pathname === item.href ||
+                        pathname.startsWith(`${item.href}/`);
+
+                      return (
+                        <Link
+                          key={item.key}
+                          href={item.href}
+                          className={`text-[11px] uppercase tracking-[0.22em] transition-colors lg:text-[12px] ${
+                            isItemActive
+                              ? "text-[color:var(--color-thirdary)]"
+                              : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)]"
+                          }`}
+                          onClick={() => setIsDesktopShopOpen(false)}
+                          aria-current={isItemActive ? "page" : undefined}
+                        >
+                          {item.labels[lang ?? "it"]}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -361,7 +424,7 @@ export default function CompactHeader({
           <div className="flex flex-col">
             <Link
               href={homeHref}
-              className={`border-b border-[color:var(--color-primary)]/10 py-4 text-[11px] uppercase tracking-[0.24em] transition-colors ${
+              className={`border-b border-[color:var(--color-primary)]/10 py-4 text-[12px] uppercase tracking-[0.24em] transition-colors ${
                 isHomeActive
                   ? "text-[color:var(--color-thirdary)]"
                   : "text-[color:var(--color-primary)]"
@@ -375,14 +438,15 @@ export default function CompactHeader({
             <div className="border-b border-[color:var(--color-primary)]/10">
               <button
                 type="button"
-                className={`flex w-full items-center justify-between py-4 text-left text-[11px] uppercase tracking-[0.24em] transition-colors ${
+                className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
                   isDivisionActive
                     ? "text-[color:var(--color-thirdary)]"
                     : "text-[color:var(--color-primary)]"
                 }`}
-                onClick={() =>
-                  setIsMobileDivisionOpen((current) => !current)
-                }
+                onClick={() => {
+                  setIsMobileShopOpen(false);
+                  setIsMobileDivisionOpen((current) => !current);
+                }}
                 aria-expanded={isMobileDivisionOpen}
                 aria-controls={mobileDivisionId}
                 aria-label={
@@ -422,7 +486,7 @@ export default function CompactHeader({
                       <Link
                         key={item.slug}
                         href={item.href}
-                        className={`text-[10px] uppercase tracking-[0.22em] transition-colors ${
+                        className={`text-[11px] uppercase tracking-[0.22em] transition-colors ${
                           isItemActive
                             ? "text-[color:var(--color-thirdary)]"
                             : "text-[color:var(--color-primary)]"
@@ -438,18 +502,67 @@ export default function CompactHeader({
               ) : null}
             </div>
 
-            <Link
-              href={shopHref}
-              className={`border-b border-[color:var(--color-primary)]/10 py-4 text-[11px] uppercase tracking-[0.24em] transition-colors ${
-                isShopActive
-                  ? "text-[color:var(--color-thirdary)]"
-                  : "text-[color:var(--color-primary)]"
-              }`}
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-current={isShopActive ? "page" : undefined}
-            >
-              {labels.shop}
-            </Link>
+            <div className="border-b border-[color:var(--color-primary)]/10">
+              <button
+                type="button"
+                className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
+                  isShopActive
+                    ? "text-[color:var(--color-thirdary)]"
+                    : "text-[color:var(--color-primary)]"
+                }`}
+                onClick={() => {
+                  setIsMobileDivisionOpen(false);
+                  setIsMobileShopOpen((current) => !current);
+                }}
+                aria-expanded={isMobileShopOpen}
+                aria-controls={mobileShopId}
+                aria-label={
+                  isMobileShopOpen ? labels.closeShopMenu : labels.openShopMenu
+                }
+              >
+                <span>{labels.shop}</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className={`h-4 w-4 transition-transform ${
+                    isMobileShopOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+
+              {isMobileShopOpen ? (
+                <div id={mobileShopId} className="grid gap-3 pb-4">
+                  {shopNavItems.map((item) => {
+                    const isItemActive =
+                      pathname === item.href ||
+                      pathname.startsWith(`${item.href}/`);
+
+                    return (
+                      <Link
+                        key={item.key}
+                        href={item.href}
+                        className={`text-[11px] uppercase tracking-[0.22em] transition-colors ${
+                          isItemActive
+                            ? "text-[color:var(--color-thirdary)]"
+                            : "text-[color:var(--color-primary)]"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-current={isItemActive ? "page" : undefined}
+                      >
+                        {item.labels[lang ?? "it"]}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </div>
           </div>
 
           {showLanguageToggle ? (

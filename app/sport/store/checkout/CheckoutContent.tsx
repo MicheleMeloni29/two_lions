@@ -7,7 +7,7 @@ export default function CheckoutContent() {
   return (
     <StoreCheckoutContent
       contentByLanguage={storePageContent}
-      storeBasePath="/food-and-beverage/store"
+      storeBasePath="/sport/store"
     />
   );
 }

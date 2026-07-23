@@ -19,11 +19,19 @@ type NavLabels = {
   closeMenu: string;
   openDivisionMenu: string;
   closeDivisionMenu: string;
+  openShopMenu: string;
+  closeShopMenu: string;
   navigation: string;
 };
 
 type DivisionNavItem = {
   slug: DivisionSlug;
+  href: string;
+  labels: Record<SiteLang, string>;
+};
+
+type ShopNavItem = {
+  key: "food-and-beverage" | "sport";
   href: string;
   labels: Record<SiteLang, string>;
 };
@@ -57,6 +65,8 @@ export const navigationLabels: Record<SiteLang, NavLabels> = {
     closeMenu: "Chiudi menu",
     openDivisionMenu: "Apri elenco divisioni",
     closeDivisionMenu: "Chiudi elenco divisioni",
+    openShopMenu: "Apri elenco store",
+    closeShopMenu: "Chiudi elenco store",
     navigation: "Navigazione principale",
   },
   en: {
@@ -67,6 +77,8 @@ export const navigationLabels: Record<SiteLang, NavLabels> = {
     closeMenu: "Close menu",
     openDivisionMenu: "Open divisions list",
     closeDivisionMenu: "Close divisions list",
+    openShopMenu: "Open stores list",
+    closeShopMenu: "Close stores list",
     navigation: "Main navigation",
   },
 };
@@ -81,7 +93,24 @@ export const divisionNavItems: DivisionNavItem[] = divisionSlugs.map((slug) => (
 }));
 
 export const homeHref = "/#top";
-export const shopHref = "/food-and-beverage/store";
+export const shopNavItems: ShopNavItem[] = [
+  {
+    key: "food-and-beverage",
+    href: "/food-and-beverage/store",
+    labels: {
+      it: "Food & Beverage",
+      en: "Food & Beverage",
+    },
+  },
+  {
+    key: "sport",
+    href: "/sport/store",
+    labels: {
+      it: "Sport",
+      en: "Sport",
+    },
+  },
+];
 
 export function isDivisionPath(pathname: string) {
   if (isShopPath(pathname)) {
@@ -94,5 +123,7 @@ export function isDivisionPath(pathname: string) {
 }
 
 export function isShopPath(pathname: string) {
-  return pathname === shopHref || pathname.startsWith(`${shopHref}/`);
+  return shopNavItems.some(
+    (item) => pathname === item.href || pathname.startsWith(`${item.href}/`)
+  );
 }

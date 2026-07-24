@@ -121,11 +121,11 @@ export default function ContactSection({ lang }: ContactSectionProps) {
     >
       <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-[color:var(--color-trapsarent)] via-[color:var(--color-secondary)]/8 to-secondary/24" />
 
-      <div className="relative mx-auto w-full">
+      <div className="relative mx-auto max-w-7xl">
         <form
           noValidate
           onSubmit={handleSubmit}
-          className="w-full p-6 sm:p-7 md:p-8 lg:p-10 xl:p-12"
+          className="w-full"
         >
           <div className="max-w-6xl pb-7 xl:max-w-[82%]">
             <div>

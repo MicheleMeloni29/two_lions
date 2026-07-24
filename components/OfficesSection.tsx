@@ -200,6 +200,7 @@ export default function OfficesSection({ lang }: OfficesSectionProps) {
             title={current.headquarters.title}
             eyebrow={current.headquarters.eyebrow}
             lines={[]}
+            emphasis={current.headquarters.emphasis}
             details={
               <div className="space-y-4">
                 {headquartersRows.map((row) => (

@@ -158,6 +158,7 @@
     "headquarters": {
       "eyebrow": "Lewes, Delaware, USA",
       "title": "Corporate Headquarters",
+      "emphasis": "Two Lions International",
       "rows": [
         {
           "label": "Registered Address",
@@ -183,7 +184,7 @@
     "italianOperations": {
       "eyebrow": "Cagliari, Olbia, Roma",
       "title": "Italian Operations",
-      "emphasis": "EU Strategic Hub",
+      "emphasis": "Two Lions srl",
       "offices": [
         {
           "city": "Cagliari, Sardinia, IT",

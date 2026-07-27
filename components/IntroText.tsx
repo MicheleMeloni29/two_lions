@@ -2,6 +2,7 @@
 
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
+import Image from "next/image";
 import ContinuousLoopCarousel from "./UI/ContinuousLoopCarousel";
 
 type IntroTextProps = {
@@ -32,11 +33,16 @@ export default function IntroText({ lang }: IntroTextProps) {
   return (
     <section
       id="intro-text"
-      className="relative overflow-hidden px-4 pb-18 pt-28 text-primary sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
+      className="relative overflow-hidden bg-[color:var(--color-primary)] px-4 pb-18 pt-28 text-white sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36"
     >
-      <div className="absolute inset-0 bg-[url('/IntroText_Background.jpeg')] bg-cover bg-center bg-no-repeat" />
-      <div className="absolute inset-0 bg-white/68" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent md:h-40" />
+      <Image
+        src="/IntroText_Background.jpeg"
+        alt={`${content.title} background`}
+        fill
+        priority
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-[color:var(--color-primary)]/68" />
 
       <div className="relative mx-auto flex max-w-md flex-col gap-12 md:max-w-3xl md:gap-14 xl:max-w-7xl xl:gap-16">
         <div className="space-y-5 md:space-y-6">
@@ -48,7 +54,7 @@ export default function IntroText({ lang }: IntroTextProps) {
             {content.title}
           </h2>
 
-          <p className="max-w-4xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
+          <p className="max-w-4xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-white/82 sm:text-sm md:text-[15px] md:leading-7">
             {content.body}
           </p>
         </div>
@@ -62,8 +68,8 @@ export default function IntroText({ lang }: IntroTextProps) {
             </div>
 
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-white/75 via-white/30 to-transparent sm:w-10 md:w-12" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-white/75 via-white/30 to-transparent sm:w-10 md:w-12" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-[color:var(--color-primary)]/75 via-[color:var(--color-primary)]/30 to-transparent sm:w-10 md:w-12" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-[color:var(--color-primary)]/75 via-[color:var(--color-primary)]/30 to-transparent sm:w-10 md:w-12" />
 
               <div className="px-5 md:px-7 xl:px-8">
                 <ContinuousLoopCarousel

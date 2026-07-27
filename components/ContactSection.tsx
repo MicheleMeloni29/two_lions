@@ -117,9 +117,9 @@ export default function ContactSection({ lang }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="relative -mt-px overflow-hidden bg-linear-to-b from-[color:var(--color-trapsarent)] via-[color:var(--color-secondary)]/8 to-secondary/24 px-4 py-14 sm:px-5 md:px-8 md:py-18 xl:px-14 xl:py-22"
+      className="relative -mt-px overflow-hidden bg-[color:var(--color-white)] px-4 py-14 sm:px-5 md:px-8 md:py-18 xl:px-14 xl:py-22"
     >
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-[color:var(--color-trapsarent)] via-[color:var(--color-secondary)]/8 to-secondary/24" />
+      <div className="pointer-events-none absolute inset-0 " />
 
       <div className="relative mx-auto max-w-7xl">
         <form

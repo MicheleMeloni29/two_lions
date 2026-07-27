@@ -38,10 +38,10 @@ export default function InvestmentSection({ lang }: InvestmentSectionProps) {
   return (
     <section
       id="investment-opportunities"
-      className="relative overflow-hidden bg-linear-to-b from-[color:var(--color-secondary)]/24 via-[color:var(--color-secondary)]/8 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-14 xl:py-24"
+      className="relative overflow-hidden bg-[color:var(--color-secondary)]/30  px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-14 xl:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(31,39,92,0.10),transparent_30%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/24 via-[color:var(--color-secondary)]/8 to-transparent md:h-40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32  to-transparent md:h-40" />
 
       <div className="relative mx-auto max-w-7xl">
         <motion.div

@@ -202,8 +202,8 @@ export default function SmartShelterEnergyContent() {
       </section>
 
       {/* mid-section */}
-      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-14 text-primary sm:px-5 sm:py-16 md:px-8 md:py-20 xl:px-14 xl:py-24">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/70 via-[color:var(--color-secondary)]/50 to-transparent px-4 py-14 text-primary sm:px-5 sm:py-16 md:px-8 md:py-20 xl:px-14 xl:py-24">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 md:h-40" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-8 md:gap-10 xl:gap-14">
           <div className="max-w-5xl space-y-4 md:space-y-6">

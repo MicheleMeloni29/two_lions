@@ -48,11 +48,17 @@ export default function StoreProductGrid({
   const [activeCategory, setActiveCategory] = useState(allLabel);
   const [showDiscountsOnly, setShowDiscountsOnly] = useState(false);
   const [sortKey, setSortKey] = useState<SortKey>("default");
+  const normalizedActiveCategory =
+    activeCategory === allLabel || categories.includes(activeCategory)
+      ? activeCategory
+      : allLabel;
 
   let filteredProducts =
-    activeCategory === allLabel
+    normalizedActiveCategory === allLabel
       ? [...products]
-      : products.filter((product) => product.category === activeCategory);
+      : products.filter(
+          (product) => product.category === normalizedActiveCategory
+        );
 
   if (showDiscountsOnly) {
     filteredProducts = filteredProducts.filter((product) => product.isDiscounted);
@@ -69,9 +75,9 @@ export default function StoreProductGrid({
   const filterItems = [allLabel, ...categories];
   const mobileFilterValue: MobileFilterValue = showDiscountsOnly
     ? "discounts"
-    : activeCategory === allLabel
+    : normalizedActiveCategory === allLabel
       ? "all"
-      : activeCategory;
+      : normalizedActiveCategory;
 
   const handleMobileFilterChange = (value: MobileFilterValue) => {
     if (value === "discounts") {
@@ -132,10 +138,10 @@ export default function StoreProductGrid({
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              aria-pressed={activeCategory === category}
+              aria-pressed={normalizedActiveCategory === category}
               className={cn(
                 "cursor-pointer border px-4 py-3 text-[11px] uppercase tracking-[0.22em] transition sm:text-[12px]",
-                activeCategory === category
+                normalizedActiveCategory === category
                   ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white"
                   : "border-[color:var(--color-primary)]/10 bg-white text-[color:var(--color-primary)] hover:border-[color:var(--color-primary)]"
               )}

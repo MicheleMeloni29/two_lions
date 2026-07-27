@@ -238,7 +238,7 @@ export default function CompactHeader({
               </button>
 
               {isDesktopDivisionOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 bg-[color:var(--color-white)]/98 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)]">
+                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 border border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
                   <div className="grid gap-3">
                     {divisionNavItems.map((item) => {
                       const isItemActive =
@@ -297,7 +297,7 @@ export default function CompactHeader({
               </button>
 
               {isDesktopShopOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 bg-[color:var(--color-white)]/98 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)]">
+                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 border border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
                   <div className="grid gap-3">
                     {shopNavItems.map((item) => {
                       const isItemActive =

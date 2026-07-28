@@ -295,9 +295,9 @@ export default function SportContent() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(31,39,92,0.10),transparent_30%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-trasparent)] via-[color:var(--color-secondary)]/25 to-secondary/50 px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
+        <div className="pointer-events-none absolute inset-0 " />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 t md:h-40" />
 
         <div className="relative mx-auto flex max-w-[92rem] flex-col gap-10 md:gap-12 xl:gap-16 2xl:gap-18">
           <div className="space-y-10 md:space-y-12 xl:space-y-14">
@@ -412,9 +412,9 @@ export default function SportContent() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-secondary)]/50 via-[color:var(--color-secondary)]/20 to-transparent px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
+      <section className="relative overflow-hidden border-t border-[color:var(--color-secondary)]/35 bg-linear-to-b from-[color:var(--color-trasparent)] via-[color:var(--color-secondary)]/25 to-secondary/50 px-4 py-16 text-primary sm:px-5 md:px-8 md:py-20 xl:px-16 xl:py-28 2xl:px-20 2xl:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(31,39,92,0.10),transparent_30%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[color:var(--color-secondary)]/35 via-[color:var(--color-secondary)]/10 to-transparent md:h-40" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 md:h-40" />
 
         <div className="relative mx-auto flex max-w-[92rem] flex-col gap-10 md:gap-12 xl:gap-16 2xl:gap-18">
           <div className="max-w-6xl space-y-5 md:space-y-6 xl:space-y-7">

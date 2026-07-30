@@ -7,12 +7,6 @@ import CompactHeader from "@/components/UI/CompactHeader";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
-type ParfumVisualPlaceholder = {
-  id: string;
-  title: string;
-  caption: string;
-};
-
 type ParfumSection = {
   id: string;
   title: string;
@@ -43,17 +37,6 @@ type ParfumPageContent = {
   frameworkParagraphs: string[];
   focus: string;
   focusItems: string[];
-  visualsEyebrow: string;
-  visualsTitle: string;
-  visualsLead: string;
-  visualComingSoonLabel: string;
-  visualPlaceholderLabel: string;
-  visualPlaceholders: ParfumVisualPlaceholder[];
-  launchEyebrow: string;
-  launchTitle: string;
-  launchLead: string;
-  launchItems: string[];
-  launchFooter: string;
   operatingAreas: string;
   sections: ParfumSection[];
 };
@@ -138,6 +121,7 @@ export default function ParfumContent() {
           alt={`${content.title} background`}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[color:var(--color-primary)]/72" />
@@ -293,85 +277,6 @@ export default function ParfumContent() {
                 </ul>
               </div>
             </aside>
-          </div>
-
-          <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] xl:items-stretch xl:gap-6">
-            <div className="min-w-0 border border-[color:var(--color-primary)]/10 bg-white px-4 py-5 shadow-[0_28px_80px_rgba(31,39,92,0.08)] sm:px-5 sm:py-6 md:px-7 md:py-8 xl:px-8">
-              <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                {content.launchEyebrow}
-              </p>
-              <h3 className="mt-4 max-w-[11ch] font-change-serif-bold text-[1.7rem] leading-[0.96] uppercase tracking-[0.01em] text-[color:var(--color-primary)] break-words sm:max-w-[14ch] sm:text-[2.2rem] md:text-[2.7rem] md:tracking-[0.015em]">
-                {content.launchTitle}
-              </h3>
-              <p className="mt-5 max-w-xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] break-words sm:text-sm md:text-[15px] md:leading-7">
-                {content.launchLead}
-              </p>
-              <ul className="mt-6 space-y-3">
-                {content.launchItems.map((item) => (
-                  <li
-                    key={item}
-                    className="border border-[color:var(--color-primary)]/10 px-4 py-3 text-[12px] uppercase leading-5 tracking-[0.14em] text-[color:var(--color-primary)] break-words sm:text-[13px] sm:tracking-[0.2em]"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 border-t border-[color:var(--color-primary)]/10 pt-5 text-[13px] leading-6 text-[color:var(--color-secondary)] break-words sm:text-sm md:text-[15px] md:leading-7">
-                {content.launchFooter}
-              </p>
-            </div>
-
-            <div className="min-w-0 overflow-hidden border border-[color:var(--color-primary)]/10 bg-white shadow-[0_28px_80px_rgba(31,39,92,0.08)]">
-              <div className="px-4 py-5 sm:px-5 sm:py-6 md:px-7 md:py-8 xl:px-8">
-                <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-                  {content.visualsEyebrow}
-                </p>
-                <h3 className="mt-4 max-w-[11ch] font-change-serif-bold text-[1.65rem] leading-[0.96] uppercase tracking-[0.01em] text-[color:var(--color-primary)] break-words sm:max-w-[15ch] sm:text-[2.1rem] md:text-[2.5rem] md:tracking-[0.015em]">
-                  {content.visualsTitle}
-                </h3>
-                <p className="mt-5 max-w-2xl border-l-2 border-[color:var(--color-thirdary)]/65 pl-4 text-[13px] leading-6 text-[color:var(--color-secondary)] break-words sm:text-sm md:text-[15px] md:leading-7">
-                  {content.visualsLead}
-                </p>
-              </div>
-
-              <div className="grid gap-px bg-[color:var(--color-primary)]/8 md:grid-cols-3">
-                {content.visualPlaceholders.map((visual) => (
-                  <div
-                    key={visual.id}
-                    className="min-w-0 bg-white p-4 md:p-5"
-                  >
-                    <div className="relative overflow-hidden border border-dashed border-[color:var(--color-primary)]/18 bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.18),transparent_45%),linear-gradient(180deg,rgba(31,39,92,0.04),rgba(31,39,92,0.08))]">
-                      <div className="min-h-[24rem] px-4 py-4 sm:min-h-0 sm:aspect-[4/5] sm:px-5 sm:py-5">
-                        <div className="flex h-full flex-col justify-between">
-                          <div className="flex items-center justify-between gap-3">
-                            <span className="text-[9px] uppercase tracking-[0.18em] text-[color:var(--color-thirdary)] sm:text-[10px] sm:tracking-[0.22em]">
-                              {content.visualsEyebrow}
-                            </span>
-                            <span className="max-w-[9ch] text-right text-[9px] uppercase leading-4 tracking-[0.18em] text-[color:var(--color-primary)]/55 break-words sm:max-w-none sm:text-[10px] sm:tracking-[0.22em]">
-                              {content.visualComingSoonLabel}
-                            </span>
-                          </div>
-
-                          <div className="space-y-4 min-w-0">
-                            <div className="h-px w-14 bg-[color:var(--color-thirdary)]/60" />
-                            <h4 className="font-change-serif-bold max-w-[10ch] text-[1.2rem] uppercase leading-[1.02] tracking-[0.02em] text-[color:var(--color-primary)] break-words sm:max-w-[9ch] sm:text-[1.35rem] md:text-[1.55rem] md:tracking-[0.04em]">
-                              {visual.title}
-                            </h4>
-                            <p className="text-[13px] leading-6 text-[color:var(--color-secondary)] break-words sm:text-sm md:text-[15px] md:leading-7">
-                              {visual.caption}
-                            </p>
-                          </div>
-
-                          <div className="mt-6 border-t border-[color:var(--color-primary)]/10 pt-4 text-[11px] uppercase leading-5 tracking-[0.18em] text-[color:var(--color-primary)]/60 break-words sm:tracking-[0.24em]">
-                            {content.visualPlaceholderLabel}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div className="space-y-6 pt-14 md:space-y-7 md:pt-18 xl:pt-20">

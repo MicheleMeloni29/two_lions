@@ -162,6 +162,7 @@ export default function SportContent() {
               src={item.image}
               alt={item.alt ?? "Breda 2026 merch"}
               fill
+              sizes="(min-width: 1280px) 15rem, (min-width: 768px) 13rem, 11rem"
               className="object-contain"
             />
           ) : null}
@@ -208,6 +209,7 @@ export default function SportContent() {
             alt={content.heroImageAlt ?? `${content.title} background`}
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
         ) : (
@@ -351,6 +353,7 @@ export default function SportContent() {
                             content.sponsorSection.mascotEyebrow
                           }
                           fill
+                          sizes="(min-width: 1280px) 38rem, 100vw"
                           className="object-contain object-bottom translate-y-1 md:translate-y-2 xl:translate-y-3 2xl:translate-y-4"
                         />
                       ) : null}

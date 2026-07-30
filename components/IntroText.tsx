@@ -39,7 +39,7 @@ export default function IntroText({ lang }: IntroTextProps) {
         src="/IntroText_Background.jpeg"
         alt={`${content.title} background`}
         fill
-        priority
+        sizes="100vw"
         className="object-cover"
       />
       <div className="absolute inset-0 bg-[color:var(--color-primary)]/68" />

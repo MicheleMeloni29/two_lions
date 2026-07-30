@@ -106,12 +106,12 @@
       },
       {
         "slug": "two_lions_media",
-        "label": "Media e TV",
+        "label": "Media & TV",
         "image": "Media&TV.jpeg"
       },
       {
         "slug": "two_lions_pay",
-        "label": "Pay",
+        "label": "Pay & Communication",
         "image": ""
       }
     ]
@@ -659,38 +659,6 @@
       "Edizioni limitate numerate con certificato di autenticita e confezione celebrativa.",
       "Versione Premium NFC con accesso immediato a contenuti esclusivi da smartphone.",
       "Modello utile a sostenere attivita sportive, eventi e iniziative sociali del club."
-    ],
-    "visualsEyebrow": "Spazio Visual",
-    "visualsTitle": "Aree Riservate ai Futuri Materiali Creativi",
-    "visualsLead": "La pagina prevede gia spazi dedicati a bottle shot, pack celebrativi e visual narrativi che potranno essere inseriti appena disponibili.",
-    "visualComingSoonLabel": "coming soon",
-    "visualPlaceholderLabel": "Visual placeholder",
-    "visualPlaceholders": [
-      {
-        "id": "01",
-        "title": "Club Bottle",
-        "caption": "Spazio per il flacone ufficiale personalizzato con logo del club, colori sociali e numerazione progressiva."
-      },
-      {
-        "id": "02",
-        "title": "Limited Edition Pack",
-        "caption": "Spazio per confezione celebrativa, certificato di autenticita e dettagli premium dell'edizione limitata."
-      },
-      {
-        "id": "03",
-        "title": "NFC Experience",
-        "caption": "Spazio per visual del touchpoint digitale: smartphone, storia del club, video, sponsor e contenuti esclusivi."
-      }
-    ],
-    "launchEyebrow": "Applicazione Immediata",
-    "launchTitle": "Italia Master 65 Breda 2026",
-    "launchLead": "Una prima edizione ufficiale puo nascere come NFC Italia Master 65, con il payoff L'Essenza dell'Orgoglio Azzurro e una costruzione visuale coerente con spedizione, memoria sportiva e heritage nazionale.",
-    "launchItems": [
-      "Confezione tricolore",
-      "Logo Italia Master",
-      "Logo Two Lions Sport",
-      "Numerazione limitata",
-      "QR / NFC con video della spedizione mondiale"
     ],
     "launchFooter": "Potrebbe diventare il primo prodotto ufficiale della Two Lions Sport Heritage Collection, capace di legare atleta, tifoso e sponsor alla storia della squadra.",
     "operatingAreas": "Aree operative",

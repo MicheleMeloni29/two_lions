@@ -26,7 +26,13 @@ export default function StoreCtaSection({
   return (
     <section className="relative overflow-hidden border border-[color:var(--color-primary)]/10 bg-[color:var(--color-primary)] text-white shadow-[0_30px_90px_rgba(31,39,92,0.16)]">
       <div className="absolute inset-0">
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="(min-width: 1280px) 70vw, 100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-[color:var(--color-primary)]/76" />
       </div>
 

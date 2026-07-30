@@ -51,6 +51,7 @@ export default function HeroIntro({
               width={240}
               height={240}
               priority
+              sizes="(min-width: 1536px) 480px, (min-width: 1280px) 400px, (min-width: 1024px) 320px, (min-width: 768px) 280px, 240px"
               className="object-contain text-primary w-60 h-46 md:w-70 md:h-56 lg:w-80 lg:h-64 xl:w-100 xl:h-76 2xl:w-120 2xl:h-76"
             />
           </motion.div>

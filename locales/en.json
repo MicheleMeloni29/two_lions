@@ -100,12 +100,12 @@
       },
       {
         "slug": "two_lions_media",
-        "label": "Media e TV",
+        "label": "Media & TV",
         "image": "Media&TV.jpeg"
       },
       {
         "slug": "two_lions_pay",
-        "label": "Pay",
+        "label": "Pay & Communication",
         "image": ""
       }
     ]
@@ -634,38 +634,6 @@
       "Numbered limited editions with certificate of authenticity and celebratory packaging.",
       "Premium NFC version with instant access to exclusive smartphone content.",
       "A model that can support sports activities, events and social initiatives for the club."
-    ],
-    "visualsEyebrow": "Visual Space",
-    "visualsTitle": "Reserved Areas for Future Creative Assets",
-    "visualsLead": "The page already includes dedicated spaces for bottle shots, celebratory packs and narrative visuals that can be inserted as soon as they are available.",
-    "visualComingSoonLabel": "coming soon",
-    "visualPlaceholderLabel": "Visual placeholder",
-    "visualPlaceholders": [
-      {
-        "id": "01",
-        "title": "Club Bottle",
-        "caption": "Reserved space for the official bottle customized with club logo, team colors and progressive numbering."
-      },
-      {
-        "id": "02",
-        "title": "Limited Edition Pack",
-        "caption": "Reserved space for celebratory packaging, certificate of authenticity and premium edition details."
-      },
-      {
-        "id": "03",
-        "title": "NFC Experience",
-        "caption": "Reserved space for the digital touchpoint visual: smartphone, club story, video, sponsors and exclusive content."
-      }
-    ],
-    "launchEyebrow": "Immediate Application",
-    "launchTitle": "Italia Master 65 Breda 2026",
-    "launchLead": "A first official edition could launch as NFC Italia Master 65, with the payoff The Essence of Azzurro Pride and a visual system aligned with the world-championship journey, sports memory and national heritage.",
-    "launchItems": [
-      "Tricolor packaging",
-      "Italia Master logo",
-      "Two Lions Sport logo",
-      "Limited numbering",
-      "QR / NFC with world championship journey video"
     ],
     "launchFooter": "It could become the first official product in the Two Lions Sport Heritage Collection, linking athlete, supporter and sponsor to the team's story.",
     "operatingAreas": "Operating Areas",

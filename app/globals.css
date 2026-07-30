@@ -89,21 +89,13 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@font-face {
-  font-family: "ChangeSerif";
-  src: url("/fonts/ChangeSerif-Bold.woff2") format("woff2");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 .font-change-serif-bold {
-  font-family: "ChangeSerif", Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: bold;
 }
 
 body {
-  font-family: "ChangeSerif", Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 body,
@@ -111,7 +103,7 @@ button,
 input,
 textarea,
 select {
-  font-family: "ChangeSerif", Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 html {

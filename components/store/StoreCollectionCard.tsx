@@ -16,6 +16,7 @@ export default function StoreCollectionCard({
           src={collection.imageSrc}
           alt={collection.imageAlt}
           fill
+          sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[color:var(--color-primary)]/92 via-[color:var(--color-primary)]/36 to-transparent" />

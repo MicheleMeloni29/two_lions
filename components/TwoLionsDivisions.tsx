@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -55,17 +56,20 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
             <div
               key={item.slug}
               className={`group relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-center bg-no-repeat sm:min-h-[60vh] md:min-h-[42vh] lg:min-h-[26rem] xl:min-h-[30rem] ${hasBackgroundImage
-                ? "bg-cover"
+                ? "bg-[color:var(--color-primary)]"
                 : "bg-[color:var(--color-secondary)]"
                 }`}
-              style={
-                hasBackgroundImage
-                  ? {
-                    backgroundImage: `url(/SectionsBackgrounds/${item.image})`,
-                  }
-                  : undefined
-              }
             >
+              {hasBackgroundImage ? (
+                <Image
+                  src={`/SectionsBackgrounds/${item.image}`}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              ) : null}
+
               {hasBackgroundImage ? (
                 <div className="absolute inset-0 bg-[color:var(--color-primary)]/55" />
               ) : (

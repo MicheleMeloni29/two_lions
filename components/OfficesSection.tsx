@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -170,7 +171,13 @@ export default function OfficesSection({ lang }: OfficesSectionProps) {
       id="offices"
       className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-14 md:px-8 md:py-16 xl:px-14 xl:py-20"
     >
-      <div className="absolute inset-0 bg-[url('/identityAdversiting/Identity_Corporate.png')] bg-cover bg-center bg-no-repeat" />
+      <Image
+        src="/identityAdversiting/Identity_Corporate.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-white/80" />
       <div className="absolute inset-0" />
 

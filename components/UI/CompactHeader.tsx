@@ -186,7 +186,7 @@ export default function CompactHeader({
                 alt="Two Lions"
                 width={58}
                 height={58}
-                priority
+                sizes="58px"
                 className="h-10 w-auto object-contain md:h-12"
               />
             </Link>
@@ -391,7 +391,7 @@ export default function CompactHeader({
               alt="Two Lions"
               width={58}
               height={58}
-              priority
+              sizes="58px"
               className="h-10 w-auto object-contain"
             />
           </Link>

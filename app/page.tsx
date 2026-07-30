@@ -1,12 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
-import IntroText from "@/components/IntroText";
-import InvestmentSection from "@/components/InvestmentSection";
-import TwoLionsDivisions from "@/components/TwoLionsDivisions";
-import OfficesSection from "@/components/OfficesSection";
-import ContactSection from "@/components/ContactSection";
+
+const IntroText = dynamic(() => import("@/components/IntroText"));
+const TwoLionsDivisions = dynamic(() => import("@/components/TwoLionsDivisions"));
+const InvestmentSection = dynamic(() => import("@/components/InvestmentSection"));
+const ContactSection = dynamic(() => import("@/components/ContactSection"));
+const OfficesSection = dynamic(() => import("@/components/OfficesSection"));
 
 export default function Home() {
   const [lang, setLang] = useState<"it" | "en">("en");

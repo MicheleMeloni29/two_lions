@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProductDetailContent from "./ProductDetailContent";
-import { getStoreProduct } from "../storeContent";
+import { getStoreProduct, storePageContent } from "../storeContent";
 
 type ProductPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export function generateStaticParams() {
+  return storePageContent.it.products.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,

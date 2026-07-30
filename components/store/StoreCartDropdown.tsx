@@ -132,14 +132,14 @@ export default function StoreCartDropdown({
                   >
                     <Link
                       href={`${product.storeBasePath}/${product.slug}`}
-                      className="relative aspect-square overflow-hidden border border-[color:var(--color-primary)]/8 bg-[color:var(--color-secondary)]/4"
+                      className="relative aspect-square overflow-hidden"
                     >
                       <Image
                         src={product.imageSrc}
                         alt={product.imageAlt}
                         fill
                         sizes="64px"
-                        className="object-cover"
+                        className="object-contain p-1"
                       />
                     </Link>
 

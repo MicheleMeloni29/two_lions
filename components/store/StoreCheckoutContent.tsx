@@ -84,13 +84,13 @@ export default function StoreCheckoutContent({
                   key={product.slug}
                   className="grid gap-4 border border-[color:var(--color-primary)]/10 bg-white p-5 shadow-[0_24px_70px_rgba(31,39,92,0.08)] md:grid-cols-[6rem_minmax(0,1fr)_auto] md:items-center"
                 >
-                  <div className="relative aspect-square overflow-hidden border border-[color:var(--color-primary)]/8 bg-[color:var(--color-secondary)]/4">
+                  <div className="relative aspect-square overflow-hidden">
                     <Image
                       src={product.imageSrc}
                       alt={product.imageAlt}
                       fill
                       sizes="(min-width: 768px) 96px, calc(100vw - 40px)"
-                      className="object-cover"
+                      className="object-contain p-1.5"
                     />
                   </div>
 

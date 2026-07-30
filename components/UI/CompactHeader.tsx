@@ -238,8 +238,8 @@ export default function CompactHeader({
               </button>
 
               {isDesktopDivisionOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 border border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
-                  <div className="grid gap-3">
+                <div className="absolute left-1/2 top-full z-20 mt-3 w-[16.5rem] -translate-x-1/2 border-x border-b border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
+                  <div className="grid justify-items-center gap-3 text-center">
                     {divisionNavItems.map((item) => {
                       const isItemActive =
                         pathname === item.href ||
@@ -297,8 +297,8 @@ export default function CompactHeader({
               </button>
 
               {isDesktopShopOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[15.5rem] -translate-x-1/2 border border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
-                  <div className="grid gap-3">
+                <div className="absolute left-1/2 top-full z-20 mt-3 w-[16.5rem] -translate-x-1/2 border-x border-b border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
+                  <div className="grid justify-items-center gap-3 text-center">
                     {shopNavItems.map((item) => {
                       const isItemActive =
                         pathname === item.href ||
@@ -435,7 +435,7 @@ export default function CompactHeader({
               {labels.home}
             </Link>
 
-            <div className="border-b border-[color:var(--color-primary)]/10">
+            <div>
               <button
                 type="button"
                 className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
@@ -502,7 +502,7 @@ export default function CompactHeader({
               ) : null}
             </div>
 
-            <div className="border-b border-[color:var(--color-primary)]/10">
+            <div>
               <button
                 type="button"
                 className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${

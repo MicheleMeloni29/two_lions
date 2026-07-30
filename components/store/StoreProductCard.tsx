@@ -20,13 +20,13 @@ export default function StoreProductCard({
 }: StoreProductCardProps) {
   return (
     <article className="flex h-full flex-col border border-[color:var(--color-primary)]/10 bg-white p-4 shadow-[0_14px_40px_rgba(31,39,92,0.05)] md:p-5">
-      <div className="relative aspect-[4/3] overflow-hidden border border-[color:var(--color-primary)]/8 bg-[color:var(--color-secondary)]/4">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={product.imageSrc}
           alt={product.imageAlt}
           fill
           sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 90vw"
-          className="object-cover"
+          className="object-contain p-3 sm:p-4"
         />
       </div>
 

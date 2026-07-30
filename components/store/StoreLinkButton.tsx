@@ -11,7 +11,7 @@ const variantClasses: Record<StoreButtonVariant, string> = {
   gold: "border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] text-[color:var(--color-primary)] hover:bg-white hover:border-white",
   light: "border border-white/18 bg-white/10 text-white hover:bg-white hover:text-[color:var(--color-primary)]",
   outline:
-    "border border-[color:var(--color-primary)]/14 bg-transparent text-[color:var(--color-primary)] hover:border-[color:var(--color-primary)] hover:bg-[color:var(--color-primary)] hover:text-white",
+    "border border-[color:var(--color-primary)] bg-white text-[color:var(--color-primary)] hover:border-[color:var(--color-primary)] hover:bg-[color:var(--color-primary)] hover:text-white",
 };
 
 export default function StoreLinkButton({

@@ -60,14 +60,14 @@ export default function StoreProductDetailContent({
 
       <section className="px-4 pb-16 pt-28 sm:px-5 md:px-8 md:pb-20 md:pt-32 xl:px-14 xl:pb-24 xl:pt-36">
         <div className="mx-auto grid max-w-7xl gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
-          <div className="overflow-hidden border border-[color:var(--color-primary)]/10 bg-white shadow-[0_24px_70px_rgba(31,39,92,0.08)]">
+          <div className="overflow-hidden">
             <div className="relative aspect-[4/5]">
               <Image
                 src={product.imageSrc}
                 alt={product.imageAlt}
                 fill
                 sizes="(min-width: 1280px) 44vw, 100vw"
-                className="object-cover"
+                className="object-contain p-4 sm:p-6"
               />
             </div>
           </div>

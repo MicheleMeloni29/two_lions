@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 
 const IntroText = dynamic(() => import("@/components/IntroText"));
 const TwoLionsDivisions = dynamic(() => import("@/components/TwoLionsDivisions"));
@@ -11,7 +12,7 @@ const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const OfficesSection = dynamic(() => import("@/components/OfficesSection"));
 
 export default function Home() {
-  const [lang, setLang] = useState<"it" | "en">("en");
+  const { lang, toggleLang } = useSiteLanguage();
   const [isCompactHeader, setIsCompactHeader] = useState(false);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Home() {
       <HeroIntro
         lang={lang}
         isCompactHeader={isCompactHeader}
-        onToggleLang={() => setLang((current) => (current === "it" ? "en" : "it"))}
+        onToggleLang={toggleLang}
       />
       <IntroText lang={lang} />
       <TwoLionsDivisions lang={lang} />

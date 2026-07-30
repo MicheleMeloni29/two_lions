@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import StoreCartDropdown from "@/components/store/StoreCartDropdown";
 import CompactHeader from "@/components/UI/CompactHeader";
 import { useStoreCart } from "@/hooks/useStoreCart";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import { getAllStoreProducts } from "@/lib/storeCatalog";
 import { formatStorePrice } from "@/lib/storePricing";
 import type { StoreContentByLanguage } from "./types";
@@ -20,7 +21,7 @@ export default function StoreCheckoutContent({
   contentByLanguage,
   storeBasePath,
 }: StoreCheckoutContentProps) {
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
   const products = useMemo(() => getAllStoreProducts(lang), [lang]);
   const { cart } = useStoreCart();
@@ -45,9 +46,7 @@ export default function StoreCheckoutContent({
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
         lang={lang}
-        onToggleLang={() =>
-          setLang((current) => (current === "it" ? "en" : "it"))
-        }
+        onToggleLang={toggleLang}
         accessory={
           <StoreCartDropdown
             lang={lang}

@@ -1,9 +1,10 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -104,7 +105,7 @@ function joinClasses(...classes: Array<string | undefined>) {
 }
 
 export default function SmartShelterEnergyContent() {
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const { lang, toggleLang } = useSiteLanguage();
   const content = pageContent[lang];
 
   useLayoutEffect(() => {
@@ -133,9 +134,7 @@ export default function SmartShelterEnergyContent() {
     <main className="min-h-screen bg-white text-primary">
       <CompactHeader
         lang={lang}
-        onToggleLang={() =>
-          setLang((current) => (current === "it" ? "en" : "it"))
-        }
+        onToggleLang={toggleLang}
       />
 
       <section className="relative overflow-hidden px-4 pb-14 pt-24 text-white sm:px-5 sm:pb-16 sm:pt-26 md:px-8 md:pb-20 md:pt-30 xl:px-14 xl:pb-28 xl:pt-34">

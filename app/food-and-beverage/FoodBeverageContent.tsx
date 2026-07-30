@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -55,7 +55,7 @@ function joinClasses(...classes: Array<string | undefined>) {
 }
 
 export default function FoodBeverageContent() {
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const { lang, toggleLang } = useSiteLanguage();
   const content = pageContent[lang];
   const totalSubdivisions = content.sections.reduce(
     (total, section) => total + section.items.length,
@@ -91,9 +91,7 @@ export default function FoodBeverageContent() {
       {/* Sticky compact header with language toggle */}
       <CompactHeader
         lang={lang}
-        onToggleLang={() =>
-          setLang((current) => (current === "it" ? "en" : "it"))
-        }
+        onToggleLang={toggleLang}
       />
 
       {/* Hero section:

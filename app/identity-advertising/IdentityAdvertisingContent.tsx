@@ -1,9 +1,10 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -47,7 +48,7 @@ function joinClasses(...classes: Array<string | undefined>) {
 }
 
 export default function IdentityAdvertisingContent() {
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const { lang, toggleLang } = useSiteLanguage();
   const content = pageContent[lang];
 
   useLayoutEffect(() => {
@@ -77,9 +78,7 @@ export default function IdentityAdvertisingContent() {
       {/* Sticky compact header with language toggle */}
       <CompactHeader
         lang={lang}
-        onToggleLang={() =>
-          setLang((current) => (current === "it" ? "en" : "it"))
-        }
+        onToggleLang={toggleLang}
       />
 
       {/* Hero section:

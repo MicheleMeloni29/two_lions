@@ -1,3 +1,8 @@
+"use client";
+
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
+import type { SiteLang } from "@/lib/siteNavigation";
+
 const offices = [
   { label: "Delaware", href: "#office-delaware" },
   { label: "Cagliari", href: "#office-cagliari" },
@@ -5,13 +10,57 @@ const offices = [
   { label: "Roma", href: "#office-cagliari" },
 ];
 
-const corporateLinks = [
-  { label: "Contact", href: "#contact" },
-  { label: "Offices", href: "#offices" },
-  { label: "Privacy Policy", href: "#" },
-];
+const footerContent: Record<
+  SiteLang,
+  {
+    headline: string;
+    description: string;
+    offices: string;
+    view: string;
+    corporate: string;
+    open: string;
+    rights: string;
+    chairmanOffice: string;
+    corporateLinks: Array<{ label: string; href: string }>;
+  }
+> = {
+  it: {
+    headline: "Capitale istituzionale, presenza internazionale strutturata.",
+    description:
+      "Posizionamento corporate tra infrastrutture, energia e iniziative luxury.",
+    offices: "Sedi",
+    view: "Vedi",
+    corporate: "Corporate",
+    open: "Apri",
+    rights: "Tutti i diritti riservati",
+    chairmanOffice: "Sede del Presidente: Delaware, Stati Uniti",
+    corporateLinks: [
+      { label: "Contatti", href: "#contact" },
+      { label: "Sedi", href: "#offices" },
+      { label: "Informativa sulla privacy", href: "#" },
+    ],
+  },
+  en: {
+    headline: "Institutional capital, composed international presence.",
+    description:
+      "Corporate positioning across infrastructure, energy and luxury ventures.",
+    offices: "Offices",
+    view: "View",
+    corporate: "Corporate",
+    open: "Open",
+    rights: "All rights reserved",
+    chairmanOffice: "Chairman Office: Delaware, United States",
+    corporateLinks: [
+      { label: "Contact", href: "#contact" },
+      { label: "Offices", href: "#offices" },
+      { label: "Privacy Policy", href: "#" },
+    ],
+  },
+};
 
 export default function Footer() {
+  const { lang } = useSiteLanguage();
+  const content = footerContent[lang];
   const year = new Date().getFullYear();
 
   return (
@@ -26,17 +75,16 @@ export default function Footer() {
               Two Lions International
             </p>
             <h2 className="mt-3 font-change-serif-bold text-[1.45rem] leading-[1.02] uppercase tracking-[0.03em] text-[color:var(--color-white)] sm:text-[1.6rem] md:text-[1.85rem] xl:text-[2rem]">
-              Institutional capital, composed international presence.
+              {content.headline}
             </h2>
             <p className="mt-4 max-w-md text-[13px] leading-6 text-[color:rgba(248,248,248,0.76)] sm:text-[14px] md:text-[15px]">
-              Corporate positioning across infrastructure, energy and luxury
-              ventures.
+              {content.description}
             </p>
           </div>
 
           <div>
             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-              Offices
+              {content.offices}
             </p>
             <nav className="mt-4 space-y-2 text-[14px] leading-6 text-[color:var(--color-white)] md:text-[15px]">
               {offices.map((office) => (
@@ -47,7 +95,7 @@ export default function Footer() {
                 >
                   <span>{office.label}</span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[color:rgba(248,248,248,0.42)] transition-colors group-hover:text-[color:var(--color-thirdary)]">
-                    View
+                    {content.view}
                   </span>
                 </a>
               ))}
@@ -56,10 +104,10 @@ export default function Footer() {
 
           <div>
             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
-              Corporate
+              {content.corporate}
             </p>
             <nav className="mt-4 space-y-2 text-[14px] leading-6 text-[color:var(--color-white)] md:text-[15px]">
-              {corporateLinks.map((item) => (
+              {content.corporateLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
@@ -67,7 +115,7 @@ export default function Footer() {
                 >
                   <span>{item.label}</span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[color:rgba(248,248,248,0.42)] transition-colors group-hover:text-[color:var(--color-thirdary)]">
-                    Open
+                    {content.open}
                   </span>
                 </a>
               ))}
@@ -77,8 +125,8 @@ export default function Footer() {
 
         <div className="flex flex-col gap-3 pt-4 text-[11px] uppercase tracking-[0.18em] text-[color:rgba(248,248,248,0.54)] sm:flex-row sm:items-center sm:justify-between sm:text-[12px]">
           <p>{year} Two Lions International</p>
-          <p>All rights reserved</p>
-          <p>Chairman Office: Delaware, United States</p>
+          <p>{content.rights}</p>
+          <p>{content.chairmanOffice}</p>
         </div>
       </div>
     </footer>

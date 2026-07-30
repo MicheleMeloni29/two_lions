@@ -1,9 +1,10 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -83,7 +84,7 @@ function joinClasses(...classes: Array<string | undefined>) {
 }
 
 export default function LuxurySardabookingContent() {
-    const [lang, setLang] = useState<"it" | "en">("it");
+    const { lang, toggleLang } = useSiteLanguage();
     const content = pageContent[lang];
 
     useLayoutEffect(() => {
@@ -112,9 +113,7 @@ export default function LuxurySardabookingContent() {
         <main className="min-h-screen bg-white text-primary">
             <CompactHeader
                 lang={lang}
-                onToggleLang={() =>
-                    setLang((current) => (current === "it" ? "en" : "it"))
-                }
+                onToggleLang={toggleLang}
             />
 
             <section className="relative overflow-hidden bg-[color:var(--color-primary)] px-4 pb-18 pt-28 text-white sm:px-5 md:px-8 md:pb-24 md:pt-32 xl:px-14 xl:pb-32 xl:pt-36">

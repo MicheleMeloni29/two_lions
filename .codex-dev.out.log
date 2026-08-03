@@ -1,0 +1,14 @@
+
+> two-lions@0.1.0 dev
+> next dev --hostname 127.0.0.1
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+✓ Ready in 972ms
+
+ GET / 200 in 600ms (next.js: 268ms, application-code: 332ms)
+ GET /parfum/store 200 in 1223ms (next.js: 1178ms, application-code: 45ms)
+ GET /parfum/store/self-pass-50ml 200 in 1905ms (next.js: 1842ms, generate-params: 751ms, application-code: 63ms)
+ GET /parfum/store 200 in 31ms (next.js: 5ms, application-code: 25ms)
+ GET /parfum 200 in 89ms (next.js: 57ms, application-code: 32ms)

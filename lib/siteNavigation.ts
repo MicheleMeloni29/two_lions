@@ -31,7 +31,7 @@ type DivisionNavItem = {
 };
 
 type ShopNavItem = {
-  key: "food-and-beverage" | "sport";
+  key: "food-and-beverage" | "sport" | "parfum";
   href: string;
   labels: Record<SiteLang, string>;
 };
@@ -108,6 +108,14 @@ export const shopNavItems: ShopNavItem[] = [
     labels: {
       it: "Sport",
       en: "Sport",
+    },
+  },
+  {
+    key: "parfum",
+    href: "/parfum/store",
+    labels: {
+      it: "Parfum",
+      en: "Parfum",
     },
   },
 ];

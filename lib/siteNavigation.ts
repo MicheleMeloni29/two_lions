@@ -93,6 +93,7 @@ export const divisionNavItems: DivisionNavItem[] = divisionSlugs.map((slug) => (
 }));
 
 export const homeHref = "/#top";
+export const shopHomeHref = "/shop";
 export const shopNavItems: ShopNavItem[] = [
   {
     key: "food-and-beverage",
@@ -131,6 +132,10 @@ export function isDivisionPath(pathname: string) {
 }
 
 export function isShopPath(pathname: string) {
+  if (pathname === shopHomeHref) {
+    return true;
+  }
+
   return shopNavItems.some(
     (item) => pathname === item.href || pathname.startsWith(`${item.href}/`)
   );

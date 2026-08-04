@@ -12,6 +12,7 @@ import {
   isDivisionPath,
   isShopPath,
   navigationLabels,
+  shopHomeHref,
   shopNavItems,
   type SiteLang,
 } from "@/lib/siteNavigation";
@@ -267,34 +268,48 @@ export default function CompactHeader({
             </div>
 
             <div className="relative" ref={desktopShopRef}>
-              <button
-                type="button"
+              <div
                 className={`${getNavLinkClassName(isShopActive)} gap-2`}
-                onClick={() => {
-                  setIsDesktopDivisionOpen(false);
-                  setIsDesktopShopOpen((current) => !current);
-                }}
-                aria-expanded={isDesktopShopOpen}
-                aria-label={
-                  isDesktopShopOpen ? labels.closeShopMenu : labels.openShopMenu
-                }
               >
-                <span>{labels.shop}</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  className={`h-4 w-4 transition-transform ${
-                    isDesktopShopOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <Link
+                  href={shopHomeHref}
+                  className="transition-colors hover:text-[color:var(--color-thirdary)]"
+                  onClick={() => {
+                    setIsDesktopDivisionOpen(false);
+                    setIsDesktopShopOpen(false);
+                  }}
+                  aria-current={pathname === shopHomeHref ? "page" : undefined}
                 >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
+                  {labels.shop}
+                </Link>
+                <button
+                  type="button"
+                  className="inline-flex h-7 w-7 items-center justify-center transition-colors hover:text-[color:var(--color-thirdary)]"
+                  onClick={() => {
+                    setIsDesktopDivisionOpen(false);
+                    setIsDesktopShopOpen((current) => !current);
+                  }}
+                  aria-expanded={isDesktopShopOpen}
+                  aria-label={
+                    isDesktopShopOpen ? labels.closeShopMenu : labels.openShopMenu
+                  }
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className={`h-4 w-4 transition-transform ${
+                      isDesktopShopOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </div>
 
               {isDesktopShopOpen ? (
                 <div className="absolute left-1/2 top-full z-20 mt-3 w-[16.5rem] -translate-x-1/2 border-x border-b border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
@@ -503,39 +518,50 @@ export default function CompactHeader({
             </div>
 
             <div>
-              <button
-                type="button"
-                className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
+              <div
+                className={`flex w-full items-center justify-between text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
                   isShopActive
                     ? "text-[color:var(--color-thirdary)]"
                     : "text-[color:var(--color-primary)]"
                 }`}
-                onClick={() => {
-                  setIsMobileDivisionOpen(false);
-                  setIsMobileShopOpen((current) => !current);
-                }}
-                aria-expanded={isMobileShopOpen}
-                aria-controls={mobileShopId}
-                aria-label={
-                  isMobileShopOpen ? labels.closeShopMenu : labels.openShopMenu
-                }
               >
-                <span>{labels.shop}</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  className={`h-4 w-4 transition-transform ${
-                    isMobileShopOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <Link
+                  href={shopHomeHref}
+                  className="flex-1 py-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-current={pathname === shopHomeHref ? "page" : undefined}
                 >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
+                  {labels.shop}
+                </Link>
+                <button
+                  type="button"
+                  className="inline-flex h-12 w-12 items-center justify-end"
+                  onClick={() => {
+                    setIsMobileDivisionOpen(false);
+                    setIsMobileShopOpen((current) => !current);
+                  }}
+                  aria-expanded={isMobileShopOpen}
+                  aria-controls={mobileShopId}
+                  aria-label={
+                    isMobileShopOpen ? labels.closeShopMenu : labels.openShopMenu
+                  }
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className={`h-4 w-4 transition-transform ${
+                      isMobileShopOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </div>
 
               {isMobileShopOpen ? (
                 <div id={mobileShopId} className="grid gap-3 pb-4">

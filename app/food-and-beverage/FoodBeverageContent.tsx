@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import DivisionStoreCta from "@/components/store/DivisionStoreCta";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
@@ -64,12 +65,18 @@ export default function FoodBeverageContent() {
   const storeCtaContent =
     lang === "it"
       ? {
-          title: "Scopri lo store online Food & Beverage",
-          actionLabel: "Apri lo store online",
+          eyebrow: "Shop ufficiale",
+          title: "La selezione Food & Beverage è pronta.",
+          description:
+            "Entra nello shop e scopri prodotti, beverage e idee gifting Two Lions pensati per retail, horeca ed export.",
+          actionLabel: "Vai allo shop",
         }
       : {
-          title: "Discover the Food & Beverage online store",
-          actionLabel: "Open the online store",
+          eyebrow: "Official shop",
+          title: "The Food & Beverage selection is ready.",
+          description:
+            "Enter the shop and discover Two Lions food, beverage and gifting products designed for retail, horeca and export.",
+          actionLabel: "Go to shop",
         };
   const snapshotItems =
     lang === "it"
@@ -274,19 +281,10 @@ export default function FoodBeverageContent() {
           </div>
 
           <div className="space-y-6 pt-6 md:space-y-7 md:pt-8">
-            <div className="px-5 py-8 text-center md:px-8 md:py-10">
-              <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
-                <h3 className="font-change-serif-bold max-w-[18ch] text-[1.9rem] leading-[0.95] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.3rem] md:text-[3rem]">
-                  {storeCtaContent.title}
-                </h3>
-                <Link
-                  href="/food-and-beverage/store"
-                  className="inline-flex w-fit items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
-                >
-                  {storeCtaContent.actionLabel}
-                </Link>
-              </div>
-            </div>
+            <DivisionStoreCta
+              {...storeCtaContent}
+              href="/food-and-beverage/store"
+            />
 
             <div className="border-b border-[color:var(--color-primary)]/10 pb-6">
               <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">

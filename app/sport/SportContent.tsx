@@ -6,6 +6,7 @@ import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
 import ContinuousLoopCarousel from "@/components/UI/ContinuousLoopCarousel";
 import TextType from "@/components/UI/TextType";
+import DivisionStoreCta from "@/components/store/DivisionStoreCta";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -143,12 +144,18 @@ export default function SportContent() {
   const storeCtaContent =
     lang === "it"
       ? {
-          title: "Scopri lo store online Sport",
-          actionLabel: "Apri lo store online",
+          eyebrow: "Shop ufficiale",
+          title: "Merch Two Lions Sport disponibile ora.",
+          description:
+            "Apri lo shop e scopri la selezione ufficiale Sport: prodotti, accessori e merchandising pronti per team, supporter ed eventi.",
+          actionLabel: "Vai allo shop",
         }
       : {
-          title: "Discover the Sport online store",
-          actionLabel: "Open the online store",
+          eyebrow: "Official shop",
+          title: "Two Lions Sport merch is live.",
+          description:
+            "Open the shop and explore the official Sport selection: products, accessories and merch for teams, supporters and events.",
+          actionLabel: "Go to shop",
         };
   const hasHeroImage = Boolean(content.heroImage?.trim());
   const hasMascotImage = Boolean(content.sponsorSection.mascotImage?.trim());
@@ -397,19 +404,10 @@ export default function SportContent() {
               </div>
             </div>
 
-            <div className="px-5 py-8 text-center md:px-8 md:py-10">
-              <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
-                <h3 className="font-change-serif-bold max-w-[18ch] text-[1.9rem] leading-[0.95] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.3rem] md:text-[3rem]">
-                  {storeCtaContent.title}
-                </h3>
-                <Link
-                  href="/sport/store"
-                  className="inline-flex w-fit items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
-                >
-                  {storeCtaContent.actionLabel}
-                </Link>
-              </div>
-            </div>
+            <DivisionStoreCta
+              {...storeCtaContent}
+              href="/sport/store"
+            />
           </div>
         </div>
       </section>

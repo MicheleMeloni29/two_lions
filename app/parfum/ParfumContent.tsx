@@ -4,6 +4,7 @@ import { useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CompactHeader from "@/components/UI/CompactHeader";
+import DivisionStoreCta from "@/components/store/DivisionStoreCta";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -87,12 +88,18 @@ export default function ParfumContent() {
   const storeCtaContent =
     lang === "it"
       ? {
-          title: "Scopri lo store online Parfum",
-          actionLabel: "Apri lo store online",
+          eyebrow: "Shop ufficiale",
+          title: "Le fragranze Two Lions ti aspettano.",
+          description:
+            "Apri lo shop Parfum e scegli la fragranza che trasforma identita, club e appartenenza in un oggetto da portare con te.",
+          actionLabel: "Vai allo shop",
         }
       : {
-          title: "Discover the Parfum online store",
-          actionLabel: "Open the online store",
+          eyebrow: "Official shop",
+          title: "Two Lions fragrances are waiting.",
+          description:
+            "Open the Parfum shop and choose the fragrance that turns identity, club and belonging into an object you can carry with you.",
+          actionLabel: "Go to shop",
         };
 
   useLayoutEffect(() => {
@@ -289,19 +296,10 @@ export default function ParfumContent() {
           </div>
 
           <div className="space-y-6 pt-14 md:space-y-7 md:pt-18 xl:pt-20">
-            <div className="px-5 py-8 text-center md:px-8 md:py-10">
-              <div className="mx-auto flex max-w-3xl flex-col items-center gap-5">
-                <h3 className="font-change-serif-bold max-w-[18ch] text-[1.9rem] leading-[0.95] uppercase tracking-[0.015em] text-[color:var(--color-primary)] sm:text-[2.3rem] md:text-[3rem]">
-                  {storeCtaContent.title}
-                </h3>
-                <Link
-                  href="/parfum/store"
-                  className="inline-flex w-fit items-center justify-center border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-primary)] transition hover:bg-[color:var(--color-primary)] hover:text-white sm:text-[12px]"
-                >
-                  {storeCtaContent.actionLabel}
-                </Link>
-              </div>
-            </div>
+            <DivisionStoreCta
+              {...storeCtaContent}
+              href="/parfum/store"
+            />
 
             <div className="max-w-4xl">
               <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">

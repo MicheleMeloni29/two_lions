@@ -129,7 +129,7 @@ const AccordionGallery = ({
                     if (isActive) {
                         tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
                     } else {
-                        tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
+                        tl.to([bar, text], { opacity: 0, x: -12, duration: dur * 0.6, ease }, 0);
                     }
                 }
             });
@@ -268,27 +268,40 @@ const AccordionGallery = ({
                         </span>
                         {showLabels && (
                             <span
-                                className="pointer-events-none absolute bottom-5 left-5 right-5 z-[2] flex items-center gap-3"
+                                className="pointer-events-none absolute bottom-6 left-4 right-4 z-[2] flex items-end gap-3 sm:bottom-8 sm:left-6 sm:right-6 md:bottom-10 md:left-8 md:right-8 xl:bottom-12 xl:left-10 xl:right-10"
                                 aria-hidden="true"
                             >
                                 <span
                                     ref={(el: HTMLElement | null) => {
                                         barRefs.current[i] = el;
                                     }}
-                                    className="h-[26px] w-[3px] flex-none rounded-[3px] opacity-0"
+                                    className="mb-1 h-12 w-[3px] flex-none opacity-0 md:h-16 xl:h-20"
                                     style={{
                                         background: accentColor,
-                                        boxShadow: `0 0 12px color-mix(in srgb, ${accentColor} 60%, transparent)`
+                                        boxShadow: `0 0 18px color-mix(in srgb, ${accentColor} 58%, transparent)`
                                     }}
                                 />
                                 <span
                                     ref={(el: HTMLElement | null) => {
                                         textRefs.current[i] = el;
                                     }}
-                                    className="overflow-hidden text-ellipsis whitespace-nowrap text-[clamp(1rem,1.4vw,1.4rem)] font-semibold tracking-[0.01em] opacity-0 [text-shadow:0_2px_14px_rgba(0,0,0,0.55)]"
+                                    className="min-w-0 max-w-[min(26rem,calc(100vw-4.5rem))] opacity-0 [text-shadow:0_2px_18px_rgba(0,0,0,0.48)] md:max-w-[min(30rem,70vw)] xl:max-w-[34rem]"
                                     style={{ color: textColor }}
                                 >
-                                    {item.label}
+                                    {item.label === 'Food & Beverage' ? (
+                                        <>
+                                            <span className="font-change-serif-bold block text-[clamp(2rem,12vw,3.15rem)] uppercase leading-[0.9] tracking-normal md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
+                                                Food &
+                                            </span>
+                                            <span className="font-change-serif-bold block text-[clamp(2rem,12vw,3.15rem)] uppercase leading-[0.9] tracking-normal md:ml-3 md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
+                                                Beverage
+                                            </span>
+                                        </>
+                                    ) : (
+                                        <span className="font-change-serif-bold block text-[clamp(2.35rem,15vw,3.6rem)] uppercase leading-[0.9] tracking-normal md:text-[clamp(3rem,5.8vw,5rem)]">
+                                            {item.label}
+                                        </span>
+                                    )}
                                 </span>
                             </span>
                         )}

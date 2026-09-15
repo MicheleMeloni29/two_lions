@@ -1,5 +1,8 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Lock } from "lucide-react";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import type { SiteLang } from "@/lib/siteNavigation";
 
@@ -21,6 +24,7 @@ const footerContent: Record<
     open: string;
     rights: string;
     chairmanOffice: string;
+    adminArea: string;
     corporateLinks: Array<{ label: string; href: string }>;
   }
 > = {
@@ -34,6 +38,7 @@ const footerContent: Record<
     open: "Apri",
     rights: "Tutti i diritti riservati",
     chairmanOffice: "Sede del Presidente: Delaware, Stati Uniti",
+    adminArea: "Area Riservata",
     corporateLinks: [
       { label: "Contatti", href: "#contact" },
       { label: "Sedi", href: "#offices" },
@@ -50,6 +55,7 @@ const footerContent: Record<
     open: "Open",
     rights: "All rights reserved",
     chairmanOffice: "Chairman Office: Delaware, United States",
+    adminArea: "Reserved Area",
     corporateLinks: [
       { label: "Contact", href: "#contact" },
       { label: "Offices", href: "#offices" },
@@ -59,9 +65,15 @@ const footerContent: Record<
 };
 
 export default function Footer() {
+  const pathname = usePathname();
   const { lang } = useSiteLanguage();
   const content = footerContent[lang];
   const year = new Date().getFullYear();
+
+  // Non mostrare il footer nell'area riservata /admin
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="relative overflow-hidden border-t border-[color:rgba(197,160,89,0.28)] bg-[color:var(--color-primary)] text-[color:var(--color-white)]">
@@ -127,6 +139,14 @@ export default function Footer() {
           <p>{year} Two Lions International</p>
           <p>{content.rights}</p>
           <p>{content.chairmanOffice}</p>
+          <Link
+            href="/admin"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-[color:var(--color-thirdary)]"
+            title="Area Riservata Amministrazione"
+          >
+            <Lock className="h-3 w-3 text-[color:var(--color-thirdary)]" />
+            <span>{content.adminArea}</span>
+          </Link>
         </div>
       </div>
     </footer>

@@ -21,7 +21,7 @@ const PLATFORMS = [
     id: "webmail",
     title: "Webmail",
     description: "Posta elettronica aziendale, calendari e contatti",
-    url: "https://mail.twolionsinternational.com/SOGo/",
+    url: "https://mail.twolionsinternational.com",
     icon: Mail,
   },
   {

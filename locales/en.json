@@ -96,7 +96,7 @@
       {
         "slug": "two_lions_event",
         "label": "Events",
-        "image": "TwoLions_Event.jpeg"
+        "image": "TwoLions_Event.JPG"
       },
       {
         "slug": "two_lions_media",
@@ -217,6 +217,9 @@
     "readyToSend": "All fields are valid. You can now send the email.",
     "sendingMessage": "Sending message.",
     "submitSuccess": "Message sent successfully.",
+    "successTitle": "Message sent successfully",
+    "successDescription": "Thank you for reaching out. We have received your request and will reply to your email address shortly.",
+    "sendAnother": "Send another message",
     "submitError": "Sending failed. Check the email service configuration and try again.",
     "sendingCta": "Sending...",
     "cta": "Send email",

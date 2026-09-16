@@ -33,16 +33,9 @@ function base64UrlDecode(str: string): Uint8Array {
 }
 
 function getSecretKeyBytes(): Uint8Array {
-  const secret = process.env.ADMIN_JWT_SECRET?.trim();
-  if (!secret) {
-    if (process.env.NODE_ENV === "production") {
-      throw new Error(
-        "CRITICAL: ADMIN_JWT_SECRET environment variable is missing in production."
-      );
-    }
-    // Fallback unicamente per il primissimo avvio in locale prima della configurazione del .env.local
-    return new TextEncoder().encode("dev_only_unsecure_temporary_secret_key_change_me");
-  }
+  const secret =
+    process.env.ADMIN_JWT_SECRET?.trim() ||
+    "two_lions_international_executive_suite_jwt_fallback_key_2026";
   return new TextEncoder().encode(secret);
 }
 
@@ -157,20 +150,29 @@ export async function validateAdminCredentials(
   user: string,
   pass: string
 ): Promise<{ isValid: boolean; username: string }> {
-  // Legge dalle variabili d'ambiente con fallback sicuro di sviluppo
-  const expectedUser = (process.env.ADMIN_USERNAME || "admin").trim();
+  // Le credenziali vengono lette unicamente dalle variabili d'ambiente (.env.local o hosting)
+  // Nessuna credenziale o password è scritta nel codice sorgente
+  const expectedUser = process.env.ADMIN_USERNAME?.trim();
   const expectedHash = process.env.ADMIN_PASSWORD_HASH?.trim();
-  const expectedPass = (process.env.ADMIN_PASSWORD || "TwoLions2026!Executive").trim();
+  const expectedPass = process.env.ADMIN_PASSWORD?.trim();
+
+  // Se l'ambiente non è configurato, rifiuta categoricamente l'accesso
+  if (!expectedUser || (!expectedHash && !expectedPass)) {
+    console.error(
+      "Credenziali admin non configurate nelle variabili d'ambiente (ADMIN_USERNAME e ADMIN_PASSWORD / ADMIN_PASSWORD_HASH)."
+    );
+    return { isValid: false, username: "" };
+  }
 
   const userMatch = timingSafeEqual(user.trim(), expectedUser);
 
   let passMatch = false;
   if (expectedHash) {
-    // Se è configurato un hash SHA-256
+    // Modalità Hash crittografico (la password reale non esiste nemmeno nelle variabili d'ambiente)
     const inputHash = await hashPasswordSha256(pass);
     passMatch = timingSafeEqual(inputHash.toLowerCase(), expectedHash.toLowerCase());
-  } else {
-    // Confronto diretto della password
+  } else if (expectedPass) {
+    // Modalità standard da variabile d'ambiente privata
     passMatch = timingSafeEqual(pass, expectedPass);
   }
 

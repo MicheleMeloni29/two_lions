@@ -102,7 +102,7 @@
       {
         "slug": "two_lions_event",
         "label": "Events",
-        "image": "TwoLions_Event.jpeg"
+        "image": "TwoLions_Event.JPG"
       },
       {
         "slug": "two_lions_media",
@@ -230,6 +230,9 @@
     "readyToSend": "Tutti i campi sono corretti. Ora puoi inviare l'email.",
     "sendingMessage": "Invio del messaggio in corso.",
     "submitSuccess": "Messaggio inviato correttamente.",
+    "successTitle": "Messaggio inviato con successo",
+    "successDescription": "Grazie per averci contattato. Abbiamo ricevuto la tua richiesta e ti risponderemo all'indirizzo indicato al più presto.",
+    "sendAnother": "Invia un altro messaggio",
     "submitError": "Invio non riuscito. Controlla la configurazione del servizio email e riprova.",
     "sendingCta": "Invio...",
     "cta": "Invia email",

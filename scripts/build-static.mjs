@@ -15,7 +15,10 @@ const nextCommand = existsSync(localNextCommand)
     ? "next.cmd"
     : "next";
 
-const result = spawnSync(nextCommand, ["build"], {
+const commandToRun =
+  process.platform === "win32" ? `"${nextCommand}"` : nextCommand;
+
+const result = spawnSync(commandToRun, ["build"], {
   env: {
     ...process.env,
     STATIC_EXPORT: "true",

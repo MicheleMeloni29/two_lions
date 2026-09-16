@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
 
@@ -32,6 +33,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function ContactSection({ lang }: ContactSectionProps) {
   const current = content[lang];
   const [form, setForm] = useState<ContactFormState>(initialState);
+  const [honeypot, setHoneypot] = useState("");
   const missingFields: string[] = [];
 
   if (!form.name.trim()) {
@@ -58,7 +60,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
   const canSubmit = missingFields.length === 0 && emailIsValid && !isSubmitting;
   const statusMessages: string[] = [];
 
-  if (submitState !== "success") {
+  if (submitState === "idle") {
     if (missingFields.length > 0) {
       statusMessages.push(`${current.missingFieldsPrefix} ${missingFields.join(", ")}.`);
     }
@@ -94,18 +96,22 @@ export default function ContactSection({ lang }: ContactSectionProps) {
           email: form.email.trim(),
           subject: form.subject.trim(),
           message: form.message.trim(),
+          website: honeypot.trim(),
         }),
       });
 
+      const data = await response.json().catch(() => null);
+
       if (!response.ok) {
         setSubmitState("error");
-        setSubmitMessage(current.submitError);
+        setSubmitMessage(data?.error || current.submitError);
         return;
       }
 
       setSubmitState("success");
       setSubmitMessage(current.submitSuccess);
       setForm(initialState);
+      setHoneypot("");
     } catch {
       setSubmitState("error");
       setSubmitMessage(current.submitError);
@@ -219,20 +225,83 @@ export default function ContactSection({ lang }: ContactSectionProps) {
             />
           </label>
 
-          <div className="mt-6 flex flex-col gap-3 sm:items-start md:items-end">
+          {/* Honeypot anti-spam (invisibile agli utenti umani) */}
+          <div className="absolute -left-[9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label htmlFor="contact_website_field">Website</label>
+            <input
+              id="contact_website_field"
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(event) => setHoneypot(event.target.value)}
+            />
+          </div>
+
+          {/* Success Banner */}
+          {submitState === "success" && (
             <div
               role="status"
-              className={`max-w-xl space-y-1 text-[12px] leading-6 sm:text-[13px] ${
-                submitState === "success"
-                  ? "text-[color:var(--color-secondary)]"
-                  : "text-[color:var(--color-thirdary)]"
-              }`}
+              className="mt-8 border border-[color:var(--color-thirdary)]/40 bg-[color:var(--color-thirdary)]/10 p-5 sm:p-6 transition-all"
             >
-              {statusMessages.map((message) => (
-                <p key={message}>{message}</p>
-              ))}
-              {submitMessage ? <p>{submitMessage}</p> : null}
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--color-thirdary)]" />
+                <div className="space-y-1">
+                  <h4 className="font-semibold text-[13px] uppercase tracking-wider text-primary">
+                    {current.successTitle ?? current.submitSuccess}
+                  </h4>
+                  <p className="text-[13px] leading-relaxed text-[color:var(--color-secondary)]">
+                    {current.successDescription ?? current.submitSuccess}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmitState("idle");
+                      setSubmitMessage("");
+                    }}
+                    className="mt-3 inline-block text-[11px] font-bold uppercase tracking-[0.16em] text-primary underline underline-offset-4 transition-opacity hover:opacity-75"
+                  >
+                    {current.sendAnother ?? "Invia un altro messaggio"} &rarr;
+                  </button>
+                </div>
+              </div>
             </div>
+          )}
+
+          {/* Error Banner */}
+          {submitState === "error" && (
+            <div
+              role="alert"
+              className="mt-8 border border-red-300/80 bg-red-50/90 p-4 sm:p-5 transition-all"
+            >
+              <div className="flex items-start gap-3.5">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
+                <div>
+                  <h4 className="font-semibold text-[13px] uppercase tracking-wider text-red-900">
+                    {current.submitError}
+                  </h4>
+                  {submitMessage && submitMessage !== current.submitError && (
+                    <p className="mt-1 text-[13px] leading-relaxed text-red-700">
+                      {submitMessage}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="mt-6 flex flex-col gap-3 sm:items-start md:items-end">
+            {submitState === "idle" && (
+              <div
+                role="status"
+                className="max-w-xl space-y-1 text-[12px] leading-6 text-[color:var(--color-thirdary)] sm:text-[13px]"
+              >
+                {statusMessages.map((message) => (
+                  <p key={message}>{message}</p>
+                ))}
+              </div>
+            )}
 
             <button
               type="submit"

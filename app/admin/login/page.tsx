@@ -164,7 +164,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="group relative mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-[color:var(--color-thirdary)] bg-[linear-gradient(135deg,#b59a5a,#8c7438)] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-md shadow-[rgba(181,154,90,0.2)] transition-all hover:brightness-105 active:scale-[0.99] disabled:opacity-60"
+          className="group relative mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-[color:var(--color-thirdary)] bg-[color:var(--color-white)] hover:bg-[color:var(--color-thirdary)] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] transition-all hover:brightness-105 active:scale-[0.99] disabled:opacity-60"
         >
           {isLoading ? (
             <>
@@ -174,7 +174,6 @@ function LoginForm() {
           ) : (
             <>
               <span>Accedi alla Dashboard</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </>
           )}
         </button>

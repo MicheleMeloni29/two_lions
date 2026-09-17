@@ -21,7 +21,7 @@ const PLATFORMS = [
     id: "webmail",
     title: "Webmail",
     description: "Posta elettronica aziendale, calendari e contatti",
-    url: "https://mail.twolionsinternational.com",
+    url: "https://mail.twolionsinternational.com/SOGo/",
     icon: Mail,
   },
   {
@@ -35,7 +35,7 @@ const PLATFORMS = [
     id: "mail-admin",
     title: "Mail Administration",
     description: "Gestione del server di posta, caselle e domini",
-    url: "https://mail.twolionsinternational.com/admin/",
+    url: "https://mail.twolionsinternational.com",
     icon: ServerCog,
   },
   {

@@ -19,24 +19,36 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#39;");
 }
 
+function cleanEnv(val?: string) {
+  if (!val) return "";
+  return val
+    .trim()
+    .replace(/;+$/, "")
+    .replace(/^["']|["']$/g, "")
+    .replace(/;+$/, "")
+    .trim();
+}
+
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const resendApiKey = (
+  const resendApiKey = cleanEnv(
     process.env.RESEND_API_KEY ||
-    process.env.RESEND_KEY
-  )?.trim().replace(/^["']|["']$/g, "").trim() || "";
+    process.env.resend_api_key ||
+    process.env.RESEND_KEY ||
+    process.env.RESEND_TOKEN
+  );
 
-  const contactEmailTo = (
+  const contactEmailTo = cleanEnv(
     process.env.CONTACT_EMAIL_TO ||
     process.env.CONTACT_EMAIL ||
     process.env.NEXT_PUBLIC_CONTACT_EMAIL
-  )?.trim().replace(/^["']|["']$/g, "").trim() || "";
+  );
 
-  const contactEmailFrom = (
+  const contactEmailFrom = cleanEnv(
     process.env.CONTACT_EMAIL_FROM ||
     process.env.RESEND_FROM
-  )?.trim().replace(/^["']|["']$/g, "").trim() || "Two Lions <onboarding@resend.dev>";
+  ) || "Two Lions <onboarding@resend.dev>";
 
   const missing: string[] = [];
   if (!resendApiKey) missing.push("RESEND_API_KEY");

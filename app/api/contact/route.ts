@@ -119,13 +119,13 @@ export async function POST(request: Request) {
 </head>
 <body style="margin: 0; padding: 24px 12px; background-color: #f2f0ea; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.6;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width: 620px; margin: 0 auto; background-color: #ffffff; border: 1px solid #dfdbd2; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(37, 30, 87, 0.08);">
-    <!-- Two Lions Luxury Header -->
+    <!-- Two Lions Header (Sfondo bianco per massima nitidezza del logo Two Lions) -->
     <tr>
-      <td style="background-color: #251e57; padding: 32px 28px 26px; text-align: center; border-bottom: 3px solid #b59a5a;">
+      <td style="background-color: #ffffff; padding: 30px 24px 22px; text-align: center; border-bottom: 3px solid #b59a5a;">
         <!-- Two Lions Official Logo -->
-        <img src="https://two-lions.vercel.app/twoLions_logo.png" alt="Two Lions International" width="120" style="display: block; margin: 0 auto 14px; max-width: 120px; height: auto; border: 0;" />
-        <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.28em; color: #b59a5a; font-weight: 700; margin-bottom: 6px;">Two Lions International</span>
-        <h1 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: 0.04em; color: #ffffff; text-transform: uppercase; font-family: 'Times New Roman', Georgia, serif;">Nuovo Messaggio dal Sito Web</h1>
+        <img src="https://two-lions.vercel.app/twoLions_logo.png" alt="Two Lions International" width="130" style="display: block; margin: 0 auto 12px; max-width: 130px; height: auto; border: 0;" />
+        <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.28em; color: #b59a5a; font-weight: 700; margin-bottom: 4px;">Two Lions International</span>
+        <h1 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.04em; color: #251e57; text-transform: uppercase; font-family: 'Times New Roman', Georgia, serif;">Nuovo Messaggio dal Sito Web</h1>
       </td>
     </tr>
 
@@ -139,9 +139,9 @@ export async function POST(request: Request) {
             <td style="padding: 10px 0; font-size: 15px; color: #251e57; font-weight: 700; border-bottom: 1px solid #f0ede6;">${escapeHtml(name)}</td>
           </tr>
           <tr>
-            <td style="padding: 10px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: #b59a5a; font-weight: 700; border-bottom: 1px solid #f0ede6;">Email di Risposta:</td>
+            <td style="padding: 10px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: #b59a5a; font-weight: 700; border-bottom: 1px solid #f0ede6;">Email:</td>
             <td style="padding: 10px 0; font-size: 15px; border-bottom: 1px solid #f0ede6;">
-              <a href="mailto:${email}?to=${encodeURIComponent(email)}&subject=Re:%20${encodeURIComponent(subject)}" style="color: #251e57; text-decoration: underline; font-weight: 600;">${escapeHtml(email)}</a>
+              <a href="mailto:${email}" style="color: #251e57; text-decoration: underline; font-weight: 600;">${escapeHtml(email)}</a>
             </td>
           </tr>
           <tr>
@@ -155,22 +155,15 @@ export async function POST(request: Request) {
         </table>
 
         <!-- Message Body Container -->
-        <div style="margin-top: 15px; margin-bottom: 28px;">
+        <div style="margin-top: 15px; margin-bottom: 24px;">
           <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #b59a5a; font-weight: 700; display: block; margin-bottom: 10px;">Testo del Messaggio:</span>
           <div style="background-color: #fbfaf8; border-left: 4px solid #b59a5a; border-radius: 0 4px 4px 0; padding: 18px 22px; font-size: 14px; color: #222222; white-space: pre-wrap; line-height: 1.65; border-top: 1px solid #f0ede6; border-right: 1px solid #f0ede6; border-bottom: 1px solid #f0ede6;">${escapeHtml(message)}</div>
         </div>
 
-        <!-- Quick Reply Action Button -->
-        <div style="background-color: #f7f6f2; border: 1px solid #e7e3da; border-radius: 6px; padding: 20px; text-align: center; margin-top: 24px;">
-          <a href="mailto:${email}?to=${encodeURIComponent(email)}&subject=Re:%20${encodeURIComponent(subject)}" target="_blank" style="background-color: #251e57; color: #ffffff; border: 2px solid #b59a5a; border-radius: 3px; padding: 14px 28px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.18em; display: inline-block; box-shadow: 0 3px 8px rgba(37, 30, 87, 0.18);">
-            Rispondi a ${escapeHtml(name)} &rarr;
-          </a>
-          <p style="margin: 12px 0 0; font-size: 12px; color: #1f275c; line-height: 1.5;">
-            Destinatario preimpostato per la risposta: <a href="mailto:${email}?to=${encodeURIComponent(email)}&subject=Re:%20${encodeURIComponent(subject)}" style="color: #b59a5a; font-weight: 700; text-decoration: underline;">${escapeHtml(email)}</a>
-          </p>
-          <p style="margin: 6px 0 0; font-size: 11px; color: #767069;">
-            (In alternativa, puoi anche premere il normale pulsante &laquo;Rispondi&raquo; ↩ della tua webmail).
-          </p>
+        <!-- Note on Replying Directly -->
+        <div style="background-color: #f7f6f2; border: 1px solid #e7e3da; border-radius: 6px; padding: 16px 20px; font-size: 12px; color: #1f275c; line-height: 1.6;">
+          <strong style="color: #251e57;">Come rispondere al mittente:</strong><br />
+          Per rispondere a questo messaggio ti basta premere il pulsante <strong>&laquo;Rispondi&raquo;</strong> (↩) nella barra in alto della tua casella di posta: la tua risposta verrà indirizzata automaticamente a <strong>${escapeHtml(email)}</strong> (tramite l'intestazione Reply-To).
         </div>
       </td>
     </tr>
@@ -179,7 +172,7 @@ export async function POST(request: Request) {
     <tr>
       <td style="background-color: #f7f6f2; padding: 20px 30px; border-top: 1px solid #e7e3da; font-size: 11px; color: #888279; line-height: 1.6; text-align: center;">
         <span style="font-weight: 600; color: #251e57; text-transform: uppercase; letter-spacing: 0.08em;">Two Lions International Corporation</span><br />
-        Questo messaggio è stato generato automaticamente dal form ufficiale di contatto del sito web. L'indirizzo del visitatore è preimpostato come <code>Reply-To</code> per rispondere direttamente.
+        Questo messaggio è stato generato automaticamente dal form ufficiale di contatto del sito web.
       </td>
     </tr>
   </table>

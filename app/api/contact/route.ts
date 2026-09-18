@@ -122,8 +122,8 @@ export async function POST(request: Request) {
     <!-- Two Lions Header (Sfondo bianco per massima nitidezza del logo Two Lions) -->
     <tr>
       <td style="background-color: #ffffff; padding: 30px 24px 22px; text-align: center; border-bottom: 3px solid #b59a5a;">
-        <!-- Two Lions Official Logo -->
-        <img src="https://two-lions.vercel.app/twoLions_logo.png" alt="Two Lions International" width="130" style="display: block; margin: 0 auto 12px; max-width: 130px; height: auto; border: 0;" />
+        <!-- Two Lions Official Logo (Embedded via CID inline attachment) -->
+        <img src="cid:two_lions_logo" alt="Two Lions International" width="130" style="display: block; margin: 0 auto 12px; max-width: 130px; height: auto; border: 0;" />
         <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.28em; color: #b59a5a; font-weight: 700; margin-bottom: 4px;">Two Lions International</span>
         <h1 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.04em; color: #251e57; text-transform: uppercase; font-family: 'Times New Roman', Georgia, serif;">Nuovo Messaggio dal Sito Web</h1>
       </td>
@@ -203,6 +203,13 @@ export async function POST(request: Request) {
           `Per rispondere, scrivi direttamente a: ${email}`,
         ].join("\n"),
         html: emailHtml,
+        attachments: [
+          {
+            path: "https://two-lions.vercel.app/twoLions_logo.png",
+            filename: "twoLions_logo.png",
+            content_id: "two_lions_logo",
+          },
+        ],
       }),
     });
 

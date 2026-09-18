@@ -19,20 +19,37 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#39;");
 }
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: Request) {
-  const resendApiKey = process.env.RESEND_API_KEY?.trim().replace(/^["']|["']$/g, "").trim() ?? "";
-  const contactEmailTo = process.env.CONTACT_EMAIL_TO?.trim().replace(/^["']|["']$/g, "").trim() ?? "";
-  const contactEmailFrom = process.env.CONTACT_EMAIL_FROM?.trim().replace(/^["']|["']$/g, "").trim() ?? "Two Lions <onboarding@resend.dev>";
+  const resendApiKey = (
+    process.env.RESEND_API_KEY ||
+    process.env.RESEND_KEY
+  )?.trim().replace(/^["']|["']$/g, "").trim() || "";
 
-  if (!resendApiKey || !contactEmailTo || !contactEmailFrom) {
-    console.error("[Contact API] Configurazione incompleta. Verifica le variabili d'ambiente:", {
-      hasResendApiKey: Boolean(resendApiKey),
-      hasContactEmailTo: Boolean(contactEmailTo),
-      hasContactEmailFrom: Boolean(contactEmailFrom),
-    });
+  const contactEmailTo = (
+    process.env.CONTACT_EMAIL_TO ||
+    process.env.CONTACT_EMAIL ||
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL
+  )?.trim().replace(/^["']|["']$/g, "").trim() || "";
 
+  const contactEmailFrom = (
+    process.env.CONTACT_EMAIL_FROM ||
+    process.env.RESEND_FROM
+  )?.trim().replace(/^["']|["']$/g, "").trim() || "Two Lions <onboarding@resend.dev>";
+
+  const missing: string[] = [];
+  if (!resendApiKey) missing.push("RESEND_API_KEY");
+  if (!contactEmailTo) missing.push("CONTACT_EMAIL_TO");
+  if (!contactEmailFrom) missing.push("CONTACT_EMAIL_FROM");
+
+  if (missing.length > 0) {
+    console.error("[Contact API] Configurazione incompleta su Vercel. Variabili mancanti:", missing);
     return NextResponse.json(
-      { error: "Il servizio di invio email non è configurato sul server (.env.local mancante o incompleto)." },
+      {
+        error: `Servizio email non configurato sul server. Variabili mancanti: ${missing.join(", ")}.`,
+        missing,
+      },
       { status: 500 }
     );
   }

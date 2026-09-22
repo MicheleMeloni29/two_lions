@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 type ContactPayload = {
   name?: string;
@@ -32,31 +33,26 @@ function cleanEnv(val?: string) {
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const resendApiKey = cleanEnv(
-    process.env.RESEND_API_KEY ||
-    process.env.resend_api_key ||
-    process.env.RESEND_KEY ||
-    process.env.RESEND_TOKEN
-  );
+  const smtpHost = cleanEnv(process.env.SMTP_HOST) || "mail.twolionsinternational.com";
+  const smtpPort = Number(cleanEnv(process.env.SMTP_PORT)) || 465;
+  const smtpUser = cleanEnv(process.env.SMTP_USER) || "noreply@twolionsinternational.com";
+  const smtpPass = cleanEnv(process.env.SMTP_PASS || process.env.SMTP_PASSWORD);
 
   const contactEmailTo = cleanEnv(
     process.env.CONTACT_EMAIL_TO ||
     process.env.CONTACT_EMAIL ||
     process.env.NEXT_PUBLIC_CONTACT_EMAIL
-  );
+  ) || "info@twolionsinternational.com";
 
   const contactEmailFrom = cleanEnv(
-    process.env.CONTACT_EMAIL_FROM ||
-    process.env.RESEND_FROM
-  ) || "Two Lions <onboarding@resend.dev>";
+    process.env.CONTACT_EMAIL_FROM
+  ) || `Two Lions International <${smtpUser}>`;
 
   const missing: string[] = [];
-  if (!resendApiKey) missing.push("RESEND_API_KEY");
-  if (!contactEmailTo) missing.push("CONTACT_EMAIL_TO");
-  if (!contactEmailFrom) missing.push("CONTACT_EMAIL_FROM");
+  if (!smtpPass) missing.push("SMTP_PASS");
 
   if (missing.length > 0) {
-    console.error("[Contact API] Configurazione incompleta su Vercel. Variabili mancanti:", missing);
+    console.error("[Contact API] Configurazione SMTP incompleta. Variabili mancanti:", missing);
     return NextResponse.json(
       {
         error: `Servizio email non configurato sul server. Variabili mancanti: ${missing.join(", ")}.`,
@@ -181,58 +177,44 @@ export async function POST(request: Request) {
   `.trim();
 
   try {
-    const resendResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resendApiKey}`,
-        "Content-Type": "application/json",
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
       },
-      body: JSON.stringify({
-        from: contactEmailFrom,
-        to: [contactEmailTo],
-        reply_to: email,
-        subject: formattedSubject,
-        text: [
-          `Nuovo messaggio di contatto da: ${name} (${email})`,
-          `Oggetto: ${subject}`,
-          `Ricevuto il: ${receivedAt}`,
-          "",
-          "--- Messaggio ---",
-          message,
-          "",
-          `Per rispondere, scrivi direttamente a: ${email}`,
-        ].join("\n"),
-        html: emailHtml,
-      }),
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
 
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.text();
-      console.error("[Contact API] Errore Resend API:", resendResponse.status, errorData);
+    const info = await transporter.sendMail({
+      from: contactEmailFrom,
+      to: contactEmailTo,
+      replyTo: email,
+      subject: formattedSubject,
+      text: [
+        `Nuovo messaggio di contatto da: ${name} (${email})`,
+        `Oggetto: ${subject}`,
+        `Ricevuto il: ${receivedAt}`,
+        "",
+        "--- Messaggio ---",
+        message,
+        "",
+        `Per rispondere, scrivi direttamente a: ${email}`,
+      ].join("\n"),
+      html: emailHtml,
+    });
 
-      let parsedError = "Errore durante l'invio dell'email con Resend.";
-      try {
-        const jsonErr = JSON.parse(errorData);
-        if (jsonErr.message) {
-          parsedError = jsonErr.message;
-        }
-      } catch {
-        if (errorData) parsedError = errorData;
-      }
-
-      return NextResponse.json(
-        { error: parsedError },
-        { status: 502 }
-      );
-    }
-
-    const data = await resendResponse.json();
-    return NextResponse.json({ ok: true, id: data.id });
-  } catch (err) {
-    console.error("[Contact API] Eccezione di rete o server:", err);
+    return NextResponse.json({ ok: true, messageId: info.messageId });
+  } catch (err: unknown) {
+    console.error("[Contact API] Errore invio SMTP Mailcow:", err);
+    const errorMessage = err instanceof Error ? err.message : "Errore durante l'invio dell'email via SMTP.";
     return NextResponse.json(
-      { error: "Errore di connessione al servizio email. Riprova più tardi." },
-      { status: 500 }
+      { error: `Invio non riuscito tramite mailserver: ${errorMessage}` },
+      { status: 502 }
     );
   }
 }

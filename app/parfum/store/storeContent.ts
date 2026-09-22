@@ -5,9 +5,9 @@ type ProductCopy = {
   baseSlug: string;
   name: string;
   description: string;
+  imageSrc: string;
 };
 
-const imageSrc = "/SectionsBackgrounds/Parfum.png";
 const variants = [
   { label: "10 ml", slug: "10ml" },
   { label: "50 ml", slug: "50ml" },
@@ -16,78 +16,54 @@ const variants = [
 const productCopy: Record<"it" | "en", ProductCopy[]> = {
   it: [
     {
-      baseId: "PF01",
-      baseSlug: "self-pass",
-      name: "Self Pass",
-      description: "Potenza silenziosa. L'istinto che conquista.",
+      baseId: "PF-CAG-HOMME",
+      baseSlug: "cagliari-pour-homme",
+      name: "Cagliari pour homme",
+      description:
+        "Un accordo nobile e deciso, tra note marine e legni mediterranei. L'eleganza fiera dell'uomo Two Lions.",
+      imageSrc: "/Parfum/Cagliari_pourHomme.jpeg",
     },
     {
-      baseId: "PF02",
-      baseSlug: "corner-corto",
-      name: "Corner Corto",
-      description: "Preciso. Deciso. Il momento che cambia la partita.",
+      baseId: "PF-CAG-UNISEX",
+      baseSlug: "cagliari-unisex",
+      name: "Cagliari unisex",
+      description:
+        "Un'essenza fresca e avvolgente che fonde brezza costiera e macchia mediterranea. Identità e armonia senza confini.",
+      imageSrc: "/Parfum/Cagliari_unisex.jpeg",
     },
     {
-      baseId: "PF03",
-      baseSlug: "two-lions",
-      name: "Two Lions",
-      description: "Profumi d'elite per l'hockeyista moderno.",
-    },
-    {
-      baseId: "PF04",
-      baseSlug: "long-corner",
-      name: "Long Corner",
-      description: "Eleganza in profondita. Raffinata come una strategia ben giocata.",
-    },
-    {
-      baseId: "PF05",
-      baseSlug: "push",
-      name: "Push",
-      description: "Potenza silenziosa. L'istinto che conquista.",
-    },
-    {
-      baseId: "PF06",
-      baseSlug: "short-corner",
-      name: "Short Corner",
-      description: "Preciso. Decisivo. Il momento che cambia la partita.",
+      baseId: "PF-CAG-FEMME",
+      baseSlug: "cagliari-pour-femme",
+      name: "Cagliari pour femme",
+      description:
+        "Raffinata, luminosa e magnetica con tocchi floreali e agrumati di Sardegna. Una presenza indimenticabile.",
+      imageSrc: "/Parfum/Cagliari_pourFemme.jpeg",
     },
   ],
   en: [
     {
-      baseId: "PF01",
-      baseSlug: "self-pass",
-      name: "Self Pass",
-      description: "Silent power. The instinct that conquers.",
+      baseId: "PF-CAG-HOMME",
+      baseSlug: "cagliari-pour-homme",
+      name: "Cagliari pour homme",
+      description:
+        "A noble and decisive accord of marine notes and Mediterranean woods. The proud elegance of the Two Lions man.",
+      imageSrc: "/Parfum/Cagliari_pourHomme.jpeg",
     },
     {
-      baseId: "PF02",
-      baseSlug: "corner-corto",
-      name: "Corner Corto",
-      description: "Precise. Decisive. The moment that changes the match.",
+      baseId: "PF-CAG-UNISEX",
+      baseSlug: "cagliari-unisex",
+      name: "Cagliari unisex",
+      description:
+        "A fresh and enveloping essence blending coastal breeze and Mediterranean scrub. Identity and harmony without boundaries.",
+      imageSrc: "/Parfum/Cagliari_unisex.jpeg",
     },
     {
-      baseId: "PF03",
-      baseSlug: "two-lions",
-      name: "Two Lions",
-      description: "Elite fragrances for the modern hockey player.",
-    },
-    {
-      baseId: "PF04",
-      baseSlug: "long-corner",
-      name: "Long Corner",
-      description: "Elegance in depth. Refined like a well-played strategy.",
-    },
-    {
-      baseId: "PF05",
-      baseSlug: "push",
-      name: "Push",
-      description: "Silent power. The instinct that conquers.",
-    },
-    {
-      baseId: "PF06",
-      baseSlug: "short-corner",
-      name: "Short Corner",
-      description: "Precise. Decisive. The game-changing moment.",
+      baseId: "PF-CAG-FEMME",
+      baseSlug: "cagliari-pour-femme",
+      name: "Cagliari pour femme",
+      description:
+        "Refined, luminous, and magnetic with floral and citrus Sardinian touches. An unforgettable presence.",
+      imageSrc: "/Parfum/Cagliari_pourFemme.jpeg",
     },
   ],
 };
@@ -115,7 +91,7 @@ function buildProducts(lang: "it" | "en"): StoreProduct[] {
               `Two Lions Parfum fragrance available in the ${variant.label} format.`,
               "Price temporarily set to 00.00 while waiting for the OpenCart connection.",
             ],
-      imageSrc,
+      imageSrc: product.imageSrc,
       imageAlt: `${product.name} ${variant.label}`,
     }))
   );

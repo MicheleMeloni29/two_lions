@@ -23,7 +23,7 @@ const galleryItems: Record<"it" | "en", AccordionGalleryItem[]> = {
       alt: "Two Lions Sport store",
     },
     {
-      image: "/SectionsBackgrounds/Parfum.png",
+      image: "/SectionsBackgrounds/Parfum.jpeg",
       label: "Parfum",
       link: "/parfum/store",
       alt: "Two Lions Parfum store",

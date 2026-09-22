@@ -48,7 +48,7 @@ const pageContent: Record<"it" | "en", ParfumPageContent> = {
   en: enMessages.parfumPage,
 };
 
-const divisionBackgroundImage = "/SectionsBackgrounds/Parfum.png";
+const divisionBackgroundImage = "/SectionsBackgrounds/Parfum.jpeg";
 
 const sectionThemes = [
   {

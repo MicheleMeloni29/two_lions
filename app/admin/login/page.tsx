@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,12 +10,16 @@ import {
   User,
   Eye,
   EyeOff,
-  ArrowRight,
   Loader2,
   AlertCircle,
   ShieldCheck,
   ArrowLeft,
 } from "lucide-react";
+import {
+  verifyAdminCredentials,
+  setAdminSession,
+  isValidAdminSession,
+} from "@/lib/clientAdminAuth";
 
 function LoginForm() {
   const router = useRouter();
@@ -28,6 +32,13 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Se l'amministratore ha già una sessione attiva valida, reindirizza direttamente
+  useEffect(() => {
+    if (isValidAdminSession()) {
+      router.replace(redirectTarget);
+    }
+  }, [redirectTarget, router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username.trim() || !password.trim()) {
@@ -39,25 +50,34 @@ function LoginForm() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/admin/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      // 1. Verifica crittografica client-side (compatibile sia con export statico Nginx che con server)
+      const isValid = await verifyAdminCredentials(username, password);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setErrorMessage(data.error || "Credenziali non valide.");
+      if (!isValid) {
+        setErrorMessage("Nome utente o password non corretti.");
         setIsLoading(false);
         return;
       }
 
-      // Successo: reindirizza alla dashboard
+      // 2. Salva la sessione in sessionStorage
+      setAdminSession(username);
+
+      // 3. Prova anche a notificare l'endpoint server (se attivo in dev o con Node.js), senza bloccare se 404
+      try {
+        await fetch("/api/admin/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+      } catch {
+        // Ignora su ambienti statici (dove /api restituisce 404)
+      }
+
+      // 4. Successo: reindirizza alla dashboard
       router.push(redirectTarget);
       router.refresh();
     } catch {
-      setErrorMessage("Errore di connessione con il server. Riprova più tardi.");
+      setErrorMessage("Si è verificato un errore durante la verifica. Riprova.");
       setIsLoading(false);
     }
   };

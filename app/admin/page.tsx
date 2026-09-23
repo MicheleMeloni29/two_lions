@@ -15,6 +15,7 @@ import {
   ArrowLeft,
   Loader2,
 } from "lucide-react";
+import { clearAdminSession } from "@/lib/clientAdminAuth";
 
 const PLATFORMS = [
   {
@@ -53,13 +54,13 @@ export default function AdminPage() {
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
+    clearAdminSession();
     try {
       await fetch("/api/admin/auth/logout", { method: "POST" });
-      router.push("/admin/login");
-      router.refresh();
     } catch {
-      window.location.href = "/admin/login";
+      // Ignora su ambienti statici
     }
+    router.replace("/admin/login");
   };
 
   return (

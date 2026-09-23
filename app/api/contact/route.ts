@@ -30,8 +30,6 @@ function cleanEnv(val?: string) {
     .trim();
 }
 
-export const dynamic = "force-dynamic";
-
 export async function POST(request: Request) {
   const smtpHost = cleanEnv(process.env.SMTP_HOST) || "mail.twolionsinternational.com";
   const smtpPort = Number(cleanEnv(process.env.SMTP_PORT)) || 465;

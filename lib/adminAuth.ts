@@ -120,10 +120,6 @@ export async function verifyAdminToken(
  */
 export function timingSafeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) {
-    let diff = 0;
-    for (let i = 0; i < a.length; i++) {
-      diff |= a.charCodeAt(i) ^ a.charCodeAt(i);
-    }
     return false;
   }
   let diff = 0;

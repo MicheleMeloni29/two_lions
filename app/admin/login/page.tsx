@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Lock,
@@ -22,9 +22,11 @@ import {
 } from "@/lib/clientAdminAuth";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTarget = searchParams.get("from") || "/admin";
+  const fromParam = searchParams.get("from");
+  // Evita qualsiasi redirect a se stesso o loop su /admin/login
+  const redirectTarget =
+    fromParam && !fromParam.includes("/admin/login") ? fromParam : "/admin/";
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,9 +37,9 @@ function LoginForm() {
   // Se l'amministratore ha già una sessione attiva valida, reindirizza direttamente
   useEffect(() => {
     if (isValidAdminSession()) {
-      router.replace(redirectTarget);
+      window.location.replace(redirectTarget);
     }
-  }, [redirectTarget, router]);
+  }, [redirectTarget]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,8 +76,7 @@ function LoginForm() {
       }
 
       // 4. Successo: reindirizza alla dashboard
-      router.push(redirectTarget);
-      router.refresh();
+      window.location.href = redirectTarget;
     } catch {
       setErrorMessage("Si è verificato un errore durante la verifica. Riprova.");
       setIsLoading(false);

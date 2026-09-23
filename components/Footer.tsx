@@ -140,7 +140,7 @@ export default function Footer() {
           <p>{content.rights}</p>
           <p>{content.chairmanOffice}</p>
           <Link
-            href="/admin"
+            href="/admin/login/"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-[color:var(--color-thirdary)]"
             title="Area Riservata Amministrazione"
           >

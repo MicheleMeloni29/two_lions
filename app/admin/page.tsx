@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -49,7 +48,6 @@ const PLATFORMS = [
 ];
 
 export default function AdminPage() {
-  const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
@@ -60,7 +58,7 @@ export default function AdminPage() {
     } catch {
       // Ignora su ambienti statici
     }
-    router.replace("/admin/login");
+    window.location.href = "/admin/login/";
   };
 
   return (

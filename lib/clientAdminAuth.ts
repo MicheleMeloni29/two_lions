@@ -59,8 +59,10 @@ export interface AdminClientSession {
   createdAt: number;
 }
 
+const SESSION_TTL_MS = 2 * 60 * 60 * 1000; // 2 ore di validità massima
+
 /**
- * Salva la sessione attiva in sessionStorage.
+ * Salva la sessione attiva sia in sessionStorage che in localStorage (fallback resiliente).
  */
 export function setAdminSession(username: string): void {
   if (typeof window === "undefined") return;
@@ -71,36 +73,68 @@ export function setAdminSession(username: string): void {
     createdAt: Date.now(),
   };
 
+  const payload = JSON.stringify(session);
+
   try {
-    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
+    sessionStorage.setItem(SESSION_STORAGE_KEY, payload);
   } catch (err) {
-    console.error("Impossibile salvare la sessione in sessionStorage:", err);
+    console.error("Impossibile salvare in sessionStorage:", err);
+  }
+
+  try {
+    localStorage.setItem(SESSION_STORAGE_KEY, payload);
+  } catch (err) {
+    console.error("Impossibile salvare in localStorage:", err);
   }
 }
 
 /**
- * Verifica se esiste una sessione attiva e valida in sessionStorage.
+ * Verifica se esiste una sessione attiva e valida in sessionStorage o localStorage (entro 2 ore).
  */
 export function isValidAdminSession(): boolean {
   if (typeof window === "undefined") return false;
 
-  try {
-    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
-    if (!raw) return false;
-
-    const session = JSON.parse(raw) as AdminClientSession;
-    if (!session || !session.authenticated || !session.username) {
-      return false;
+  const checkPayload = (raw: string | null): AdminClientSession | null => {
+    if (!raw) return null;
+    try {
+      const session = JSON.parse(raw) as AdminClientSession;
+      if (!session || !session.authenticated || !session.username) return null;
+      if (Date.now() - session.createdAt > SESSION_TTL_MS) return null;
+      return session;
+    } catch {
+      return null;
     }
+  };
 
-    return true;
+  // 1. Controlla prima sessionStorage
+  try {
+    const sessionFromSession = checkPayload(sessionStorage.getItem(SESSION_STORAGE_KEY));
+    if (sessionFromSession) return true;
   } catch {
-    return false;
+    // sessionStorage bloccato o non disponibile
   }
+
+  // 2. Fallback su localStorage (utile in caso di redirect o cambio scheda)
+  try {
+    const sessionFromLocal = checkPayload(localStorage.getItem(SESSION_STORAGE_KEY));
+    if (sessionFromLocal) {
+      // Risincronizza anche sessionStorage
+      try {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionFromLocal));
+      } catch {
+        // Ignora
+      }
+      return true;
+    }
+  } catch {
+    // localStorage bloccato o non disponibile
+  }
+
+  return false;
 }
 
 /**
- * Elimina la sessione attiva in sessionStorage.
+ * Elimina la sessione attiva da entrambi gli storage al logout.
  */
 export function clearAdminSession(): void {
   if (typeof window === "undefined") return;
@@ -108,6 +142,12 @@ export function clearAdminSession(): void {
   try {
     sessionStorage.removeItem(SESSION_STORAGE_KEY);
   } catch (err) {
-    console.error("Impossibile rimuovere la sessione:", err);
+    console.error("Impossibile rimuovere da sessionStorage:", err);
+  }
+
+  try {
+    localStorage.removeItem(SESSION_STORAGE_KEY);
+  } catch (err) {
+    console.error("Impossibile rimuovere da localStorage:", err);
   }
 }

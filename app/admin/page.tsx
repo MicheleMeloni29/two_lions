@@ -13,8 +13,8 @@ import {
   LogOut,
   ArrowLeft,
   Loader2,
-} from "lucide-react";
 import { clearAdminSession } from "@/lib/clientAdminAuth";
+import AdminGuard from "./AdminGuard";
 
 const PLATFORMS = [
   {
@@ -62,7 +62,8 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="flex h-[100dvh] max-h-[100dvh] flex-col justify-between overflow-hidden bg-white px-3 py-2.5 text-stone-900 sm:px-6 sm:py-5 md:px-8 md:py-6 lg:px-12">
+    <AdminGuard>
+      <div className="flex h-[100dvh] max-h-[100dvh] flex-col justify-between overflow-hidden bg-white px-3 py-2.5 text-stone-900 sm:px-6 sm:py-5 md:px-8 md:py-6 lg:px-12">
       <div className="mx-auto flex h-full w-full max-w-5xl lg:max-w-6xl flex-col justify-between">
         {/* Top Header Minimal & Responsive */}
         <header className="flex shrink-0 items-center justify-between gap-2 border-b border-stone-200/80 pb-2 sm:pb-3 md:pb-4">
@@ -167,5 +168,6 @@ export default function AdminPage() {
         </main>
       </div>
     </div>
+  </AdminGuard>
   );
 }

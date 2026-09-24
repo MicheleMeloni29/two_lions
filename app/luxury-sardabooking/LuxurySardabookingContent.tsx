@@ -3,7 +3,9 @@
 import { useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Building2 } from "lucide-react";
 import CompactHeader from "@/components/UI/CompactHeader";
+import DivisionStoreCta from "@/components/store/DivisionStoreCta";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import enMessages from "@/locales/en.json";
 import itMessages from "@/locales/it.json";
@@ -86,6 +88,22 @@ function joinClasses(...classes: Array<string | undefined>) {
 export default function LuxurySardabookingContent() {
     const { lang, toggleLang } = useSiteLanguage();
     const content = pageContent[lang];
+    const bookingCtaContent =
+        lang === "it"
+            ? {
+                  eyebrow: "Booking Ufficiale",
+                  title: "Prenota il tuo soggiorno esclusivo in Sardegna.",
+                  description:
+                      "Accedi al portale dedicato SardaBooking per scoprire e prenotare ville di lusso, boutique hotel, resort ed esperienze uniche nell'isola.",
+                  actionLabel: "Vai su SardaBooking",
+              }
+            : {
+                  eyebrow: "Official Booking",
+                  title: "Book your exclusive stay in Sardinia.",
+                  description:
+                      "Access the dedicated SardaBooking portal to discover and book luxury villas, boutique hotels, resorts and unique experiences on the island.",
+                  actionLabel: "Go to SardaBooking",
+              };
 
     useLayoutEffect(() => {
         const html = document.documentElement;
@@ -244,7 +262,15 @@ export default function LuxurySardabookingContent() {
                         </aside>
                     </div>
 
-                    <div className="space-y-6 pt-20 md:space-y-7">
+                    <div className="space-y-6 pt-14 md:space-y-7 md:pt-18 xl:pt-20">
+                        <DivisionStoreCta
+                            {...bookingCtaContent}
+                            href="https://www.sardabooking.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            watermark="Booking"
+                            icon={Building2}
+                        />
                         <div className="max-w-4xl">
                             <p className="text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] sm:text-[10px] md:text-[11px]">
                                 {content.operatingAreas}

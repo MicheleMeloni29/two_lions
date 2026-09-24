@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowRight, ShoppingBag, type LucideIcon } from "lucide-react";
 
 type DivisionStoreCtaProps = {
   eyebrow: string;
@@ -7,6 +7,10 @@ type DivisionStoreCtaProps = {
   description: string;
   href: string;
   actionLabel: string;
+  watermark?: string;
+  icon?: LucideIcon;
+  target?: string;
+  rel?: string;
 };
 
 export default function DivisionStoreCta({
@@ -15,6 +19,10 @@ export default function DivisionStoreCta({
   description,
   href,
   actionLabel,
+  watermark = "Shop",
+  icon: Icon = ShoppingBag,
+  target,
+  rel,
 }: DivisionStoreCtaProps) {
   return (
     <div className="relative isolate overflow-hidden border border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] px-5 py-7 text-[color:var(--color-primary)] shadow-[0_26px_70px_rgba(31,39,92,0.18)] md:px-7 md:py-8 xl:px-9 xl:py-10">
@@ -22,14 +30,14 @@ export default function DivisionStoreCta({
         className="pointer-events-none absolute inset-y-0 right-0 hidden items-center pr-8 font-change-serif-bold text-[9rem] uppercase leading-none text-white/18 md:flex xl:text-[11rem]"
         aria-hidden="true"
       >
-        Shop
+        {watermark}
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,rgba(255,255,255,0.34),transparent_42%),linear-gradient(270deg,rgba(37,30,87,0.16),transparent_38%)]" />
 
       <div className="relative grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div className="max-w-4xl space-y-4">
           <div className="inline-flex w-fit items-center gap-2 border border-[color:var(--color-primary)]/18 bg-white/24 px-3 py-2 text-[9px] uppercase tracking-[0.24em] text-[color:var(--color-primary)] sm:text-[10px] md:text-[11px]">
-            <ShoppingBag
+            <Icon
               aria-hidden="true"
               className="h-4 w-4"
               strokeWidth={1.8}
@@ -48,6 +56,8 @@ export default function DivisionStoreCta({
 
         <Link
           href={href}
+          target={target}
+          rel={rel}
           className="group inline-flex w-full items-center justify-center gap-3 border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-6 py-4 text-[11px] uppercase tracking-[0.22em] text-white transition hover:border-white hover:bg-white hover:text-[color:var(--color-primary)] sm:w-fit sm:text-[12px] md:px-7 md:py-5"
         >
           <span>{actionLabel}</span>

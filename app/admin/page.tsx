@@ -13,6 +13,7 @@ import {
   LogOut,
   ArrowLeft,
   Loader2,
+} from "lucide-react";
 import { clearAdminSession } from "@/lib/clientAdminAuth";
 import AdminGuard from "./AdminGuard";
 

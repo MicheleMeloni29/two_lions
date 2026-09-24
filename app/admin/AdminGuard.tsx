@@ -17,7 +17,9 @@ export default function AdminGuard({
       const current = window.location.pathname || "/admin/";
       window.location.replace(`/admin/login/?from=${encodeURIComponent(current)}`);
     } else {
-      setIsAuthorized(true);
+      queueMicrotask(() => {
+        setIsAuthorized(true);
+      });
     }
   }, []);
 

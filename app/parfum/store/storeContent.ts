@@ -21,7 +21,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari pour homme",
       description:
         "Un accordo nobile e deciso, tra note marine e legni mediterranei. L'eleganza fiera dell'uomo Two Lions.",
-      imageSrc: "/Parfum/Cagliari_pourHomme.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_pourHomme.jpeg",
     },
     {
       baseId: "PF-CAG-UNISEX",
@@ -29,7 +29,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari unisex",
       description:
         "Un'essenza fresca e avvolgente che fonde brezza costiera e macchia mediterranea. Identità e armonia senza confini.",
-      imageSrc: "/Parfum/Cagliari_unisex.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_unisex.jpeg",
     },
     {
       baseId: "PF-CAG-FEMME",
@@ -37,7 +37,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari pour femme",
       description:
         "Raffinata, luminosa e magnetica con tocchi floreali e agrumati di Sardegna. Una presenza indimenticabile.",
-      imageSrc: "/Parfum/Cagliari_pourFemme.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_pourFemme.jpeg",
     },
   ],
   en: [
@@ -47,7 +47,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari pour homme",
       description:
         "A noble and decisive accord of marine notes and Mediterranean woods. The proud elegance of the Two Lions man.",
-      imageSrc: "/Parfum/Cagliari_pourHomme.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_pourHomme.jpeg",
     },
     {
       baseId: "PF-CAG-UNISEX",
@@ -55,7 +55,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari unisex",
       description:
         "A fresh and enveloping essence blending coastal breeze and Mediterranean scrub. Identity and harmony without boundaries.",
-      imageSrc: "/Parfum/Cagliari_unisex.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_unisex.jpeg",
     },
     {
       baseId: "PF-CAG-FEMME",
@@ -63,7 +63,7 @@ const productCopy: Record<"it" | "en", ProductCopy[]> = {
       name: "Cagliari pour femme",
       description:
         "Refined, luminous, and magnetic with floral and citrus Sardinian touches. An unforgettable presence.",
-      imageSrc: "/Parfum/Cagliari_pourFemme.jpeg",
+      imageSrc: "/Parfum_Bottles/Cagliari_pourFemme.jpeg",
     },
   ],
 };

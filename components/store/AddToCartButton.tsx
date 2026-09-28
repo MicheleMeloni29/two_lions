@@ -28,7 +28,10 @@ export default function AddToCartButton({
       type="button"
       onClick={handleClick}
       className={cn(
-        "inline-flex w-full items-center justify-center border border-[color:var(--color-thirdary)] bg-white px-5 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition-colors hover:border-[color:var(--color-thirdary)] hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-primary)] sm:text-[12px]",
+        "inline-flex w-full cursor-pointer items-center justify-center border transition-all duration-300 px-5 py-3 text-[11px] uppercase tracking-[0.22em] sm:text-[12px]",
+        isAdded
+          ? "border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] font-medium text-[color:var(--color-primary)] shadow-sm"
+          : "border-[color:var(--color-thirdary)] bg-white text-[color:var(--color-thirdary)] hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-primary)]",
         className
       )}
     >

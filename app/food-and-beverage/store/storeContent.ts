@@ -6,8 +6,8 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     discountsLabel: "Sconti",
     resultsLabel: "prodotti",
     emptyLabel: "Nessun prodotto disponibile per questo filtro.",
-    addToCartLabel: "Aggiungi al carrello",
-    addedToCartLabel: "Aggiunto al carrello",
+    addToCartLabel: "Acquista",
+    addedToCartLabel: "Aggiunto",
     openProductLabel: "Vedi prodotto",
     backToStoreLabel: "Torna allo store",
     detailLabel: "Descrizione completa",
@@ -41,7 +41,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Food",
         name: "Pantry Sardegna Selection",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Una selezione visuale per pantry premium, conserve e specialita territoriali pensata per retail gourmet e gift format.",
@@ -59,7 +59,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Beverage",
         name: "Giunico Coastal Lager",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Una referenza craft a forte identita visuale, adatta a locali, beach club, eventi branded e distribuzione selettiva.",
@@ -77,7 +77,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Coffee & Tea",
         name: "Caffe Mare Signature Roast",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Una linea dedicata a coffee experience e hospitality, con posizionamento premium per boutique hotel, lounge e food service.",
@@ -95,7 +95,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Wine & Spirits",
         name: "Cannonau Cellar Reserve",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Una bottiglia pensata per ristorazione, gifting e selezioni enologiche con una narrativa elegante e identitaria.",
@@ -113,7 +113,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Beverage",
         name: "Mediterranean Soft Drinks Set",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Un assortimento dedicato a beach club, hospitality e attivazioni estive, con immagine luminosa e versatile.",
@@ -131,7 +131,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Food",
         name: "Blue Heritage Tuna",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Una proposta adatta a specialty retail, gift box gourmet e storytelling mediterraneo ad alto valore percepito.",
@@ -149,7 +149,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Brand Sardinia",
         name: "Vermentino Shoreline Edition",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Una signature bottle pronta per welcome kit, gifting e selezioni rappresentative legate al racconto della Sardegna.",
@@ -168,8 +168,8 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     discountsLabel: "Discounts",
     resultsLabel: "products",
     emptyLabel: "No products are available for this filter.",
-    addToCartLabel: "Add to cart",
-    addedToCartLabel: "Added to cart",
+    addToCartLabel: "Buy now",
+    addedToCartLabel: "Added",
     openProductLabel: "View product",
     backToStoreLabel: "Back to store",
     detailLabel: "Full description",
@@ -203,7 +203,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Food",
         name: "Pantry Sardinia Selection",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "A visual selection for premium pantry products, preserves and regional specialties designed for gourmet retail and gift formats.",
@@ -221,7 +221,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Beverage",
         name: "Giunico Coastal Lager",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "A craft reference with strong visual identity, suited to venues, beach clubs, branded events and selective distribution.",
@@ -239,7 +239,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Coffee & Tea",
         name: "Caffe Mare Signature Roast",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "A line dedicated to coffee experience and hospitality, with premium positioning for boutique hotels, lounges and food service.",
@@ -257,7 +257,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Wine & Spirits",
         name: "Cannonau Cellar Reserve",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "A bottle designed for restaurants, gifting and wine selections with an elegant and identity-driven narrative.",
@@ -275,7 +275,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Beverage",
         name: "Mediterranean Soft Drinks Set",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "An assortment built for beach clubs, hospitality and summer activations with a bright, versatile image system.",
@@ -293,7 +293,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Food",
         name: "Blue Heritage Tuna",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "A proposal suited to specialty retail, gourmet gift boxes and Mediterranean storytelling with high perceived value.",
@@ -311,7 +311,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Brand Sardinia",
         name: "Vermentino Shoreline Edition",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "A signature bottle ready for welcome kits, gifting and representative selections tied to the Sardinian narrative.",

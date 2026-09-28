@@ -6,8 +6,8 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     discountsLabel: "Sconti",
     resultsLabel: "prodotti",
     emptyLabel: "Nessun prodotto disponibile per questo filtro.",
-    addToCartLabel: "Aggiungi al carrello",
-    addedToCartLabel: "Aggiunto al carrello",
+    addToCartLabel: "Acquista",
+    addedToCartLabel: "Aggiunto",
     openProductLabel: "Vedi prodotto",
     backToStoreLabel: "Torna allo store",
     detailLabel: "Descrizione completa",
@@ -35,7 +35,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessori",
         name: "Breda 2026 Team Backpack",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Zaino ufficiale Breda 2026 pensato per allenamenti, trasferte e uso quotidiano, con identità grafica coordinata.",
@@ -53,7 +53,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessori",
         name: "Breda 2026 Team Cap",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Cappellino ufficiale della collezione Breda 2026, ideale per eventi, match day e attività outdoor.",
@@ -71,7 +71,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Attrezzatura",
         name: "Breda 2026 Sport Harness",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Pettorina sportiva coordinata Breda 2026, sviluppata per attività, iniziative di squadra e presenza sul campo.",
@@ -89,7 +89,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessori",
         name: "Breda 2026 Lanyard",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Lanyard ufficiale per pass, accrediti e badge, pensato per staff, ospiti e pubblico degli eventi Breda 2026.",
@@ -107,7 +107,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Mascotte",
         name: "Leo Mascot",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "La mascotte Leo in versione merchandising, creata per supporter, famiglie e collezionisti Breda 2026.",
@@ -125,7 +125,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Mascotte",
         name: "Leon & Cino Mascot Duo",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Il duo di mascotte Leon & Cino riunito in un set dedicato ai fan e alla community Breda 2026.",
@@ -143,7 +143,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessori",
         name: "Breda 2026 Team Pochette",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Pochette compatta della linea ufficiale, utile per organizzare piccoli accessori durante allenamenti e trasferte.",
@@ -161,7 +161,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Abbigliamento",
         name: "Breda 2026 Official Polo",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "Polo ufficiale Breda 2026 per staff, team e supporter, con immagine coordinata e vocazione sport-lifestyle.",
@@ -179,7 +179,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Abbigliamento",
         name: "Breda 2026 Match Shorts",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Shorts sportivi della collezione Breda 2026, pensati per completare il kit ufficiale dentro e fuori dal campo.",
@@ -198,8 +198,8 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
     discountsLabel: "Discounts",
     resultsLabel: "products",
     emptyLabel: "No products are available for this filter.",
-    addToCartLabel: "Add to cart",
-    addedToCartLabel: "Added to cart",
+    addToCartLabel: "Buy now",
+    addedToCartLabel: "Added",
     openProductLabel: "View product",
     backToStoreLabel: "Back to store",
     detailLabel: "Full description",
@@ -227,7 +227,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessories",
         name: "Breda 2026 Team Backpack",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "The official Breda 2026 backpack for training, travel and everyday use, with a coordinated visual identity.",
@@ -245,7 +245,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessories",
         name: "Breda 2026 Team Cap",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "The official Breda 2026 collection cap, ideal for events, match days and outdoor activities.",
@@ -263,7 +263,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Equipment",
         name: "Breda 2026 Sport Harness",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "A coordinated Breda 2026 sports harness developed for activities, team initiatives and on-field presence.",
@@ -281,7 +281,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessories",
         name: "Breda 2026 Lanyard",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "The official lanyard for passes, accreditations and badges, designed for Breda 2026 staff, guests and audiences.",
@@ -299,7 +299,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Mascots",
         name: "Leo Mascot",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "The Leo mascot as an official merchandise item for Breda 2026 supporters, families and collectors.",
@@ -317,7 +317,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Mascots",
         name: "Leon & Cino Mascot Duo",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "The Leon & Cino mascot duo brought together in a set dedicated to Breda 2026 fans and community.",
@@ -335,7 +335,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Accessories",
         name: "Breda 2026 Team Pochette",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "A compact official-line pouch for organizing small accessories during training sessions and travel.",
@@ -353,7 +353,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Apparel",
         name: "Breda 2026 Official Polo",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: false,
         shortDescription:
           "The official Breda 2026 polo for staff, teams and supporters, combining coordinated identity with sports-lifestyle appeal.",
@@ -371,7 +371,7 @@ export const storePageContent: Record<"it" | "en", StorePageContent> = {
         category: "Apparel",
         name: "Breda 2026 Match Shorts",
         amountCents: 0,
-        price: "EUR 00,00",
+        price: "00,00€",
         isDiscounted: true,
         shortDescription:
           "Sports shorts from the Breda 2026 collection, designed to complete the official kit on and off the field.",

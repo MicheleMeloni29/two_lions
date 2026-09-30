@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ToggleLang from "./toggleLang";
 import {
   divisionNavItems,
@@ -225,7 +225,7 @@ export default function CompactHeader({
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
-                  className={`h-4 w-4 transition-transform ${
+                  className={`h-4 w-4 transition-transform duration-300 ease-out ${
                     isDesktopDivisionOpen ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -238,33 +238,49 @@ export default function CompactHeader({
                 </svg>
               </button>
 
-              {isDesktopDivisionOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[16.5rem] -translate-x-1/2 border-x border-b border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
-                  <div className="grid justify-items-center gap-3 text-center">
-                    {divisionNavItems.map((item) => {
-                      const isItemActive =
-                        pathname === item.href ||
-                        pathname.startsWith(`${item.href}/`);
+              <AnimatePresence>
+                {isDesktopDivisionOpen ? (
+                  <motion.div
+                    key="desktop-division-dropdown"
+                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-1/2 top-full z-20 mt-2 w-[18rem] -translate-x-1/2 bg-white/90 px-3 py-3 shadow-[0_18px_42px_-12px_rgba(0,20,60,0.09),0_4px_12px_-2px_rgba(0,20,60,0.03)] backdrop-blur-xl"
+                  >
+                    <div className="flex flex-col space-y-0.5">
+                      {divisionNavItems.map((item) => {
+                        const isItemActive =
+                          pathname === item.href ||
+                          pathname.startsWith(`${item.href}/`);
 
-                      return (
-                        <Link
-                          key={item.slug}
-                          href={item.href}
-                          className={`text-[10px] uppercase tracking-[0.22em] transition-colors lg:text-[12px] ${
-                            isItemActive
-                              ? "text-[color:var(--color-thirdary)]"
-                              : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)]"
-                          }`}
-                          onClick={() => setIsDesktopDivisionOpen(false)}
-                          aria-current={isItemActive ? "page" : undefined}
-                        >
-                          {item.labels[lang ?? "it"]}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : null}
+                        return (
+                          <Link
+                            key={item.slug}
+                            href={item.href}
+                            className={`group relative flex items-center py-2.5 pl-4 pr-2 text-[11px] uppercase tracking-[0.2em] transition-all duration-200 lg:text-[11.5px] ${
+                              isItemActive
+                                ? "text-[color:var(--color-thirdary)] font-medium"
+                                : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)] hover:translate-x-1"
+                            }`}
+                            onClick={() => setIsDesktopDivisionOpen(false)}
+                            aria-current={isItemActive ? "page" : undefined}
+                          >
+                            <span
+                              className={`absolute left-0 top-1/2 -translate-y-1/2 h-3.5 w-[2px] transition-all duration-200 ${
+                                isItemActive
+                                  ? "bg-[color:var(--color-thirdary)] opacity-100"
+                                  : "bg-[color:var(--color-thirdary)] opacity-0 group-hover:opacity-100"
+                              }`}
+                            />
+                            <span className="truncate">{item.labels[lang ?? "it"]}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </div>
 
             <div className="relative" ref={desktopShopRef}>
@@ -297,7 +313,7 @@ export default function CompactHeader({
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"
-                    className={`h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform duration-300 ease-out ${
                       isDesktopShopOpen ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -311,33 +327,49 @@ export default function CompactHeader({
                 </button>
               </div>
 
-              {isDesktopShopOpen ? (
-                <div className="absolute left-1/2 top-full z-20 mt-3 w-[16.5rem] -translate-x-1/2 border-x border-b border-[color:var(--color-secondary)]/70 bg-white/92 px-5 py-4 shadow-[0_20px_50px_-34px_rgba(0,35,91,0.28)] backdrop-blur-md">
-                  <div className="grid justify-items-center gap-3 text-center">
-                    {shopNavItems.map((item) => {
-                      const isItemActive =
-                        pathname === item.href ||
-                        pathname.startsWith(`${item.href}/`);
+              <AnimatePresence>
+                {isDesktopShopOpen ? (
+                  <motion.div
+                    key="desktop-shop-dropdown"
+                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-1/2 top-full z-20 mt-2 w-[18rem] -translate-x-1/2 bg-white/90 px-3 py-3 shadow-[0_18px_42px_-12px_rgba(0,20,60,0.09),0_4px_12px_-2px_rgba(0,20,60,0.03)] backdrop-blur-xl"
+                  >
+                    <div className="flex flex-col space-y-0.5">
+                      {shopNavItems.map((item) => {
+                        const isItemActive =
+                          pathname === item.href ||
+                          pathname.startsWith(`${item.href}/`);
 
-                      return (
-                        <Link
-                          key={item.key}
-                          href={item.href}
-                          className={`text-[11px] uppercase tracking-[0.22em] transition-colors lg:text-[12px] ${
-                            isItemActive
-                              ? "text-[color:var(--color-thirdary)]"
-                              : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)]"
-                          }`}
-                          onClick={() => setIsDesktopShopOpen(false)}
-                          aria-current={isItemActive ? "page" : undefined}
-                        >
-                          {item.labels[lang ?? "it"]}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : null}
+                        return (
+                          <Link
+                            key={item.key}
+                            href={item.href}
+                            className={`group relative flex items-center py-2.5 pl-4 pr-2 text-[11px] uppercase tracking-[0.2em] transition-all duration-200 lg:text-[11.5px] ${
+                              isItemActive
+                                ? "text-[color:var(--color-thirdary)] font-medium"
+                                : "text-[color:var(--color-primary)] hover:text-[color:var(--color-thirdary)] hover:translate-x-1"
+                            }`}
+                            onClick={() => setIsDesktopShopOpen(false)}
+                            aria-current={isItemActive ? "page" : undefined}
+                          >
+                            <span
+                              className={`absolute left-0 top-1/2 -translate-y-1/2 h-3.5 w-[2px] transition-all duration-200 ${
+                                isItemActive
+                                  ? "bg-[color:var(--color-thirdary)] opacity-100"
+                                  : "bg-[color:var(--color-thirdary)] opacity-0 group-hover:opacity-100"
+                              }`}
+                            />
+                            <span className="truncate">{item.labels[lang ?? "it"]}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </div>
           </nav>
 
@@ -450,7 +482,7 @@ export default function CompactHeader({
               {labels.home}
             </Link>
 
-            <div>
+            <div className="border-b border-[color:var(--color-primary)]/10">
               <button
                 type="button"
                 className={`flex w-full items-center justify-between py-4 text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
@@ -474,7 +506,7 @@ export default function CompactHeader({
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
-                  className={`h-4 w-4 transition-transform ${
+                  className={`h-4 w-4 transition-transform duration-300 ease-out ${
                     isMobileDivisionOpen ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -487,37 +519,45 @@ export default function CompactHeader({
                 </svg>
               </button>
 
-              {isMobileDivisionOpen ? (
-                <div
-                  id={mobileDivisionId}
-                  className="grid gap-3 pb-4"
-                >
-                  {divisionNavItems.map((item) => {
-                    const isItemActive =
-                      pathname === item.href ||
-                      pathname.startsWith(`${item.href}/`);
+              <AnimatePresence initial={false}>
+                {isMobileDivisionOpen ? (
+                  <motion.div
+                    id={mobileDivisionId}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border-l border-[color:var(--color-thirdary)]/40 ml-2 pl-4 py-2 my-1 space-y-3">
+                      {divisionNavItems.map((item) => {
+                        const isItemActive =
+                          pathname === item.href ||
+                          pathname.startsWith(`${item.href}/`);
 
-                    return (
-                      <Link
-                        key={item.slug}
-                        href={item.href}
-                        className={`text-[11px] uppercase tracking-[0.22em] transition-colors ${
-                          isItemActive
-                            ? "text-[color:var(--color-thirdary)]"
-                            : "text-[color:var(--color-primary)]"
-                        }`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        aria-current={isItemActive ? "page" : undefined}
-                      >
-                        {item.labels[lang ?? "it"]}
-                      </Link>
-                    );
-                  })}
-                </div>
-              ) : null}
+                        return (
+                          <Link
+                            key={item.slug}
+                            href={item.href}
+                            className={`block text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
+                              isItemActive
+                                ? "text-[color:var(--color-thirdary)] font-medium"
+                                : "text-[color:var(--color-primary)]/80 hover:text-[color:var(--color-thirdary)]"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-current={isItemActive ? "page" : undefined}
+                          >
+                            {item.labels[lang ?? "it"]}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </div>
 
-            <div>
+            <div className="border-b border-[color:var(--color-primary)]/10">
               <div
                 className={`flex w-full items-center justify-between text-left text-[12px] uppercase tracking-[0.24em] transition-colors ${
                   isShopActive
@@ -549,7 +589,7 @@ export default function CompactHeader({
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"
-                    className={`h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform duration-300 ease-out ${
                       isMobileShopOpen ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -563,31 +603,42 @@ export default function CompactHeader({
                 </button>
               </div>
 
-              {isMobileShopOpen ? (
-                <div id={mobileShopId} className="grid gap-3 pb-4">
-                  {shopNavItems.map((item) => {
-                    const isItemActive =
-                      pathname === item.href ||
-                      pathname.startsWith(`${item.href}/`);
+              <AnimatePresence initial={false}>
+                {isMobileShopOpen ? (
+                  <motion.div
+                    id={mobileShopId}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border-l border-[color:var(--color-thirdary)]/40 ml-2 pl-4 py-2 my-1 space-y-3">
+                      {shopNavItems.map((item) => {
+                        const isItemActive =
+                          pathname === item.href ||
+                          pathname.startsWith(`${item.href}/`);
 
-                    return (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        className={`text-[11px] uppercase tracking-[0.22em] transition-colors ${
-                          isItemActive
-                            ? "text-[color:var(--color-thirdary)]"
-                            : "text-[color:var(--color-primary)]"
-                        }`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        aria-current={isItemActive ? "page" : undefined}
-                      >
-                        {item.labels[lang ?? "it"]}
-                      </Link>
-                    );
-                  })}
-                </div>
-              ) : null}
+                        return (
+                          <Link
+                            key={item.key}
+                            href={item.href}
+                            className={`block text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
+                              isItemActive
+                                ? "text-[color:var(--color-thirdary)] font-medium"
+                                : "text-[color:var(--color-primary)]/80 hover:text-[color:var(--color-thirdary)]"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-current={isItemActive ? "page" : undefined}
+                          >
+                            {item.labels[lang ?? "it"]}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </div>
           </div>
 

@@ -7,20 +7,31 @@ import CompactHeader from "@/components/UI/CompactHeader";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import { getAllStoreProducts } from "@/lib/storeCatalog";
-import type { StoreContentByLanguage } from "./types";
+import type { StoreContentByLanguage, StoreProduct } from "./types";
 
 type StoreCatalogContentProps = {
   contentByLanguage: StoreContentByLanguage;
   storeBasePath: string;
+  liveProducts?: StoreProduct[] | null;
 };
 
 export default function StoreCatalogContent({
   contentByLanguage,
   storeBasePath,
+  liveProducts,
 }: StoreCatalogContentProps) {
   const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
-  const cartProducts = useMemo(() => getAllStoreProducts(lang), [lang]);
+  const products =
+    liveProducts && liveProducts.length > 0 ? liveProducts : content.products;
+
+  const cartProducts = useMemo(() => {
+    const base = getAllStoreProducts(lang);
+    if (!liveProducts || liveProducts.length === 0) return base;
+    const liveWithBase = liveProducts.map((p) => ({ ...p, storeBasePath }));
+    const liveSlugs = new Set(liveWithBase.map((p) => p.slug));
+    return [...base.filter((p) => !liveSlugs.has(p.slug)), ...liveWithBase];
+  }, [lang, liveProducts, storeBasePath]);
 
   useResetScrollOnMount();
 

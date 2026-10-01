@@ -35,6 +35,8 @@ export type StoreProduct = {
   fullDescription: string[];
   imageSrc: string;
   imageAlt: string;
+  quantity?: number;
+  inStock?: boolean;
 };
 
 export type StoreCatalogProduct = StoreProduct & {

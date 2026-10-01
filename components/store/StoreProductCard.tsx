@@ -54,6 +54,8 @@ export default function StoreProductCard({
           productSlug={product.slug}
           idleLabel={addToCartLabel}
           addedLabel={addedToCartLabel}
+          disabled={product.inStock === false || product.amountCents === 0}
+          outOfStockLabel={product.inStock === false ? "Non disponibile" : "In arrivo"}
           className="w-full"
         />
       </div>

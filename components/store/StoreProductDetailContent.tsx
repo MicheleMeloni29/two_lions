@@ -10,23 +10,35 @@ import CompactHeader from "@/components/UI/CompactHeader";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import { getAllStoreProducts } from "@/lib/storeCatalog";
-import type { StoreContentByLanguage } from "./types";
+import type { StoreContentByLanguage, StoreProduct } from "./types";
 
 type StoreProductDetailContentProps = {
   slug: string;
   contentByLanguage: StoreContentByLanguage;
   storeBasePath: string;
+  initialProduct?: StoreProduct | null;
 };
 
 export default function StoreProductDetailContent({
   slug,
   contentByLanguage,
   storeBasePath,
+  initialProduct,
 }: StoreProductDetailContentProps) {
   const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
-  const product = content.products.find((item) => item.slug === slug);
-  const cartProducts = useMemo(() => getAllStoreProducts(lang), [lang]);
+  const product =
+    initialProduct || content.products.find((item) => item.slug === slug);
+
+  const cartProducts = useMemo(() => {
+    const base = getAllStoreProducts(lang);
+    if (!initialProduct) return base;
+    const initialWithBase = { ...initialProduct, storeBasePath };
+    return [
+      ...base.filter((p) => p.slug !== initialProduct.slug),
+      initialWithBase,
+    ];
+  }, [lang, initialProduct, storeBasePath]);
 
   useResetScrollOnMount();
 
@@ -96,6 +108,8 @@ export default function StoreProductDetailContent({
               productSlug={product.slug}
               idleLabel={content.addToCartLabel}
               addedLabel={content.addedToCartLabel}
+              disabled={product.inStock === false || product.amountCents === 0}
+              outOfStockLabel={product.inStock === false ? "Non disponibile" : "In arrivo"}
               className="w-fit min-w-[15rem]"
             />
 
@@ -103,9 +117,9 @@ export default function StoreProductDetailContent({
               <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[12px]">
                 {content.detailLabel}
               </p>
-              {product.fullDescription.map((paragraph) => (
+              {product.fullDescription.map((paragraph: string, idx: number) => (
                 <p
-                  key={paragraph}
+                  key={`${product.slug}-desc-${idx}`}
                   className="text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7"
                 >
                   {paragraph}

@@ -1,0 +1,23 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-circle-check text-success"></i> Two Lions API Active</div>
+      <div class="card-body">
+        <p class="lead">The Headless REST API endpoint is active and listening for Next.js catalog queries.</p>
+        <p><strong>Endpoint:</strong> <code>index.php?route=extension/twolions/products</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

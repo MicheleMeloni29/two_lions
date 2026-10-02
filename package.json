@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:static": "node scripts/build-static.mjs",
+    "test:opencart": "node scripts/test-opencart-connection.mjs",
     "start": "next start",
     "lint": "eslint"
   },

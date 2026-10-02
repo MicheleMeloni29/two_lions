@@ -30,63 +30,62 @@ export async function getOpenCartProducts(
 ): Promise<StoreProduct[] | null> {
   const { category, slug, lang = "it", revalidate = 60 } = options;
 
-  const url = new URL("/api_products.php", OPENCART_API_URL);
-  if (category) url.searchParams.set("category", category);
-  if (slug) url.searchParams.set("slug", slug);
-  if (lang) url.searchParams.set("lang", lang);
+  const endpoints = [
+    "/index.php?route=extension/twolions/products",
+    "/api_products.php",
+  ];
 
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 6000); // 6 secondi di timeout
+  for (const endpoint of endpoints) {
+    const url = new URL(endpoint, OPENCART_API_URL);
+    if (category) url.searchParams.set("category", category);
+    if (slug) url.searchParams.set("slug", slug);
+    if (lang) url.searchParams.set("lang", lang);
 
-    const res = await fetch(url.toString(), {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${OPENCART_API_SECRET}`,
-        Accept: "application/json",
-      },
-      next: {
-        revalidate,
-        tags: ["opencart-products", ...(category ? [`opencart-${category}`] : [])],
-      },
-      signal: controller.signal,
-    });
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000);
 
-    clearTimeout(timeout);
+      const res = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${OPENCART_API_SECRET}`,
+          Accept: "application/json",
+        },
+        next: {
+          revalidate,
+          tags: ["opencart-products", ...(category ? [`opencart-${category}`] : [])],
+        },
+        signal: controller.signal,
+      });
 
-    if (!res.ok) {
-      console.warn(`[OpenCart API] HTTP Error ${res.status} da ${url.toString()}`);
-      return null;
+      clearTimeout(timeout);
+
+      if (res.ok) {
+        const data = (await res.json()) as OpenCartApiResponse;
+        if (data.success && Array.isArray(data.products)) {
+          return data.products.map((p) => ({
+            id: p.id,
+            slug: p.slug,
+            category: p.category,
+            name: p.name,
+            amountCents: p.amountCents,
+            price: p.price,
+            isDiscounted: Boolean(p.isDiscounted),
+            shortDescription: p.shortDescription,
+            fullDescription: Array.isArray(p.fullDescription)
+              ? p.fullDescription
+              : [p.shortDescription],
+            imageSrc: p.imageSrc,
+            imageAlt: p.imageAlt || p.name,
+          }));
+        }
+      }
+    } catch {
+      // Prova endpoint successivo
     }
-
-    const data = (await res.json()) as OpenCartApiResponse;
-    if (!data.success || !Array.isArray(data.products)) {
-      console.warn("[OpenCart API] Risposta non valida:", data);
-      return null;
-    }
-
-    return data.products.map((p) => ({
-      id: p.id,
-      slug: p.slug,
-      category: p.category,
-      name: p.name,
-      amountCents: p.amountCents,
-      price: p.price,
-      isDiscounted: Boolean(p.isDiscounted),
-      shortDescription: p.shortDescription,
-      fullDescription: Array.isArray(p.fullDescription)
-        ? p.fullDescription
-        : [p.shortDescription],
-      imageSrc: p.imageSrc,
-      imageAlt: p.imageAlt || p.name,
-    }));
-  } catch (error) {
-    console.warn(
-      `[OpenCart API] Impossibile contattare OpenCart su ${url.toString()}:`,
-      error instanceof Error ? error.message : error
-    );
-    return null;
   }
+
+  return null;
 }
 
 /**

@@ -22,8 +22,23 @@ export default function StoreCatalogContent({
 }: StoreCatalogContentProps) {
   const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
-  const products =
-    liveProducts && liveProducts.length > 0 ? liveProducts : content.products;
+  const products = useMemo(() => {
+    if (!liveProducts || liveProducts.length === 0) {
+      return content.products;
+    }
+    return content.products.map((localProd) => {
+      const match = liveProducts.find((lp) => lp.slug === localProd.slug);
+      if (!match) return localProd;
+      return {
+        ...localProd,
+        price: match.price,
+        amountCents: match.amountCents,
+        quantity: match.quantity,
+        inStock: match.inStock,
+        imageSrc: match.imageSrc || localProd.imageSrc,
+      };
+    });
+  }, [content.products, liveProducts]);
 
   const cartProducts = useMemo(() => {
     const base = getAllStoreProducts(lang);

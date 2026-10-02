@@ -27,8 +27,21 @@ export default function StoreProductDetailContent({
 }: StoreProductDetailContentProps) {
   const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
-  const product =
-    initialProduct || content.products.find((item) => item.slug === slug);
+  const localizedProduct = content.products.find((item) => item.slug === slug);
+  const product = localizedProduct
+    ? {
+        ...localizedProduct,
+        ...(initialProduct
+          ? {
+              price: initialProduct.price,
+              amountCents: initialProduct.amountCents,
+              quantity: initialProduct.quantity,
+              inStock: initialProduct.inStock,
+              imageSrc: initialProduct.imageSrc || localizedProduct.imageSrc,
+            }
+          : {}),
+      }
+    : initialProduct;
 
   const cartProducts = useMemo(() => {
     const base = getAllStoreProducts(lang);

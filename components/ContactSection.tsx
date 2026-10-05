@@ -86,19 +86,38 @@ export default function ContactSection({ lang }: ContactSectionProps) {
     setSubmitMessage(current.sendingMessage);
 
     try {
-      const response = await fetch("/api/contact", {
+      const payloadBody = JSON.stringify({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+        website: honeypot.trim(),
+      });
+
+      const primaryEndpoint =
+        process.env.NEXT_PUBLIC_STATIC_EXPORT === "true"
+          ? "/contact.php"
+          : "/api/contact";
+      const fallbackEndpoint =
+        primaryEndpoint === "/contact.php" ? "/api/contact" : "/contact.php";
+
+      let response = await fetch(primaryEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          subject: form.subject.trim(),
-          message: form.message.trim(),
-          website: honeypot.trim(),
-        }),
+        body: payloadBody,
       });
+
+      if (response.status === 404 || response.status === 405) {
+        response = await fetch(fallbackEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: payloadBody,
+        });
+      }
 
       const data = await response.json().catch(() => null);
 

@@ -90,13 +90,13 @@ export default function ShopContent() {
   useResetScrollOnMount();
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[color:var(--color-primary)] text-white">
+    <main className="min-h-dvh overflow-hidden bg-[color:var(--color-primary)] text-white md:min-h-screen">
       <CompactHeader
         lang={lang}
         onToggleLang={toggleLang}
       />
 
-      <div className="h-screen w-full">
+      <div className="h-dvh w-full pt-[4.125rem] md:h-screen md:pt-0">
         <AccordionGallery
           items={items}
           defaultIndex={1}
@@ -116,7 +116,7 @@ export default function ShopContent() {
           gap={0}
           radius={0}
           orientation={galleryMode.orientation}
-          className="!h-screen shadow-[0_30px_90px_rgba(0,0,0,0.22)]"
+          className="!h-full shadow-[0_30px_90px_rgba(0,0,0,0.22)] md:!h-screen"
         />
       </div>
     </main>

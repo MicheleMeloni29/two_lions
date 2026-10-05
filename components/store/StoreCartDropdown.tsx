@@ -109,7 +109,7 @@ export default function StoreCartDropdown({
 
       <div
         className={cn(
-          "absolute right-0 top-[calc(100%+0.75rem)] z-[90] w-[min(92vw,24rem)] border border-[color:var(--color-primary)]/10 bg-white shadow-[0_28px_80px_-40px_rgba(0,35,91,0.45)] transition-all duration-200 max-md:fixed max-md:left-2 max-md:right-2 max-md:top-[4.9rem] max-md:w-auto",
+          "fixed left-2 right-2 top-[4.6rem] z-[90] w-auto border border-[color:var(--color-primary)]/10 bg-white shadow-[0_28px_80px_-40px_rgba(0,35,91,0.45)] transition-all duration-200 md:absolute md:left-auto md:right-0 md:top-[calc(100%+0.75rem)] md:w-[min(92vw,24rem)]",
           isOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-1 opacity-0"

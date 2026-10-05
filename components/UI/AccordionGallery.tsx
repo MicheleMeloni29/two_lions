@@ -128,6 +128,9 @@ const AccordionGallery = ({
                 if (showLabels && bar && text) {
                     if (isActive) {
                         tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
+                    } else if (vertical) {
+                        tl.to(bar, { opacity: 0.5, x: 0, duration: dur * 0.6, ease }, 0);
+                        tl.to(text, { opacity: 0.82, x: 0, duration: dur * 0.6, ease }, 0);
                     } else {
                         tl.to([bar, text], { opacity: 0, x: -12, duration: dur * 0.6, ease }, 0);
                     }
@@ -209,7 +212,7 @@ const AccordionGallery = ({
     return (
         <div
             ref={rootRef}
-            className={`flex ${vertical ? 'flex-col' : 'flex-row'} w-full max-w-full [perspective:1400px] max-[520px]:!flex-col max-[520px]:[perspective:none] ${className}`}
+            className={`flex ${vertical ? 'flex-col' : 'flex-row'} w-full max-w-full [perspective:none] md:[perspective:1400px] ${className}`}
             style={{ gap: `${gap}px`, height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px` }}
             role="list"
             aria-label="Image accordion gallery"
@@ -223,7 +226,7 @@ const AccordionGallery = ({
                         ref={(el: HTMLElement | null) => {
                             panelRefs.current[i] = el;
                         }}
-                        className="group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#0a0713] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] [box-shadow:0_10px_30px_-18px_rgba(0,0,0,0.8)] focus-visible:[box-shadow:0_0_0_2px_var(--ag-accent),0_10px_30px_-18px_rgba(0,0,0,0.8)] max-[520px]:min-h-[84px] max-[520px]:!transform-none"
+                        className="group relative block min-h-[84px] min-w-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#0a0713] no-underline outline-none [transform-origin:center] [transform-style:preserve-3d] [box-shadow:0_10px_30px_-18px_rgba(0,0,0,0.8)] focus-visible:[box-shadow:0_0_0_2px_var(--ag-accent),0_10px_30px_-18px_rgba(0,0,0,0.8)] md:min-h-0"
                         style={
                             {
                                 borderRadius: `${radius}px`,
@@ -268,14 +271,14 @@ const AccordionGallery = ({
                         </span>
                         {showLabels && (
                             <span
-                                className="pointer-events-none absolute bottom-6 left-4 right-4 z-[2] flex items-end gap-3 sm:bottom-8 sm:left-6 sm:right-6 md:bottom-10 md:left-8 md:right-8 xl:bottom-12 xl:left-10 xl:right-10"
+                                className="pointer-events-none absolute bottom-4 left-4 right-4 z-[2] flex items-end gap-3 sm:bottom-6 sm:left-6 sm:right-6 md:bottom-10 md:left-8 md:right-8 xl:bottom-12 xl:left-10 xl:right-10"
                                 aria-hidden="true"
                             >
                                 <span
                                     ref={(el: HTMLElement | null) => {
                                         barRefs.current[i] = el;
                                     }}
-                                    className="mb-1 h-12 w-[3px] flex-none opacity-0 md:h-16 xl:h-20"
+                                    className="mb-1 h-10 w-[3px] flex-none opacity-0 sm:h-12 md:h-16 xl:h-20"
                                     style={{
                                         background: accentColor,
                                         boxShadow: `0 0 18px color-mix(in srgb, ${accentColor} 58%, transparent)`
@@ -290,15 +293,15 @@ const AccordionGallery = ({
                                 >
                                     {item.label === 'Food & Beverage' ? (
                                         <>
-                                            <span className="font-change-serif-bold block text-[clamp(2rem,12vw,3.15rem)] uppercase leading-[0.9] tracking-normal md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
+                                            <span className="font-change-serif-bold block text-[clamp(1.65rem,8vw,2.65rem)] uppercase leading-[0.9] tracking-normal md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
                                                 Food &
                                             </span>
-                                            <span className="font-change-serif-bold block text-[clamp(2rem,12vw,3.15rem)] uppercase leading-[0.9] tracking-normal md:ml-3 md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
+                                            <span className="font-change-serif-bold block text-[clamp(1.65rem,8vw,2.65rem)] uppercase leading-[0.9] tracking-normal md:ml-3 md:inline md:text-[clamp(2.35rem,4.6vw,4.2rem)]">
                                                 Beverage
                                             </span>
                                         </>
                                     ) : (
-                                        <span className="font-change-serif-bold block text-[clamp(2.35rem,15vw,3.6rem)] uppercase leading-[0.9] tracking-normal md:text-[clamp(3rem,5.8vw,5rem)]">
+                                        <span className="font-change-serif-bold block text-[clamp(1.9rem,9.5vw,3rem)] uppercase leading-[0.9] tracking-normal md:text-[clamp(3rem,5.8vw,5rem)]">
                                             {item.label}
                                         </span>
                                     )}

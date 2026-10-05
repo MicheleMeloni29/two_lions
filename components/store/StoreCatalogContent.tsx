@@ -73,7 +73,7 @@ export default function StoreCatalogContent({
         }
       />
 
-      <section className="px-4 pb-16 pt-28 sm:px-5 md:px-8 md:pb-20 md:pt-32 xl:px-14 xl:pb-24 xl:pt-36">
+      <section className="px-3.5 pb-14 pt-24 sm:px-5 sm:pb-16 sm:pt-28 md:px-8 md:pb-20 md:pt-32 xl:px-14 xl:pb-24 xl:pt-36">
         <div className="mx-auto max-w-7xl">
           <StoreProductGrid
             anchorId="catalogo"
@@ -89,7 +89,7 @@ export default function StoreCatalogContent({
             filterLabel={content.filterLabel}
             sortOptions={content.sortOptions}
             categories={content.categories}
-            products={content.products}
+            products={products}
           />
         </div>
       </section>

@@ -20,6 +20,8 @@ import {
   setAdminSession,
   isValidAdminSession,
 } from "@/lib/clientAdminAuth";
+import { useAdminTheme } from "@/hooks/useAdminTheme";
+import AdminThemeSwitch from "@/components/UI/AdminThemeSwitch";
 
 function LoginForm() {
   const searchParams = useSearchParams();
@@ -33,6 +35,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { isDark } = useAdminTheme();
 
   // Se l'amministratore ha già una sessione attiva valida, reindirizza direttamente
   useEffect(() => {
@@ -88,8 +91,17 @@ function LoginForm() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="relative w-full max-w-md rounded-2xl border border-stone-200/90 bg-white p-7 shadow-xl sm:p-9"
+      className={`relative w-full max-w-md rounded-2xl border p-7 transition-colors duration-300 sm:p-9 ${
+        isDark
+          ? "border-[color:rgba(181,154,90,0.38)] bg-[color:var(--color-secondary)] shadow-[0_24px_60px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(248,248,248,0.1)]"
+          : "border-stone-200/90 bg-white shadow-xl"
+      }`}
     >
+      {/* Switch Tema nell'angolo in alto a destra della card */}
+      <div className="absolute right-4 top-4 z-10 sm:right-5 sm:top-5">
+        <AdminThemeSwitch />
+      </div>
+
       {/* Glow superiore dorato delicato */}
       <div className="pointer-events-none absolute -top-10 left-1/2 h-20 w-52 -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(181,154,90,0.18),transparent_70%)]" />
 
@@ -100,18 +112,36 @@ function LoginForm() {
           alt="Two Lions International"
           width={76}
           height={76}
-          className="mx-auto mb-4 h-16 w-auto object-contain drop-shadow-sm"
+          className={`mx-auto mb-4 h-16 w-auto object-contain drop-shadow-sm transition-all duration-300 ${
+            isDark ? "brightness-0 invert opacity-95" : ""
+          }`}
           priority
         />
 
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:rgba(181,154,90,0.35)] bg-[color:rgba(181,154,90,0.08)] px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.24em] text-[color:var(--color-thirdary)]">
+        <span
+          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.24em] text-[color:var(--color-thirdary)] transition-colors duration-300 ${
+            isDark
+              ? "border-[color:rgba(181,154,90,0.45)] bg-[color:rgba(181,154,90,0.15)]"
+              : "border-[color:rgba(181,154,90,0.35)] bg-[color:rgba(181,154,90,0.08)]"
+          }`}
+        >
           <ShieldCheck className="h-3 w-3" /> Area Riservata
         </span>
 
-        <h1 className="mt-3 font-change-serif-bold text-2xl tracking-wide text-[color:var(--color-primary)] sm:text-[1.65rem]">
+        <h1
+          className={`mt-3 font-change-serif-bold text-2xl tracking-wide transition-colors duration-300 sm:text-[1.65rem] ${
+            isDark
+              ? "text-[color:var(--color-white)]"
+              : "text-[color:var(--color-primary)]"
+          }`}
+        >
           Two Lions Executive Suite
         </h1>
-        <p className="mt-1.5 text-xs text-stone-500">
+        <p
+          className={`mt-1.5 text-xs transition-colors duration-300 ${
+            isDark ? "text-[color:var(--color-white)]/75" : "text-stone-500"
+          }`}
+        >
           Accesso riservato al centro operativo e di controllo.
         </p>
       </div>
@@ -123,9 +153,17 @@ function LoginForm() {
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
             animate={{ opacity: 1, height: "auto", marginTop: 16 }}
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
-            className="flex items-center gap-2.5 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs text-red-700"
+            className={`flex items-center gap-2.5 rounded-lg border px-3.5 py-2.5 text-xs transition-colors duration-300 ${
+              isDark
+                ? "border-red-400/45 bg-red-500/15 text-[color:var(--color-white)]"
+                : "border-red-200 bg-red-50 text-red-700"
+            }`}
           >
-            <AlertCircle className="h-4 w-4 shrink-0 text-red-500" />
+            <AlertCircle
+              className={`h-4 w-4 shrink-0 ${
+                isDark ? "text-red-300" : "text-red-500"
+              }`}
+            />
             <span>{errorMessage}</span>
           </motion.div>
         )}
@@ -134,7 +172,11 @@ function LoginForm() {
       {/* Form di Login */}
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-stone-700">
+          <label
+            className={`block text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ${
+              isDark ? "text-[color:var(--color-white)]/90" : "text-stone-700"
+            }`}
+          >
             Nome Utente
           </label>
           <div className="relative mt-1.5">
@@ -147,13 +189,21 @@ function LoginForm() {
               autoComplete="username"
               required
               disabled={isLoading}
-              className="w-full rounded-lg border border-stone-300 bg-stone-50/70 py-2.5 pl-10 pr-3 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:border-[color:var(--color-thirdary)] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[color:var(--color-thirdary)] disabled:opacity-50"
+              className={`w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm transition-colors focus:border-[color:var(--color-thirdary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-thirdary)] disabled:opacity-50 ${
+                isDark
+                  ? "border-[color:rgba(181,154,90,0.38)] bg-[color:var(--color-primary)]/90 text-[color:var(--color-white)] placeholder:text-[color:var(--color-white)]/45 focus:bg-[color:var(--color-primary)]"
+                  : "border-stone-300 bg-stone-50/70 text-stone-900 placeholder:text-stone-400 focus:bg-white"
+              }`}
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-stone-700">
+          <label
+            className={`block text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ${
+              isDark ? "text-[color:var(--color-white)]/90" : "text-stone-700"
+            }`}
+          >
             Password
           </label>
           <div className="relative mt-1.5">
@@ -166,12 +216,18 @@ function LoginForm() {
               autoComplete="current-password"
               required
               disabled={isLoading}
-              className="w-full rounded-lg border border-stone-300 bg-stone-50/70 py-2.5 pl-10 pr-10 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:border-[color:var(--color-thirdary)] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[color:var(--color-thirdary)] disabled:opacity-50"
+              className={`w-full rounded-lg border py-2.5 pl-10 pr-10 text-sm transition-colors focus:border-[color:var(--color-thirdary)] focus:outline-none focus:ring-1 focus:ring-[color:var(--color-thirdary)] disabled:opacity-50 ${
+                isDark
+                  ? "border-[color:rgba(181,154,90,0.38)] bg-[color:var(--color-primary)]/90 text-[color:var(--color-white)] placeholder:text-[color:var(--color-white)]/45 focus:bg-[color:var(--color-primary)]"
+                  : "border-stone-300 bg-stone-50/70 text-stone-900 placeholder:text-stone-400 focus:bg-white"
+              }`}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 transition-colors hover:text-[color:var(--color-thirdary)]"
+              className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-[color:var(--color-thirdary)] ${
+                isDark ? "text-[color:var(--color-white)]/65" : "text-stone-400"
+              }`}
             >
               {showPassword ? (
                 <EyeOff className="h-4 w-4" />
@@ -185,11 +241,15 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="group relative mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-[color:var(--color-thirdary)] bg-[color:var(--color-white)] hover:bg-[color:var(--color-thirdary)] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] transition-all hover:brightness-105 active:scale-[0.99] disabled:opacity-60"
+          className={`group relative mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-[color:var(--color-thirdary)] py-3 text-xs font-semibold uppercase tracking-[0.2em] transition-all hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-white)] hover:brightness-105 active:scale-[0.99] disabled:opacity-60 ${
+            isDark
+              ? "bg-[color:rgba(181,154,90,0.18)] text-[color:var(--color-white)]"
+              : "bg-[color:var(--color-white)] text-[color:var(--color-thirdary)]"
+          }`}
         >
           {isLoading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin text-white" />
+              <Loader2 className="h-4 w-4 animate-spin text-current" />
               <span>Verifica credenziali...</span>
             </>
           ) : (
@@ -201,14 +261,26 @@ function LoginForm() {
       </form>
 
       {/* Footer del card */}
-      <div className="mt-6 flex items-center justify-between border-t border-stone-200 pt-4 text-xs">
+      <div
+        className={`mt-6 flex items-center justify-between border-t pt-4 text-xs transition-colors duration-300 ${
+          isDark ? "border-[color:rgba(181,154,90,0.28)]" : "border-stone-200"
+        }`}
+      >
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-stone-500 transition-colors hover:text-[color:var(--color-primary)]"
+          className={`inline-flex items-center gap-1.5 transition-colors ${
+            isDark
+              ? "text-[color:var(--color-white)]/75 hover:text-[color:var(--color-thirdary)]"
+              : "text-stone-500 hover:text-[color:var(--color-primary)]"
+          }`}
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Torna al sito pubblico
         </Link>
-        <span className="text-[10px] tracking-wider text-stone-400">
+        <span
+          className={`text-[10px] tracking-wider transition-colors ${
+            isDark ? "text-[color:var(--color-white)]/55" : "text-stone-400"
+          }`}
+        >
           Two Lions © {new Date().getFullYear()}
         </span>
       </div>
@@ -217,10 +289,24 @@ function LoginForm() {
 }
 
 export default function AdminLoginPage() {
+  const { isDark } = useAdminTheme();
+
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-12 text-stone-900">
+    <main
+      className={`relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12 transition-colors duration-300 ${
+        isDark
+          ? "bg-transparent text-[color:var(--color-white)]"
+          : "bg-white text-stone-900"
+      }`}
+    >
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(181,154,90,0.08),transparent_60%),radial-gradient(ellipse_at_bottom,rgba(37,30,87,0.03),transparent_60%)]" />
+      <div
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${
+          isDark
+            ? "bg-[radial-gradient(ellipse_at_top,rgba(181,154,90,0.14),transparent_60%),radial-gradient(ellipse_at_bottom,rgba(31,39,92,0.55),transparent_60%)]"
+            : "bg-[radial-gradient(ellipse_at_top,rgba(181,154,90,0.08),transparent_60%),radial-gradient(ellipse_at_bottom,rgba(37,30,87,0.03),transparent_60%)]"
+        }`}
+      />
 
       <Suspense
         fallback={

@@ -25,8 +25,6 @@ export async function generateStaticParams() {
   return staticSlugs;
 }
 
-export const dynamicParams = true;
-
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {

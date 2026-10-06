@@ -1176,5 +1176,131 @@
         "note": "Operational continuity is handled through service models, remote supervision and planned maintenance."
       }
     ]
+  },
+  "eventsPage": {
+    "_comment": "Two Lions Events page: concise Hero + 3 blocks (1. Mandas with photo carousel, 2. Breda 2026 full-width horizontal block, 3. Borderless Proprietary Events vision with 4 pillars and CTA).",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Two Lions Events",
+    "mission": "We organize and sponsor borderless sporting, cultural and territorial events: from initiatives in Sardinia to international stages, fostering community spirit, enhancing local territories and introducing Two Lions to an ever-wider audience.",
+    "heroImage": "/SectionsBackgrounds/TwoLions_Event.JPG",
+    "heroImageAlt": "Two Lions Events emblem",
+    "snapshot": {
+      "areasValue": "Sport & Culture",
+      "areasLabel": "Key scopes",
+      "focusValue": "Sardinia & Intl",
+      "focusLabel": "Borderless reach",
+      "territoryValue": "100%",
+      "territoryLabel": "Formats in progress"
+    },
+    "positioning": "Positioning",
+    "positioningItems": [
+      "Sponsorships and initiatives that celebrate territories with a spirit of community and togetherness.",
+      "Borderless presence: from the world stage of Breda 2026 to classic motoring rallies in Sardinia.",
+      "Developing proprietary Two Lions events blending sport, culture and international reach."
+    ],
+    "positioningFooter": "Community spirit, territorial enhancement and borderless event culture by Two Lions.",
+    "mandasSection": {
+      "eyebrow": "Official Sponsor · Territory & Heritage",
+      "title": "III Ducato di Mandas Rally",
+      "lead": "Two Lions Events sponsored the latest vintage car and motorcycle rally in Mandas: a celebration of classic motoring passion, community gathering and the historic villages of Sardinia.",
+      "tags": [
+        "Vintage Cars & Bikes",
+        "Mandas, Sardinia",
+        "Fiat 500 & Vespa Clubs",
+        "Community & Heritage"
+      ],
+      "carouselItems": [
+        {
+          "id": "mandas-01",
+          "image": "/TwoLions_Events/Raduno_Mandas_1.jpeg",
+          "alt": "Vintage Fiat 500 cars and Two Lions Events banner at the III Ducato di Mandas Rally"
+        },
+        {
+          "id": "mandas-02",
+          "image": "/TwoLions_Events/Raduno_Mandas_2.jpeg",
+          "alt": "Wide view of the classic car exhibition in Mandas"
+        },
+        {
+          "id": "mandas-03",
+          "image": "/TwoLions_Events/Raduno_Mandas_3.jpeg",
+          "alt": "Official Two Lions Events and Ducato di Mandas Rally banners above classic Fiat 500s"
+        },
+        {
+          "id": "mandas-04",
+          "image": "/TwoLions_Events/Raduno_Mandas_4.jpeg",
+          "alt": "Vintage Vespas and classic scooters lined up at the Ducato di Mandas Rally"
+        },
+        {
+          "id": "mandas-05",
+          "image": "/TwoLions_Events/Raduno_Mandas_5.jpeg",
+          "alt": "Row of classic Fiat 500s in front of the historic walls and Two Lions Events banners"
+        },
+        {
+          "id": "mandas-06",
+          "image": "/TwoLions_Events/Raduno_Mandas_6.jpeg",
+          "alt": "Aerial view of the Mandas square filled with vintage cars and visitors"
+        },
+        {
+          "id": "mandas-07",
+          "image": "/TwoLions_Events/Raduno_Mandas_7.jpeg",
+          "alt": "Historic stone architecture of Mandas with classic cars and Two Lions Events banners"
+        },
+        {
+          "id": "mandas-08",
+          "image": "/TwoLions_Events/Raduno_Mandas_8.jpeg",
+          "alt": "Team member wearing the official Two Lions Events polo shirt at the rally"
+        }
+      ]
+    },
+    "bredaSection": {
+      "eyebrow": "Official Sponsor · International Sport",
+      "title": "World Masters Hockey Breda 2026",
+      "subtitle": "August 2026 · Breda, Netherlands",
+      "lead": "Two Lions sponsored the Italian National Delegation at the World Masters Hockey tournament in Breda in August 2026, bringing the two lions emblem to a premier world championship.",
+      "highlights": [
+        "Sponsor of the Italian National Masters Delegation",
+        "Dedicated apparel and Breda 2026 merchandising",
+        "Direct synergy with the Two Lions Sport division"
+      ],
+      "ctaLabel": "Explore Two Lions Sport",
+      "ctaHref": "/sport",
+      "storeCtaLabel": "Breda 2026 Merch",
+      "storeCtaHref": "/sport/store"
+    },
+    "visionSection": {
+      "eyebrow": "In Development · Proprietary Formats",
+      "title": "Borderless signature Two Lions events",
+      "lead": "We are working on organizing our own signature events, from Sardinia to the international stage: sporting and cultural gatherings designed to unite communities, enhance territories and expand Two Lions' reach everywhere.",
+      "pillars": [
+        {
+          "id": "01",
+          "title": "Community & Gathering",
+          "description": "Events designed to bring people, families and generations together around shared passions."
+        },
+        {
+          "id": "02",
+          "title": "Territorial Enhancement",
+          "description": "Initiatives highlighting local identity, history and excellence, from Sardinia to the wider world."
+        },
+        {
+          "id": "03",
+          "title": "Borderless Sport & Culture",
+          "description": "Spanning from international tournaments to established cultural and heritage celebrations."
+        },
+        {
+          "id": "04",
+          "title": "Brand Expansion",
+          "description": "Introducing the Two Lions vision and ecosystem to an ever-growing, international audience."
+        }
+      ]
+    },
+    "contactCta": {
+      "eyebrow": "Partnerships & Organization",
+      "title": "Propose an event or partner with Two Lions Events.",
+      "description": "Organizing a sporting, cultural or territorial event in Sardinia or internationally, or looking to collaborate on upcoming proprietary Two Lions formats? Reach out to explore sponsorships and synergies.",
+      "actionLabel": "Contact Two Lions",
+      "watermark": "Events"
+    }
   }
 }

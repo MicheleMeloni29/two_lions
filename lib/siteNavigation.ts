@@ -9,7 +9,8 @@ type DivisionSlug =
   | "luxury-sardabooking"
   | "food-and-beverage"
   | "parfum"
-  | "sport";
+  | "sport"
+  | "two_lions_event";
 
 type NavLabels = {
   home: string;
@@ -43,6 +44,7 @@ const divisionRouteBySlug: Record<DivisionSlug, string> = {
   "food-and-beverage": "/food-and-beverage",
   parfum: "/parfum",
   sport: "/sport",
+  two_lions_event: "/events",
 };
 
 const divisionSlugs = Object.keys(divisionRouteBySlug) as DivisionSlug[];

@@ -1207,5 +1207,131 @@
         "note": "La continuita operativa viene gestita con modelli di service, monitoraggio remoto e manutenzione programmata."
       }
     ]
+  },
+  "eventsPage": {
+    "_comment": "Pagina Two Lions Events: Hero sintetica + 3 blocchi (1. Mandas con carosello, 2. Breda 2026 a tutta larghezza, 3. Visione Eventi Proprietari senza confini con 4 pilastri e CTA).",
+    "backToHome": "Back to home",
+    "eyebrow": "Two Lions Division",
+    "title": "Two Lions Events",
+    "mission": "Organizziamo e sponsorizziamo eventi sportivi, culturali e territoriali senza confini: dalle manifestazioni in Sardegna ai palcoscenici internazionali, per creare aggregazione, valorizzare i territori e far conoscere Two Lions a sempre più persone.",
+    "heroImage": "/SectionsBackgrounds/TwoLions_Event.JPG",
+    "heroImageAlt": "Two Lions Events emblem",
+    "snapshot": {
+      "areasValue": "Sport & Cultura",
+      "areasLabel": "Ambiti d'azione",
+      "focusValue": "Sardegna & Intl",
+      "focusLabel": "Presenza senza confini",
+      "territoryValue": "100%",
+      "territoryLabel": "Format in sviluppo"
+    },
+    "positioning": "Posizionamento",
+    "positioningItems": [
+      "Sponsorizzazioni e iniziative che valorizzano i territori con spirito di aggregazione e comunità.",
+      "Presenza senza confini: dal palcoscenico mondiale di Breda 2026 ai raduni storici in Sardegna.",
+      "Sviluppo di eventi proprietari Two Lions tra sport, cultura e proiezione internazionale."
+    ],
+    "positioningFooter": "Aggregazione, valorizzazione dei territori e cultura d'evento senza confini.",
+    "mandasSection": {
+      "eyebrow": "Sponsor Ufficiale · Territorio & Heritage",
+      "title": "III Raduno Ducato di Mandas",
+      "lead": "Two Lions Events ha fatto da sponsor all'ultimo appuntamento dedicato ad auto e moto vintage a Mandas: una giornata di passione motoristica, condivisione e riscoperta dei borghi storici della Sardegna.",
+      "tags": [
+        "Auto & Moto Vintage",
+        "Mandas, Sardegna",
+        "Fiat 500 & Vespa Club",
+        "Aggregazione & Territorio"
+      ],
+      "carouselItems": [
+        {
+          "id": "mandas-01",
+          "image": "/TwoLions_Events/Raduno_Mandas_1.jpeg",
+          "alt": "Fiat 500 d'epoca e banner Two Lions Events al III Raduno Ducato di Mandas"
+        },
+        {
+          "id": "mandas-02",
+          "image": "/TwoLions_Events/Raduno_Mandas_2.jpeg",
+          "alt": "Panoramica del piazzale al III Raduno Ducato di Mandas"
+        },
+        {
+          "id": "mandas-03",
+          "image": "/TwoLions_Events/Raduno_Mandas_3.jpeg",
+          "alt": "Striscioni ufficiali Two Lions Events e Raduno Ducato di Mandas con Fiat 500"
+        },
+        {
+          "id": "mandas-04",
+          "image": "/TwoLions_Events/Raduno_Mandas_4.jpeg",
+          "alt": "Esposizione moto e Vespa vintage al Raduno Ducato di Mandas"
+        },
+        {
+          "id": "mandas-05",
+          "image": "/TwoLions_Events/Raduno_Mandas_5.jpeg",
+          "alt": "Schieramento di Fiat 500 vintage davanti ai banner Two Lions Events"
+        },
+        {
+          "id": "mandas-06",
+          "image": "/TwoLions_Events/Raduno_Mandas_6.jpeg",
+          "alt": "Vista dall'alto del piazzale gremito di auto storiche e pubblico a Mandas"
+        },
+        {
+          "id": "mandas-07",
+          "image": "/TwoLions_Events/Raduno_Mandas_7.jpeg",
+          "alt": "Scorcio storico di Mandas con auto d'epoca e banner Two Lions Events"
+        },
+        {
+          "id": "mandas-08",
+          "image": "/TwoLions_Events/Raduno_Mandas_8.jpeg",
+          "alt": "Staff e pubblico con polo ufficiale Two Lions Events durante il raduno"
+        }
+      ]
+    },
+    "bredaSection": {
+      "eyebrow": "Official Sponsor · Sport Internazionale",
+      "title": "World Masters Hockey Breda 2026",
+      "subtitle": "Agosto 2026 · Breda, Paesi Bassi",
+      "lead": "Two Lions ha fatto da sponsor alla Rappresentativa Italiana ai Mondiali Masters di Hockey disputati a Breda nell'agosto 2026, portando il simbolo dei due leoni in una competizione mondiale all'insegna dello spirito di squadra.",
+      "highlights": [
+        "Sponsor della Rappresentativa Italiana Masters",
+        "Abbigliamento e merchandising dedicato Breda 2026",
+        "Sinergia diretta con la divisione Two Lions Sport"
+      ],
+      "ctaLabel": "Scopri Two Lions Sport",
+      "ctaHref": "/sport",
+      "storeCtaLabel": "Merch Breda 2026",
+      "storeCtaHref": "/sport/store"
+    },
+    "visionSection": {
+      "eyebrow": "In Sviluppo · Format Proprietari",
+      "title": "Eventi firmati Two Lions senza confini",
+      "lead": "Stiamo lavorando per organizzare eventi tutti nostri, dalla Sardegna al panorama internazionale: dagli appuntamenti sportivi alle iniziative culturali, con l'obiettivo costante di unire le comunità, valorizzare i territori e far conoscere Two Lions ovunque.",
+      "pillars": [
+        {
+          "id": "01",
+          "title": "Aggregazione & Comunità",
+          "description": "Momenti di incontro pensati per unire persone, famiglie e generazioni attorno a passioni condivise."
+        },
+        {
+          "id": "02",
+          "title": "Valorizzazione dei Territori",
+          "description": "Iniziative che mettono al centro l'identità, la storia e le eccellenze locali, dalla Sardegna al resto del mondo."
+        },
+        {
+          "id": "03",
+          "title": "Sport & Cultura Senza Confini",
+          "description": "Presenza trasversale dai tornei internazionali alle manifestazioni culturali e storiche radicate sul territorio."
+        },
+        {
+          "id": "04",
+          "title": "Conoscenza del Brand",
+          "description": "Far conoscere da vicino la visione e i progetti Two Lions a un pubblico sempre più ampio e internazionale."
+        }
+      ]
+    },
+    "contactCta": {
+      "eyebrow": "Partnership & Organizzazione",
+      "title": "Proponi un evento o collabora con Two Lions Events.",
+      "description": "Organizzi un evento sportivo, culturale o territoriale in Sardegna o a livello internazionale, oppure vuoi collaborare ai prossimi format proprietari Two Lions? Scrivici per valutare sponsorizzazioni e sinergie.",
+      "actionLabel": "Contatta Two Lions",
+      "watermark": "Events"
+    }
   }
 }

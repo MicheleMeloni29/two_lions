@@ -27,6 +27,7 @@ export default function TwoLionsDivisions({ lang }: SectionsProps) {
     "luxury-sardabooking": "/luxury-sardabooking",
     parfum: "/parfum",
     sport: "/sport",
+    two_lions_event: "/events",
   };
 
   return (

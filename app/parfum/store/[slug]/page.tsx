@@ -12,12 +12,29 @@ type ProductPageProps = {
 
 export async function generateStaticParams() {
   const live = await getOpenCartProducts({ category: "parfum" });
-  const staticSlugs = storePageContent.it.products.flatMap((product) => [
-    { slug: product.slug },
-    ...(product.formats?.map((f) => ({ slug: f.slug })) ?? []),
-  ]);
+  const staticSlugs = [
+    ...storePageContent.it.products.flatMap((product) => [
+      { slug: product.slug },
+      ...(product.formats?.map((f) => ({ slug: f.slug })) ?? []),
+    ]),
+    { slug: "cagliari-pour-femme" },
+    { slug: "cagliari-pour-femme-50ml" },
+    { slug: "cagliari-pour-femme-10ml" },
+    { slug: "cagliari-pour-homme" },
+    { slug: "cagliari-pour-homme-50ml" },
+    { slug: "cagliari-pour-homme-10ml" },
+    { slug: "cagliari-unisex" },
+    { slug: "cagliari-unisex-50ml" },
+    { slug: "cagliari-unisex-10ml" },
+    { slug: "two-lions" },
+    { slug: "two-lions-50ml" },
+    { slug: "two-lions-10ml" },
+  ];
   if (live && live.length > 0) {
-    const liveSlugs = live.map((p) => ({ slug: p.slug }));
+    const liveSlugs = live.flatMap((p) => [
+      { slug: p.slug },
+      ...(p.formats?.map((f) => ({ slug: f.slug })) ?? []),
+    ]);
     const allSlugs = Array.from(
       new Set([...staticSlugs.map((s) => s.slug), ...liveSlugs.map((s) => s.slug)])
     );

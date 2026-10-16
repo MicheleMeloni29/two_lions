@@ -172,8 +172,8 @@ class Products extends \Opencart\System\Engine\Controller {
             if (!empty($row['image'])) {
                 $imageSrc = $httpServer . 'image/' . ltrim($row['image'], '/');
             } else {
-                if (stripos($slug, 'two-lions') !== false) {
-                    $imageSrc = '/SectionsBackgrounds/Parfum.jpeg';
+                if (stripos($slug, 'two-lions') !== false || stripos($slug, 'for-man') !== false) {
+                    $imageSrc = '/Parfum_Bottles/TwoLions_forMan.jpg';
                 } elseif (stripos($slug, 'pour-homme') !== false) {
                     $imageSrc = '/Parfum_Bottles/Cagliari_pourHomme.jpeg';
                 } elseif (stripos($slug, 'unisex') !== false) {
@@ -233,6 +233,22 @@ class Products extends \Opencart\System\Engine\Controller {
                 'inStock'          => ((int)$row['quantity'] > 0),
                 'model'            => (string)$row['model']
             ];
+        }
+
+        // Ordinamento rigoroso per la categoria Parfum
+        if ($filterCategory === '' || stripos($filterCategory, 'parfum') !== false) {
+            usort($formattedProducts, function($a, $b) {
+                $getOrder = function($item) {
+                    $n = strtolower($item['name'] ?? '');
+                    $s = strtolower($item['slug'] ?? '');
+                    if (stripos($n, 'femme') !== false || stripos($s, 'femme') !== false) return 1;
+                    if (stripos($n, 'homme') !== false || stripos($s, 'homme') !== false) return 2;
+                    if (stripos($n, 'unisex') !== false || stripos($s, 'unisex') !== false) return 3;
+                    if (stripos($n, 'two lions') !== false || stripos($s, 'two-lions') !== false || stripos($n, 'man') !== false) return 4;
+                    return 99;
+                };
+                return $getOrder($a) - $getOrder($b);
+            });
         }
 
         $this->response->setOutput(json_encode([

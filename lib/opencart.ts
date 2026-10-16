@@ -77,6 +77,9 @@ export async function getOpenCartProducts(
               : [p.shortDescription],
             imageSrc: p.imageSrc,
             imageAlt: p.imageAlt || p.name,
+            formats: p.formats,
+            inStock: typeof p.inStock === "boolean" ? p.inStock : (p.quantity ? p.quantity > 0 : true),
+            quantity: typeof p.quantity === "number" ? p.quantity : 0,
           }));
         }
       }

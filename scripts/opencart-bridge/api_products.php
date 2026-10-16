@@ -182,15 +182,16 @@ try {
     $stmt->execute($params);
     $rows = $stmt->fetchAll();
 
-    // Raccogli tutti i product_id per estrarre i SEO URL
+    // Raccogli tutti i product_id per estrarre i SEO URL e le Opzioni (formati 50ml, 10ml)
     $productIds = array_unique(array_column($rows, 'product_id'));
     $seoUrls = [];
+    $productOptions = [];
 
     if (!empty($productIds)) {
         // Query compatibile OpenCart 4 (key='product_id' e value IN (...)) e OpenCart 3 (query IN ('product_id=X', ...))
         $inClause = implode(',', array_map('intval', $productIds));
         
-        // Tentativo OC4
+        // Estrazione SEO URLs
         try {
             $seoStmt = $pdo->query("SELECT `value`, `keyword` FROM `{$dbPrefix}seo_url` WHERE `key` = 'product_id' AND `value` IN ({$inClause})");
             while ($sRow = $seoStmt->fetch()) {
@@ -210,6 +211,38 @@ try {
             } catch (\Throwable $e2) {
                 // Nessuna tabella seo_url trovata, si userà il fallback
             }
+        }
+
+        // Estrazione Opzioni (es. Formato: 50 ml, 10 ml)
+        try {
+            $optSql = "
+                SELECT 
+                    pov.product_id,
+                    pov.product_option_value_id,
+                    pov.quantity,
+                    pov.price,
+                    pov.price_prefix,
+                    ovd.name AS option_name,
+                    od.name AS group_name
+                FROM `{$dbPrefix}product_option_value` pov
+                INNER JOIN `{$dbPrefix}option_value_description` ovd 
+                    ON (pov.option_value_id = ovd.option_value_id AND ovd.language_id = :opt_lang)
+                INNER JOIN `{$dbPrefix}option_description` od 
+                    ON (pov.option_id = od.option_id AND od.language_id = :opt_lang2)
+                WHERE pov.product_id IN ({$inClause})
+                ORDER BY pov.product_id ASC, pov.product_option_value_id ASC
+            ";
+            $optStmt = $pdo->prepare($optSql);
+            $optStmt->execute([
+                'opt_lang'  => $languageId,
+                'opt_lang2' => $languageId
+            ]);
+            while ($optRow = $optStmt->fetch()) {
+                $pid = (int)$optRow['product_id'];
+                $productOptions[$pid][] = $optRow;
+            }
+        } catch (\Throwable $optErr) {
+            // Se le tabelle opzioni non sono popolate o differiscono, continua normalmente
         }
     }
 
@@ -271,7 +304,9 @@ try {
             $imageSrc = $httpServer . 'image/' . ltrim($row['image'], '/');
         } else {
             // Fallback per i profumi noti se non caricata sul server
-            if (stripos($slug, 'pour-homme') !== false) {
+            if (stripos($slug, 'two-lions') !== false) {
+                $imageSrc = '/SectionsBackgrounds/Parfum.jpeg';
+            } elseif (stripos($slug, 'pour-homme') !== false) {
                 $imageSrc = '/Parfum_Bottles/Cagliari_pourHomme.jpeg';
             } elseif (stripos($slug, 'unisex') !== false) {
                 $imageSrc = '/Parfum_Bottles/Cagliari_unisex.jpeg';
@@ -279,6 +314,34 @@ try {
                 $imageSrc = '/Parfum_Bottles/Cagliari_pourFemme.jpeg';
             } else {
                 $imageSrc = '/Food&Beverage/cibo.png';
+            }
+        }
+
+        // Costruzione opzioni formato (es. 50 ml, 10 ml)
+        $formats = [];
+        if (!empty($productOptions[$pId])) {
+            foreach ($productOptions[$pId] as $opt) {
+                $optLabel = trim((string)$opt['option_name']);
+                $optPriceOffset = (float)$opt['price'];
+                $finalPrice = ($opt['price_prefix'] === '-') 
+                    ? ($rawPrice - $optPriceOffset) 
+                    : ($rawPrice + $optPriceOffset);
+                $finalCents = (int)round($finalPrice * 100);
+                $optPriceFormatted = ($finalCents === 0) 
+                    ? "00,00€" 
+                    : number_format($finalPrice, 2, ',', '.') . "€";
+                $optSlugPart = strtolower(trim(preg_replace('/[^A-Za-z0-9]+/', '', $optLabel)));
+
+                $formats[] = [
+                    'id'           => (!empty($row['model']) ? (string)$row['model'] : 'PROD-' . $pId) . '-' . strtoupper($optSlugPart),
+                    'slug'         => $slug . '-' . $optSlugPart,
+                    'label'        => $optLabel,
+                    'price'        => $optPriceFormatted,
+                    'amountCents'  => $finalCents,
+                    'isDiscounted' => false,
+                    'inStock'      => ((int)$opt['quantity'] > 0),
+                    'quantity'     => (int)$opt['quantity']
+                ];
             }
         }
 
@@ -297,6 +360,7 @@ try {
             'fullDescription'  => array_values($paragraphs),
             'imageSrc'         => $imageSrc,
             'imageAlt'         => (string)$row['name'],
+            'formats'          => !empty($formats) ? $formats : null,
             'quantity'         => (int)$row['quantity'],
             'inStock'          => ((int)$row['quantity'] > 0),
             'model'            => (string)$row['model']

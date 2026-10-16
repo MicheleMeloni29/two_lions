@@ -19,6 +19,7 @@ type StoreProductGridProps = {
   addToCartLabel: string;
   addedToCartLabel: string;
   openProductLabel: string;
+  chooseFormatLabel?: string;
   sortLabel: string;
   filterLabel: string;
   sortOptions: {
@@ -40,6 +41,7 @@ export default function StoreProductGrid({
   addToCartLabel,
   addedToCartLabel,
   openProductLabel,
+  chooseFormatLabel,
   sortLabel,
   filterLabel,
   sortOptions,
@@ -374,6 +376,7 @@ export default function StoreProductGrid({
               addToCartLabel={addToCartLabel}
               addedToCartLabel={addedToCartLabel}
               openProductLabel={openProductLabel}
+              chooseFormatLabel={chooseFormatLabel}
             />
           ))}
         </div>

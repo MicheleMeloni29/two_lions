@@ -12,9 +12,10 @@ type ProductPageProps = {
 
 export async function generateStaticParams() {
   const live = await getOpenCartProducts({ category: "parfum" });
-  const staticSlugs = storePageContent.it.products.map((product) => ({
-    slug: product.slug,
-  }));
+  const staticSlugs = storePageContent.it.products.flatMap((product) => [
+    { slug: product.slug },
+    ...(product.formats?.map((f) => ({ slug: f.slug })) ?? []),
+  ]);
   if (live && live.length > 0) {
     const liveSlugs = live.map((p) => ({ slug: p.slug }));
     const allSlugs = Array.from(

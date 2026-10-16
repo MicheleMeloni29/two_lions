@@ -105,6 +105,36 @@ class Products extends \Opencart\System\Engine\Controller {
             }
         }
 
+        // Estrazione Opzioni (es. Formato: 50 ml, 10 ml)
+        $productOptions = [];
+        if (!empty($productIds)) {
+            try {
+                $optQuery = $this->db->query("
+                    SELECT 
+                        pov.product_id,
+                        pov.product_option_value_id,
+                        pov.quantity,
+                        pov.price,
+                        pov.price_prefix,
+                        ovd.name AS option_name,
+                        od.name AS group_name
+                    FROM `" . DB_PREFIX . "product_option_value` pov
+                    INNER JOIN `" . DB_PREFIX . "option_value_description` ovd 
+                        ON (pov.option_value_id = ovd.option_value_id AND ovd.language_id = '" . (int)$languageId . "')
+                    INNER JOIN `" . DB_PREFIX . "option_description` od 
+                        ON (pov.option_id = od.option_id AND od.language_id = '" . (int)$languageId . "')
+                    WHERE pov.product_id IN (" . $inClause . ")
+                    ORDER BY pov.product_id ASC, pov.product_option_value_id ASC
+                ");
+                foreach ($optQuery->rows as $optRow) {
+                    $pid = (int)$optRow['product_id'];
+                    $productOptions[$pid][] = $optRow;
+                }
+            } catch (\Throwable $t) {
+                // Ignore fallback
+            }
+        }
+
         $httpServer = defined('HTTP_SERVER') ? rtrim(HTTP_SERVER, '/') . '/' : 'https://shop.twolionsinternational.com/';
         $formattedProducts = [];
         $seen = [];
@@ -142,7 +172,9 @@ class Products extends \Opencart\System\Engine\Controller {
             if (!empty($row['image'])) {
                 $imageSrc = $httpServer . 'image/' . ltrim($row['image'], '/');
             } else {
-                if (stripos($slug, 'pour-homme') !== false) {
+                if (stripos($slug, 'two-lions') !== false) {
+                    $imageSrc = '/SectionsBackgrounds/Parfum.jpeg';
+                } elseif (stripos($slug, 'pour-homme') !== false) {
                     $imageSrc = '/Parfum_Bottles/Cagliari_pourHomme.jpeg';
                 } elseif (stripos($slug, 'unisex') !== false) {
                     $imageSrc = '/Parfum_Bottles/Cagliari_unisex.jpeg';
@@ -150,6 +182,34 @@ class Products extends \Opencart\System\Engine\Controller {
                     $imageSrc = '/Parfum_Bottles/Cagliari_pourFemme.jpeg';
                 } else {
                     $imageSrc = '/Food&Beverage/cibo.png';
+                }
+            }
+
+            // Costruzione opzioni formato (es. 50 ml, 10 ml)
+            $formats = [];
+            if (!empty($productOptions[$pId])) {
+                foreach ($productOptions[$pId] as $opt) {
+                    $optLabel = trim((string)$opt['option_name']);
+                    $optPriceOffset = (float)$opt['price'];
+                    $finalPrice = ($opt['price_prefix'] === '-') 
+                        ? ($rawPrice - $optPriceOffset) 
+                        : ($rawPrice + $optPriceOffset);
+                    $finalCents = (int)round($finalPrice * 100);
+                    $optPriceFormatted = ($finalCents === 0) 
+                        ? "00,00€" 
+                        : number_format($finalPrice, 2, ',', '.') . "€";
+                    $optSlugPart = strtolower(trim(preg_replace('/[^A-Za-z0-9]+/', '', $optLabel)));
+
+                    $formats[] = [
+                        'id'           => (!empty($row['model']) ? (string)$row['model'] : 'PROD-' . $pId) . '-' . strtoupper($optSlugPart),
+                        'slug'         => $slug . '-' . $optSlugPart,
+                        'label'        => $optLabel,
+                        'price'        => $optPriceFormatted,
+                        'amountCents'  => $finalCents,
+                        'isDiscounted' => false,
+                        'inStock'      => ((int)$opt['quantity'] > 0),
+                        'quantity'     => (int)$opt['quantity']
+                    ];
                 }
             }
 
@@ -168,6 +228,7 @@ class Products extends \Opencart\System\Engine\Controller {
                 'fullDescription'  => array_values($paragraphs),
                 'imageSrc'         => $imageSrc,
                 'imageAlt'         => (string)$row['name'],
+                'formats'          => !empty($formats) ? $formats : null,
                 'quantity'         => (int)$row['quantity'],
                 'inStock'          => ((int)$row['quantity'] > 0),
                 'model'            => (string)$row['model']

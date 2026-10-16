@@ -23,6 +23,17 @@ export type StoreCollection = {
   action: StoreAction;
 };
 
+export type StoreProductFormat = {
+  id: string;
+  slug: string;
+  label: string;
+  price: string;
+  amountCents: number;
+  isDiscounted?: boolean;
+  inStock?: boolean;
+  quantity?: number;
+};
+
 export type StoreProduct = {
   id: string;
   slug: string;
@@ -37,6 +48,7 @@ export type StoreProduct = {
   imageAlt: string;
   quantity?: number;
   inStock?: boolean;
+  formats?: StoreProductFormat[];
 };
 
 export type StoreCatalogProduct = StoreProduct & {
@@ -51,6 +63,8 @@ export type StorePageContent = {
   addToCartLabel: string;
   addedToCartLabel: string;
   openProductLabel: string;
+  chooseFormatLabel?: string;
+  formatLabel?: string;
   backToStoreLabel: string;
   detailLabel: string;
   cartTitle: string;

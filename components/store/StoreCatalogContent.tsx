@@ -85,6 +85,7 @@ export default function StoreCatalogContent({
             addToCartLabel={content.addToCartLabel}
             addedToCartLabel={content.addedToCartLabel}
             openProductLabel={content.openProductLabel}
+            chooseFormatLabel={content.chooseFormatLabel}
             sortLabel={content.sortLabel}
             filterLabel={content.filterLabel}
             sortOptions={content.sortOptions}

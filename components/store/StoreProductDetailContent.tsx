@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,6 +10,7 @@ import CompactHeader from "@/components/UI/CompactHeader";
 import { useResetScrollOnMount } from "@/hooks/useResetScrollOnMount";
 import { useSiteLanguage } from "@/hooks/useSiteLanguage";
 import { getAllStoreProducts } from "@/lib/storeCatalog";
+import { cn } from "@/lib/utils";
 import type { StoreContentByLanguage, StoreProduct } from "./types";
 
 type StoreProductDetailContentProps = {
@@ -27,7 +28,10 @@ export default function StoreProductDetailContent({
 }: StoreProductDetailContentProps) {
   const { lang, toggleLang } = useSiteLanguage();
   const content = contentByLanguage[lang];
-  const localizedProduct = content.products.find((item) => item.slug === slug);
+  const localizedProduct =
+    content.products.find((item) => item.slug === slug) ||
+    content.products.find((item) => item.formats?.some((f) => f.slug === slug));
+
   const product = localizedProduct
     ? {
         ...localizedProduct,
@@ -38,10 +42,34 @@ export default function StoreProductDetailContent({
               quantity: initialProduct.quantity,
               inStock: initialProduct.inStock,
               imageSrc: initialProduct.imageSrc || localizedProduct.imageSrc,
+              formats: initialProduct.formats || localizedProduct.formats,
             }
           : {}),
       }
     : initialProduct;
+
+  const defaultFormatSlug = useMemo(() => {
+    if (!product?.formats || product.formats.length === 0) return slug;
+    // Cerca se lo slug corrisponde a uno specifico formato (es. arrivando da link vecchio)
+    const exactMatch = product.formats.find((f) => f.slug === slug);
+    if (exactMatch) return exactMatch.slug;
+    // Cerca il formato da 50ml come predefinito di punta
+    const format50 = product.formats.find((f) => f.slug.includes("50ml"));
+    return format50 ? format50.slug : product.formats[0].slug;
+  }, [product, slug]);
+
+  const [selectedFormatSlug, setSelectedFormatSlug] = useState<string>(defaultFormatSlug);
+
+  const activeFormat = useMemo(() => {
+    return product?.formats?.find((f) => f.slug === selectedFormatSlug) || null;
+  }, [product, selectedFormatSlug]);
+
+  const currentPrice = activeFormat ? activeFormat.price : (product?.price ?? "00,00€");
+  const currentAmountCents = activeFormat ? activeFormat.amountCents : (product?.amountCents ?? 0);
+  const currentInStock = activeFormat
+    ? (activeFormat.inStock ?? false)
+    : (product?.inStock ?? false);
+  const cartSlug = activeFormat ? activeFormat.slug : (product?.slug ?? slug);
 
   const cartProducts = useMemo(() => {
     const base = getAllStoreProducts(lang);
@@ -121,19 +149,47 @@ export default function StoreProductDetailContent({
                   {product.name}
                 </h1>
                 <p className="text-[12px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] sm:text-[13px]">
-                  {product.price}
+                  {currentPrice}
                 </p>
                 <p className="text-[13px] leading-6 text-[color:var(--color-secondary)] sm:text-sm md:text-[15px] md:leading-7">
                   {product.shortDescription}
                 </p>
               </div>
 
+              {product.formats && product.formats.length > 1 && (
+                <div className="space-y-2.5 pt-1">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)]">
+                    {content.formatLabel || "Formato"}
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {product.formats.map((format) => {
+                      const isSelected = activeFormat?.slug === format.slug;
+                      return (
+                        <button
+                          key={format.slug}
+                          type="button"
+                          onClick={() => setSelectedFormatSlug(format.slug)}
+                          className={cn(
+                            "cursor-pointer border px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:text-[12px]",
+                            isSelected
+                              ? "border-[color:var(--color-thirdary)] bg-[color:var(--color-thirdary)] text-[color:var(--color-primary)] shadow-sm"
+                              : "border-[color:var(--color-primary)]/20 bg-white text-[color:var(--color-primary)] hover:border-[color:var(--color-thirdary)] hover:text-[color:var(--color-thirdary)]"
+                          )}
+                        >
+                          {format.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               <AddToCartButton
-                productSlug={product.slug}
+                productSlug={cartSlug}
                 idleLabel={content.addToCartLabel}
                 addedLabel={content.addedToCartLabel}
-                disabled={product.inStock === false || product.amountCents === 0}
-                outOfStockLabel={product.inStock === false ? "Non disponibile" : "In arrivo"}
+                disabled={currentInStock === false || currentAmountCents === 0}
+                outOfStockLabel={currentInStock === false ? "Non disponibile" : "In arrivo"}
                 className="w-full sm:w-fit sm:min-w-[15rem]"
               />
 

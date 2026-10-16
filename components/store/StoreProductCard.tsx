@@ -9,6 +9,7 @@ type StoreProductCardProps = {
   addToCartLabel: string;
   addedToCartLabel: string;
   openProductLabel?: string;
+  chooseFormatLabel?: string;
 };
 
 export default function StoreProductCard({
@@ -17,8 +18,12 @@ export default function StoreProductCard({
   addToCartLabel,
   addedToCartLabel,
   openProductLabel,
+  chooseFormatLabel = "Scegli formato",
 }: StoreProductCardProps) {
   const productHref = `${productBasePath}/${product.slug}`;
+  const hasMultipleFormats = Boolean(
+    product.formats && product.formats.length > 1
+  );
 
   return (
     <article className="group flex h-full flex-col p-2 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--color-primary)]/25 hover:shadow-[0_22px_50px_rgba(31,39,92,0.12)] sm:p-3 md:p-5">
@@ -48,14 +53,23 @@ export default function StoreProductCard({
       </Link>
 
       <div className="pt-2.5 sm:pt-3 md:pt-4">
-        <AddToCartButton
-          productSlug={product.slug}
-          idleLabel={addToCartLabel}
-          addedLabel={addedToCartLabel}
-          disabled={product.inStock === false || product.amountCents === 0}
-          outOfStockLabel={product.inStock === false ? "Non disponibile" : "In arrivo"}
-          className="w-full"
-        />
+        {hasMultipleFormats ? (
+          <Link
+            href={productHref}
+            className="inline-flex w-full cursor-pointer items-center justify-center border border-[color:var(--color-thirdary)] bg-white px-5 py-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-thirdary)] transition-all duration-300 hover:bg-[color:var(--color-thirdary)] hover:text-[color:var(--color-primary)] sm:text-[12px]"
+          >
+            {chooseFormatLabel}
+          </Link>
+        ) : (
+          <AddToCartButton
+            productSlug={product.slug}
+            idleLabel={addToCartLabel}
+            addedLabel={addedToCartLabel}
+            disabled={product.inStock === false || product.amountCents === 0}
+            outOfStockLabel={product.inStock === false ? "Non disponibile" : "In arrivo"}
+            className="w-full"
+          />
+        )}
       </div>
     </article>
   );

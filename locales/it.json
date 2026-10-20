@@ -29,9 +29,6 @@
       "SPORT"
     ]
   },
-
-
-  
   "introText": {
     "_comment": "Sezione IntroText della homepage. listTitle/listItems controllano il carosello orizzontale continuo. divisionsTitle/divisions e geographicFocusTitle/geographicFocus controllano le card sotto.",
     "eyebrow": "Societa holding registrata in Delaware",
@@ -59,9 +56,6 @@
     ],
     "body": "La societa svolge attivita di pianificazione strategica, sviluppo commerciale, gestione di marchi e proprieta intellettuale e investimento in iniziative imprenditoriali."
   },
-
-
-
   "sections": {
     "_comment": "Sezione TwoLionsDivisions della homepage. title controlla il titolo della sezione. items contiene le card delle divisioni.",
     "eyebrow": "Two Lions",
@@ -112,12 +106,10 @@
       {
         "slug": "two_lions_pay",
         "label": "Pay & Communication",
-        "image": ""
+        "image": "TwoLionsCommunication.jpeg"
       }
     ]
   },
-
-
   "investmentSection": {
     "_comment": "InvestmentSection della homepage. eyebrow1/title/lead controllano l'introduzione. eyebrow2 viene riusato sopra il carosello continuo. highlights controlla la card a sinistra. pillars controlla le card in movimento.",
     "eyebrow1": "Two Lions",
@@ -149,7 +141,6 @@
       }
     ]
   },
-
   "officeSection": {
     "_comment": "Sezione sedi della homepage. eyebrow/title/lead controllano l'intestazione; headquarters e italianOperations controllano le due card.",
     "eyebrow": "Two Lions",
@@ -211,9 +202,6 @@
       ]
     }
   },
-
-
-
   "contactSection": {
     "_comment": "Sezione contatti della homepage. L'invio avviene tramite API server-side.",
     "eyebrow": "Contatto diretto",
@@ -249,9 +237,6 @@
       "message": "Scrivi qui il tuo messaggio"
     }
   },
-
-
-
   "identityAdvertisingPage": {
     "_comment": "Pagina Identity Advertising. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -373,9 +358,6 @@
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   },
-
-
-
   "luxurySardabookingPage": {
     "_comment": "Pagina Luxury Sardabooking. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -498,9 +480,6 @@
     ],
     "sectionImagePlaceholder": "Spazio per un'immagine dedicata a"
   },
-
-
-
   "foodBeveragePage": {
     "_comment": "Pagina Food & Beverage. sections e la griglia contenuti principale; ogni sezione ha id, title, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -625,9 +604,6 @@
       }
     ]
   },
-
-
-
   "parfumPage": {
     "_comment": "Pagina Parfum. sections e la griglia contenuti principale; ogni sezione ha id, title, description, items e nota opzionale.",
     "backToHome": "Back to home",
@@ -741,9 +717,6 @@
       }
     ]
   },
-
-
-
   "sportPage": {
     "_comment": "Pagina Sport. sections e la griglia contenuti principale; visualPlaceholders prepara slot immagine futuri via JSON.",
     "backToHome": "Torna alla home",
@@ -1019,9 +992,6 @@
       }
     ]
   },
-
-
-
   "smartShelterEnergyPage": {
     "_comment": "Pagina Smart Shelter & Energy. sections e la griglia contenuti principale; ogni sezione ha id, title, description, items e nota opzionale.",
     "backToHome": "Back to home",

@@ -38,7 +38,7 @@ const PLATFORMS = [
     id: "mail-admin",
     title: "Mail Administration",
     description: "Gestione del server di posta, caselle e domini",
-    url: "https://mail.twolionsinternational.com",
+    url: "https://mail.twolionsinternational.com/admin",
     icon: ServerCog,
   },
   {
